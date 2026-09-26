@@ -287,7 +287,7 @@ export const topics = [
     subtopics: [
       { id: "topic-python-ai-scikit-learn", title: "scikit-learn" },
       { id: "topic-python-ai-pytorch", title: "PyTorch" },
-      { id: "topic-python-ai-ml", title: "ML" },
+      { id: "topic-python-ai-ml", title: "Machine Learning (ML)" },
       { id: "topic-python-ai-deep-learning", title: "Deep Learning" },
       { id: "topic-python-ai-genai", title: "GenAI" },
       { id: "topic-python-ai-ai-engineering", title: "AI Engineering" },
@@ -640,7 +640,7 @@ export const topics = [
       { id: "topic-ai-engineering-pandas", title: "Pandas" },
       { id: "topic-ai-engineering-statistics", title: "Statistics" },
       { id: "topic-ai-engineering-linear-algebra-basics", title: "Linear Algebra Basics" },
-      { id: "topic-ai-engineering-ml-fundamentals", title: "ML Fundamentals" },
+      { id: "topic-ai-engineering-ml-fundamentals", title: "Machine Learning & ML Fundamentals" },
       { id: "topic-ai-engineering-scikit-learn", title: "scikit-learn" },
       { id: "topic-ai-engineering-model-training", title: "Model Training" },
       { id: "topic-ai-engineering-evaluation", title: "Evaluation" },
@@ -713,3 +713,23 @@ export const topics = [
     ],
   },
 ];
+
+// Topic alias mapping for backwards-compatibility and resilient lookups
+export const TOPIC_ALIASES = {
+  'topic-express': 'topic-expressjs',
+  'topic-docker': 'topic-devops',
+  'topic-aws': 'topic-cloud',
+  'topic-azure': 'topic-cloud',
+  'topic-gcp': 'topic-cloud',
+  'topic-ai': 'topic-genai',
+  'topic-ml': 'topic-ai-engineering',
+  'topic-career': 'topic-interview-prep',
+  'topic-revision': 'topic-interview-prep',
+};
+
+export function getTopicById(id) {
+  if (!id) return null;
+  const canonicalId = TOPIC_ALIASES[id] || id;
+  return topics.find((t) => t.id === canonicalId) || null;
+}
+

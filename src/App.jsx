@@ -1,64 +1,96 @@
-import { phases } from './data/phases'
-import { topics } from './data/topics'
-import { quotes } from './data/quotes'
-import { STORAGE_KEYS } from './utils/storage'
-import { useDayQuote } from './hooks/useDayQuote'
+import React from 'react';
+import { AppProvider, useApp } from './context/AppContext';
+import { Sidebar } from './components/Navigation/Sidebar';
+import { TopNav } from './components/Navigation/TopNav';
+import { MobileNav } from './components/Navigation/MobileNav';
+import { SearchModal } from './components/Modals/SearchModal';
+import { MotivationalIntroModal } from './components/Modals/MotivationalIntroModal';
+import { ToastContainer } from './components/UI/ToastContainer';
 
-function App() {
-  const todayQuote = useDayQuote()
+import { Dashboard } from './pages/Dashboard';
+import { TodayPlan } from './pages/TodayPlan';
+import { Roadmap } from './pages/Roadmap';
+import { PracticeArcade } from './pages/PracticeArcade';
+import { RevisionCenter } from './pages/RevisionCenter';
+import { ProjectLab } from './pages/ProjectLab';
+import { CareerPaths } from './pages/CareerPaths';
+import { DsaPage } from './pages/DsaPage';
+import { CoreCsPage } from './pages/CoreCsPage';
+import { PythonPage } from './pages/PythonPage';
+import { Analytics } from './pages/Analytics';
+import { Settings } from './pages/Settings';
+
+function AppContent() {
+  const { activeTab } = useApp();
+
+  const renderActiveTab = () => {
+    switch (activeTab) {
+      case 'dashboard':
+        return <Dashboard />;
+      case 'today':
+        return <TodayPlan />;
+      case 'roadmap':
+        return <Roadmap />;
+      case 'practice':
+        return <PracticeArcade />;
+      case 'revision':
+        return <RevisionCenter />;
+      case 'projects':
+        return <ProjectLab />;
+      case 'careers':
+        return <CareerPaths />;
+      case 'dsa':
+        return <DsaPage />;
+      case 'core-cs':
+        return <CoreCsPage />;
+      case 'python':
+        return <PythonPage />;
+      case 'analytics':
+        return <Analytics />;
+      case 'settings':
+        return <Settings />;
+      default:
+        return <Dashboard />;
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100">
-      <header className="border-b border-gray-800 px-6 py-4">
-        <h1 className="text-2xl font-bold tracking-tight">
-          🧭 Career Compass
-        </h1>
-        <p className="text-sm text-gray-400 mt-1">120-Day Learning Dashboard</p>
-      </header>
+    <div className="min-h-screen bg-[#090a0f] text-gray-100 flex flex-col antialiased selection:bg-indigo-500/30 selection:text-indigo-200">
+      <div className="flex flex-1">
+        {/* Desktop Sidebar */}
+        <Sidebar />
 
-      <main className="p-6">
-        {/* Data foundation loaded — UI components coming in next prompt */}
-        <section className="rounded-xl border border-gray-800 bg-gray-900/50 p-6 mb-6">
-          <h2 className="text-lg font-semibold mb-2">📊 Data Foundation Status</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-            <div className="bg-gray-800/50 rounded-lg p-3">
-              <div className="text-gray-400">Phases</div>
-              <div className="text-xl font-bold text-emerald-400">{phases.length}</div>
-            </div>
-            <div className="bg-gray-800/50 rounded-lg p-3">
-              <div className="text-gray-400">Topics</div>
-              <div className="text-xl font-bold text-blue-400">{topics.length}</div>
-            </div>
-            <div className="bg-gray-800/50 rounded-lg p-3">
-              <div className="text-gray-400">Quotes</div>
-              <div className="text-xl font-bold text-purple-400">{quotes.length}</div>
-            </div>
-            <div className="bg-gray-800/50 rounded-lg p-3">
-              <div className="text-gray-400">Persistence</div>
-              <div className="text-xl font-bold text-amber-400">✓ Ready</div>
-            </div>
-          </div>
-        </section>
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col min-w-0">
+          {/* Top Header */}
+          <TopNav />
 
-        <section className="rounded-xl border border-gray-800 bg-gray-900/50 p-6 mb-6">
-          <h2 className="text-lg font-semibold mb-2">💬 Today&apos;s Quote</h2>
-          <blockquote className="text-gray-300 italic border-l-4 border-purple-500 pl-4">
-            &ldquo;{todayQuote.text}&rdquo;
-          </blockquote>
-          <p className="text-sm text-gray-500 mt-2">— {todayQuote.author}</p>
-        </section>
+          {/* Page View Container */}
+          <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl w-full mx-auto pb-20 lg:pb-8 min-w-0">
+            {renderActiveTab()}
+          </main>
+        </div>
+      </div>
 
-        <section className="rounded-xl border border-gray-800 bg-gray-900/50 p-6">
-          <h2 className="text-lg font-semibold mb-2">🗂️ Persistent State Keys</h2>
-          <ul className="text-sm text-gray-400 space-y-1 font-mono">
-            {Object.values(STORAGE_KEYS).map((key) => (
-              <li key={key}>✓ {key}</li>
-            ))}
-          </ul>
-        </section>
-      </main>
+      {/* Mobile Bottom Navigation */}
+      <MobileNav />
+
+      {/* Global Search Modal */}
+      <SearchModal />
+
+      {/* Motivational Loading / Intro Modal */}
+      <MotivationalIntroModal />
+
+      {/* Global Progress Feedback Toasts */}
+      <ToastContainer />
     </div>
-  )
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <AppProvider>
+      <AppContent />
+    </AppProvider>
+  );
+}
