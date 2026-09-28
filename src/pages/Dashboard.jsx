@@ -30,6 +30,7 @@ export function Dashboard() {
     tasks,
     toggleTask,
     todayMission,
+    htmlCssKnown,
   } = useApp();
 
   const currentDay = stats.currentDay;
@@ -95,6 +96,17 @@ export function Dashboard() {
           </div>
         </div>
       </div>
+
+      {/* HTML/CSS Already Known Banner */}
+      {htmlCssKnown && (
+        <div className="flex items-center gap-3 p-4 rounded-2xl bg-emerald-950/20 border border-emerald-500/20">
+          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+          <div className="flex-1 min-w-0">
+            <span className="text-xs font-bold text-emerald-300 uppercase tracking-wider">HTML & CSS: Already Known</span>
+            <p className="text-[11px] text-gray-400 mt-0.5">Your roadmap starts with JavaScript. HTML/CSS remain available for revision in the Roadmap.</p>
+          </div>
+        </div>
+      )}
 
       {/* Prominent Daily Mission on Dashboard (Requirement 18) */}
       <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-indigo-500/30 bg-gradient-to-b from-[#121528] to-[#0c0d16] shadow-xl relative overflow-hidden">

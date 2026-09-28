@@ -10,12 +10,29 @@ import { STORAGE_KEYS, loadFromStorage, saveToStorage, exportAllData, importAllD
 import { mergeProgressImport, validateProgressImport } from '../utils/progressImport';
 import { getQuoteIndexForDate, todayISO } from '../utils/dateHelpers';
 
+// Days 1-6 cover HTML/CSS fundamentals. When learner already knows HTML/CSS,
+// these days are auto-completed so the journey starts at JavaScript (day-007).
+const HTML_CSS_DAY_IDS = ['day-001', 'day-002', 'day-003', 'day-004', 'day-005', 'day-006'];
+
 const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
+  // Learning level: 'html-css-known' (default) or 'html-css-beginner'
+  const [learningLevel, setLearningLevelState] = useState(
+    () => loadFromStorage(STORAGE_KEYS.settings, { learningLevel: 'html-css-known' })?.learningLevel || 'html-css-known'
+  );
+
+  const setLearningLevel = useCallback((level) => {
+    setLearningLevelState(level);
+    const settings = loadFromStorage(STORAGE_KEYS.settings, {});
+    saveToStorage(STORAGE_KEYS.settings, { ...settings, learningLevel: level });
+  }, []);
+
+  const htmlCssKnown = learningLevel === 'html-css-known';
+
   // Navigation state
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [selectedDayId, setSelectedDayId] = useState('day-001');
+  const [selectedDayId, setSelectedDayId] = useState(() => htmlCssKnown ? 'day-007' : 'day-001');
   const [searchOpen, setSearchOpen] = useState(false);
   const [introOpen, setIntroOpen] = useState(() => {
     // Only show on first visit of the session
@@ -352,9 +369,12 @@ export function AppProvider({ children }) {
       };
     });
 
-    // Determine current day (first uncompleted day or day-001)
-    const firstIncompleteDay = roadmap.find(d => !days[d.id]);
-    const currentDay = firstIncompleteDay || roadmap[0];
+    // Determine current day (first uncompleted day, skipping HTML/CSS days when known)
+    const firstIncompleteDay = roadmap.find(d => {
+      if (htmlCssKnown && HTML_CSS_DAY_IDS.includes(d.id)) return false;
+      return !days[d.id];
+    });
+    const currentDay = firstIncompleteDay || (htmlCssKnown ? roadmap.find(d => d.id === 'day-007') : roadmap[0]) || roadmap[0];
     const currentPhase = phases.find(p => p.id === currentDay.phase) || phases[0];
 
     return {
@@ -375,7 +395,7 @@ export function AppProvider({ children }) {
       currentDay,
       currentPhase,
     };
-  }, [tasks, days, milestones, practice]);
+  }, [tasks, days, milestones, practice, htmlCssKnown]);
 
   // Today's deterministic quote with persistence
   const todayQuote = useMemo(() => {
@@ -671,6 +691,12 @@ export function AppProvider({ children }) {
     // Computed Stats & Dynamic Missions
     stats,
     todayMission,
+
+    // Learning Level (HTML/CSS skip)
+    htmlCssKnown,
+    learningLevel,
+    setLearningLevel,
+    HTML_CSS_DAY_IDS,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

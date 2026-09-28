@@ -14,7 +14,7 @@ import { useApp } from '../context/AppContext';
 import { STORAGE_KEYS } from '../utils/storage';
 
 export function Settings() {
-  const { exportProgress, importProgress, resetProgress, stats } = useApp();
+  const { exportProgress, importProgress, resetProgress, stats, learningLevel, setLearningLevel } = useApp();
 
   const [confirmResetOpen, setConfirmResetOpen] = useState(false);
   const [importStatus, setImportStatus] = useState(null);
@@ -94,6 +94,46 @@ export function Settings() {
           </button>
         </div>
       )}
+
+      {/* Learning Level Setting */}
+      <div className="glass-panel p-6 rounded-3xl border border-white/5 space-y-4">
+        <div className="flex items-center gap-3">
+          <div className="p-3 rounded-2xl bg-emerald-500/10 text-emerald-400">
+            <CheckCircle2 className="w-5 h-5" />
+          </div>
+          <div>
+            <h2 className="text-base font-bold text-white">Learning Level</h2>
+            <p className="text-xs text-gray-400">
+              Set whether you already know HTML/CSS. This controls where your roadmap journey begins.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          <button
+            onClick={() => setLearningLevel('html-css-known')}
+            className={`flex-1 px-4 py-3 rounded-xl text-xs font-semibold border transition-all cursor-pointer text-left ${
+              learningLevel === 'html-css-known'
+                ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300'
+                : 'bg-white/5 border-white/10 text-gray-400 hover:text-gray-200'
+            }`}
+          >
+            <div className="font-bold mb-0.5">HTML/CSS Already Known</div>
+            <div className="text-[11px] opacity-75">Roadmap starts with JavaScript (Day 7)</div>
+          </button>
+          <button
+            onClick={() => setLearningLevel('html-css-beginner')}
+            className={`flex-1 px-4 py-3 rounded-xl text-xs font-semibold border transition-all cursor-pointer text-left ${
+              learningLevel === 'html-css-beginner'
+                ? 'bg-indigo-500/20 border-indigo-500/40 text-indigo-300'
+                : 'bg-white/5 border-white/10 text-gray-400 hover:text-gray-200'
+            }`}
+          >
+            <div className="font-bold mb-0.5">HTML/CSS Beginner</div>
+            <div className="text-[11px] opacity-75">Roadmap starts from Day 1 (HTML foundations)</div>
+          </button>
+        </div>
+      </div>
 
       {/* Backup and Restore Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

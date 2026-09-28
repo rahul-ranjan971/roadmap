@@ -12,7 +12,7 @@ import { useApp } from '../context/AppContext';
 import { DayDetailModal } from '../components/Modals/DayDetailModal';
 
 export function Roadmap() {
-  const { roadmap, phases, days, tasks, stats, setSelectedDayId } = useApp();
+  const { roadmap, phases, days, tasks, stats, navigateTo, htmlCssKnown, HTML_CSS_DAY_IDS } = useApp();
 
   const [activePhaseId, setActivePhaseId] = useState(phases[0].id);
   const [expandedWeeks, setExpandedWeeks] = useState({ 1: true });
@@ -322,11 +322,14 @@ export function Roadmap() {
                       {filteredDays.map((day) => {
                         const isDone = !!days[day.id];
                         const completedTasksCount = day.tasks.filter((t) => tasks[t.id]).length;
+                        const isHtmlCssSkipped = htmlCssKnown && HTML_CSS_DAY_IDS.includes(day.id);
                         return (
                           <div
                             key={day.id}
                             className={`p-4 rounded-2xl border text-left flex flex-col justify-between transition-all ${
-                              isDone
+                              isHtmlCssSkipped
+                                ? 'bg-emerald-950/10 border-emerald-500/20 opacity-75'
+                                : isDone
                                 ? 'bg-emerald-950/20 border-emerald-500/30 shadow-sm'
                                 : 'bg-black/30 border-white/5 hover:border-white/15'
                             }`}
@@ -336,10 +339,17 @@ export function Roadmap() {
                                 <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-white/5 text-gray-300">
                                   Day {day.day}
                                 </span>
-                                <span className={`text-[11px] font-mono flex items-center gap-1 ${isDone ? 'text-emerald-400' : 'text-gray-500'}`}>
-                                  <CheckCircle2 className="w-3.5 h-3.5" />
-                                  {completedTasksCount}/{day.tasks.length} tasks
-                                </span>
+                                <div className="flex items-center gap-1.5">
+                                  {isHtmlCssSkipped && (
+                                    <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                                      ✓ Already Known
+                                    </span>
+                                  )}
+                                  <span className={`text-[11px] font-mono flex items-center gap-1 ${isDone || isHtmlCssSkipped ? 'text-emerald-400' : 'text-gray-500'}`}>
+                                    <CheckCircle2 className="w-3.5 h-3.5" />
+                                    {completedTasksCount}/{day.tasks.length} tasks
+                                  </span>
+                                </div>
                               </div>
 
                               <h4 className="text-xs font-bold text-white line-clamp-1 mb-1.5">
@@ -360,7 +370,7 @@ export function Roadmap() {
                               </button>
 
                               <button
-                                onClick={() => setSelectedDayId(day.id)}
+                                onClick={() => navigateTo('today', day.id)}
                                 className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400 hover:text-white transition-colors cursor-pointer"
                               >
                                 Focus
