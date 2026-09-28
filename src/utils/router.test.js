@@ -28,7 +28,7 @@ test('supabaseHelpers: formatAuthError returns human-friendly messages', () => {
   assert.equal(formatAuthError('Passwords do not match'), 'Passwords do not match.');
   assert.equal(formatAuthError('Failed to fetch'), 'Unable to connect. Please try again.');
   assert.equal(formatAuthError('Email not confirmed'), 'Verify your email address before signing in.');
-  assert.match(formatAuthError('otp_expired'), /invalid or has expired/);
+  assert.equal(formatAuthError('otp_expired'), 'This verification link has expired or has already been used. Please request a new verification email.');
   assert.match(formatAuthError('Recovery session missing'), /recovery link is invalid or expired/);
   assert.match(formatAuthError('New password should be different from the old password'), /password could not be updated/);
 });
@@ -40,9 +40,11 @@ test('auth redirects follow the current origin in development and production', (
     assert.equal(getAuthRedirectUrl('/login'), 'http://localhost:5173/roadmap/login');
     assert.equal(getAuthRedirectUrl('/reset-password'), 'http://localhost:5173/roadmap/reset-password');
 
-    globalThis.window.location.origin = 'https://career-compass.example';
+    globalThis.window.location.origin = 'https://career-compass.vercel.app';
     globalThis.window.location.pathname = '/signup';
-    assert.equal(getAuthRedirectUrl('/login'), 'https://career-compass.example/login');
+    assert.equal(getAuthRedirectUrl('/login'), 'https://career-compass.vercel.app/login');
+    assert.equal(getAuthRedirectUrl('/reset-password'), 'https://career-compass.vercel.app/reset-password');
+    assert.doesNotMatch(getAuthRedirectUrl('/login'), /localhost/);
   } finally {
     if (previousWindow === undefined) delete globalThis.window;
     else globalThis.window = previousWindow;
@@ -68,7 +70,7 @@ test('auth callback errors are friendly and callback tokens are removed from the
   };
 
   try {
-    assert.match(getAuthCallbackError(), /invalid or has expired/);
+    assert.match(getAuthCallbackError(), /expired or has already been used/);
     clearAuthCallbackUrl();
     assert.doesNotMatch(replacedUrl, /access_token|refresh_token|error_code|error=/);
     assert.match(replacedUrl, /reset-password/);

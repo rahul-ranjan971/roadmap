@@ -3,9 +3,19 @@ import { supabase } from './superbase.js';
 // --- Auth helpers ---
 
 export function getAuthRedirectUrl(path) {
-  const origin = typeof window !== 'undefined' && window.location?.origin
-    ? window.location.origin
-    : (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SITE_URL ? import.meta.env.VITE_SITE_URL : undefined);
+  let origin;
+  if (typeof window !== 'undefined' && window.location?.origin) {
+    origin = window.location.origin;
+  } else if (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SITE_URL) {
+    const siteUrl = import.meta.env.VITE_SITE_URL;
+    const isProd = typeof import.meta !== 'undefined' && import.meta.env?.PROD;
+    if (isProd && siteUrl.includes('localhost')) {
+      origin = undefined;
+    } else {
+      origin = siteUrl;
+    }
+  }
+
   if (!origin) return undefined;
 
   const pathname = typeof window !== 'undefined' && window.location?.pathname ? window.location.pathname : '';
@@ -78,7 +88,7 @@ export function formatAuthError(err) {
     return 'Verify your email address before signing in.';
   }
   if (lower.includes('otp_expired') || lower.includes('expired') || lower.includes('invalid token') || lower.includes('email link is invalid')) {
-    return 'This verification or recovery link is invalid or has expired. Request a new email link.';
+    return 'This verification link has expired or has already been used. Please request a new verification email.';
   }
   if (lower.includes('invalid login credentials') || lower.includes('invalid grant') || lower.includes('invalid credentials')) {
     return 'Email or password is incorrect.';
