@@ -3,11 +3,11 @@ export const phases = [
     id: "phase-01",
     name: "Foundation",
     shortName: "Foundation",
-    description: "JavaScript + HTML/CSS foundations + C++ DSA + Python + Core CS",
+    description: "JavaScript Foundations + C++ DSA + Python + AI + Core CS",
     startDay: 1,
     endDay: 12,
     color: "#4FC3F7",
-    tracks: ["html-css", "javascript", "cpp-dsa", "python", "core-cs"],
+    tracks: ["javascript", "cpp-dsa", "python", "genai", "core-cs"],
   },
   {
     id: "phase-02",

@@ -104,7 +104,7 @@ export function Settings() {
           <div>
             <h2 className="text-base font-bold text-white">Learning Level</h2>
             <p className="text-xs text-gray-400">
-              Set whether you already know HTML/CSS. This controls where your roadmap journey begins.
+              Your 120-day roadmap starts directly with JavaScript on Day 1 across all parallel tracks.
             </p>
           </div>
         </div>
@@ -119,7 +119,7 @@ export function Settings() {
             }`}
           >
             <div className="font-bold mb-0.5">HTML/CSS Already Known</div>
-            <div className="text-[11px] opacity-75">Roadmap starts with JavaScript (Day 7)</div>
+            <div className="text-[11px] opacity-75">Roadmap starts at the active JavaScript sequence without HTML/CSS days</div>
           </button>
           <button
             onClick={() => setLearningLevel('html-css-beginner')}
@@ -130,7 +130,7 @@ export function Settings() {
             }`}
           >
             <div className="font-bold mb-0.5">HTML/CSS Beginner</div>
-            <div className="text-[11px] opacity-75">Roadmap starts from Day 1 (HTML foundations)</div>
+            <div className="text-[11px] opacity-75">Roadmap includes the HTML/CSS foundation path from Day 1</div>
           </button>
         </div>
       </div>

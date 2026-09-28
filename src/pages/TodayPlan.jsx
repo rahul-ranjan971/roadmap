@@ -33,13 +33,15 @@ export function TodayPlan() {
 
   const currentDay = roadmap.find((d) => d.id === selectedDayId) || roadmap[0];
   const currentPhase = phases.find((p) => p.id === currentDay.phase) || phases[0];
+  const activeDayNumber = currentDay.day;
   const isDayCompleted = !!days[currentDay.id];
 
   const [noteText, setNoteText] = useState(() => notes[currentDay.id] || '');
 
   // Group tasks by category/track
   const mainTasks = currentDay.tasks.filter(
-    (t) => !t.topicId.includes('dsa') && !t.topicId.includes('cpp') &&
+    (t) => !['topic-html', 'topic-css'].includes(t.topicId) &&
+      !t.topicId.includes('dsa') && !t.topicId.includes('cpp') &&
       !t.topicId.includes('python') && !t.topicId.includes('aptitude') &&
       !t.topicId.includes('oop') && !t.topicId.includes('sql') &&
       !t.topicId.includes('dbms') && !t.topicId.includes('os') &&
@@ -102,7 +104,7 @@ export function TodayPlan() {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                Day {currentDay.day} of 120
+                Day {activeDayNumber} of 120
               </span>
               <span className="text-xs font-mono text-gray-400">Week {currentDay.week}</span>
               <span className="text-xs font-medium text-purple-400">• {currentPhase.name}</span>

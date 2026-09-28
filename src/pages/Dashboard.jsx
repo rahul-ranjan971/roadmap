@@ -35,6 +35,7 @@ export function Dashboard() {
 
   const currentDay = stats.currentDay;
   const currentPhase = stats.currentPhase;
+  const activeDayNumber = currentDay ? currentDay.day : 1;
 
   // Icon map for active tracks
   const trackIcons = {
@@ -42,6 +43,7 @@ export function Dashboard() {
     'core-cs': <Cpu className="w-4 h-4 text-cyan-400" />,
     dsa: <Binary className="w-4 h-4 text-emerald-400" />,
     python: <FileCode className="w-4 h-4 text-amber-400" />,
+    genai: <Sparkles className="w-4 h-4 text-rose-400" />,
     project: <FolderGit2 className="w-4 h-4 text-purple-400" />,
     revision: <Repeat className="w-4 h-4 text-violet-400" />,
     practice: <Gamepad2 className="w-4 h-4 text-pink-400" />,
@@ -53,6 +55,7 @@ export function Dashboard() {
     'core-cs': 'core-cs',
     dsa: 'dsa',
     python: 'python',
+    genai: 'ai',
     project: 'projects',
     revision: 'revision',
     practice: 'practice',
@@ -70,7 +73,7 @@ export function Dashboard() {
               Welcome Back • Personal Career OS
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Day {currentDay.day} of 120
+              Day {activeDayNumber} of 120
             </h1>
             <p className="text-gray-300 text-sm mt-1 max-w-xl">
               Currently in <span className="text-indigo-400 font-semibold">{currentPhase.name}</span> (Week {currentDay.week}).
@@ -118,7 +121,7 @@ export function Dashboard() {
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-base sm:text-lg font-bold text-white tracking-tight uppercase">
-                  TODAY&apos;S MISSION — DAY {currentDay.day} / 120
+                  TODAY&apos;S MISSION — DAY {activeDayNumber} / 120
                 </h2>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                   {currentDay.tasks.filter((t) => tasks[t.id]).length} / {currentDay.tasks.length} Completed

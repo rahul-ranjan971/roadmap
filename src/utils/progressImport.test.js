@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { STORAGE_KEYS, importAllData } from './storage.js';
 import { mergeProgressImport, validateProgressImport } from './progressImport.js';
+import { getActiveGlobalDayNumber } from './roadmapSchedule.js';
 
 test('rejects empty and non-object backups', () => {
   assert.equal(validateProgressImport({}).success, false);
@@ -76,16 +77,18 @@ test('partial task and day imports reconcile completion state', () => {
       'day-001-task-02': true,
       'day-001-task-03': true,
       'day-001-task-04': true,
+      'day-001-task-05': true,
+      'day-001-task-06': true,
     },
     days: {},
   };
-  const taskImport = validateProgressImport({ tasks: { 'day-001-task-05': true } });
+  const taskImport = validateProgressImport({ tasks: { 'day-001-task-07': true } });
   const mergedTasks = mergeProgressImport(taskImport.updates, taskImport.presentFields, currentState);
   assert.equal(mergedTasks[STORAGE_KEYS.days]['day-001'], true);
 
   const dayImport = validateProgressImport({ days: { 'day-001': true } });
   const mergedDays = mergeProgressImport(dayImport.updates, dayImport.presentFields, currentState);
-  assert.equal(mergedDays[STORAGE_KEYS.tasks]['day-001-task-05'], true);
+  assert.equal(mergedDays[STORAGE_KEYS.tasks]['day-001-task-07'], true);
 });
 
 test('complete backups intentionally replace existing progress', () => {
@@ -100,4 +103,12 @@ test('complete backups intentionally replace existing progress', () => {
 
   assert.equal(validation.success, true);
   assert.deepEqual(merged[STORAGE_KEYS.tasks], {});
+});
+
+test('returns active roadmap day numbers directly without HTML/CSS offset', () => {
+  assert.equal(getActiveGlobalDayNumber({ id: 'day-007', day: 7 }), 7);
+  assert.equal(getActiveGlobalDayNumber({ id: 'day-012', day: 12 }), 12);
+  assert.equal(getActiveGlobalDayNumber({ id: 'day-013', day: 13 }), 13);
+  assert.equal(getActiveGlobalDayNumber({ id: 'day-001', day: 1 }), 1);
+  assert.equal(getActiveGlobalDayNumber({ id: 'day-008', day: 8 }), 8);
 });

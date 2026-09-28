@@ -9,10 +9,12 @@ import { quotes } from '../data/quotes';
 import { STORAGE_KEYS, loadFromStorage, saveToStorage, exportAllData, importAllData } from '../utils/storage';
 import { mergeProgressImport, validateProgressImport } from '../utils/progressImport';
 import { getQuoteIndexForDate, todayISO } from '../utils/dateHelpers';
+import { HTML_CSS_DAY_IDS, getActiveGlobalDayNumber } from '../utils/roadmapSchedule';
 
-// Days 1-6 cover HTML/CSS fundamentals. When learner already knows HTML/CSS,
-// these days are auto-completed so the journey starts at JavaScript (day-007).
-const HTML_CSS_DAY_IDS = ['day-001', 'day-002', 'day-003', 'day-004', 'day-005', 'day-006'];
+// HTML/CSS days are removed from the active roadmap for learners who already know them.
+// The remaining active curriculum is rebased to the shared global day count so each
+// track continues from its own Day 1 without the old JavaScript Day 7 offset.
+export const getDisplayDayNumber = (day, isHtmlCssKnown = false) => getActiveGlobalDayNumber(day, isHtmlCssKnown);
 
 const AppContext = createContext(null);
 
@@ -32,7 +34,7 @@ export function AppProvider({ children }) {
 
   // Navigation state
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [selectedDayId, setSelectedDayId] = useState(() => htmlCssKnown ? 'day-007' : 'day-001');
+  const [selectedDayId, setSelectedDayId] = useState('day-001');
   const [searchOpen, setSearchOpen] = useState(false);
   const [introOpen, setIntroOpen] = useState(() => {
     // Only show on first visit of the session
@@ -369,12 +371,9 @@ export function AppProvider({ children }) {
       };
     });
 
-    // Determine current day (first uncompleted day, skipping HTML/CSS days when known)
-    const firstIncompleteDay = roadmap.find(d => {
-      if (htmlCssKnown && HTML_CSS_DAY_IDS.includes(d.id)) return false;
-      return !days[d.id];
-    });
-    const currentDay = firstIncompleteDay || (htmlCssKnown ? roadmap.find(d => d.id === 'day-007') : roadmap[0]) || roadmap[0];
+    // Determine current day (first uncompleted day)
+    const firstIncompleteDay = roadmap.find(d => !days[d.id]);
+    const currentDay = firstIncompleteDay || roadmap[0];
     const currentPhase = phases.find(p => p.id === currentDay.phase) || phases[0];
 
     return {
@@ -395,7 +394,7 @@ export function AppProvider({ children }) {
       currentDay,
       currentPhase,
     };
-  }, [tasks, days, milestones, practice, htmlCssKnown]);
+  }, [tasks, days, milestones, practice]);
 
   // Today's deterministic quote with persistence
   const todayQuote = useMemo(() => {
@@ -421,10 +420,10 @@ export function AppProvider({ children }) {
 
     const sections = [];
 
-    // Main Track
+    // Main Track: HTML/CSS are excluded from the active roadmap for learners who already know them.
     const mainTasks = day.tasks.filter(t => {
       const top = topics.find(tp => tp.id === t.topicId);
-      return !top || top.track === 'main';
+      return (!top || top.track === 'main') && !['topic-html', 'topic-css'].includes(t.topicId);
     });
     if (mainTasks.length > 0 || day.schedule?.mainTrack) {
       sections.push({
@@ -482,6 +481,22 @@ export function AppProvider({ children }) {
         color: 'border-amber-500/30 text-amber-400 bg-amber-500/10',
         focus: day.schedule?.sideTrack?.focus || pythonTasks[0]?.title || 'Python Companion Practice',
         tasks: pythonTasks,
+      });
+    }
+
+    // AI Track
+    const aiTasks = day.tasks.filter(t => {
+      const top = topics.find(tp => tp.id === t.topicId);
+      return top?.track === 'genai' || t.topicId.includes('genai') || t.topicId.includes('ai');
+    });
+    if (aiTasks.length > 0 || day.schedule?.aiTrack) {
+      sections.push({
+        id: 'genai',
+        label: 'AI Track',
+        badge: 'LLMs & AI',
+        color: 'border-rose-500/30 text-rose-400 bg-rose-500/10',
+        focus: day.schedule?.aiTrack?.focus || aiTasks[0]?.title || 'AI & GenAI Focus',
+        tasks: aiTasks,
       });
     }
 
