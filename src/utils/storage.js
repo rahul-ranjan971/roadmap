@@ -73,12 +73,35 @@ export function exportAllData() {
 
 // Import data from backup (manual restore only with fallback key resolution)
 export function importAllData(data) {
-  if (!data || typeof data !== 'object') return false;
-  for (const [name, key] of Object.entries(STORAGE_KEYS)) {
-    const val = data[key] !== undefined ? data[key] : data[name];
-    if (val !== undefined) {
-      saveToStorage(key, val);
+  if (!data || typeof data !== 'object' || Array.isArray(data)) return false;
+
+  const entries = Object.entries(data);
+  const knownKeys = new Set(Object.values(STORAGE_KEYS));
+  if (entries.length === 0 || entries.some(([key]) => !knownKeys.has(key))) return false;
+
+  try {
+    const previous = entries.map(([key]) => [key, localStorage.getItem(key)]);
+
+    try {
+      for (const [key, value] of entries) {
+        const serialized = JSON.stringify(value);
+        if (serialized === undefined) throw new Error('Invalid backup value');
+        localStorage.setItem(key, serialized);
+      }
+    } catch {
+      for (const [key, rawValue] of previous) {
+        try {
+          if (rawValue === null) localStorage.removeItem(key);
+          else localStorage.setItem(key, rawValue);
+        } catch {
+          // Best-effort rollback if storage itself is unavailable.
+        }
+      }
+      return false;
     }
+
+    return true;
+  } catch {
+    return false;
   }
-  return true;
 }

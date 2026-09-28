@@ -11,17 +11,17 @@ export function MotivationalIntroModal() {
     if (!introOpen) return;
     const duration = 30000; // 30s max presentation
     const interval = 100;
-    const step = (interval / duration) * 100;
+    const startedAt = Date.now();
 
     const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          closeIntro();
-          return 100;
-        }
-        return prev + step;
-      });
+      const nextProgress = ((Date.now() - startedAt) / duration) * 100;
+      if (nextProgress >= 100) {
+        clearInterval(timer);
+        setProgress(0);
+        closeIntro();
+        return;
+      }
+      setProgress(nextProgress);
     }, interval);
 
     return () => clearInterval(timer);
@@ -67,7 +67,7 @@ export function MotivationalIntroModal() {
           </div>
 
           <button
-            onClick={closeIntro}
+            onClick={() => { setProgress(0); closeIntro(); }}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white text-xs font-medium border border-white/5 transition-colors cursor-pointer"
             aria-label="Skip Intro"
           >
@@ -97,6 +97,11 @@ export function MotivationalIntroModal() {
             {todayQuote.category && (
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-gray-400 capitalize">
                 {todayQuote.category}
+              </span>
+            )}
+            {todayQuote.source && (
+              <span className="w-full text-[10px] text-gray-500">
+                Source: {todayQuote.source}
               </span>
             )}
           </div>
@@ -178,7 +183,7 @@ export function MotivationalIntroModal() {
         {/* Action Controls: [ ENTER CAREER COMPASS → ] & Skip Intro (Requirement 3) */}
         <div className="mt-6 pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
-            onClick={closeIntro}
+            onClick={() => { setProgress(0); closeIntro(); }}
             className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold text-xs tracking-wide shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center gap-2 group cursor-pointer"
           >
             <span>ENTER CAREER COMPASS</span>

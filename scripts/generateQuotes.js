@@ -785,10 +785,10 @@ const quotesData = [
   },
   {
     id: 98,
-    quote: "The only limit to our realization of tomorrow is our doubts of today.",
-    author: "Franklin D. Roosevelt",
-    category: "growth",
-    source: "Franklin Roosevelt Public Papers",
+    quote: "Intelligence plus character—that is the goal of true education.",
+    author: "Martin Luther King, Jr.",
+    category: "learning",
+    source: "The Purpose of Education, Maroon Tiger (January-February 1947), p. 10",
     verified: true
   },
   {

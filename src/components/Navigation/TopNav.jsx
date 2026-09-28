@@ -22,7 +22,7 @@ import {
 import { useApp } from '../../context/AppContext';
 
 export function TopNav() {
-  const { activeTab, setActiveTab, stats, streaks, setSearchOpen, setIntroOpen } = useApp();
+  const { activeTab, navigateTo, stats, streaks, setSearchOpen, setIntroOpen } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const tabLabels = {
@@ -135,7 +135,7 @@ export function TopNav() {
                 <button
                   key={item.id}
                   onClick={() => {
-                    setActiveTab(item.id);
+                    navigateTo(item.id);
                     setMobileMenuOpen(false);
                   }}
                   className={`flex items-center gap-2 p-2.5 rounded-xl text-xs font-medium text-left transition-colors ${

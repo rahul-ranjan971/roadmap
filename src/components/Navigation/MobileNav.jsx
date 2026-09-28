@@ -3,7 +3,7 @@ import { LayoutDashboard, CalendarCheck, Map, Gamepad2, FolderGit2 } from 'lucid
 import { useApp } from '../../context/AppContext';
 
 export function MobileNav() {
-  const { activeTab, setActiveTab } = useApp();
+  const { activeTab, navigateTo } = useApp();
 
   const items = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -21,7 +21,7 @@ export function MobileNav() {
         return (
           <button
             key={item.id}
-            onClick={() => setActiveTab(item.id)}
+            onClick={() => navigateTo(item.id)}
             className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-all ${
               isActive ? 'text-indigo-400' : 'text-gray-400 hover:text-gray-200'
             }`}

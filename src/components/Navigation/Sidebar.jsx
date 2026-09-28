@@ -19,7 +19,7 @@ import {
 import { useApp } from '../../context/AppContext';
 
 export function Sidebar() {
-  const { activeTab, setActiveTab, stats, streaks } = useApp();
+  const { activeTab, navigateTo, stats, streaks } = useApp();
 
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -72,7 +72,7 @@ export function Sidebar() {
           return (
             <button
               key={item.id}
-              onClick={() => setActiveTab(item.id)}
+              onClick={() => navigateTo(item.id)}
               className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-all group ${
                 isActive
                   ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/30 shadow-sm shadow-indigo-500/10'

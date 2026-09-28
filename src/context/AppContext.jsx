@@ -7,6 +7,7 @@ import { careers } from '../data/careers';
 import { practiceResources } from '../data/practiceResources';
 import { quotes } from '../data/quotes';
 import { STORAGE_KEYS, loadFromStorage, saveToStorage, exportAllData, importAllData } from '../utils/storage';
+import { mergeProgressImport, validateProgressImport } from '../utils/progressImport';
 import { getQuoteIndexForDate, todayISO } from '../utils/dateHelpers';
 
 const AppContext = createContext(null);
@@ -544,31 +545,47 @@ export function AppProvider({ children }) {
         throw new Error('Invalid input: Expected a JSON string');
       }
       const parsed = JSON.parse(jsonString);
-      if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) {
-        throw new Error('Invalid format: Root must be a JSON object');
+      const validation = validateProgressImport(parsed);
+      if (!validation.success) return validation;
+      const imported = mergeProgressImport(validation.updates, validation.presentFields, {
+        tasks,
+        days,
+        milestones,
+        checklists,
+        practice,
+        revision,
+        notes,
+        streaks,
+      });
+      if (!importAllData(imported)) {
+        throw new Error('Could not save backup data to this browser');
       }
-      importAllData(parsed);
 
-      const loadedChecklists = parsed['career-compass:v1:checklists'] ?? parsed[STORAGE_KEYS.checklists] ?? parsed.checklists ?? {};
-      if (loadedChecklists) {
-        saveToStorage('career-compass:v1:checklists', loadedChecklists);
-        setChecklists(loadedChecklists);
-      }
-
-      setTasks(parsed[STORAGE_KEYS.tasks] ?? parsed.tasks ?? {});
-      setDays(parsed[STORAGE_KEYS.days] ?? parsed.days ?? {});
-      setMilestones(parsed[STORAGE_KEYS.milestones] ?? parsed.milestones ?? {});
-      setPractice(parsed[STORAGE_KEYS.practice] ?? parsed.practice ?? {});
-      setRevision(parsed[STORAGE_KEYS.revision] ?? parsed.revision ?? {});
-      setNotes(parsed[STORAGE_KEYS.notes] ?? parsed.notes ?? {});
-      setStreaks(parsed[STORAGE_KEYS.streaks] ?? parsed.streaks ?? { current: 0, longest: 0, lastStudyDate: null });
+      if (Object.hasOwn(imported, STORAGE_KEYS.tasks)) setTasks(imported[STORAGE_KEYS.tasks]);
+      if (Object.hasOwn(imported, STORAGE_KEYS.days)) setDays(imported[STORAGE_KEYS.days]);
+      if (Object.hasOwn(imported, STORAGE_KEYS.milestones)) setMilestones(imported[STORAGE_KEYS.milestones]);
+      if (Object.hasOwn(imported, STORAGE_KEYS.checklists)) setChecklists(imported[STORAGE_KEYS.checklists]);
+      if (Object.hasOwn(imported, STORAGE_KEYS.practice)) setPractice(imported[STORAGE_KEYS.practice]);
+      if (Object.hasOwn(imported, STORAGE_KEYS.revision)) setRevision(imported[STORAGE_KEYS.revision]);
+      if (Object.hasOwn(imported, STORAGE_KEYS.notes)) setNotes(imported[STORAGE_KEYS.notes]);
+      if (Object.hasOwn(imported, STORAGE_KEYS.streaks)) setStreaks(imported[STORAGE_KEYS.streaks]);
 
       showToast('Progress imported successfully', 'info');
       return { success: true };
     } catch (err) {
       return { success: false, error: err.message };
     }
-  }, [showToast]);
+  }, [
+    checklists,
+    days,
+    milestones,
+    notes,
+    practice,
+    revision,
+    showToast,
+    streaks,
+    tasks,
+  ]);
 
   const resetProgress = useCallback(() => {
     setTasks({});
@@ -595,8 +612,9 @@ export function AppProvider({ children }) {
   const navigateTo = useCallback((tab, dayId = null) => {
     setActiveTab(tab);
     if (dayId) setSelectedDayId(dayId);
+    else if (tab === 'today') setSelectedDayId(stats.currentDay.id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+  }, [stats.currentDay]);
 
   const value = {
     // Navigation

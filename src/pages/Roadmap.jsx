@@ -261,6 +261,9 @@ export function Roadmap() {
       <div className="space-y-6">
         {currentPhaseData && Object.keys(currentPhaseData.weeks).map((weekNum) => {
           const weekDays = currentPhaseData.weeks[weekNum];
+          const isLastPhaseWeekSegment = weekDays.at(-1)?.id === roadmap
+            .filter((day) => day.week === Number(weekNum))
+            .at(-1)?.id;
           const isExpanded = !!expandedWeeks[weekNum];
           const filteredDays = weekDays.filter(isDayMatchingFilters);
 
@@ -368,7 +371,8 @@ export function Roadmap() {
                       })}
 
                       {/* Sunday Rest Day Card (Visually Distinct, Zero Mandatory Tasks) */}
-                      <div className="p-4 rounded-2xl border border-dashed border-amber-500/20 bg-amber-950/10 flex flex-col justify-between text-left">
+                      {isLastPhaseWeekSegment && (
+                        <div className="p-4 rounded-2xl border border-dashed border-amber-500/20 bg-amber-950/10 flex flex-col justify-between text-left">
                         <div>
                           <div className="flex items-center justify-between mb-2">
                             <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300">
@@ -389,7 +393,8 @@ export function Roadmap() {
                         <div className="text-[10px] text-amber-400/60 font-mono pt-3 border-t border-amber-500/10 mt-auto">
                           Non-penalized streak rest day
                         </div>
-                      </div>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
