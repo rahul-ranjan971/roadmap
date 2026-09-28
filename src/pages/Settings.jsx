@@ -9,16 +9,53 @@ import {
   Database,
   ShieldCheck,
   FileJson,
+  LogOut,
+  LogIn,
+  UserCheck,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
+import { useAuth } from '../context/AuthContext';
 import { STORAGE_KEYS } from '../utils/storage';
 
 export function Settings() {
   const { exportProgress, importProgress, resetProgress, stats, learningLevel, setLearningLevel } = useApp();
+  const { user, signIn, signUp, signOut, authError, clearError } = useAuth();
 
   const [confirmResetOpen, setConfirmResetOpen] = useState(false);
   const [importStatus, setImportStatus] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [authMessage, setAuthMessage] = useState(null);
+  const [authSubmitting, setAuthSubmitting] = useState(false);
   const fileInputRef = useRef(null);
+
+  const handleAuthSubmit = async (e) => {
+    e.preventDefault();
+    setAuthMessage(null);
+    clearError();
+    if (!email || !password) return;
+    setAuthSubmitting(true);
+    try {
+      if (isSignUp) {
+        const res = await signUp(email, password);
+        if (res?.user && !res?.session) {
+          setAuthMessage('Account created! Please check your email to confirm registration.');
+        } else {
+          setAuthMessage('Account created and signed in!');
+        }
+      } else {
+        await signIn(email, password);
+        setAuthMessage('Signed in successfully!');
+      }
+      setEmail('');
+      setPassword('');
+    } catch {
+      // Auth error is captured in authError via hook
+    } finally {
+      setAuthSubmitting(false);
+    }
+  };
 
   const handleFileUpload = (e) => {
     const file = e.target.files?.[0];
@@ -65,8 +102,87 @@ export function Settings() {
 
         <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-1.5 rounded-full text-xs font-mono text-emerald-400">
           <ShieldCheck className="w-3.5 h-3.5" />
-          <span>Storage Engine: LocalStorage Active</span>
+          <span>Storage Engine: {user ? 'Supabase Sync Active' : 'LocalStorage Active'}</span>
         </div>
+      </div>
+
+      {/* Supabase Account & Authentication Card */}
+      <div className="glass-panel p-6 rounded-3xl border border-white/5 space-y-4">
+        <div className="flex items-center justify-between gap-3 border-b border-white/5 pb-4">
+          <div className="flex items-center gap-3">
+            <div className={`p-3 rounded-2xl ${user ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20'}`}>
+              {user ? <UserCheck className="w-5 h-5" /> : <LogIn className="w-5 h-5" />}
+            </div>
+            <div>
+              <h2 className="text-base font-bold text-white">
+                {user ? 'Supabase Account Active' : 'Cloud Sync & Authentication'}
+              </h2>
+              <p className="text-xs text-gray-400">
+                {user
+                  ? `Signed in as ${user.email}. Progress automatically syncs to Supabase.`
+                  : 'Sign in to sync your 120-day roadmap progress across devices via Supabase.'}
+              </p>
+            </div>
+          </div>
+
+          {user && (
+            <button
+              onClick={signOut}
+              className="px-4 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/20 text-xs font-semibold flex items-center gap-2 transition-colors cursor-pointer"
+            >
+              <LogOut className="w-4 h-4" />
+              <span>Sign Out</span>
+            </button>
+          )}
+        </div>
+
+        {!user && (
+          <form onSubmit={handleAuthSubmit} className="space-y-3 pt-1">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <input
+                type="email"
+                placeholder="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="flex-1 bg-black/40 border border-white/10 rounded-xl px-3.5 py-2 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                minLength={6}
+                className="flex-1 bg-black/40 border border-white/10 rounded-xl px-3.5 py-2 text-xs text-gray-200 placeholder-gray-500 focus:outline-none focus:border-indigo-500"
+              />
+              <button
+                type="submit"
+                disabled={authSubmitting}
+                className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/25 transition-all cursor-pointer disabled:opacity-50"
+              >
+                <LogIn className="w-3.5 h-3.5" />
+                <span>{authSubmitting ? 'Connecting...' : isSignUp ? 'Create Account' : 'Sign In'}</span>
+              </button>
+            </div>
+
+            <div className="flex items-center justify-between text-xs pt-1">
+              <button
+                type="button"
+                onClick={() => { setIsSignUp(!isSignUp); setAuthMessage(null); clearError(); }}
+                className="text-indigo-400 hover:text-indigo-300 transition-colors cursor-pointer"
+              >
+                {isSignUp ? 'Already have an account? Sign In' : 'Need an account? Sign Up'}
+              </button>
+            </div>
+
+            {(authError || authMessage) && (
+              <div className={`p-3 rounded-xl border text-xs font-medium ${authError ? 'bg-rose-950/30 border-rose-500/30 text-rose-300' : 'bg-emerald-950/30 border-emerald-500/30 text-emerald-300'}`}>
+                {authError || authMessage}
+              </div>
+            )}
+          </form>
+        )}
       </div>
 
       {/* Notification banner if import or reset was performed */}

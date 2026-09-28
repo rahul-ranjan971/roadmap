@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useMemo, useCallback, useEffect } from 'react';
+import React, { createContext, useContext, useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import { roadmap } from '../data/roadmap';
 import { phases } from '../data/phases';
 import { topics } from '../data/topics';
@@ -10,6 +10,14 @@ import { STORAGE_KEYS, loadFromStorage, saveToStorage, exportAllData, importAllD
 import { mergeProgressImport, validateProgressImport } from '../utils/progressImport';
 import { getQuoteIndexForDate, todayISO } from '../utils/dateHelpers';
 import { HTML_CSS_DAY_IDS, getActiveGlobalDayNumber } from '../utils/roadmapSchedule';
+import { useAuth } from './AuthContext';
+import {
+  loadProgress as dbLoadProgress,
+  loadSettings as dbLoadSettings,
+  saveTaskProgress as dbSaveTask,
+  saveTaskProgressBatch as dbSaveTaskBatch,
+  saveSettings as dbSaveSettings,
+} from '../lib/supabaseHelpers';
 
 // HTML/CSS days are removed from the active roadmap for learners who already know them.
 // The remaining active curriculum is rebased to the shared global day count so each
@@ -18,7 +26,12 @@ export const getDisplayDayNumber = (day, isHtmlCssKnown = false) => getActiveGlo
 
 const AppContext = createContext(null);
 
+// Build a day-id lookup for task-ids so we can populate day_id on Supabase writes
+const taskToDayMap = {};
+roadmap.forEach(day => day.tasks.forEach(t => { taskToDayMap[t.id] = day.id; }));
+
 export function AppProvider({ children }) {
+  const { user } = useAuth();
   // Learning level: 'html-css-known' (default) or 'html-css-beginner'
   const [learningLevel, setLearningLevelState] = useState(
     () => loadFromStorage(STORAGE_KEYS.settings, { learningLevel: 'html-css-known' })?.learningLevel || 'html-css-known'
@@ -88,6 +101,100 @@ export function AppProvider({ children }) {
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
+
+  // --- Supabase sync: load from DB on login, migrate localStorage data on first login ---
+  const supabaseSynced = useRef(false);
+  const dbWriteQueue = useRef(Promise.resolve());
+
+  // Queue a Supabase write so they run in order and errors are caught silently
+  const queueDbWrite = useCallback((fn) => {
+    if (!user) return;
+    dbWriteQueue.current = dbWriteQueue.current.then(fn).catch((err) => {
+      console.warn('[CareerCompass] Supabase write failed:', err.message);
+    });
+  }, [user]);
+
+  // Persist settings blob to Supabase (debounced via queue)
+  const syncSettingsToDb = useCallback((overrides = {}) => {
+    if (!user) return;
+    queueDbWrite(async () => {
+      const settingsBlob = {
+        milestones: overrides.milestones ?? loadFromStorage(STORAGE_KEYS.milestones, {}),
+        checklists: overrides.checklists ?? loadFromStorage(STORAGE_KEYS.checklists, {}),
+        practice: overrides.practice ?? loadFromStorage(STORAGE_KEYS.practice, {}),
+        revision: overrides.revision ?? loadFromStorage(STORAGE_KEYS.revision, {}),
+        notes: overrides.notes ?? loadFromStorage(STORAGE_KEYS.notes, {}),
+        streaks: overrides.streaks ?? loadFromStorage(STORAGE_KEYS.streaks, { current: 0, longest: 0, lastStudyDate: null }),
+        learningLevel: overrides.learningLevel ?? loadFromStorage(STORAGE_KEYS.settings, {})?.learningLevel ?? 'html-css-known',
+      };
+      await dbSaveSettings(user.id, {
+        selectedDayId: overrides.selectedDayId,
+        settings: settingsBlob,
+      });
+    });
+  }, [user, queueDbWrite]);
+
+  useEffect(() => {
+    if (!user || supabaseSynced.current) return;
+    supabaseSynced.current = true;
+
+    (async () => {
+      try {
+        const [dbProgress, dbSettings] = await Promise.all([
+          dbLoadProgress(user.id),
+          dbLoadSettings(user.id),
+        ]);
+
+        const hasDbData = Object.keys(dbProgress.tasks).length > 0 || dbSettings !== null;
+        const localTasks = loadFromStorage(STORAGE_KEYS.tasks, {});
+        const hasLocalData = Object.keys(localTasks).length > 0;
+
+        if (hasDbData) {
+          // DB has data → load it (DB is source of truth)
+          if (Object.keys(dbProgress.tasks).length > 0) {
+            setTasks(dbProgress.tasks);
+            saveToStorage(STORAGE_KEYS.tasks, dbProgress.tasks);
+            setDays(dbProgress.days);
+            saveToStorage(STORAGE_KEYS.days, dbProgress.days);
+          }
+          if (dbSettings?.settings) {
+            const s = dbSettings.settings;
+            if (s.milestones) { setMilestones(s.milestones); saveToStorage(STORAGE_KEYS.milestones, s.milestones); }
+            if (s.checklists) { setChecklists(s.checklists); saveToStorage(STORAGE_KEYS.checklists, s.checklists); }
+            if (s.practice) { setPractice(s.practice); saveToStorage(STORAGE_KEYS.practice, s.practice); }
+            if (s.revision) { setRevision(s.revision); saveToStorage(STORAGE_KEYS.revision, s.revision); }
+            if (s.notes) { setNotes(s.notes); saveToStorage(STORAGE_KEYS.notes, s.notes); }
+            if (s.streaks) { setStreaks(s.streaks); saveToStorage(STORAGE_KEYS.streaks, s.streaks); }
+            if (s.learningLevel) {
+              setLearningLevelState(s.learningLevel);
+              saveToStorage(STORAGE_KEYS.settings, { learningLevel: s.learningLevel });
+            }
+          }
+          if (dbSettings?.selected_day_id) {
+            setSelectedDayId(dbSettings.selected_day_id);
+          }
+        } else if (hasLocalData) {
+          // No DB data but localStorage has data → migrate to Supabase
+          const entries = [];
+          for (const [taskId, completed] of Object.entries(localTasks)) {
+            const dayId = taskToDayMap[taskId];
+            if (dayId) entries.push({ taskId, dayId, completed: !!completed });
+          }
+          if (entries.length > 0) {
+            await dbSaveTaskBatch(user.id, entries);
+          }
+          syncSettingsToDb();
+        }
+      } catch (err) {
+        console.warn('[CareerCompass] Supabase initial sync failed, using localStorage:', err.message);
+      }
+    })();
+  }, [user, syncSettingsToDb]);
+
+  // Reset sync flag on logout
+  useEffect(() => {
+    if (!user) supabaseSynced.current = false;
+  }, [user]);
 
   // Helper to persist and set state
   const updateTasks = useCallback((updater) => {
@@ -185,6 +292,11 @@ export function AppProvider({ children }) {
       wasNewlyCompleted = nextDone;
       const next = { ...prev, [taskId]: nextDone };
 
+      // Sync to Supabase
+      if (user) {
+        queueDbWrite(() => dbSaveTask(user.id, taskId, dayId, nextDone));
+      }
+
       // Check if all tasks in day are now complete
       const dayObj = roadmap.find(d => d.id === dayId);
       if (dayObj && dayObj.tasks && dayObj.tasks.length > 0) {
@@ -205,7 +317,7 @@ export function AppProvider({ children }) {
     if (wasNewlyCompleted) {
       showToast('✓ Task completed', 'task');
     }
-  }, [updateTasks, updateDays, recordDayStudy, showToast]);
+  }, [updateTasks, updateDays, recordDayStudy, showToast, user, queueDbWrite]);
 
   // Toggle day completion explicitly
   const toggleDay = useCallback((dayId) => {
@@ -221,36 +333,41 @@ export function AppProvider({ children }) {
             dayObj.tasks.forEach(t => { nextTasks[t.id] = true; });
             return nextTasks;
           });
+          // Sync all tasks for this day to Supabase
+          if (user && dayObj.tasks.length > 0) {
+            const entries = dayObj.tasks.map(t => ({ taskId: t.id, dayId, completed: true }));
+            queueDbWrite(() => dbSaveTaskBatch(user.id, entries));
+          }
         }
         recordDayStudy(dayId);
         showToast('DAY COMPLETE', 'day');
       }
       return next;
     });
-  }, [updateDays, updateTasks, recordDayStudy, showToast]);
+  }, [updateDays, updateTasks, recordDayStudy, showToast, user, queueDbWrite]);
 
   // Toggle project milestone
   const toggleMilestone = useCallback((milestoneId) => {
     let isCompleted = false;
     updateMilestones(prev => {
       isCompleted = !prev[milestoneId];
-      return {
-        ...prev,
-        [milestoneId]: isCompleted,
-      };
+      const next = { ...prev, [milestoneId]: isCompleted };
+      if (user) syncSettingsToDb({ milestones: next });
+      return next;
     });
     if (isCompleted) {
       showToast('PROJECT MILESTONE COMPLETE', 'milestone');
     }
-  }, [updateMilestones, showToast]);
+  }, [updateMilestones, showToast, user, syncSettingsToDb]);
 
   // Toggle project checklist item
   const toggleChecklist = useCallback((checklistKey) => {
-    updateChecklists(prev => ({
-      ...prev,
-      [checklistKey]: !prev[checklistKey],
-    }));
-  }, [updateChecklists]);
+    updateChecklists(prev => {
+      const next = { ...prev, [checklistKey]: !prev[checklistKey] };
+      if (user) syncSettingsToDb({ checklists: next });
+      return next;
+    });
+  }, [updateChecklists, user, syncSettingsToDb]);
 
   // Toggle practice resource completed with history tracking
   const togglePractice = useCallback((practiceId) => {
@@ -264,7 +381,7 @@ export function AppProvider({ children }) {
       const nextStatus = !currentlyDone;
       isMarked = nextStatus;
 
-      return {
+      const next = {
         ...prev,
         [practiceId]: {
           status: nextStatus,
@@ -272,31 +389,35 @@ export function AppProvider({ children }) {
           lastPracticed: nextStatus ? today : (cur?.lastPracticed || today),
         },
       };
+      if (user) syncSettingsToDb({ practice: next });
+      return next;
     });
 
     if (isMarked) {
       showToast('Practice recorded ✓', 'practice');
     }
-  }, [updatePractice, showToast]);
+  }, [updatePractice, showToast, user, syncSettingsToDb]);
 
   // Mark revision status (needs_revision, in_progress, completed)
   const setTopicRevisionStatus = useCallback((topicId, status) => {
-    updateRevision(prev => ({
-      ...prev,
-      [topicId]: {
-        status,
-        lastUpdated: todayISO(),
-      },
-    }));
-  }, [updateRevision]);
+    updateRevision(prev => {
+      const next = {
+        ...prev,
+        [topicId]: { status, lastUpdated: todayISO() },
+      };
+      if (user) syncSettingsToDb({ revision: next });
+      return next;
+    });
+  }, [updateRevision, user, syncSettingsToDb]);
 
   // Save note for a day
   const setDayNote = useCallback((dayId, text) => {
-    updateNotes(prev => ({
-      ...prev,
-      [dayId]: text,
-    }));
-  }, [updateNotes]);
+    updateNotes(prev => {
+      const next = { ...prev, [dayId]: text };
+      if (user) syncSettingsToDb({ notes: next });
+      return next;
+    });
+  }, [updateNotes, user, syncSettingsToDb]);
 
   // Dismiss intro
   const closeIntro = useCallback(() => {
