@@ -5,11 +5,12 @@ import {
   ExternalLink,
   BarChart3,
   Brain,
+  Lock,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 export function PythonPage() {
-  const { topics, navigateTo } = useApp();
+  const { topics, navigateTo, aiTrackStatus } = useApp();
   const [activeTab, setActiveTab] = useState('fundamentals');
 
   // Find python topics
@@ -23,6 +24,8 @@ export function PythonPage() {
     ai: pythonAi,
   }[activeTab] || pythonFundamentals;
 
+  const isUnlocked = aiTrackStatus?.isUnlocked;
+
   return (
     <div className="space-y-8 animate-fade-in pb-12">
       {/* Header */}
@@ -32,9 +35,16 @@ export function PythonPage() {
             <FileCode className="w-6 h-6" />
           </div>
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-              Python Track & Data / AI Specialization
-            </h1>
+            <div className="flex items-center gap-2">
+              <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                Python Track & Data / AI Specialization
+              </h1>
+              {!isUnlocked && (
+                <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1">
+                  <Lock className="w-3 h-3" /> Locked Companion Track
+                </span>
+              )}
+            </div>
             <p className="text-xs sm:text-sm text-gray-400 mt-0.5">
               Continuous companion track from syntax and OOP to Pandas, NumPy, Scikit-Learn, and PyTorch
             </p>
@@ -49,6 +59,45 @@ export function PythonPage() {
           <ExternalLink className="w-3.5 h-3.5" />
         </button>
       </div>
+
+      {/* Sequential Progression Lock Banner */}
+      {!isUnlocked && (
+        <div className="p-6 rounded-3xl bg-amber-950/25 border border-amber-500/30 space-y-4">
+          <div className="flex items-start gap-3">
+            <div className="p-2.5 rounded-2xl bg-amber-500/20 text-amber-400 border border-amber-500/30 shrink-0">
+              <Lock className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-white">Sequential Progression Lock Active</h3>
+              <p className="text-xs text-amber-200/80 mt-0.5 leading-relaxed">
+                The AI, Python, and AI Engineering companion track is locked from Day 1 to ensure foundational mastery. Complete Web Development (Phases 1–4) and Cloud + Docker (Phases 5–6) to activate this track. All curriculum content below remains available for reference preview.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div className="p-3.5 rounded-2xl bg-black/40 border border-white/5 flex items-center justify-between">
+              <div className="space-y-0.5">
+                <div className="text-xs font-semibold text-white">Phase 1–4: Web Development (Days 1–52)</div>
+                <div className="text-[10px] text-gray-400">JS, React, Next.js, Backend & MERN</div>
+              </div>
+              <div className="text-xs font-mono font-bold text-amber-400">
+                {aiTrackStatus?.webDevProgress?.completed || 0}/{aiTrackStatus?.webDevProgress?.total || 52} Days
+              </div>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-black/40 border border-white/5 flex items-center justify-between">
+              <div className="space-y-0.5">
+                <div className="text-xs font-semibold text-white">Phase 5–6: Cloud + Docker (Days 53–72)</div>
+                <div className="text-[10px] text-gray-400">Git, Linux, Docker, CI/CD & Cloud</div>
+              </div>
+              <div className="text-xs font-mono font-bold text-amber-400">
+                {aiTrackStatus?.cloudDockerProgress?.completed || 0}/{aiTrackStatus?.cloudDockerProgress?.total || 20} Days
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* 3 Pillar Tabs: Fundamentals, Data, AI */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">

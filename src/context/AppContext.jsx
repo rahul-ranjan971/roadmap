@@ -520,6 +520,28 @@ export function AppProvider({ children }) {
     const currentDay = firstIncompleteDay || roadmap[0];
     const currentPhase = phases.find(p => p.id === currentDay.phase) || phases[0];
 
+    // Progression gating for AI & PythonCompanion Track (Requirement L):
+    // Phase 1: Web Development (Days 1–52)
+    // Phase 2: Cloud + Docker (Days 53–72)
+    // Phase 3: AI / Python track activates only AFTER Phase 1 & Phase 2 are complete.
+    const webDevDays = roadmap.filter(d => d.day >= 1 && d.day <= 52);
+    const webDevCompletedDays = webDevDays.filter(d => !!days[d.id]).length;
+    const isWebDevDone = webDevDays.length > 0 && webDevCompletedDays === webDevDays.length;
+
+    const cloudDockerDays = roadmap.filter(d => d.day >= 53 && d.day <= 72);
+    const cloudDockerCompletedDays = cloudDockerDays.filter(d => !!days[d.id]).length;
+    const isCloudDockerDone = cloudDockerDays.length > 0 && cloudDockerCompletedDays === cloudDockerDays.length;
+
+    const isAiTrackUnlocked = isWebDevDone && isCloudDockerDone;
+
+    const aiTrackStatus = {
+      isUnlocked: isAiTrackUnlocked,
+      isWebDevDone,
+      isCloudDockerDone,
+      webDevProgress: { completed: webDevCompletedDays, total: webDevDays.length },
+      cloudDockerProgress: { completed: cloudDockerCompletedDays, total: cloudDockerDays.length },
+    };
+
     return {
       totalDays,
       completedDays,
@@ -537,6 +559,7 @@ export function AppProvider({ children }) {
       phaseStats,
       currentDay,
       currentPhase,
+      aiTrackStatus,
     };
   }, [tasks, days, milestones, practice]);
 
@@ -851,6 +874,7 @@ export function AppProvider({ children }) {
 
     // Computed Stats & Dynamic Missions
     stats,
+    aiTrackStatus: stats.aiTrackStatus,
     todayMission,
 
     // Learning Level (HTML/CSS skip)

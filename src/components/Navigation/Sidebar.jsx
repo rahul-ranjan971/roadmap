@@ -15,11 +15,12 @@ import {
   Settings,
   Flame,
   CheckCircle2,
+  Lock,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
 export function Sidebar() {
-  const { activeTab, navigateTo, stats, streaks } = useApp();
+  const { activeTab, navigateTo, stats, streaks, aiTrackStatus } = useApp();
 
   const navItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
@@ -31,7 +32,7 @@ export function Sidebar() {
     { id: 'careers', label: 'Career Paths', icon: Briefcase, count: '12' },
     { id: 'dsa', label: 'DSA with C++', icon: Binary },
     { id: 'core-cs', label: 'Core Software', icon: Cpu },
-    { id: 'python', label: 'Python Track', icon: FileCode },
+    { id: 'python', label: 'Python Track', icon: FileCode, locked: !aiTrackStatus?.isUnlocked },
     { id: 'analytics', label: 'Analytics', icon: BarChart3 },
     { id: 'settings', label: 'Settings', icon: Settings },
   ];
@@ -85,12 +86,15 @@ export function Sidebar() {
                 }`} />
                 <span>{item.label}</span>
               </div>
-              {item.badge && (
+              {item.locked && (
+                <Lock className="w-3 h-3 text-amber-400/80" title="Unlocks after Web Dev & Cloud/Docker" />
+              )}
+              {item.badge && !item.locked && (
                 <span className="text-[10px] font-mono px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
                   {item.badge}
                 </span>
               )}
-              {item.count && !item.badge && (
+              {item.count && !item.badge && !item.locked && (
                 <span className="text-[10px] font-mono text-gray-500 group-hover:text-gray-400">
                   {item.count}
                 </span>

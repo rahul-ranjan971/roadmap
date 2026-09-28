@@ -7,14 +7,20 @@ import { navigate } from '../utils/router';
 export function Signup() {
   const { signUp, resendSignupVerification, authError, clearError } = useAuth();
 
+  const [pendingEmail] = useState(
+    () => (typeof window !== 'undefined' ? sessionStorage.getItem('cc_pending_verification_email') || '' : '')
+  );
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(pendingEmail);
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [localError, setLocalError] = useState(null);
-  const [signupSuccess, setSignupSuccess] = useState(null);
+  const [resendError, setResendError] = useState(null);
+  const [signupSuccess, setSignupSuccess] = useState(
+    () => (pendingEmail ? 'Account created. Check your email to verify your account.' : null)
+  );
   const [resendMessage, setResendMessage] = useState(null);
   const [resending, setResending] = useState(false);
   const [resendCooldown, setResendCooldown] = useState(0);
@@ -38,6 +44,8 @@ export function Signup() {
     e.preventDefault();
     clearError();
     setLocalError(null);
+    setResendError(null);
+    setResendMessage(null);
 
     const validationError = validate();
     if (validationError) {
@@ -46,11 +54,23 @@ export function Signup() {
     }
 
     setSubmitting(true);
+    const trimmedEmail = email.trim();
     try {
-      const res = await signUp(email.trim(), password, { name: name.trim() });
+      const res = await signUp(trimmedEmail, password, { name: name.trim() });
+      clearError();
       if (res?.user && !res?.session) {
+        try {
+          sessionStorage.setItem('cc_pending_verification_email', trimmedEmail);
+        } catch {
+          // Private browsing fallback
+        }
         setSignupSuccess('Account created. Check your email to verify your account.');
       } else {
+        try {
+          sessionStorage.removeItem('cc_pending_verification_email');
+        } catch {
+          // Private browsing fallback
+        }
         navigate('/dashboard', { replace: true });
       }
     } catch {
@@ -64,15 +84,18 @@ export function Signup() {
     if (resendCooldown > 0 || resending) return;
     clearError();
     setResendMessage(null);
+    setResendError(null);
     setResending(true);
     let sent = false;
+    const targetEmail = email.trim() || pendingEmail;
     try {
-      await resendSignupVerification(email.trim());
+      await resendSignupVerification(targetEmail);
+      clearError();
       setResendMessage('Verification email sent. Check your inbox.');
       setResendCooldown(60);
       sent = true;
-    } catch {
-      // Error is shown through authError.
+    } catch (err) {
+      setResendError(err.message || authError);
     } finally {
       setResending(false);
       if (!sent) setResendCooldown(15);
@@ -80,6 +103,7 @@ export function Signup() {
   };
 
   const displayError = localError || authError;
+  const activeVerificationError = resendError || (authError && authError !== 'Authentication could not be completed. Please try again.' ? authError : null);
 
   return (
     <AuthLayout
@@ -96,10 +120,15 @@ export function Signup() {
             <p className="text-xs text-gray-400 leading-relaxed max-w-sm mx-auto">
               {signupSuccess}
             </p>
+            {email && (
+              <p className="text-xs text-gray-300 font-medium">
+                Sent to: <span className="text-indigo-300">{email}</span>
+              </p>
+            )}
           </div>
-          {(resendMessage || authError) && (
+          {(resendMessage || activeVerificationError) && (
             <p role={resendMessage ? 'status' : 'alert'} className={`text-xs ${resendMessage ? 'text-emerald-300' : 'text-rose-300'}`}>
-              {resendMessage || authError}
+              {resendMessage || activeVerificationError}
             </p>
           )}
           <button

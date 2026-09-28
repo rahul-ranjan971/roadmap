@@ -29,6 +29,7 @@ test('supabaseHelpers: formatAuthError returns human-friendly messages', () => {
   assert.equal(formatAuthError('Failed to fetch'), 'Unable to connect. Please try again.');
   assert.equal(formatAuthError('Email not confirmed'), 'Verify your email address before signing in.');
   assert.equal(formatAuthError('otp_expired'), 'This verification link has expired or has already been used. Please request a new verification email.');
+  assert.equal(formatAuthError('over_email_send_rate_limit'), 'Too many verification requests. Please wait a moment before trying again.');
   assert.match(formatAuthError('Recovery session missing'), /recovery link is invalid or expired/);
   assert.match(formatAuthError('New password should be different from the old password'), /password could not be updated/);
 });

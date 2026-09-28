@@ -93,8 +93,11 @@ export function formatAuthError(err) {
   if (lower.includes('invalid login credentials') || lower.includes('invalid grant') || lower.includes('invalid credentials')) {
     return 'Email or password is incorrect.';
   }
-  if (lower.includes('user already registered') || lower.includes('already exists')) {
+  if (lower.includes('user_already_exists') || lower.includes('user already registered') || lower.includes('already exists')) {
     return 'This email is already registered. Try signing in.';
+  }
+  if (lower.includes('over_email_send_rate_limit') || lower.includes('email rate limit') || lower.includes('rate limit') || lower.includes('too many requests')) {
+    return 'Too many verification requests. Please wait a moment before trying again.';
   }
   if (lower.includes('invalid email') || lower.includes('valid email') || lower.includes('validate email') || (lower.includes('email') && lower.includes('invalid'))) {
     return 'Enter a valid email address.';
@@ -117,9 +120,6 @@ export function formatAuthError(err) {
   if (lower.includes('password update') || (lower.includes('password') && (lower.includes('different') || lower.includes('same') || lower.includes('reuse')))) {
     return 'Your password could not be updated. Please request a new recovery link and try again.';
   }
-  if (lower.includes('email rate limit') || lower.includes('too many requests')) {
-    return 'Too many requests. Please wait a little while and try again.';
-  }
   return 'Authentication could not be completed. Please try again.';
 }
 
@@ -141,8 +141,12 @@ export function getSession() {
 
 export async function signUp(email, password, { name } = {}) {
   if (!supabase) throw new Error('Supabase is not configured');
+  const redirectUrl = getAuthRedirectUrl('/login');
+  if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
+    console.log('[Auth Debug] Calling supabase.auth.signUp for:', email, 'redirecting to:', redirectUrl);
+  }
   const options = {
-    emailRedirectTo: getAuthRedirectUrl('/login'),
+    emailRedirectTo: redirectUrl,
     ...(name ? { data: { name, full_name: name } } : {}),
   };
   const { data, error } = await supabase.auth.signUp({
@@ -150,12 +154,20 @@ export async function signUp(email, password, { name } = {}) {
     password,
     options,
   });
+  if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
+    console.log('[Auth Debug] supabase.auth.signUp response:', {
+      hasUser: Boolean(data?.user),
+      userId: data?.user?.id,
+      hasSession: Boolean(data?.session),
+      error: error?.message || null,
+    });
+  }
   if (error) throw error;
-  if (data?.user?.id && name) {
+  if (data?.session && data?.user?.id && name) {
     try {
       await upsertProfile(data.user.id, { full_name: name, email });
     } catch {
-      // Non-blocking if profile schema handled via Supabase trigger
+      // Non-blocking if profile schema handled via Supabase trigger or session is absent
     }
   }
   return data;
@@ -163,11 +175,21 @@ export async function signUp(email, password, { name } = {}) {
 
 export async function resendSignupVerification(email) {
   if (!supabase) throw new Error('Supabase is not configured');
+  const redirectUrl = getAuthRedirectUrl('/login');
+  if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
+    console.log('[Auth Debug] Calling supabase.auth.resend for signup:', email, 'redirecting to:', redirectUrl);
+  }
   const { data, error } = await supabase.auth.resend({
     type: 'signup',
     email,
-    options: { emailRedirectTo: getAuthRedirectUrl('/login') },
+    options: { emailRedirectTo: redirectUrl },
   });
+  if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
+    console.log('[Auth Debug] supabase.auth.resend response:', {
+      data,
+      error: error?.message || null,
+    });
+  }
   if (error) throw error;
   return data;
 }

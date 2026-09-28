@@ -107,7 +107,9 @@ export function AuthProvider({ children }) {
   const signUp = useCallback(async (email, password, metadata = {}) => {
     setAuthError(null);
     try {
-      return await authSignUp(email, password, metadata);
+      const res = await authSignUp(email, password, metadata);
+      setAuthError(null);
+      return res;
     } catch (err) {
       const friendly = formatAuthError(err);
       setAuthError(friendly);
@@ -118,7 +120,9 @@ export function AuthProvider({ children }) {
   const resendSignupVerification = useCallback(async (email) => {
     setAuthError(null);
     try {
-      return await authResendSignupVerification(email);
+      const res = await authResendSignupVerification(email);
+      setAuthError(null);
+      return res;
     } catch (err) {
       const friendly = formatAuthError(err);
       setAuthError(friendly);
