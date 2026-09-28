@@ -11,6 +11,7 @@ import { mergeProgressImport, validateProgressImport } from '../utils/progressIm
 import { getQuoteIndexForDate, todayISO } from '../utils/dateHelpers';
 import { HTML_CSS_DAY_IDS, getActiveGlobalDayNumber } from '../utils/roadmapSchedule';
 import { useAuth } from './AuthContext';
+import { navigate, normalizePath } from '../utils/router';
 import {
   loadProgress as dbLoadProgress,
   loadSettings as dbLoadSettings,
@@ -45,8 +46,16 @@ export function AppProvider({ children }) {
 
   const htmlCssKnown = learningLevel === 'html-css-known';
 
-  // Navigation state
-  const [activeTab, setActiveTab] = useState('dashboard');
+  // Navigation state initialized from URL if a valid tab is present
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window === 'undefined') return 'dashboard';
+    const clean = normalizePath().replace(/^\//, '');
+    const validTabs = [
+      'dashboard', 'today', 'roadmap', 'practice', 'revision',
+      'projects', 'careers', 'dsa', 'core-cs', 'python', 'analytics', 'settings'
+    ];
+    return validTabs.includes(clean) ? clean : 'dashboard';
+  });
   const [selectedDayId, setSelectedDayId] = useState('day-001');
   const [searchOpen, setSearchOpen] = useState(false);
   const [introOpen, setIntroOpen] = useState(() => {
@@ -104,6 +113,7 @@ export function AppProvider({ children }) {
 
   // --- Supabase sync: load from DB on login, migrate localStorage data on first login ---
   const supabaseSynced = useRef(false);
+  const activeUserIdRef = useRef(user?.id ?? null);
   const dbWriteQueue = useRef(Promise.resolve());
 
   // Queue a Supabase write so they run in order and errors are caught silently
@@ -135,7 +145,25 @@ export function AppProvider({ children }) {
   }, [user, queueDbWrite]);
 
   useEffect(() => {
-    if (!user || supabaseSynced.current) return;
+    if (!user) {
+      if (activeUserIdRef.current) {
+        activeUserIdRef.current = null;
+        supabaseSynced.current = false;
+        setTasks({});
+        setDays({});
+        setMilestones({});
+        setChecklists({});
+        setPractice({});
+        setRevision({});
+        setNotes({});
+        setStreaks({ current: 0, longest: 0, lastStudyDate: null });
+        setSelectedDayId('day-001');
+      }
+      return;
+    }
+
+    if (user.id === activeUserIdRef.current && supabaseSynced.current) return;
+    activeUserIdRef.current = user.id;
     supabaseSynced.current = true;
 
     (async () => {
@@ -190,11 +218,6 @@ export function AppProvider({ children }) {
       }
     })();
   }, [user, syncSettingsToDb]);
-
-  // Reset sync flag on logout
-  useEffect(() => {
-    if (!user) supabaseSynced.current = false;
-  }, [user]);
 
   // Helper to persist and set state
   const updateTasks = useCallback((updater) => {
@@ -769,6 +792,8 @@ export function AppProvider({ children }) {
     setActiveTab(tab);
     if (dayId) setSelectedDayId(dayId);
     else if (tab === 'today') setSelectedDayId(stats.currentDay.id);
+    const targetPath = tab === 'dashboard' ? '/dashboard' : `/${tab}`;
+    navigate(targetPath);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [stats.currentDay]);
 

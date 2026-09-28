@@ -2,6 +2,35 @@ import { supabase } from './superbase.js';
 
 // --- Auth helpers ---
 
+export function formatAuthError(err) {
+  if (!err) return '';
+  const msg = typeof err === 'string' ? err : err.message || '';
+  const lower = msg.toLowerCase();
+
+  if (lower.includes('invalid login credentials') || lower.includes('invalid grant') || lower.includes('invalid credentials')) {
+    return 'Email or password is incorrect.';
+  }
+  if (lower.includes('user already registered') || lower.includes('already exists')) {
+    return 'This email is already registered. Try signing in.';
+  }
+  if (lower.includes('invalid email') || lower.includes('valid email') || lower.includes('validate email') || (lower.includes('email') && lower.includes('invalid'))) {
+    return 'Enter a valid email address.';
+  }
+  if (lower.includes('password should be at least') || lower.includes('weak password')) {
+    return 'Use a stronger password (minimum 6 characters).';
+  }
+  if (lower.includes('passwords do not match')) {
+    return 'Passwords do not match.';
+  }
+  if (lower.includes('failed to fetch') || lower.includes('networkerror') || lower.includes('network request failed')) {
+    return 'Unable to connect. Please try again.';
+  }
+  if (lower.includes('supabase is not configured')) {
+    return 'Authentication service is not configured.';
+  }
+  return msg || 'An error occurred during authentication.';
+}
+
 export function onAuthStateChange(callback) {
   if (!supabase) return { unsubscribe: () => {} };
   const { data: { subscription } } = supabase.auth.onAuthStateChange(
@@ -15,10 +44,22 @@ export function getSession() {
   return supabase.auth.getSession();
 }
 
-export async function signUp(email, password) {
+export async function signUp(email, password, { name } = {}) {
   if (!supabase) throw new Error('Supabase is not configured');
-  const { data, error } = await supabase.auth.signUp({ email, password });
+  const options = name ? { data: { name, full_name: name } } : undefined;
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options,
+  });
   if (error) throw error;
+  if (data?.user?.id && name) {
+    try {
+      await upsertProfile(data.user.id, { full_name: name, email });
+    } catch {
+      // Non-blocking if profile schema handled via Supabase trigger
+    }
+  }
   return data;
 }
 
@@ -33,6 +74,25 @@ export async function signOut() {
   if (!supabase) return;
   const { error } = await supabase.auth.signOut();
   if (error) throw error;
+}
+
+export async function resetPasswordForEmail(email) {
+  if (!supabase) throw new Error('Supabase is not configured');
+  const redirectTo = typeof window !== 'undefined'
+    ? `${window.location.origin}/reset-password`
+    : undefined;
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo,
+  });
+  if (error) throw error;
+  return data;
+}
+
+export async function updateUserPassword(newPassword) {
+  if (!supabase) throw new Error('Supabase is not configured');
+  const { data, error } = await supabase.auth.updateUser({ password: newPassword });
+  if (error) throw error;
+  return data;
 }
 
 // --- Database helpers ---
@@ -145,6 +205,25 @@ export async function loadProfile(userId) {
     .from('profiles')
     .select('*')
     .eq('id', userId)
+    .maybeSingle();
+  if (error) throw error;
+  return data;
+}
+
+/**
+ * Upsert profile for the authenticated user.
+ */
+export async function upsertProfile(userId, profileData = {}) {
+  if (!supabase) return null;
+  const row = {
+    id: userId,
+    updated_at: new Date().toISOString(),
+    ...profileData,
+  };
+  const { data, error } = await supabase
+    .from('profiles')
+    .upsert(row, { onConflict: 'id' })
+    .select('*')
     .maybeSingle();
   if (error) throw error;
   return data;
