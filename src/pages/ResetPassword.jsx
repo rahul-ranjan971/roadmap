@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import { Lock, Eye, EyeOff, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Lock, Eye, EyeOff, ArrowLeft, AlertTriangle } from 'lucide-react';
 import { AuthLayout } from '../components/Auth/AuthLayout';
 import { useAuth } from '../context/AuthContext';
 import { navigate } from '../utils/router';
 
 export function ResetPassword() {
-  const { updatePassword, authError, clearError } = useAuth();
+  const { updatePassword, signOut, isAuthenticated, recoverySession, loading, authError, clearError } = useAuth();
 
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [localError, setLocalError] = useState(null);
-  const [resetSuccess, setResetSuccess] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,8 +29,10 @@ export function ResetPassword() {
 
     setSubmitting(true);
     try {
-      await updatePassword(password);
-      setResetSuccess(true);
+      await updatePassword(password, { requireRecovery: true });
+      const didSignOut = await signOut();
+      if (!didSignOut) throw new Error('Password update succeeded, but sign-out failed. Please sign out and log in again.');
+      navigate('/login?password=updated', { replace: true });
     } catch {
       // Handled via authError in AuthContext
     } finally {
@@ -41,33 +42,45 @@ export function ResetPassword() {
 
   const displayError = localError || authError;
 
+  if (loading) {
+    return <AuthLayout title="Checking Recovery Link" subtitle="Securing your password reset session." />;
+  }
+
+  if (!isAuthenticated || !recoverySession) {
+    return (
+      <AuthLayout title="Recovery Link Unavailable" subtitle="This password recovery session is no longer valid.">
+        <div className="space-y-5 text-center">
+          <div className="w-12 h-12 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center mx-auto">
+            <AlertTriangle className="w-6 h-6" />
+          </div>
+          <p role="alert" className="text-xs text-rose-300 leading-relaxed">
+            {authError || 'This recovery link is invalid or expired. Request a new password reset email.'}
+          </p>
+          <button
+            type="button"
+            onClick={() => navigate('/forgot-password', { replace: true })}
+            className="w-full py-2.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer"
+          >
+            Request a New Recovery Link
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate('/login', { replace: true })}
+            className="text-xs text-gray-400 hover:text-gray-200 inline-flex items-center gap-1.5 cursor-pointer"
+          >
+            <ArrowLeft className="w-3 h-3" /> Back to Login
+          </button>
+        </div>
+      </AuthLayout>
+    );
+  }
+
   return (
     <AuthLayout
       title="Set New Password"
       subtitle="Enter and confirm your new secure password to restore account access."
     >
-      {resetSuccess ? (
-        <div className="space-y-5 text-center py-2 animate-fade-in">
-          <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
-            <CheckCircle2 className="w-6 h-6" />
-          </div>
-          <div className="space-y-1.5">
-            <h3 className="text-base font-semibold text-white">Password Updated</h3>
-            <p className="text-xs text-gray-400 leading-relaxed max-w-sm mx-auto">
-              Your account password has been successfully changed. You can now access your Career Compass dashboard.
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={() => navigate('/dashboard', { replace: true })}
-            className="w-full py-2.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
-          >
-            <span>Go to Dashboard</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </button>
-        </div>
-      ) : (
-        <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+      <form onSubmit={handleSubmit} className="space-y-4" noValidate>
           {displayError && (
             <div
               role="alert"
@@ -142,8 +155,7 @@ export function ResetPassword() {
             <Lock className="w-4 h-4" />
             <span>{submitting ? 'Updating Password...' : 'Save New Password'}</span>
           </button>
-        </form>
-      )}
+      </form>
     </AuthLayout>
   );
 }

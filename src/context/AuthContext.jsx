@@ -1,14 +1,16 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import {
   onAuthStateChange,
-  getSession,
   signIn as authSignIn,
   signUp as authSignUp,
+  resendSignupVerification as authResendSignupVerification,
   signOut as authSignOut,
   resetPasswordForEmail,
   updateUserPassword,
   loadProfile,
   formatAuthError,
+  getAuthCallbackError,
+  clearAuthCallbackUrl,
 } from '../lib/supabaseHelpers';
 
 const AuthContext = createContext(null);
@@ -17,99 +19,130 @@ export function AuthProvider({ children }) {
   const [session, setSession] = useState(null);
   const [loading, setLoading] = useState(true);
   const [authError, setAuthError] = useState(null);
-  const [profile, setProfile] = useState(null);
-
-  const fetchProfile = useCallback(async (userId) => {
-    if (!userId) {
-      setProfile(null);
-      return;
-    }
-    try {
-      const data = await loadProfile(userId);
-      setProfile(data || null);
-    } catch {
-      setProfile(null);
-    }
-  }, []);
+  const [profileState, setProfileState] = useState({ userId: null, value: null });
+  const [recoverySession, setRecoverySession] = useState(false);
 
   useEffect(() => {
-    // Restore session on mount
-    getSession()
-      .then(({ data }) => {
-        const initialSession = data?.session ?? null;
-        setSession(initialSession);
-        if (initialSession?.user?.id) {
-          fetchProfile(initialSession.user.id);
-        }
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-
-    // Listen for auth changes (login, logout, token refresh, password recovery)
-    const subscription = onAuthStateChange((newSession) => {
+    const subscription = onAuthStateChange((event, newSession) => {
       setSession(newSession);
-      if (newSession?.user?.id) {
-        fetchProfile(newSession.user.id);
-      } else {
-        setProfile(null);
+
+      if (event === 'PASSWORD_RECOVERY') {
+        try {
+          window.sessionStorage.setItem('cc_password_recovery', 'true');
+        } catch {
+          // The in-memory recovery state remains available for this page load.
+        }
+        setRecoverySession(Boolean(newSession));
+        clearAuthCallbackUrl();
+      } else if (event === 'SIGNED_OUT') {
+        try {
+          window.sessionStorage.removeItem('cc_password_recovery');
+        } catch {
+          // Storage can be unavailable in private browsing contexts.
+        }
+        setRecoverySession(false);
+        setProfileState({ userId: null, value: null });
+      } else if (event === 'SIGNED_IN') {
+        setRecoverySession(false);
+        clearAuthCallbackUrl();
+      } else if (event === 'TOKEN_REFRESHED') {
+        try {
+          setRecoverySession(Boolean(newSession && window.sessionStorage.getItem('cc_password_recovery')));
+        } catch {
+          setRecoverySession(false);
+        }
+      } else if (event === 'INITIAL_SESSION') {
+        const callbackError = getAuthCallbackError();
+        if (callbackError) setAuthError(callbackError);
+        try {
+          setRecoverySession(Boolean(newSession && window.sessionStorage.getItem('cc_password_recovery')));
+        } catch {
+          setRecoverySession(false);
+        }
+        clearAuthCallbackUrl();
+        setLoading(false);
       }
-      setLoading(false);
     });
 
     return () => subscription?.unsubscribe?.();
-  }, [fetchProfile]);
+  }, []);
 
   const user = session?.user ?? null;
+  const profile = profileState.userId === user?.id ? profileState.value : null;
+
+  useEffect(() => {
+    let active = true;
+    const userId = session?.user?.id;
+    if (userId) {
+      loadProfile(userId)
+        .then((data) => {
+          if (active) setProfileState({ userId, value: data || null });
+        })
+        .catch(() => {
+          if (active) setProfileState({ userId, value: null });
+        });
+    }
+    return () => { active = false; };
+  }, [session?.user?.id]);
+
   const isAuthenticated = Boolean(user);
 
   // Determine user role (admin vs member)
   const userRole =
     profile?.role ||
     user?.app_metadata?.role ||
-    user?.user_metadata?.role ||
-    (user?.email && user.email.toLowerCase().includes('admin') ? 'admin' : 'member');
+    'user';
 
   const signIn = useCallback(async (email, password) => {
     setAuthError(null);
     try {
-      const data = await authSignIn(email, password);
-      if (data?.user?.id) {
-        await fetchProfile(data.user.id);
-      }
-      return data;
+      return await authSignIn(email, password);
     } catch (err) {
       const friendly = formatAuthError(err);
       setAuthError(friendly);
       throw new Error(friendly);
     }
-  }, [fetchProfile]);
+  }, []);
 
   const signUp = useCallback(async (email, password, metadata = {}) => {
     setAuthError(null);
     try {
-      const data = await authSignUp(email, password, metadata);
-      if (data?.user?.id) {
-        await fetchProfile(data.user.id);
-      }
-      return data;
+      return await authSignUp(email, password, metadata);
     } catch (err) {
       const friendly = formatAuthError(err);
       setAuthError(friendly);
       throw new Error(friendly);
     }
-  }, [fetchProfile]);
+  }, []);
+
+  const resendSignupVerification = useCallback(async (email) => {
+    setAuthError(null);
+    try {
+      return await authResendSignupVerification(email);
+    } catch (err) {
+      const friendly = formatAuthError(err);
+      setAuthError(friendly);
+      throw new Error(friendly);
+    }
+  }, []);
 
   const signOut = useCallback(async () => {
     setAuthError(null);
     try {
       await authSignOut();
       setSession(null);
-      setProfile(null);
+      setProfileState({ userId: null, value: null });
+      setRecoverySession(false);
+      try {
+        window.sessionStorage.removeItem('cc_password_recovery');
+      } catch {
+        // Storage can be unavailable in private browsing contexts.
+      }
+      return true;
     } catch (err) {
       const friendly = formatAuthError(err);
       setAuthError(friendly);
+      return false;
     }
   }, []);
 
@@ -125,9 +158,10 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const updatePassword = useCallback(async (newPassword) => {
+  const updatePassword = useCallback(async (newPassword, { requireRecovery = false } = {}) => {
     setAuthError(null);
     try {
+      if (requireRecovery && (!recoverySession || !session)) throw new Error('Recovery session missing');
       const res = await updateUserPassword(newPassword);
       return res;
     } catch (err) {
@@ -135,10 +169,9 @@ export function AuthProvider({ children }) {
       setAuthError(friendly);
       throw new Error(friendly);
     }
-  }, []);
+  }, [recoverySession, session]);
 
   const clearError = useCallback(() => setAuthError(null), []);
-
   const value = {
     session,
     user,
@@ -146,15 +179,20 @@ export function AuthProvider({ children }) {
     userRole,
     isAdmin: userRole === 'admin',
     isAuthenticated,
+    recoverySession,
     loading,
     authError,
     signIn,
     signUp,
+    resendSignupVerification,
     signOut,
     resetPassword,
     updatePassword,
     clearError,
-    refreshProfile: () => user?.id && fetchProfile(user.id),
+    refreshProfile: () => user?.id && loadProfile(user.id).then((data) => {
+      setProfileState({ userId: user.id, value: data || null });
+      return data;
+    }),
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Mail, Lock, Eye, EyeOff, LogIn, ArrowRight, UserCheck } from 'lucide-react';
 import { AuthLayout } from '../components/Auth/AuthLayout';
 import { useAuth } from '../context/AuthContext';
@@ -12,6 +12,15 @@ export function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [localError, setLocalError] = useState(null);
+  const [passwordUpdated] = useState(
+    () => new URLSearchParams(window.location.search).get('password') === 'updated'
+  );
+
+  useEffect(() => {
+    if (passwordUpdated) {
+      window.history.replaceState(window.history.state, '', window.location.pathname);
+    }
+  }, [passwordUpdated]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,6 +65,11 @@ export function Login() {
       title="Welcome Back"
       subtitle="Sign in to your isolated account and continue your 120-day roadmap."
     >
+      {passwordUpdated && (
+        <p role="status" className="mb-4 p-3 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 text-emerald-300 text-xs">
+          Password updated. Sign in with your new password.
+        </p>
+      )}
       <form onSubmit={handleSubmit} className="space-y-4" noValidate>
         {displayError && (
           <div

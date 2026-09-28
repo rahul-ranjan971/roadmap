@@ -2,11 +2,84 @@ import { supabase } from './superbase.js';
 
 // --- Auth helpers ---
 
+export function getAuthRedirectUrl(path) {
+  const origin = typeof window !== 'undefined' && window.location?.origin
+    ? window.location.origin
+    : (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SITE_URL ? import.meta.env.VITE_SITE_URL : undefined);
+  if (!origin) return undefined;
+
+  const pathname = typeof window !== 'undefined' && window.location?.pathname ? window.location.pathname : '';
+  const base = /^\/roadmap(?:\/|$)/.test(pathname) ? '/roadmap' : '';
+  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  return `${origin}${base}${cleanPath}`;
+}
+
+const AUTH_CALLBACK_PARAMS = [
+  'access_token',
+  'refresh_token',
+  'provider_token',
+  'provider_refresh_token',
+  'token_type',
+  'expires_in',
+  'expires_at',
+  'code',
+  'error',
+  'error_code',
+  'error_description',
+  'type',
+  'state',
+  'sb_flow_id',
+];
+
+export function getAuthCallbackError() {
+  if (typeof window === 'undefined') return null;
+  const params = [
+    new URLSearchParams(window.location.search),
+    new URLSearchParams(window.location.hash.slice(1)),
+  ];
+  const error = params
+    .map((values) => values.get('error_description') || values.get('error_code') || values.get('error'))
+    .find(Boolean);
+  return error ? formatAuthError(error) : null;
+}
+
+export function clearAuthCallbackUrl() {
+  if (typeof window === 'undefined') return;
+  const url = new URL(window.location.href);
+  let changed = false;
+
+  for (const key of AUTH_CALLBACK_PARAMS) {
+    if (url.searchParams.has(key)) {
+      url.searchParams.delete(key);
+      changed = true;
+    }
+  }
+
+  const hashParams = new URLSearchParams(url.hash.slice(1));
+  for (const key of AUTH_CALLBACK_PARAMS) {
+    if (hashParams.has(key)) {
+      hashParams.delete(key);
+      changed = true;
+    }
+  }
+
+  if (changed) {
+    url.hash = hashParams.size ? `#${hashParams}` : '';
+    window.history.replaceState(window.history.state, '', url.toString());
+  }
+}
+
 export function formatAuthError(err) {
   if (!err) return '';
-  const msg = typeof err === 'string' ? err : err.message || '';
+  const msg = typeof err === 'string' ? err : `${err.code || ''} ${err.message || ''}`;
   const lower = msg.toLowerCase();
 
+  if (lower.includes('email_not_confirmed') || lower.includes('email not confirmed')) {
+    return 'Verify your email address before signing in.';
+  }
+  if (lower.includes('otp_expired') || lower.includes('expired') || lower.includes('invalid token') || lower.includes('email link is invalid')) {
+    return 'This verification or recovery link is invalid or has expired. Request a new email link.';
+  }
   if (lower.includes('invalid login credentials') || lower.includes('invalid grant') || lower.includes('invalid credentials')) {
     return 'Email or password is incorrect.';
   }
@@ -28,13 +101,25 @@ export function formatAuthError(err) {
   if (lower.includes('supabase is not configured')) {
     return 'Authentication service is not configured.';
   }
-  return msg || 'An error occurred during authentication.';
+  if (lower.includes('recovery session missing')) {
+    return 'This recovery link is invalid or expired. Request a new password reset email.';
+  }
+  if (lower.includes('password update') || (lower.includes('password') && (lower.includes('different') || lower.includes('same') || lower.includes('reuse')))) {
+    return 'Your password could not be updated. Please request a new recovery link and try again.';
+  }
+  if (lower.includes('email rate limit') || lower.includes('too many requests')) {
+    return 'Too many requests. Please wait a little while and try again.';
+  }
+  return 'Authentication could not be completed. Please try again.';
 }
 
 export function onAuthStateChange(callback) {
-  if (!supabase) return { unsubscribe: () => {} };
+  if (!supabase) {
+    callback('INITIAL_SESSION', null);
+    return { unsubscribe: () => {} };
+  }
   const { data: { subscription } } = supabase.auth.onAuthStateChange(
-    (_event, session) => callback(session)
+    (event, session) => callback(event, session)
   );
   return subscription;
 }
@@ -46,7 +131,10 @@ export function getSession() {
 
 export async function signUp(email, password, { name } = {}) {
   if (!supabase) throw new Error('Supabase is not configured');
-  const options = name ? { data: { name, full_name: name } } : undefined;
+  const options = {
+    emailRedirectTo: getAuthRedirectUrl('/login'),
+    ...(name ? { data: { name, full_name: name } } : {}),
+  };
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -60,6 +148,17 @@ export async function signUp(email, password, { name } = {}) {
       // Non-blocking if profile schema handled via Supabase trigger
     }
   }
+  return data;
+}
+
+export async function resendSignupVerification(email) {
+  if (!supabase) throw new Error('Supabase is not configured');
+  const { data, error } = await supabase.auth.resend({
+    type: 'signup',
+    email,
+    options: { emailRedirectTo: getAuthRedirectUrl('/login') },
+  });
+  if (error) throw error;
   return data;
 }
 
@@ -78,11 +177,8 @@ export async function signOut() {
 
 export async function resetPasswordForEmail(email) {
   if (!supabase) throw new Error('Supabase is not configured');
-  const redirectTo = typeof window !== 'undefined'
-    ? `${window.location.origin}/reset-password`
-    : undefined;
   const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo,
+    redirectTo: getAuthRedirectUrl('/reset-password'),
   });
   if (error) throw error;
   return data;
@@ -90,6 +186,8 @@ export async function resetPasswordForEmail(email) {
 
 export async function updateUserPassword(newPassword) {
   if (!supabase) throw new Error('Supabase is not configured');
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) throw new Error('Recovery session missing');
   const { data, error } = await supabase.auth.updateUser({ password: newPassword });
   if (error) throw error;
   return data;

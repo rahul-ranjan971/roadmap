@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Mail, Lock, User, Eye, EyeOff, UserPlus, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { AuthLayout } from '../components/Auth/AuthLayout';
 import { useAuth } from '../context/AuthContext';
 import { navigate } from '../utils/router';
 
 export function Signup() {
-  const { signUp, authError, clearError } = useAuth();
+  const { signUp, resendSignupVerification, authError, clearError } = useAuth();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -15,6 +15,15 @@ export function Signup() {
   const [submitting, setSubmitting] = useState(false);
   const [localError, setLocalError] = useState(null);
   const [signupSuccess, setSignupSuccess] = useState(null);
+  const [resendMessage, setResendMessage] = useState(null);
+  const [resending, setResending] = useState(false);
+  const [resendCooldown, setResendCooldown] = useState(0);
+
+  useEffect(() => {
+    if (resendCooldown === 0) return undefined;
+    const timeout = window.setTimeout(() => setResendCooldown((current) => current - 1), 1000);
+    return () => window.clearTimeout(timeout);
+  }, [resendCooldown]);
 
   const validate = () => {
     if (!name.trim()) return 'Please enter your full name.';
@@ -40,9 +49,7 @@ export function Signup() {
     try {
       const res = await signUp(email.trim(), password, { name: name.trim() });
       if (res?.user && !res?.session) {
-        setSignupSuccess(
-          'Account created! A confirmation link has been sent to your email. Please verify before signing in.'
-        );
+        setSignupSuccess('Account created. Check your email to verify your account.');
       } else {
         navigate('/dashboard', { replace: true });
       }
@@ -50,6 +57,25 @@ export function Signup() {
       // Error handled via authError in AuthContext
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleResendVerification = async () => {
+    if (resendCooldown > 0 || resending) return;
+    clearError();
+    setResendMessage(null);
+    setResending(true);
+    let sent = false;
+    try {
+      await resendSignupVerification(email.trim());
+      setResendMessage('Verification email sent. Check your inbox.');
+      setResendCooldown(60);
+      sent = true;
+    } catch {
+      // Error is shown through authError.
+    } finally {
+      setResending(false);
+      if (!sent) setResendCooldown(15);
     }
   };
 
@@ -71,12 +97,25 @@ export function Signup() {
               {signupSuccess}
             </p>
           </div>
+          {(resendMessage || authError) && (
+            <p role={resendMessage ? 'status' : 'alert'} className={`text-xs ${resendMessage ? 'text-emerald-300' : 'text-rose-300'}`}>
+              {resendMessage || authError}
+            </p>
+          )}
+          <button
+            type="button"
+            onClick={handleResendVerification}
+            disabled={resending || resendCooldown > 0}
+            className="w-full py-2.5 rounded-2xl bg-white/5 hover:bg-white/10 text-gray-200 text-xs font-semibold border border-white/10 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {resending ? 'Sending...' : resendCooldown > 0 ? `Resend in ${resendCooldown}s` : 'Resend verification email'}
+          </button>
           <button
             type="button"
             onClick={() => navigate('/login')}
             className="w-full py-2.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer"
           >
-            <span>Proceed to Sign In</span>
+            <span>Back to Login</span>
           </button>
         </div>
       ) : (
