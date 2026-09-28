@@ -17,7 +17,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     // Restore session on mount
     getSession().then(({ data }) => {
-      setSession(data.session);
+      setSession(data?.session ?? null);
       setLoading(false);
     }).catch(() => {
       setLoading(false);
@@ -29,7 +29,7 @@ export function AuthProvider({ children }) {
       setLoading(false);
     });
 
-    return () => subscription.unsubscribe();
+    return () => subscription?.unsubscribe?.();
   }, []);
 
   const user = session?.user ?? null;

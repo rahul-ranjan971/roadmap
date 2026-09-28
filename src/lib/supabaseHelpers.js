@@ -3,6 +3,7 @@ import { supabase } from './superbase.js';
 // --- Auth helpers ---
 
 export function onAuthStateChange(callback) {
+  if (!supabase) return { unsubscribe: () => {} };
   const { data: { subscription } } = supabase.auth.onAuthStateChange(
     (_event, session) => callback(session)
   );
@@ -10,22 +11,26 @@ export function onAuthStateChange(callback) {
 }
 
 export function getSession() {
+  if (!supabase) return Promise.resolve({ data: { session: null }, error: null });
   return supabase.auth.getSession();
 }
 
 export async function signUp(email, password) {
+  if (!supabase) throw new Error('Supabase is not configured');
   const { data, error } = await supabase.auth.signUp({ email, password });
   if (error) throw error;
   return data;
 }
 
 export async function signIn(email, password) {
+  if (!supabase) throw new Error('Supabase is not configured');
   const { data, error } = await supabase.auth.signInWithPassword({ email, password });
   if (error) throw error;
   return data;
 }
 
 export async function signOut() {
+  if (!supabase) return;
   const { error } = await supabase.auth.signOut();
   if (error) throw error;
 }
@@ -37,6 +42,7 @@ export async function signOut() {
  * Returns { tasks: {taskId: bool}, days: {dayId: bool} } derived from rows.
  */
 export async function loadProgress(userId) {
+  if (!supabase) return { tasks: {}, days: {} };
   const { data, error } = await supabase
     .from('user_progress')
     .select('task_id, day_id, completed')
@@ -47,7 +53,7 @@ export async function loadProgress(userId) {
   const completedDayIds = new Set();
   const dayTaskMap = {}; // day_id -> [completed booleans]
 
-  for (const row of data) {
+  for (const row of data || []) {
     tasks[row.task_id] = !!row.completed;
     if (!dayTaskMap[row.day_id]) dayTaskMap[row.day_id] = [];
     dayTaskMap[row.day_id].push(!!row.completed);
@@ -71,6 +77,7 @@ export async function loadProgress(userId) {
  * Uses task_id + user_id as the conflict key.
  */
 export async function saveTaskProgress(userId, taskId, dayId, completed) {
+  if (!supabase) return;
   const { error } = await supabase
     .from('user_progress')
     .upsert(
@@ -84,7 +91,7 @@ export async function saveTaskProgress(userId, taskId, dayId, completed) {
  * Batch upsert multiple tasks (for migration or toggleDay).
  */
 export async function saveTaskProgressBatch(userId, entries) {
-  if (entries.length === 0) return;
+  if (!supabase || !entries || entries.length === 0) return;
   const rows = entries.map(e => ({
     user_id: userId,
     task_id: e.taskId,
@@ -102,6 +109,7 @@ export async function saveTaskProgressBatch(userId, entries) {
  * Returns the full settings row or null.
  */
 export async function loadSettings(userId) {
+  if (!supabase) return null;
   const { data, error } = await supabase
     .from('user_settings')
     .select('*')
@@ -116,6 +124,7 @@ export async function loadSettings(userId) {
  * milestones, checklists, practice, revision, notes, streaks, learningLevel
  */
 export async function saveSettings(userId, { selectedDayId, theme, settings }) {
+  if (!supabase) return;
   const row = { user_id: userId, updated_at: new Date().toISOString() };
   if (selectedDayId !== undefined) row.selected_day_id = selectedDayId;
   if (theme !== undefined) row.theme = theme;
@@ -131,6 +140,7 @@ export async function saveSettings(userId, { selectedDayId, theme, settings }) {
  * Load profile for the authenticated user.
  */
 export async function loadProfile(userId) {
+  if (!supabase) return null;
   const { data, error } = await supabase
     .from('profiles')
     .select('*')
