@@ -3,17 +3,29 @@ import { supabase } from './superbase.js';
 // --- Auth helpers ---
 
 export function getAuthRedirectUrl(path) {
+  // Email links must always return to the configured canonical site when one
+  // is available. Using window.location.origin first can generate links to
+  // temporary Vercel preview deployments, where Supabase env vars may not be
+  // configured. That makes the verification link open with a false
+  // "Authentication service is not configured" error.
   let origin;
-  if (typeof window !== 'undefined' && window.location?.origin) {
-    origin = window.location.origin;
-  } else if (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SITE_URL) {
-    const siteUrl = import.meta.env.VITE_SITE_URL;
-    const isProd = typeof import.meta !== 'undefined' && import.meta.env?.PROD;
-    if (isProd && siteUrl.includes('localhost')) {
-      origin = undefined;
-    } else {
-      origin = siteUrl;
+  const configuredSiteUrl = typeof import.meta !== 'undefined' && import.meta.env?.VITE_SITE_URL
+    ? String(import.meta.env.VITE_SITE_URL).trim()
+    : '';
+
+  if (configuredSiteUrl) {
+    try {
+      const parsed = new URL(configuredSiteUrl);
+      const isLocalhost = parsed.hostname === 'localhost' || parsed.hostname === '127.0.0.1';
+      const isProd = typeof import.meta !== 'undefined' && import.meta.env?.PROD;
+      if (!(isProd && isLocalhost)) origin = parsed.origin;
+    } catch {
+      // Ignore an invalid build-time URL and fall back to the current origin.
     }
+  }
+
+  if (!origin && typeof window !== 'undefined' && window.location?.origin) {
+    origin = window.location.origin;
   }
 
   if (!origin) return undefined;
