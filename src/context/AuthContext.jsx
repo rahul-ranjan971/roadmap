@@ -98,6 +98,9 @@ export function AuthProvider({ children }) {
     try {
       return await authSignIn(email, password);
     } catch (err) {
+      if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
+        console.error('[Auth Error] signIn caught:', err);
+      }
       const friendly = formatAuthError(err);
       setAuthError(friendly);
       throw new Error(friendly);

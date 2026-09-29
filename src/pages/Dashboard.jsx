@@ -16,6 +16,8 @@ import {
   BookOpen,
   Repeat,
   ExternalLink,
+  Brain,
+  Briefcase,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -37,12 +39,25 @@ export function Dashboard() {
   const currentPhase = stats.currentPhase;
   const activeDayNumber = currentDay ? currentDay.day : 1;
 
+  const isAiUnlocked = !!stats.aiTrackStatus?.isUnlocked;
+  const isAiPythonTask = (t) =>
+    t.topicId.includes('python') ||
+    t.topicId.includes('genai') ||
+    t.topicId.includes('ai-engineering');
+
+  const todayActiveTasks = currentDay
+    ? currentDay.tasks.filter((t) => isAiUnlocked || !isAiPythonTask(t))
+    : [];
+  const todayCompletedTasks = todayActiveTasks.filter((t) => tasks[t.id]);
+
   // Icon map for active tracks
   const trackIcons = {
     main: <BookOpen className="w-4 h-4 text-indigo-400" />,
     'core-cs': <Cpu className="w-4 h-4 text-cyan-400" />,
     dsa: <Binary className="w-4 h-4 text-emerald-400" />,
     python: <FileCode className="w-4 h-4 text-amber-400" />,
+    aptitude: <Brain className="w-4 h-4 text-violet-400" />,
+    career: <Briefcase className="w-4 h-4 text-rose-400" />,
     genai: <Sparkles className="w-4 h-4 text-rose-400" />,
     project: <FolderGit2 className="w-4 h-4 text-purple-400" />,
     revision: <Repeat className="w-4 h-4 text-violet-400" />,
@@ -55,6 +70,8 @@ export function Dashboard() {
     'core-cs': 'core-cs',
     dsa: 'dsa',
     python: 'python',
+    aptitude: 'today',
+    career: 'careers',
     genai: 'ai',
     project: 'projects',
     revision: 'revision',
@@ -124,7 +141,7 @@ export function Dashboard() {
                   TODAY&apos;S MISSION — DAY {activeDayNumber} / 120
                 </h2>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                  {currentDay.tasks.filter((t) => tasks[t.id]).length} / {currentDay.tasks.length} Completed
+                  {todayCompletedTasks.length} / {todayActiveTasks.length} Completed
                 </span>
               </div>
               <p className="text-xs text-gray-400 mt-0.5">

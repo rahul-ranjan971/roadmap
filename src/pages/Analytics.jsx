@@ -7,6 +7,8 @@ import {
   Cpu,
   Binary,
   FileCode,
+  Brain,
+  Briefcase,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -137,7 +139,7 @@ export function Analytics() {
       </div>
 
       {/* Track Distribution Meters */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
         {/* Main Stack */}
         <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
           <div className="flex items-center justify-between">
@@ -171,7 +173,7 @@ export function Analytics() {
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold text-cyan-300 uppercase tracking-wider flex items-center gap-1.5">
               <Cpu className="w-4 h-4" />
-              Core CS & Sys Design
+              Core CS
             </span>
             <span className="text-xs font-bold font-mono text-white">
               {stats.trackStats['core-cs'].total > 0
@@ -222,6 +224,34 @@ export function Analytics() {
           </div>
         </div>
 
+        {/* Aptitude (KODEX) */}
+        <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold text-violet-300 uppercase tracking-wider flex items-center gap-1.5">
+              <Brain className="w-4 h-4" />
+              Aptitude (KODEX)
+            </span>
+            <span className="text-xs font-bold font-mono text-white">
+              {stats.trackStats.aptitude?.total > 0
+                ? Math.round((stats.trackStats.aptitude.completed / stats.trackStats.aptitude.total) * 100)
+                : 0}%
+            </span>
+          </div>
+          <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-violet-400 rounded-full"
+              style={{
+                width: `${stats.trackStats.aptitude?.total > 0
+                  ? Math.round((stats.trackStats.aptitude.completed / stats.trackStats.aptitude.total) * 100)
+                  : 0}%`,
+              }}
+            />
+          </div>
+          <div className="text-[11px] text-gray-400 font-mono">
+            {stats.trackStats.aptitude?.completed || 0} / {stats.trackStats.aptitude?.total || 0} tasks completed
+          </div>
+        </div>
+
         {/* Python Track */}
         <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
           <div className="flex items-center justify-between">
@@ -247,6 +277,34 @@ export function Analytics() {
           </div>
           <div className="text-[11px] text-gray-400 font-mono">
             {stats.trackStats.python.completed} / {stats.trackStats.python.total} tasks completed
+          </div>
+        </div>
+
+        {/* Career Prep */}
+        <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold text-rose-300 uppercase tracking-wider flex items-center gap-1.5">
+              <Briefcase className="w-4 h-4" />
+              Career Prep
+            </span>
+            <span className="text-xs font-bold font-mono text-white">
+              {stats.trackStats.career?.total > 0
+                ? Math.round((stats.trackStats.career.completed / stats.trackStats.career.total) * 100)
+                : 0}%
+            </span>
+          </div>
+          <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-rose-400 rounded-full"
+              style={{
+                width: `${stats.trackStats.career?.total > 0
+                  ? Math.round((stats.trackStats.career.completed / stats.trackStats.career.total) * 100)
+                  : 0}%`,
+              }}
+            />
+          </div>
+          <div className="text-[11px] text-gray-400 font-mono">
+            {stats.trackStats.career?.completed || 0} / {stats.trackStats.career?.total || 0} tasks completed
           </div>
         </div>
       </div>

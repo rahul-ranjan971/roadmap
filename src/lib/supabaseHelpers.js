@@ -93,7 +93,9 @@ export function clearAuthCallbackUrl() {
 
 export function formatAuthError(err) {
   if (!err) return '';
-  const msg = typeof err === 'string' ? err : `${err.code || ''} ${err.message || ''}`;
+  const msg = typeof err === 'string'
+    ? err
+    : `${err.code || ''} ${err.message || err.msg || err.error_description || err.error || ''}`;
   const lower = msg.toLowerCase();
 
   if (lower.includes('email_not_confirmed') || lower.includes('email not confirmed')) {
@@ -208,7 +210,18 @@ export async function resendSignupVerification(email) {
 
 export async function signIn(email, password) {
   if (!supabase) throw new Error('Supabase is not configured');
+  if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
+    console.log('[Auth Debug] Calling supabase.auth.signInWithPassword for:', email);
+  }
   const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+  if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
+    console.log('[Auth Debug] supabase.auth.signInWithPassword response:', {
+      hasUser: Boolean(data?.user),
+      userId: data?.user?.id,
+      hasSession: Boolean(data?.session),
+      error: error ? { message: error.message, status: error.status, name: error.name, code: error.code } : null,
+    });
+  }
   if (error) throw error;
   return data;
 }

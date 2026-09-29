@@ -41,7 +41,10 @@ export function Login() {
     try {
       await signIn(trimmedEmail, password);
       navigate('/dashboard', { replace: true });
-    } catch {
+    } catch (err) {
+      if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
+        console.error('[Login] handleSubmit caught:', err);
+      }
       // Error handled via authError in AuthContext
     } finally {
       setSubmitting(false);

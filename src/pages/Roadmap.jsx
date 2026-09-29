@@ -81,7 +81,9 @@ export function Roadmap() {
         ai: () => topicIds.some((id) => id.includes('genai') || id.includes('ai') || id.includes('gnn')),
         python: () => topicIds.some((id) => id.includes('python')),
         dsa: () => topicIds.some((id) => id.includes('dsa') || id.includes('cpp')),
-        'core-cs': () => topicIds.some((id) => id.includes('aptitude') || id.includes('oop') || id.includes('os') || id.includes('cn') || id.includes('system-design')),
+        'core-cs': () => topicIds.some((id) => id.includes('sql') || id.includes('oop') || id.includes('dbms') || id.includes('os') || id.includes('cn') || id.includes('system-design')),
+        aptitude: () => topicIds.some((id) => id.includes('aptitude')),
+        career: () => topicIds.some((id) => id.includes('resume') || id.includes('communication') || id.includes('interview')),
       }[trackFilter]?.();
 
       if (!matchesTrack) return false;
@@ -253,6 +255,8 @@ export function Roadmap() {
             <option value="python">Python</option>
             <option value="dsa">C++ & DSA</option>
             <option value="core-cs">Core CS</option>
+            <option value="aptitude">Aptitude (KODEX)</option>
+            <option value="career">Career Prep</option>
           </select>
         </div>
       </div>

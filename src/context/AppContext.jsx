@@ -25,6 +25,23 @@ import {
 // track continues from its own Day 1 without the old JavaScript Day 7 offset.
 export const getDisplayDayNumber = (day, isHtmlCssKnown = false) => getActiveGlobalDayNumber(day, isHtmlCssKnown);
 
+export const isAiPythonTask = (t) => {
+  if (!t || !t.topicId) return false;
+  return (
+    t.topicId.includes('python') ||
+    t.topicId.includes('genai') ||
+    t.topicId.includes('ai-engineering')
+  );
+};
+
+export const checkIsAiTrackUnlocked = (daysMap = {}) => {
+  const webDevDays = roadmap.filter(d => d.day >= 1 && d.day <= 52);
+  const isWebDevDone = webDevDays.length > 0 && webDevDays.every(d => !!daysMap[d.id]);
+  const cloudDockerDays = roadmap.filter(d => d.day >= 53 && d.day <= 72);
+  const isCloudDockerDone = cloudDockerDays.length > 0 && cloudDockerDays.every(d => !!daysMap[d.id]);
+  return isWebDevDone && isCloudDockerDone;
+};
+
 const AppContext = createContext(null);
 
 // Build a day-id lookup for task-ids so we can populate day_id on Supabase writes
@@ -320,13 +337,15 @@ export function AppProvider({ children }) {
         queueDbWrite(() => dbSaveTask(user.id, taskId, dayId, nextDone));
       }
 
-      // Check if all tasks in day are now complete
+      // Check if all active tasks in day are now complete
       const dayObj = roadmap.find(d => d.id === dayId);
       if (dayObj && dayObj.tasks && dayObj.tasks.length > 0) {
-        const allDone = dayObj.tasks.every(t => (t.id === taskId ? next[taskId] : next[t.id]));
         updateDays(prevDays => {
+          const isAiUnlocked = checkIsAiTrackUnlocked(prevDays);
+          const activeTasks = dayObj.tasks.filter(t => isAiUnlocked || !isAiPythonTask(t));
+          const allDone = activeTasks.length > 0 && activeTasks.every(t => (t.id === taskId ? next[taskId] : next[t.id]));
           const nextDays = { ...prevDays, [dayId]: allDone };
-          if (allDone) {
+          if (allDone && !prevDays[dayId]) {
             recordDayStudy(dayId);
             showToast('DAY COMPLETE', 'day');
           }
@@ -348,17 +367,19 @@ export function AppProvider({ children }) {
       const nextStatus = !prev[dayId];
       const next = { ...prev, [dayId]: nextStatus };
       if (nextStatus) {
-        // Also mark all tasks of this day completed
+        // Also mark active tasks of this day completed
         const dayObj = roadmap.find(d => d.id === dayId);
         if (dayObj?.tasks) {
+          const isAiUnlocked = checkIsAiTrackUnlocked(prev);
+          const activeTasks = dayObj.tasks.filter(t => isAiUnlocked || !isAiPythonTask(t));
           updateTasks(prevTasks => {
             const nextTasks = { ...prevTasks };
-            dayObj.tasks.forEach(t => { nextTasks[t.id] = true; });
+            activeTasks.forEach(t => { nextTasks[t.id] = true; });
             return nextTasks;
           });
-          // Sync all tasks for this day to Supabase
-          if (user && dayObj.tasks.length > 0) {
-            const entries = dayObj.tasks.map(t => ({ taskId: t.id, dayId, completed: true }));
+          // Sync active tasks for this day to Supabase
+          if (user && activeTasks.length > 0) {
+            const entries = activeTasks.map(t => ({ taskId: t.id, dayId, completed: true }));
             queueDbWrite(() => dbSaveTaskBatch(user.id, entries));
           }
         }
@@ -462,6 +483,8 @@ export function AppProvider({ children }) {
       'core-cs': { total: 0, completed: 0 },
       'cpp-dsa': { total: 0, completed: 0 },
       python: { total: 0, completed: 0 },
+      aptitude: { total: 0, completed: 0 },
+      career: { total: 0, completed: 0 },
     };
 
     roadmap.forEach(day => {
@@ -603,19 +626,49 @@ export function AppProvider({ children }) {
       });
     }
 
-    // Core CS
-    const coreTasks = day.tasks.filter(t => {
-      const top = topics.find(tp => tp.id === t.topicId);
-      return top?.track === 'core-cs';
-    });
+    // Core CS - Strictly follows: 1. SQL -> 2. OOP -> 3. DBMS -> 4. OS -> 5. CN -> 6. System Design
+    const CORE_CS_ORDER = [
+      'topic-sql',
+      'topic-oop',
+      'topic-dbms',
+      'topic-os',
+      'topic-cn',
+      'topic-system-design',
+    ];
+    const coreTasks = day.tasks
+      .filter(t => {
+        const top = topics.find(tp => tp.id === t.topicId);
+        return top?.track === 'core-cs';
+      })
+      .sort((a, b) => {
+        const aIdx = CORE_CS_ORDER.findIndex(id => a.topicId.startsWith(id));
+        const bIdx = CORE_CS_ORDER.findIndex(id => b.topicId.startsWith(id));
+        return (aIdx === -1 ? 99 : aIdx) - (bIdx === -1 ? 99 : bIdx);
+      });
     if (coreTasks.length > 0 || day.schedule?.coreCS) {
       sections.push({
         id: 'core-cs',
         label: 'Core CS',
-        badge: 'System Design & CS',
+        badge: 'Page Source',
         color: 'border-cyan-500/30 text-cyan-400 bg-cyan-500/10',
-        focus: day.schedule?.coreCS?.focus || coreTasks[0]?.title || 'System Design & Fundamentals',
+        focus: day.schedule?.coreCS?.focus || coreTasks[0]?.title || 'Core CS & System Design',
         tasks: coreTasks,
+      });
+    }
+
+    // Aptitude (Sheryians KODEX) - strictly independent track
+    const aptitudeTasks = day.tasks.filter(t => {
+      const top = topics.find(tp => tp.id === t.topicId);
+      return top?.track === 'aptitude' || t.topicId.startsWith('topic-aptitude');
+    });
+    if (aptitudeTasks.length > 0) {
+      sections.push({
+        id: 'aptitude',
+        label: 'Aptitude',
+        badge: 'KODEX Aptitude',
+        color: 'border-violet-500/30 text-violet-400 bg-violet-500/10',
+        focus: aptitudeTasks[0]?.title || 'Aptitude & Reasoning',
+        tasks: aptitudeTasks,
       });
     }
 
@@ -635,12 +688,12 @@ export function AppProvider({ children }) {
       });
     }
 
-    // Python Track
+    // Python Track — only visible when AI track is unlocked
     const pythonTasks = day.tasks.filter(t => {
       const top = topics.find(tp => tp.id === t.topicId);
       return top?.track === 'python' || t.topicId.includes('python');
     });
-    if (pythonTasks.length > 0 || day.schedule?.sideTrack) {
+    if (stats.aiTrackStatus.isUnlocked && (pythonTasks.length > 0 || day.schedule?.sideTrack)) {
       sections.push({
         id: 'python',
         label: 'Python Track',
@@ -651,12 +704,12 @@ export function AppProvider({ children }) {
       });
     }
 
-    // AI Track
+    // AI Track — only visible when AI track is unlocked
     const aiTasks = day.tasks.filter(t => {
       const top = topics.find(tp => tp.id === t.topicId);
-      return top?.track === 'genai' || t.topicId.includes('genai') || t.topicId.includes('ai');
+      return top?.track === 'genai' || t.topicId.includes('genai') || t.topicId.includes('ai-engineering');
     });
-    if (aiTasks.length > 0 || day.schedule?.aiTrack) {
+    if (stats.aiTrackStatus.isUnlocked && (aiTasks.length > 0 || day.schedule?.aiTrack)) {
       sections.push({
         id: 'genai',
         label: 'AI Track',
@@ -691,10 +744,14 @@ export function AppProvider({ children }) {
       });
     }
 
+    const isAiUnlocked = !!stats.aiTrackStatus?.isUnlocked;
+    const activeTasks = day.tasks.filter(t => isAiUnlocked || !isAiPythonTask(t));
+    const completedActiveTasks = activeTasks.filter(t => !!tasks[t.id]);
+
     // Practice Arcade (if scheduled or matching today's active tracks)
     const matchingPractice = practiceResources.find(r => {
       if (day.practice?.resourceId && r.id === day.practice.resourceId) return true;
-      return day.tasks.some(t => {
+      return activeTasks.some(t => {
         if (r.category === 'css' && t.topicId.includes('css')) return true;
         if (r.category === 'javascript' && (t.topicId.includes('js') || t.topicId.includes('javascript'))) return true;
         if (r.category === 'git' && t.topicId.includes('git')) return true;
@@ -721,8 +778,12 @@ export function AppProvider({ children }) {
     return {
       day,
       sections,
+      activeTasks,
+      activeTaskCount: activeTasks.length,
+      completedTaskCount: completedActiveTasks.length,
+      completionPercent: activeTasks.length > 0 ? Math.round((completedActiveTasks.length / activeTasks.length) * 100) : 0,
     };
-  }, [stats.currentDay]);
+  }, [stats.currentDay, stats.aiTrackStatus, tasks]);
 
   // Export / Import / Reset progress
   const exportProgress = useCallback(() => {

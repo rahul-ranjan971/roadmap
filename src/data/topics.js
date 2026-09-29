@@ -350,9 +350,13 @@ export const topics = [
   {
     id: "topic-aptitude",
     name: "Aptitude",
-    track: "core-cs",
+    track: "aptitude",
     phase: "phase-01",
     icon: "🧠",
+    source: {
+      provider: "Sheryians KODEX",
+      title: "KODEX Aptitude & Quantitative Reasoning",
+    },
     subtopics: [
       { id: "topic-aptitude-quantitative-aptitude", title: "Quantitative Aptitude" },
       { id: "topic-aptitude-logical-reasoning", title: "Logical Reasoning" },
@@ -362,28 +366,17 @@ export const topics = [
     ],
   },
   {
-    id: "topic-oop",
-    name: "Object-Oriented Programming",
-    track: "core-cs",
-    phase: "phase-01",
-    icon: "🏗️",
-    subtopics: [
-      { id: "topic-oop-classes", title: "Classes" },
-      { id: "topic-oop-objects", title: "Objects" },
-      { id: "topic-oop-inheritance", title: "Inheritance" },
-      { id: "topic-oop-polymorphism", title: "Polymorphism" },
-      { id: "topic-oop-encapsulation", title: "Encapsulation" },
-      { id: "topic-oop-abstraction", title: "Abstraction" },
-      { id: "topic-oop-interfaces", title: "Interfaces" },
-      { id: "topic-oop-design-patterns-basics", title: "Design Patterns Basics" },
-    ],
-  },
-  {
     id: "topic-sql",
     name: "SQL",
     track: "core-cs",
     phase: "phase-03",
     icon: "🗄️",
+    source: {
+      provider: "Apna College",
+      instructor: "Shradha Khapra",
+      title: "SQL Tutorial - Full Database Course for Beginners",
+      url: "https://www.youtube.com/watch?v=hlGoQC332VM",
+    },
     subtopics: [
       { id: "topic-sql-select", title: "SELECT" },
       { id: "topic-sql-where", title: "WHERE" },
@@ -403,11 +396,40 @@ export const topics = [
     ],
   },
   {
+    id: "topic-oop",
+    name: "Object-Oriented Programming",
+    track: "core-cs",
+    phase: "phase-01",
+    icon: "🏗️",
+    source: {
+      provider: "Apna College",
+      instructor: "Shradha Khapra",
+      title: "Object Oriented Programming (OOPs) in C++ [One Shot]",
+      url: "https://www.youtube.com/watch?v=bSrm9RXwBaI",
+    },
+    subtopics: [
+      { id: "topic-oop-classes", title: "Classes" },
+      { id: "topic-oop-objects", title: "Objects" },
+      { id: "topic-oop-inheritance", title: "Inheritance" },
+      { id: "topic-oop-polymorphism", title: "Polymorphism" },
+      { id: "topic-oop-encapsulation", title: "Encapsulation" },
+      { id: "topic-oop-abstraction", title: "Abstraction" },
+      { id: "topic-oop-interfaces", title: "Interfaces" },
+      { id: "topic-oop-design-patterns-basics", title: "Design Patterns Basics" },
+    ],
+  },
+  {
     id: "topic-dbms",
     name: "DBMS",
     track: "core-cs",
     phase: "phase-03",
     icon: "💾",
+    source: {
+      provider: "CodeHelp",
+      instructor: "Love Babbar",
+      title: "DBMS Complete Course Playlist",
+      url: "https://www.youtube.com/playlist?list=PLDzeHZWIZsTpukecmA2p5rhHM14bl2dHU",
+    },
     subtopics: [
       { id: "topic-dbms-dbms-concepts", title: "DBMS Concepts" },
       { id: "topic-dbms-relational-model", title: "Relational Model" },
@@ -427,6 +449,12 @@ export const topics = [
     track: "core-cs",
     phase: "phase-04",
     icon: "🖥️",
+    source: {
+      provider: "CodeHelp",
+      instructor: "Love Babbar",
+      title: "Operating System Complete Course Playlist",
+      url: "https://www.youtube.com/playlist?list=PLDzeHZWIZsTr3nwuTegHLa2qlI81QwcYG",
+    },
     subtopics: [
       { id: "topic-os-processes", title: "Processes" },
       { id: "topic-os-threads", title: "Threads" },
@@ -445,6 +473,12 @@ export const topics = [
     track: "core-cs",
     phase: "phase-04",
     icon: "🌍",
+    source: {
+      provider: "Kunal Kushwaha",
+      instructor: "Kunal Kushwaha",
+      title: "Complete Computer Networking Course",
+      url: "https://www.youtube.com/playlist?list=PL9gnSGHSqcnQQgfZnuBcT3rPlYlwXXKV3",
+    },
     subtopics: [
       { id: "topic-cn-osi-model", title: "OSI Model" },
       { id: "topic-cn-tcp-ip", title: "TCP/IP" },
@@ -464,6 +498,14 @@ export const topics = [
     track: "core-cs",
     phase: "phase-11",
     icon: "🏛️",
+    source: {
+      provider: "designKarle / Shivam Tiwari",
+      instructor: "Shivam Tiwari",
+      title: "System Design Simplified (HLD & LLD)",
+      url: "https://www.youtube.com/playlist?list=PLTCrU9sGyburBw9wNOHebv9SFTqv4Azv2",
+      altProvider: "Piyush Garg",
+      altUrl: "https://www.youtube.com/playlist?list=PLinedj3B30sBv3B_x1bHUpd_EOnn_p-Z4",
+    },
     subtopics: [
       { id: "topic-system-design-functional-requirements", title: "Functional Requirements" },
       { id: "topic-system-design-non-functional-requirements", title: "Non-Functional Requirements" },
@@ -664,7 +706,7 @@ export const topics = [
   {
     id: "topic-resume",
     name: "Resume Building",
-    track: "core-cs",
+    track: "career",
     phase: "phase-11",
     icon: "📄",
     subtopics: [
@@ -682,7 +724,7 @@ export const topics = [
   {
     id: "topic-communication",
     name: "Communication Skills",
-    track: "core-cs",
+    track: "career",
     phase: "phase-11",
     icon: "💬",
     subtopics: [
@@ -697,7 +739,7 @@ export const topics = [
   {
     id: "topic-interview-prep",
     name: "Interview Preparation",
-    track: "core-cs",
+    track: "career",
     phase: "phase-11",
     icon: "🎯",
     subtopics: [
