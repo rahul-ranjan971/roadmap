@@ -12,7 +12,17 @@ import { useApp } from '../context/AppContext';
 import { DayDetailModal } from '../components/Modals/DayDetailModal';
 
 export function Roadmap() {
-  const { roadmap, phases, days, tasks, stats, navigateTo } = useApp();
+  const {
+    roadmap,
+    phases,
+    days,
+    tasks,
+    stats,
+    navigateTo,
+    isAiPythonTask,
+    filterObjectivesForAiGate,
+  } = useApp();
+  const isAiUnlocked = stats?.aiTrackStatus?.isUnlocked;
 
   const [activePhaseId, setActivePhaseId] = useState(phases[0].id);
   const [expandedWeeks, setExpandedWeeks] = useState({ 1: true });
@@ -325,7 +335,13 @@ export function Roadmap() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                       {filteredDays.map((day) => {
                         const isDone = !!days[day.id];
-                        const completedTasksCount = day.tasks.filter((t) => tasks[t.id]).length;
+                        const activeTasks = isAiUnlocked
+                          ? day.tasks
+                          : day.tasks.filter((t) => !isAiPythonTask(t));
+                        const completedTasksCount = activeTasks.filter((t) => tasks[t.id]).length;
+                        const displayObjectives = filterObjectivesForAiGate
+                          ? filterObjectivesForAiGate(day.objectives, isAiUnlocked)
+                          : day.objectives;
                         const displayDayNumber = day.day;
                         return (
                           <div
@@ -344,7 +360,7 @@ export function Roadmap() {
                                 <div className="flex items-center gap-1.5">
                                   <span className={`text-[11px] font-mono flex items-center gap-1 ${isDone ? 'text-emerald-400' : 'text-gray-500'}`}>
                                     <CheckCircle2 className="w-3.5 h-3.5" />
-                                    {completedTasksCount}/{day.tasks.length} tasks
+                                    {completedTasksCount}/{activeTasks.length} tasks
                                   </span>
                                 </div>
                               </div>
@@ -354,7 +370,7 @@ export function Roadmap() {
                               </h4>
 
                               <p className="text-[11px] text-gray-400 line-clamp-2 mb-3">
-                                {day.objectives.join(' • ')}
+                                {displayObjectives.join(' • ')}
                               </p>
                             </div>
 

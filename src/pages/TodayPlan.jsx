@@ -23,6 +23,7 @@ export function TodayPlan() {
   const {
     roadmap,
     phases,
+    topics,
     selectedDayId,
     setSelectedDayId,
     tasks,
@@ -32,6 +33,8 @@ export function TodayPlan() {
     notes,
     setDayNote,
     aiTrackStatus,
+    isAiPythonTask,
+    filterObjectivesForAiGate,
   } = useApp();
 
   const currentDay = roadmap.find((d) => d.id === selectedDayId) || roadmap[0];
@@ -57,22 +60,18 @@ export function TodayPlan() {
   };
 
   const isAptitudeTask = (t) => {
-    return t.topicId === 'topic-aptitude' || t.topicId.startsWith('topic-aptitude-');
+    const top = topics?.find((tp) => tp.id === t.topicId);
+    return top?.track === 'aptitude' || t.topicId === 'topic-aptitude' || t.topicId.startsWith('topic-aptitude-');
   };
 
   const isDsaTask = (t) => {
-    return t.topicId.includes('cpp') || t.topicId.includes('dsa');
-  };
-
-  const isAiPythonTask = (t) => {
-    return (
-      t.topicId.includes('python') ||
-      t.topicId.includes('genai') ||
-      t.topicId.includes('ai-engineering')
-    );
+    const top = topics?.find((tp) => tp.id === t.topicId);
+    return top?.track === 'cpp-dsa' || t.topicId.includes('cpp') || t.topicId.includes('dsa');
   };
 
   const isCareerTask = (t) => {
+    const top = topics?.find((tp) => tp.id === t.topicId);
+    if (top?.track === 'career') return true;
     return (
       t.topicId.includes('resume') ||
       t.topicId.includes('communication') ||
@@ -90,6 +89,12 @@ export function TodayPlan() {
       !isCareerTask(t)
   );
 
+  // DSA with C++ (Page Source)
+  const dsaTasks = currentDay.tasks.filter(isDsaTask);
+
+  // Aptitude (Sheryians KODEX) - strictly separate from Core CS
+  const aptitudeTasks = currentDay.tasks.filter(isAptitudeTask);
+
   // Core CS (Page Source) - ordered strictly: SQL -> OOP -> DBMS -> OS -> CN -> System Design
   const coreTasks = currentDay.tasks
     .filter(isCoreCsTask)
@@ -98,12 +103,6 @@ export function TodayPlan() {
       const bIdx = CORE_CS_TOPIC_ORDER.findIndex((id) => b.topicId.startsWith(id));
       return (aIdx === -1 ? 99 : aIdx) - (bIdx === -1 ? 99 : bIdx);
     });
-
-  // DSA with C++ (Page Source)
-  const dsaTasks = currentDay.tasks.filter(isDsaTask);
-
-  // Aptitude (Sheryians KODEX) - strictly separate from Core CS
-  const aptitudeTasks = currentDay.tasks.filter(isAptitudeTask);
 
   // Python & AI Track Tasks
   const aiPythonTasks = currentDay.tasks.filter(isAiPythonTask);
@@ -114,13 +113,13 @@ export function TodayPlan() {
   // Remaining tasks fallback if any did not match above (include aiPythonTasks so they never leak into otherTasks)
   const handledIds = new Set([
     ...mainTasks.map((t) => t.id),
-    ...coreTasks.map((t) => t.id),
     ...dsaTasks.map((t) => t.id),
     ...aptitudeTasks.map((t) => t.id),
+    ...coreTasks.map((t) => t.id),
     ...aiPythonTasks.map((t) => t.id),
     ...careerTasks.map((t) => t.id),
   ]);
-  const otherTasks = currentDay.tasks.filter((t) => !handledIds.has(t.id));
+  const otherTasks = currentDay.tasks.filter((t) => !handledIds.has(t.id) && !isAiPythonTask(t));
 
   // Day navigation
   const dayIndex = roadmap.findIndex((d) => d.id === currentDay.id);
@@ -132,6 +131,10 @@ export function TodayPlan() {
   const completedCount = activeDayTasks.filter((t) => tasks[t.id]).length;
   const totalCount = activeDayTasks.length;
   const dayPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+
+  const displayObjectives = useMemo(() => {
+    return filterObjectivesForAiGate ? filterObjectivesForAiGate(currentDay.objectives, isAiUnlocked) : currentDay.objectives;
+  }, [currentDay.objectives, isAiUnlocked, filterObjectivesForAiGate]);
 
   const handleNoteBlur = () => {
     setDayNote(currentDay.id, noteText);
@@ -248,7 +251,7 @@ export function TodayPlan() {
           Today&apos;s Core Objectives
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-          {currentDay.objectives.map((obj, i) => (
+          {displayObjectives.map((obj, i) => (
             <div key={i} className="p-3 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-200 flex items-start gap-2">
               <span className="text-indigo-400 font-bold">0{i + 1}.</span>
               <span>{obj}</span>
@@ -268,7 +271,7 @@ export function TodayPlan() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Main Track Tasks */}
+          {/* 1. Main Track Tasks (Sheryians KODEX) */}
           {mainTasks.length > 0 && (
             <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
               <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
@@ -313,52 +316,7 @@ export function TodayPlan() {
             </div>
           )}
 
-          {/* Core Software Engineering Tasks */}
-          {coreTasks.length > 0 && (
-            <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
-              <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
-                <span className="text-xs font-bold text-cyan-300 uppercase tracking-wider flex items-center gap-1.5">
-                  <Cpu className="w-4 h-4" />
-                  Core Software & Sys Design (4:30–5:15)
-                </span>
-                <span className="text-[11px] text-gray-400 font-mono">
-                  {coreTasks.filter((t) => tasks[t.id]).length}/{coreTasks.length} done
-                </span>
-              </div>
-              <div className="space-y-2">
-                {coreTasks.map((t) => {
-                  const done = !!tasks[t.id];
-                  return (
-                    <button
-                      key={t.id}
-                      onClick={() => toggleTask(t.id, currentDay.id)}
-                      className={`w-full p-3 rounded-xl border text-left flex items-start gap-3 transition-colors cursor-pointer ${
-                        done
-                          ? 'bg-emerald-950/20 border-emerald-500/20 text-gray-400'
-                          : 'bg-white/5 border-white/5 hover:border-white/10 text-gray-200'
-                      }`}
-                    >
-                      {done ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                      ) : (
-                        <Circle className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <div className={`text-xs font-medium ${done ? 'line-through text-gray-500' : ''}`}>
-                          {t.title}
-                        </div>
-                        <div className="text-[10px] text-cyan-400 font-mono mt-0.5 uppercase">
-                          {t.type} • {t.topicId}
-                        </div>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {/* C++ & DSA Tasks */}
+          {/* 2. C++ & DSA Tasks (Page Source) */}
           {dsaTasks.length > 0 && (
             <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
               <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
@@ -403,52 +361,7 @@ export function TodayPlan() {
             </div>
           )}
 
-          {/* Python & AI Track Tasks — only when unlocked by progression gate */}
-          {isAiUnlocked && aiPythonTasks.length > 0 && (
-            <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
-              <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
-                <span className="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
-                  <FileCode className="w-4 h-4" />
-                  Python & AI Track
-                </span>
-                <span className="text-[11px] text-gray-400 font-mono">
-                  {aiPythonTasks.filter((t) => tasks[t.id]).length}/{aiPythonTasks.length} done
-                </span>
-              </div>
-              <div className="space-y-2">
-                {aiPythonTasks.map((t) => {
-                  const done = !!tasks[t.id];
-                  return (
-                    <button
-                      key={t.id}
-                      onClick={() => toggleTask(t.id, currentDay.id)}
-                      className={`w-full p-3 rounded-xl border text-left flex items-start gap-3 transition-colors cursor-pointer ${
-                        done
-                          ? 'bg-emerald-950/20 border-emerald-500/20 text-gray-400'
-                          : 'bg-white/5 border-white/5 hover:border-white/10 text-gray-200'
-                      }`}
-                    >
-                      {done ? (
-                        <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
-                      ) : (
-                        <Circle className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <div className={`text-xs font-medium ${done ? 'line-through text-gray-500' : ''}`}>
-                          {t.title}
-                        </div>
-                        <div className="text-[10px] text-amber-400 font-mono mt-0.5 uppercase">
-                          {t.type} • {t.topicId}
-                        </div>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-
-          {/* Aptitude Track Tasks (Sheryians KODEX) */}
+          {/* 3. Aptitude Track Tasks (Sheryians KODEX) */}
           {aptitudeTasks.length > 0 && (
             <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
               <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
@@ -493,7 +406,104 @@ export function TodayPlan() {
             </div>
           )}
 
-          {/* Career Preparation Tasks */}
+          {/* 4. Core Software Engineering Tasks (Page Source) */}
+          {(coreTasks.length > 0 || currentDay.day === 1 || (currentDay.schedule?.coreCS && currentDay.schedule.coreCS.topic !== 'topic-aptitude')) && (
+            <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
+              <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
+                <span className="text-xs font-bold text-cyan-300 uppercase tracking-wider flex items-center gap-1.5">
+                  <Cpu className="w-4 h-4" />
+                  Core CS • Page Source (4:30–5:15)
+                </span>
+                <span className="text-[11px] text-gray-400 font-mono">
+                  {coreTasks.filter((t) => tasks[t.id]).length}/{coreTasks.length} done
+                </span>
+              </div>
+              <div className="space-y-2">
+                {coreTasks.map((t) => {
+                  const done = !!tasks[t.id];
+                  return (
+                    <button
+                      key={t.id}
+                      onClick={() => toggleTask(t.id, currentDay.id)}
+                      className={`w-full p-3 rounded-xl border text-left flex items-start gap-3 transition-colors cursor-pointer ${
+                        done
+                          ? 'bg-emerald-950/20 border-emerald-500/20 text-gray-400'
+                          : 'bg-white/5 border-white/5 hover:border-white/10 text-gray-200'
+                      }`}
+                    >
+                      {done ? (
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+                      ) : (
+                        <Circle className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className={`text-xs font-medium ${done ? 'line-through text-gray-500' : ''}`}>
+                          {t.title}
+                        </div>
+                        <div className="text-[10px] text-cyan-400 font-mono mt-0.5 uppercase">
+                          {t.type} • {t.topicId}
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+                {coreTasks.length === 0 && (
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-400">
+                    {currentDay.schedule?.coreCS?.topic === 'topic-aptitude'
+                      ? 'Core CS track scheduled in sequence (1. SQL → 2. OOP → 3. DBMS → 4. OS → 5. CN → 6. System Design).'
+                      : (currentDay.schedule?.coreCS?.focus || 'Core CS & System Design')}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* 5. Python & AI Track Tasks — only when unlocked by progression gate */}
+          {isAiUnlocked && aiPythonTasks.length > 0 && (
+            <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
+              <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
+                <span className="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+                  <FileCode className="w-4 h-4" />
+                  Python & AI Track
+                </span>
+                <span className="text-[11px] text-gray-400 font-mono">
+                  {aiPythonTasks.filter((t) => tasks[t.id]).length}/{aiPythonTasks.length} done
+                </span>
+              </div>
+              <div className="space-y-2">
+                {aiPythonTasks.map((t) => {
+                  const done = !!tasks[t.id];
+                  return (
+                    <button
+                      key={t.id}
+                      onClick={() => toggleTask(t.id, currentDay.id)}
+                      className={`w-full p-3 rounded-xl border text-left flex items-start gap-3 transition-colors cursor-pointer ${
+                        done
+                          ? 'bg-emerald-950/20 border-emerald-500/20 text-gray-400'
+                          : 'bg-white/5 border-white/5 hover:border-white/10 text-gray-200'
+                      }`}
+                    >
+                      {done ? (
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+                      ) : (
+                        <Circle className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className={`text-xs font-medium ${done ? 'line-through text-gray-500' : ''}`}>
+                          {t.title}
+                        </div>
+                        <div className="text-[10px] text-amber-400 font-mono mt-0.5 uppercase">
+                          {t.type} • {t.topicId}
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* 6. Career Preparation Tasks */}
           {careerTasks.length > 0 && (
             <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
               <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
@@ -538,7 +548,7 @@ export function TodayPlan() {
             </div>
           )}
 
-          {/* Other / Uncategorized Tasks */}
+          {/* 7. Other / Uncategorized Tasks */}
           {otherTasks.length > 0 && (
             <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
               <div className="flex items-center justify-between border-b border-white/5 pb-2.5">

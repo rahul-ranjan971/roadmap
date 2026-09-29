@@ -33,6 +33,7 @@ export function Dashboard() {
     toggleTask,
     todayMission,
     htmlCssKnown,
+    isAiPythonTask,
   } = useApp();
 
   const currentDay = stats.currentDay;
@@ -40,10 +41,6 @@ export function Dashboard() {
   const activeDayNumber = currentDay ? currentDay.day : 1;
 
   const isAiUnlocked = !!stats.aiTrackStatus?.isUnlocked;
-  const isAiPythonTask = (t) =>
-    t.topicId.includes('python') ||
-    t.topicId.includes('genai') ||
-    t.topicId.includes('ai-engineering');
 
   const todayActiveTasks = currentDay
     ? currentDay.tasks.filter((t) => isAiUnlocked || !isAiPythonTask(t))

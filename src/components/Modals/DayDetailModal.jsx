@@ -13,16 +13,33 @@ import {
 import { useApp } from '../../context/AppContext';
 
 export function DayDetailModal({ dayId, onClose }) {
-  const { roadmap, phases, tasks, days, toggleTask, toggleDay, notes, setDayNote } = useApp();
+  const {
+    roadmap,
+    phases,
+    tasks,
+    days,
+    toggleTask,
+    toggleDay,
+    notes,
+    setDayNote,
+    stats,
+    isAiPythonTask,
+    filterObjectivesForAiGate,
+  } = useApp();
   const [noteInput, setNoteInput] = useState(() => notes[dayId] || '');
 
   const day = roadmap.find((d) => d.id === dayId);
   if (!day) return null;
 
+  const isAiUnlocked = stats?.aiTrackStatus?.isUnlocked;
   const phase = phases.find((p) => p.id === day.phase) || phases[0];
   const isCompleted = !!days[day.id];
-  const tasksCompletedCount = day.tasks.filter((t) => tasks[t.id]).length;
-  const percentDone = day.tasks.length > 0 ? Math.round((tasksCompletedCount / day.tasks.length) * 100) : 0;
+  const visibleTasks = isAiUnlocked ? day.tasks : day.tasks.filter((t) => !isAiPythonTask(t));
+  const tasksCompletedCount = visibleTasks.filter((t) => tasks[t.id]).length;
+  const percentDone = visibleTasks.length > 0 ? Math.round((tasksCompletedCount / visibleTasks.length) * 100) : 0;
+  const displayObjectives = filterObjectivesForAiGate
+    ? filterObjectivesForAiGate(day.objectives, isAiUnlocked)
+    : day.objectives;
 
   const handleNoteBlur = () => {
     setDayNote(dayId, noteInput);
@@ -73,7 +90,7 @@ export function DayDetailModal({ dayId, onClose }) {
             <div className="flex justify-between text-xs font-medium text-gray-400">
               <span>Task Progress</span>
               <span className="font-mono text-indigo-300">
-                {tasksCompletedCount} / {day.tasks.length} tasks ({percentDone}%)
+                {tasksCompletedCount} / {visibleTasks.length} tasks ({percentDone}%)
               </span>
             </div>
             <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden">
@@ -91,7 +108,7 @@ export function DayDetailModal({ dayId, onClose }) {
               Day Objectives
             </div>
             <ul className="space-y-1.5">
-              {day.objectives.map((obj, i) => (
+              {displayObjectives.map((obj, i) => (
                 <li key={i} className="text-xs text-gray-300 flex items-start gap-2">
                   <span className="text-indigo-400 font-bold">•</span>
                   <span>{obj}</span>
@@ -121,20 +138,28 @@ export function DayDetailModal({ dayId, onClose }) {
               </div>
               <div className="p-2.5 rounded-lg bg-black/30 border border-white/5">
                 <span className="font-mono text-amber-400 font-semibold block">4:00 PM – 4:30 PM</span>
-                <span className="text-gray-400">Rest & Recharge Break</span>
+                <span className="text-gray-400">
+                  {day.schedule?.aptitude ? (day.schedule.aptitude.focus || 'Aptitude Practice (KODEX)') : 'Rest & Recharge Break'}
+                </span>
               </div>
               <div className="p-2.5 rounded-lg bg-black/30 border border-white/5">
                 <span className="font-mono text-cyan-400 font-semibold block">4:30 PM – 5:15 PM</span>
-                <span className="text-gray-300">{day.schedule?.coreCS?.focus || 'Core Software Engineering'}</span>
+                <span className="text-gray-300">
+                  {day.schedule?.coreCS?.topic === 'topic-aptitude'
+                    ? 'Aptitude Practice (KODEX)'
+                    : (day.schedule?.coreCS?.focus || 'Core Software Engineering')}
+                </span>
               </div>
               <div className="p-2.5 rounded-lg bg-black/30 border border-white/5">
                 <span className="font-mono text-emerald-400 font-semibold block">5:15 PM – 5:45 PM</span>
                 <span className="text-gray-300">{day.schedule?.dsa?.focus || 'C++ & DSA Problem Solving'}</span>
               </div>
-              <div className="p-2.5 rounded-lg bg-black/30 border border-white/5 sm:col-span-2">
-                <span className="font-mono text-violet-400 font-semibold block">5:45 PM – 6:00 PM</span>
-                <span className="text-gray-300">{day.schedule?.sideTrack?.focus || 'Python & AI Side Track'}</span>
-              </div>
+              {isAiUnlocked && (
+                <div className="p-2.5 rounded-lg bg-black/30 border border-white/5 sm:col-span-2">
+                  <span className="font-mono text-violet-400 font-semibold block">5:45 PM – 6:00 PM</span>
+                  <span className="text-gray-300">{day.schedule?.sideTrack?.focus || 'Python & AI Side Track'}</span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -143,13 +168,13 @@ export function DayDetailModal({ dayId, onClose }) {
             <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider flex items-center justify-between">
               <span className="flex items-center gap-1.5">
                 <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
-                Tasks ({day.tasks.length})
+                Tasks ({visibleTasks.length})
               </span>
               <span className="text-[11px] text-gray-500 font-normal">Click checkmark to toggle</span>
             </div>
 
             <div className="space-y-2">
-              {day.tasks.map((task) => {
+              {visibleTasks.map((task) => {
                 const isTaskDone = !!tasks[task.id];
                 return (
                   <button

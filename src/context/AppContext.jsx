@@ -25,13 +25,45 @@ import {
 // track continues from its own Day 1 without the old JavaScript Day 7 offset.
 export const getDisplayDayNumber = (day, isHtmlCssKnown = false) => getActiveGlobalDayNumber(day, isHtmlCssKnown);
 
+export const isAiPythonTopicId = (topicId = '') => {
+  if (!topicId) return false;
+  return (
+    topicId.includes('python') ||
+    topicId.includes('genai') ||
+    topicId.includes('ai-engineering') ||
+    topicId.includes('gnn')
+  );
+};
+
 export const isAiPythonTask = (t) => {
   if (!t || !t.topicId) return false;
-  return (
-    t.topicId.includes('python') ||
-    t.topicId.includes('genai') ||
-    t.topicId.includes('ai-engineering')
-  );
+  return isAiPythonTopicId(t.topicId);
+};
+
+export const filterObjectivesForAiGate = (objectives = [], isAiUnlocked = false) => {
+  if (isAiUnlocked) return objectives;
+  return (objectives || [])
+    .filter((obj) => {
+      const lower = obj.toLowerCase();
+      if (
+        lower.includes('llm') ||
+        lower.includes('genai') ||
+        lower.includes('ai engineering') ||
+        lower.includes('deep learning')
+      ) {
+        return false;
+      }
+      if (/python/i.test(lower) && !/c\+\+|dsa|javascript|js/i.test(lower)) {
+        return false;
+      }
+      return true;
+    })
+    .map((obj) =>
+      obj
+        .replace(/\s*(?:and|,)\s*Python(?:\s+basics)?/gi, '')
+        .replace(/Python\s+and\s*/gi, '')
+        .trim()
+    );
 };
 
 export const checkIsAiTrackUnlocked = (daysMap = {}) => {
@@ -485,6 +517,7 @@ export function AppProvider({ children }) {
       python: { total: 0, completed: 0 },
       aptitude: { total: 0, completed: 0 },
       career: { total: 0, completed: 0 },
+      genai: { total: 0, completed: 0 },
     };
 
     roadmap.forEach(day => {
@@ -610,8 +643,9 @@ export function AppProvider({ children }) {
 
     const sections = [];
 
-    // Main Track: HTML/CSS are excluded from the active roadmap for learners who already know them.
+    // 1. Main Track (Sheryians KODEX): HTML/CSS excluded for known learners; exclude locked AI/Python tasks
     const mainTasks = day.tasks.filter(t => {
+      if (isAiPythonTask(t)) return false;
       const top = topics.find(tp => tp.id === t.topicId);
       return (!top || top.track === 'main') && !['topic-html', 'topic-css'].includes(t.topicId);
     });
@@ -626,53 +660,7 @@ export function AppProvider({ children }) {
       });
     }
 
-    // Core CS - Strictly follows: 1. SQL -> 2. OOP -> 3. DBMS -> 4. OS -> 5. CN -> 6. System Design
-    const CORE_CS_ORDER = [
-      'topic-sql',
-      'topic-oop',
-      'topic-dbms',
-      'topic-os',
-      'topic-cn',
-      'topic-system-design',
-    ];
-    const coreTasks = day.tasks
-      .filter(t => {
-        const top = topics.find(tp => tp.id === t.topicId);
-        return top?.track === 'core-cs';
-      })
-      .sort((a, b) => {
-        const aIdx = CORE_CS_ORDER.findIndex(id => a.topicId.startsWith(id));
-        const bIdx = CORE_CS_ORDER.findIndex(id => b.topicId.startsWith(id));
-        return (aIdx === -1 ? 99 : aIdx) - (bIdx === -1 ? 99 : bIdx);
-      });
-    if (coreTasks.length > 0 || day.schedule?.coreCS) {
-      sections.push({
-        id: 'core-cs',
-        label: 'Core CS',
-        badge: 'Page Source',
-        color: 'border-cyan-500/30 text-cyan-400 bg-cyan-500/10',
-        focus: day.schedule?.coreCS?.focus || coreTasks[0]?.title || 'Core CS & System Design',
-        tasks: coreTasks,
-      });
-    }
-
-    // Aptitude (Sheryians KODEX) - strictly independent track
-    const aptitudeTasks = day.tasks.filter(t => {
-      const top = topics.find(tp => tp.id === t.topicId);
-      return top?.track === 'aptitude' || t.topicId.startsWith('topic-aptitude');
-    });
-    if (aptitudeTasks.length > 0) {
-      sections.push({
-        id: 'aptitude',
-        label: 'Aptitude',
-        badge: 'KODEX Aptitude',
-        color: 'border-violet-500/30 text-violet-400 bg-violet-500/10',
-        focus: aptitudeTasks[0]?.title || 'Aptitude & Reasoning',
-        tasks: aptitudeTasks,
-      });
-    }
-
-    // DSA with C++
+    // 2. DSA with C++ (Page Source)
     const dsaTasks = day.tasks.filter(t => {
       const top = topics.find(tp => tp.id === t.topicId);
       return top?.track === 'cpp-dsa' || t.topicId.includes('dsa') || t.topicId.includes('cpp');
@@ -681,14 +669,69 @@ export function AppProvider({ children }) {
       sections.push({
         id: 'dsa',
         label: 'DSA with C++',
-        badge: 'Problem Solving',
+        badge: 'Page Source',
         color: 'border-emerald-500/30 text-emerald-400 bg-emerald-500/10',
         focus: day.schedule?.dsa?.focus || dsaTasks[0]?.title || 'Algorithm Problem Solving',
         tasks: dsaTasks,
       });
     }
 
-    // Python Track — only visible when AI track is unlocked
+    // 3. Aptitude (Sheryians KODEX) - strictly independent track from Core CS
+    const aptitudeTasks = day.tasks.filter(t => {
+      const top = topics.find(tp => tp.id === t.topicId);
+      return top?.track === 'aptitude' || t.topicId === 'topic-aptitude' || t.topicId.startsWith('topic-aptitude');
+    });
+    const isAptitudeScheduled = day.schedule?.aptitude || day.schedule?.coreCS?.topic === 'topic-aptitude';
+    if (aptitudeTasks.length > 0 || isAptitudeScheduled) {
+      sections.push({
+        id: 'aptitude',
+        label: 'Aptitude',
+        badge: 'KODEX Aptitude',
+        color: 'border-violet-500/30 text-violet-400 bg-violet-500/10',
+        focus: day.schedule?.aptitude?.focus || (day.schedule?.coreCS?.topic === 'topic-aptitude' ? day.schedule.coreCS.focus : null) || aptitudeTasks[0]?.title || 'Quantitative & Logical Reasoning',
+        tasks: aptitudeTasks,
+      });
+    }
+
+    // 4. Core CS (Page Source) - strictly follows: SQL -> OOP -> DBMS -> OS -> CN -> System Design
+    const CORE_CS_ORDER = [
+      'topic-sql',
+      'topic-oop',
+      'topic-dbms',
+      'topic-os',
+      'topic-cn',
+      'topic-system-design',
+    ];
+    const isCoreCsTopic = (topicId = '') =>
+      CORE_CS_ORDER.some(id => topicId === id || topicId.startsWith(`${id}-`));
+
+    const coreTasks = day.tasks
+      .filter(t => {
+        if (isAiPythonTask(t)) return false;
+        const top = topics.find(tp => tp.id === t.topicId);
+        return top?.track === 'core-cs' || isCoreCsTopic(t.topicId);
+      })
+      .sort((a, b) => {
+        const aIdx = CORE_CS_ORDER.findIndex(id => a.topicId.startsWith(id));
+        const bIdx = CORE_CS_ORDER.findIndex(id => b.topicId.startsWith(id));
+        return (aIdx === -1 ? 99 : aIdx) - (bIdx === -1 ? 99 : bIdx);
+      });
+
+    const hasCoreCsSchedule = day.schedule?.coreCS && day.schedule.coreCS.topic !== 'topic-aptitude' && !isAiPythonTopicId(day.schedule.coreCS.topic);
+    if (coreTasks.length > 0 || hasCoreCsSchedule || day.day === 1) {
+      sections.push({
+        id: 'core-cs',
+        label: 'Core CS',
+        badge: 'Page Source',
+        color: 'border-cyan-500/30 text-cyan-400 bg-cyan-500/10',
+        focus: hasCoreCsSchedule
+          ? day.schedule.coreCS.focus
+          : (coreTasks[0]?.title || 'Core CS: SQL → OOP → DBMS → OS → CN → System Design (Begins Day 6)'),
+        tasks: coreTasks,
+      });
+    }
+
+    // 5. Python Track — only visible when AI track is unlocked
     const pythonTasks = day.tasks.filter(t => {
       const top = topics.find(tp => tp.id === t.topicId);
       return top?.track === 'python' || t.topicId.includes('python');
@@ -704,10 +747,10 @@ export function AppProvider({ children }) {
       });
     }
 
-    // AI Track — only visible when AI track is unlocked
+    // 6. AI Track — only visible when AI track is unlocked
     const aiTasks = day.tasks.filter(t => {
       const top = topics.find(tp => tp.id === t.topicId);
-      return top?.track === 'genai' || t.topicId.includes('genai') || t.topicId.includes('ai-engineering');
+      return top?.track === 'genai' || t.topicId.includes('genai') || t.topicId.includes('ai-engineering') || t.topicId.includes('gnn');
     });
     if (stats.aiTrackStatus.isUnlocked && (aiTasks.length > 0 || day.schedule?.aiTrack)) {
       sections.push({
@@ -937,6 +980,9 @@ export function AppProvider({ children }) {
     stats,
     aiTrackStatus: stats.aiTrackStatus,
     todayMission,
+    isAiPythonTask,
+    isAiPythonTopicId,
+    filterObjectivesForAiGate,
 
     // Learning Level (HTML/CSS skip)
     htmlCssKnown,

@@ -145,7 +145,7 @@ export const topics = [
   {
     id: "topic-gnn",
     name: "Graph Neural Networks",
-    track: "main",
+    track: "genai",
     phase: "phase-10",
     icon: "🕸️",
     subtopics: [
@@ -643,7 +643,7 @@ export const topics = [
   {
     id: "topic-genai",
     name: "Generative AI",
-    track: "main",
+    track: "genai",
     phase: "phase-09",
     icon: "✨",
     subtopics: [
@@ -673,7 +673,7 @@ export const topics = [
   {
     id: "topic-ai-engineering",
     name: "AI Engineering",
-    track: "main",
+    track: "genai",
     phase: "phase-10",
     icon: "🧬",
     subtopics: [
