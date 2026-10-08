@@ -121,45 +121,49 @@ export function DayDetailModal({ dayId, onClose }) {
           <div className="p-4 rounded-xl bg-white/5 border border-white/5">
             <div className="text-xs font-semibold text-purple-300 uppercase tracking-wider mb-3 flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5" />
-              Daily Study Schedule (11:30 AM – 6:00 PM)
+              Daily Study Schedule (11:30 AM – 9:00 PM • Locked Timetable)
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
               <div className="p-2.5 rounded-lg bg-black/30 border border-white/5">
-                <span className="font-mono text-indigo-400 font-semibold block">11:30 AM – 1:00 PM</span>
-                <span className="text-gray-300">{day.schedule?.mainTrack?.focus || 'Main Track Focus'}</span>
+                <span className="font-mono text-indigo-400 font-semibold block">11:30 AM – 1:00 PM (1.5h)</span>
+                <span className="text-gray-300">Main Placement/Career Track (Part 1)</span>
               </div>
               <div className="p-2.5 rounded-lg bg-black/30 border border-white/5">
-                <span className="font-mono text-amber-400 font-semibold block">1:00 PM – 2:30 PM</span>
-                <span className="text-gray-400">Lunch & Mind Rest Break</span>
+                <span className="font-mono text-violet-400 font-semibold block">1:00 PM – 1:30 PM (0.5h)</span>
+                <span className="text-gray-300">{day.schedule?.aptitude?.focus || 'Placement Aptitude Speed Drills'}</span>
+              </div>
+              <div className="p-2.5 rounded-lg bg-black/30 border border-white/5 sm:col-span-2">
+                <span className="font-mono text-amber-400 font-semibold block">1:30 PM – 2:30 PM (1.0h)</span>
+                <span className="text-gray-400">Lunch & Recovery Break (Non-study)</span>
               </div>
               <div className="p-2.5 rounded-lg bg-black/30 border border-white/5">
-                <span className="font-mono text-indigo-400 font-semibold block">2:30 PM – 4:00 PM</span>
-                <span className="text-gray-300">Main Track Deep Practice</span>
+                <span className="font-mono text-indigo-400 font-semibold block">2:30 PM – 4:00 PM (1.5h)</span>
+                <span className="text-gray-300">Main Placement/Career Track (Part 2)</span>
               </div>
               <div className="p-2.5 rounded-lg bg-black/30 border border-white/5">
-                <span className="font-mono text-amber-400 font-semibold block">4:00 PM – 4:30 PM</span>
-                <span className="text-gray-400">
-                  {day.schedule?.aptitude ? (day.schedule.aptitude.focus || 'Aptitude Practice (KODEX)') : 'Rest & Recharge Break'}
-                </span>
+                <span className="font-mono text-amber-400 font-semibold block">4:00 PM – 4:15 PM (0.25h)</span>
+                <span className="text-gray-400">Short Break (Non-study)</span>
               </div>
               <div className="p-2.5 rounded-lg bg-black/30 border border-white/5">
-                <span className="font-mono text-cyan-400 font-semibold block">4:30 PM – 5:15 PM</span>
-                <span className="text-gray-300">
-                  {day.schedule?.coreCS?.topic === 'topic-aptitude'
-                    ? 'Aptitude Practice (KODEX)'
-                    : (day.schedule?.coreCS?.focus || 'Core Software Engineering')}
-                </span>
+                <span className="font-mono text-cyan-400 font-semibold block">4:15 PM – 5:15 PM (1.0h)</span>
+                <span className="text-gray-300">{day.schedule?.coreCS?.focus || 'Core CS (SQL → OOP → DBMS → OS → CN → System Design)'}</span>
               </div>
               <div className="p-2.5 rounded-lg bg-black/30 border border-white/5">
-                <span className="font-mono text-emerald-400 font-semibold block">5:15 PM – 5:45 PM</span>
-                <span className="text-gray-300">{day.schedule?.dsa?.focus || 'C++ & DSA Problem Solving'}</span>
+                <span className="font-mono text-emerald-400 font-semibold block">5:15 PM – 6:00 PM (0.75h)</span>
+                <span className="text-gray-300">{day.schedule?.dsa?.focus || 'C++ + DSA Problem Solving'}</span>
               </div>
-              {isAiUnlocked && (
-                <div className="p-2.5 rounded-lg bg-black/30 border border-white/5 sm:col-span-2">
-                  <span className="font-mono text-violet-400 font-semibold block">5:45 PM – 6:00 PM</span>
-                  <span className="text-gray-300">{day.schedule?.sideTrack?.focus || 'Python & AI Side Track'}</span>
-                </div>
-              )}
+              <div className="p-2.5 rounded-lg bg-black/30 border border-white/5 sm:col-span-2">
+                <span className="font-mono text-amber-400 font-semibold block">6:00 PM – 6:30 PM (0.5h)</span>
+                <span className="text-gray-400">Rest & Refreshment Break (Non-study)</span>
+              </div>
+              <div className="p-2.5 rounded-lg bg-black/30 border border-white/5 sm:col-span-2">
+                <span className="font-mono text-purple-400 font-semibold block">6:30 PM – 9:00 PM (2.5h)</span>
+                <span className="text-gray-300">{day.schedule?.sem5?.focus || 'Semester 5 University Track (46 Units from BCA PDFs)'}</span>
+              </div>
+              <div className="p-2.5 rounded-lg bg-red-950/20 border border-red-500/20 sm:col-span-2 text-center">
+                <span className="font-mono text-red-400 font-bold block">9:00 PM — HARD STOP</span>
+                <span className="text-gray-400 text-[11px]">Strictly zero study past 9:00 PM. Rest, sleep, and recovery.</span>
+              </div>
             </div>
           </div>
 

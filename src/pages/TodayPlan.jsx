@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
   CalendarCheck,
   CheckCircle2,
@@ -16,6 +16,7 @@ import {
   ChevronLeft,
   ChevronRight,
   FileEdit,
+  GraduationCap,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -79,6 +80,11 @@ export function TodayPlan() {
     );
   };
 
+  const isSem5Task = (t) => {
+    const top = topics?.find((tp) => tp.id === t.topicId);
+    return top?.track === 'sem5' || t.topicId.startsWith('topic-sem5-') || t.topicId.includes('sem5');
+  };
+
   // Main Stack (Sheryians KODEX)
   const mainTasks = currentDay.tasks.filter(
     (t) =>
@@ -86,7 +92,8 @@ export function TodayPlan() {
       !isAptitudeTask(t) &&
       !isDsaTask(t) &&
       !isAiPythonTask(t) &&
-      !isCareerTask(t)
+      !isCareerTask(t) &&
+      !isSem5Task(t)
   );
 
   // DSA with C++ (Page Source)
@@ -104,6 +111,9 @@ export function TodayPlan() {
       return (aIdx === -1 ? 99 : aIdx) - (bIdx === -1 ? 99 : bIdx);
     });
 
+  // Semester 5 University Track Tasks (6:30–9:00 PM)
+  const sem5Tasks = currentDay.tasks.filter(isSem5Task);
+
   // Python & AI Track Tasks
   const aiPythonTasks = currentDay.tasks.filter(isAiPythonTask);
 
@@ -116,6 +126,7 @@ export function TodayPlan() {
     ...dsaTasks.map((t) => t.id),
     ...aptitudeTasks.map((t) => t.id),
     ...coreTasks.map((t) => t.id),
+    ...sem5Tasks.map((t) => t.id),
     ...aiPythonTasks.map((t) => t.id),
     ...careerTasks.map((t) => t.id),
   ]);
@@ -219,14 +230,14 @@ export function TodayPlan() {
           </div>
         </div>
 
-        {/* Estimated Time */}
+        {/* Scheduled Time */}
         <div className="glass-panel p-5 rounded-2xl border border-white/5 flex items-center gap-3">
           <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400">
             <Clock className="w-5 h-5" />
           </div>
           <div>
-            <div className="text-xs text-gray-400">Estimated Study Time</div>
-            <div className="text-sm font-bold text-white font-mono">5.5 Hours (11:30 AM – 6:00 PM)</div>
+            <div className="text-xs text-gray-400">Scheduled Study Time</div>
+            <div className="text-sm font-bold text-white font-mono">7.75 Hours (11:30 AM – 9:00 PM)</div>
           </div>
         </div>
 
@@ -322,7 +333,7 @@ export function TodayPlan() {
               <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
                 <span className="text-xs font-bold text-emerald-300 uppercase tracking-wider flex items-center gap-1.5">
                   <Binary className="w-4 h-4" />
-                  C++ & DSA Practice (5:15–5:45)
+                  C++ & DSA Practice (5:15–6:00)
                 </span>
                 <span className="text-[11px] text-gray-400 font-mono">
                   {dsaTasks.filter((t) => tasks[t.id]).length}/{dsaTasks.length} done
@@ -362,12 +373,12 @@ export function TodayPlan() {
           )}
 
           {/* 3. Aptitude Track Tasks (Sheryians KODEX) */}
-          {aptitudeTasks.length > 0 && (
+          {(aptitudeTasks.length > 0 || currentDay.schedule?.aptitude) && (
             <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
               <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
                 <span className="text-xs font-bold text-violet-300 uppercase tracking-wider flex items-center gap-1.5">
                   <Brain className="w-4 h-4 text-violet-400" />
-                  Aptitude • KODEX
+                  Placement Aptitude (1:00–1:30)
                 </span>
                 <span className="text-[11px] text-gray-400 font-mono">
                   {aptitudeTasks.filter((t) => tasks[t.id]).length}/{aptitudeTasks.length} done
@@ -396,12 +407,17 @@ export function TodayPlan() {
                           {t.title}
                         </div>
                         <div className="text-[10px] text-violet-400 font-mono mt-0.5 uppercase">
-                          {t.type} • KODEX Aptitude
+                          {t.type} • Placement Aptitude
                         </div>
                       </div>
                     </button>
                   );
                 })}
+                {aptitudeTasks.length === 0 && (
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-400">
+                    {currentDay.schedule?.aptitude?.focus || 'Placement Aptitude Speed Drills'}
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -412,7 +428,7 @@ export function TodayPlan() {
               <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
                 <span className="text-xs font-bold text-cyan-300 uppercase tracking-wider flex items-center gap-1.5">
                   <Cpu className="w-4 h-4" />
-                  Core CS • Page Source (4:30–5:15)
+                  Core CS (4:15–5:15)
                 </span>
                 <span className="text-[11px] text-gray-400 font-mono">
                   {coreTasks.filter((t) => tasks[t.id]).length}/{coreTasks.length} done
@@ -548,7 +564,57 @@ export function TodayPlan() {
             </div>
           )}
 
-          {/* 7. Other / Uncategorized Tasks */}
+          {/* 7. Semester 5 University Track Tasks (6:30–9:00 PM) */}
+          {(sem5Tasks.length > 0 || currentDay.schedule?.sem5) && (
+            <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
+              <div className="flex items-center justify-between border-b border-white/5 pb-2.5">
+                <span className="text-xs font-bold text-purple-300 uppercase tracking-wider flex items-center gap-1.5">
+                  <GraduationCap className="w-4 h-4 text-purple-400" />
+                  Semester 5 University Track (6:30–9:00)
+                </span>
+                <span className="text-[11px] text-gray-400 font-mono">
+                  {sem5Tasks.filter((t) => tasks[t.id]).length}/{sem5Tasks.length} done
+                </span>
+              </div>
+              <div className="space-y-2">
+                {sem5Tasks.map((t) => {
+                  const done = !!tasks[t.id];
+                  return (
+                    <button
+                      key={t.id}
+                      onClick={() => toggleTask(t.id, currentDay.id)}
+                      className={`w-full p-3 rounded-xl border text-left flex items-start gap-3 transition-colors cursor-pointer ${
+                        done
+                          ? 'bg-emerald-950/20 border-emerald-500/20 text-gray-400'
+                          : 'bg-white/5 border-white/5 hover:border-white/10 text-gray-200'
+                      }`}
+                    >
+                      {done ? (
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+                      ) : (
+                        <Circle className="w-4 h-4 text-gray-500 mt-0.5 shrink-0" />
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className={`text-xs font-medium ${done ? 'line-through text-gray-500' : ''}`}>
+                          {t.title}
+                        </div>
+                        <div className="text-[10px] text-purple-400 font-mono mt-0.5 uppercase">
+                          {t.type} • {t.topicId}
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+                {sem5Tasks.length === 0 && (
+                  <div className="p-3 rounded-xl bg-white/5 border border-white/5 text-xs text-gray-400">
+                    {currentDay.schedule?.sem5?.focus || 'Semester 5 University Studies'}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* 8. Other / Uncategorized Tasks */}
           {otherTasks.length > 0 && (
             <div className="glass-panel p-5 rounded-2xl border border-white/5 space-y-3">
               <div className="flex items-center justify-between border-b border-white/5 pb-2.5">

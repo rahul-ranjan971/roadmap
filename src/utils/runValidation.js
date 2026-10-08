@@ -1,4 +1,4 @@
-import { roadmap } from '../data/roadmap.js';
+import { roadmap, bufferDays } from '../data/roadmap.js';
 import { phases } from '../data/phases.js';
 import { topics } from '../data/topics.js';
 import { projects } from '../data/projects.js';
@@ -16,13 +16,17 @@ const result = validateRoadmap(
   projects,
   careers,
   practiceResources,
-  quotes
+  quotes,
+  bufferDays
 );
 
 console.log('--- STATS ---');
 console.log(`Phases: ${result.stats.phases}`);
 console.log(`Weeks: ${result.stats.weeks}`);
 console.log(`Study Days: ${result.stats.studyDays}`);
+console.log(`Buffer Days: ${result.stats.bufferDays} (Zero scheduled study hours)`);
+console.log(`Total Calendar Days: ${result.stats.totalCalendarDays} (120 study + 15 buffer)`);
+console.log(`Daily Study Timetable: 7.75h/day scheduled study capacity`);
 console.log(`Sunday Rest Days: ${result.stats.sundayRestDays}`);
 console.log(`Topics: ${result.stats.topics}`);
 console.log(`Subtopics: ${result.stats.subtopics}`);

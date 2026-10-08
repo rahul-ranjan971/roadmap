@@ -518,6 +518,7 @@ export function AppProvider({ children }) {
       aptitude: { total: 0, completed: 0 },
       career: { total: 0, completed: 0 },
       genai: { total: 0, completed: 0 },
+      sem5: { total: 0, completed: 0 },
     };
 
     roadmap.forEach(day => {

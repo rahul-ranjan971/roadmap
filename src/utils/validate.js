@@ -4,7 +4,7 @@
  * Run via: node src/utils/validate.js (or import in tests)
  */
 
-export function validateRoadmap(roadmap, phases, topics, projects, careers, practiceResources, quotes) {
+export function validateRoadmap(roadmap, phases, topics, projects, careers, practiceResources, quotes, bufferDays) {
   const errors = [];
   const warnings = [];
 
@@ -69,6 +69,8 @@ export function validateRoadmap(roadmap, phases, topics, projects, careers, prac
     'topic-data-analytics', 'topic-data-engineering',
     'topic-genai', 'topic-ai-engineering',
     'topic-resume', 'topic-communication', 'topic-interview-prep',
+    'topic-sem5-dca3108', 'topic-sem5-dca3105', 'topic-sem5-dca3107',
+    'topic-sem5-dca31e1', 'topic-sem5-dca3106',
   ];
 
   for (const id of mandatoryTopics) {
@@ -166,6 +168,17 @@ export function validateRoadmap(roadmap, phases, topics, projects, careers, prac
     errors.push('Three.js topic MISSING');
   }
 
+  // --- BUFFER DAYS (15 buffer days, zero scheduled study hours) ---
+  if (bufferDays) {
+    if (bufferDays.length !== 15) {
+      errors.push(`Expected 15 buffer days, got ${bufferDays.length}`);
+    }
+    const nonZeroHours = bufferDays.filter((b) => b.scheduledStudyHours !== 0);
+    if (nonZeroHours.length > 0) {
+      errors.push(`${nonZeroHours.length} buffer days have non-zero scheduled study hours`);
+    }
+  }
+
   // Compute stats
   const totalSubtopics = (topics || []).reduce((sum, t) => sum + (t.subtopics?.length || 0), 0);
   const totalTasks = (roadmap || []).reduce((sum, d) => sum + (d.tasks?.length || 0), 0);
@@ -181,6 +194,8 @@ export function validateRoadmap(roadmap, phases, topics, projects, careers, prac
       phases: phases?.length || 0,
       weeks,
       studyDays: roadmap?.length || 0,
+      bufferDays: bufferDays?.length || 0,
+      totalCalendarDays: (roadmap?.length || 0) + (bufferDays?.length || 0),
       sundayRestDays: weeks, // one per week
       topics: topics?.length || 0,
       subtopics: totalSubtopics,

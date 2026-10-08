@@ -1,0 +1,247 @@
+{
+  "Aptitude and Technical Development": {
+    "total_pages": 562,
+    "units": {
+      "1": {
+        "title": "Quantitative Techniques",
+        "start_page": 1,
+        "topics": []
+      },
+      "2": {
+        "title": "Verbal Reasoning",
+        "start_page": 91,
+        "topics": []
+      },
+      "3": {
+        "title": "Logical Reasoning",
+        "start_page": 179,
+        "topics": []
+      },
+      "4": {
+        "title": "Interview Preparation and Group Discussion",
+        "start_page": 260,
+        "topics": []
+      },
+      "5": {
+        "title": "Programming Basics",
+        "start_page": 320,
+        "topics": []
+      },
+      "6": {
+        "title": "Advanced Object-Oriented Concepts",
+        "start_page": 416,
+        "topics": []
+      },
+      "7": {
+        "title": "DBMS and Data Structures & Algorithms",
+        "start_page": 476,
+        "topics": []
+      }
+    }
+  },
+  "Cloud Computing & Applications": {
+    "total_pages": 459,
+    "units": {
+      "1": {
+        "title": "Introduction to Cloud Computing",
+        "start_page": 2,
+        "topics": []
+      },
+      "2": {
+        "title": "Understanding Cloud Computing Architectures",
+        "start_page": 46,
+        "topics": []
+      },
+      "3": {
+        "title": "Cloud Characteristics, Service Models, and Deployment",
+        "start_page": 89,
+        "topics": []
+      },
+      "4": {
+        "title": "Overview of Technology Involved in Cloud Computing",
+        "start_page": 130,
+        "topics": []
+      },
+      "5": {
+        "title": "Data Centres and Containerisation in Cloud Computing",
+        "start_page": 175,
+        "topics": []
+      },
+      "6": {
+        "title": "Compute Virtualisation",
+        "start_page": 218,
+        "topics": []
+      },
+      "7": {
+        "title": "Desktop and Application Virtualisation",
+        "start_page": 262,
+        "topics": []
+      },
+      "8": {
+        "title": "Virtualised Data Centre Networking",
+        "start_page": 306,
+        "topics": []
+      },
+      "9": {
+        "title": "Service Management in Cloud Computing",
+        "start_page": 349,
+        "topics": []
+      },
+      "10": {
+        "title": "Data Management in Cloud Computing",
+        "start_page": 411,
+        "topics": []
+      }
+    }
+  },
+  "Distributed Systems": {
+    "total_pages": 522,
+    "units": {
+      "1": {
+        "title": "Introduction to Distributed Systems",
+        "start_page": 2,
+        "topics": []
+      },
+      "2": {
+        "title": "Basics of Distributed Shared Memory (DSM)",
+        "start_page": 51,
+        "topics": []
+      },
+      "3": {
+        "title": "Detailed Study of Distributed Shared Memory (DSM)",
+        "start_page": 100,
+        "topics": []
+      },
+      "4": {
+        "title": "Inter Process Communication Part",
+        "start_page": 156,
+        "topics": []
+      },
+      "5": {
+        "title": "Inter Process Communication Part",
+        "start_page": 210,
+        "topics": []
+      },
+      "6": {
+        "title": "Mutual Exclusion In Distributed System",
+        "start_page": 272,
+        "topics": []
+      },
+      "7": {
+        "title": "Distributed Scheduling",
+        "start_page": 329,
+        "topics": []
+      },
+      "8": {
+        "title": "Deadlocks in Distributed Systems: part",
+        "start_page": 387,
+        "topics": []
+      },
+      "9": {
+        "title": "Deadlocks in Distributed Systems: Part",
+        "start_page": 439,
+        "topics": []
+      },
+      "10": {
+        "title": "Distributed File Systems",
+        "start_page": 484,
+        "topics": []
+      }
+    }
+  },
+  "Machine Learning": {
+    "total_pages": 484,
+    "units": {
+      "1": {
+        "title": "Introduction to Machine Learning",
+        "start_page": 1,
+        "topics": []
+      },
+      "2": {
+        "title": "Supervised Machine Learning",
+        "start_page": 45,
+        "topics": []
+      },
+      "3": {
+        "title": "K-Nearest Neighbors",
+        "start_page": 91,
+        "topics": []
+      },
+      "4": {
+        "title": "Na\u00efve Bayes",
+        "start_page": 137,
+        "topics": []
+      },
+      "7": {
+        "title": "Unsupervised Machine Learning",
+        "start_page": 276,
+        "topics": []
+      },
+      "8": {
+        "title": "Cluster Analysis",
+        "start_page": 333,
+        "topics": []
+      },
+      "9": {
+        "title": "Partition-Based Clustering",
+        "start_page": 422,
+        "topics": []
+      }
+    }
+  },
+  "Mobile Application Development": {
+    "total_pages": 430,
+    "units": {
+      "1": {
+        "title": "Introduction to Android",
+        "start_page": 1,
+        "topics": []
+      },
+      "2": {
+        "title": "Android Development Environment",
+        "start_page": 41,
+        "topics": []
+      },
+      "3": {
+        "title": "Overview of Threads",
+        "start_page": 84,
+        "topics": []
+      },
+      "4": {
+        "title": "Multimedia in Android",
+        "start_page": 123,
+        "topics": []
+      },
+      "5": {
+        "title": "Android Architecture",
+        "start_page": 164,
+        "topics": []
+      },
+      "6": {
+        "title": "Android Software Development Platform",
+        "start_page": 205,
+        "topics": []
+      },
+      "7": {
+        "title": "Android Framework Overview",
+        "start_page": 248,
+        "topics": []
+      },
+      "8": {
+        "title": "Understanding Android Views",
+        "start_page": 293,
+        "topics": []
+      },
+      "9": {
+        "title": "Designing Android User Interface",
+        "start_page": 341,
+        "topics": []
+      },
+      "10": {
+        "title": "Displaying Pictures in Android",
+        "start_page": 385,
+        "topics": []
+      }
+    }
+  }
+}

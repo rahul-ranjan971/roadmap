@@ -79,6 +79,7 @@ test('partial task and day imports reconcile completion state', () => {
       'day-001-task-04': true,
       'day-001-task-05': true,
       'day-001-task-06': true,
+      'day-001-task-sem5': true,
       'day-028-task-04': true,
     },
     days: {},

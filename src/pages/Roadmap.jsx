@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo, Fragment } from 'react';
 import {
   Map,
   ChevronDown,
@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { DayDetailModal } from '../components/Modals/DayDetailModal';
+import { bufferDays } from '../data/bufferDays.js';
 
 export function Roadmap() {
   const {
@@ -93,6 +94,7 @@ export function Roadmap() {
         dsa: () => topicIds.some((id) => id.includes('dsa') || id.includes('cpp')),
         'core-cs': () => topicIds.some((id) => id.includes('sql') || id.includes('oop') || id.includes('dbms') || id.includes('os') || id.includes('cn') || id.includes('system-design')),
         aptitude: () => topicIds.some((id) => id.includes('aptitude')),
+        sem5: () => topicIds.some((id) => id.includes('sem5')),
         career: () => topicIds.some((id) => id.includes('resume') || id.includes('communication') || id.includes('interview')),
       }[trackFilter]?.();
 
@@ -265,7 +267,8 @@ export function Roadmap() {
             <option value="python">Python</option>
             <option value="dsa">C++ & DSA</option>
             <option value="core-cs">Core CS</option>
-            <option value="aptitude">Aptitude (KODEX)</option>
+            <option value="aptitude">Placement Aptitude</option>
+            <option value="sem5">Semester 5 University</option>
             <option value="career">Career Prep</option>
           </select>
         </div>
@@ -344,14 +347,14 @@ export function Roadmap() {
                           : day.objectives;
                         const displayDayNumber = day.day;
                         return (
-                          <div
-                            key={day.id}
-                            className={`p-4 rounded-2xl border text-left flex flex-col justify-between transition-all ${
-                              isDone
-                                ? 'bg-emerald-950/20 border-emerald-500/30 shadow-sm'
-                                : 'bg-black/30 border-white/5 hover:border-white/15'
-                            }`}
-                          >
+                          <Fragment key={day.id}>
+                            <div
+                              className={`p-4 rounded-2xl border text-left flex flex-col justify-between transition-all ${
+                                isDone
+                                  ? 'bg-emerald-950/20 border-emerald-500/30 shadow-sm'
+                                  : 'bg-black/30 border-white/5 hover:border-white/15'
+                              }`}
+                            >
                             <div>
                               <div className="flex items-center justify-between mb-2">
                                 <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-white/5 text-gray-300">
@@ -390,8 +393,41 @@ export function Roadmap() {
                               </button>
                             </div>
                           </div>
-                        );
-                      })}
+
+                          {/* Buffer / Rest / Exam Days scheduled after this study day */}
+                          {bufferDays
+                            .filter((b) => b.afterStudyDay === day.day)
+                            .map((buffer) => (
+                              <div
+                                key={buffer.id}
+                                className="p-4 rounded-2xl border border-dashed border-purple-500/30 bg-purple-950/15 flex flex-col justify-between text-left"
+                              >
+                                <div>
+                                  <div className="flex items-center justify-between mb-2">
+                                    <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300">
+                                      Calendar Day {buffer.calendarDay}
+                                    </span>
+                                    <span className="text-[10px] text-purple-400 font-mono flex items-center gap-1 uppercase font-semibold">
+                                      <Coffee className="w-3 h-3" />
+                                      {buffer.type} Buffer
+                                    </span>
+                                  </div>
+                                  <h4 className="text-xs font-bold text-purple-200 mb-1">
+                                    {buffer.title}
+                                  </h4>
+                                  <p className="text-[11px] text-gray-400 mb-3">
+                                    {buffer.description}
+                                  </p>
+                                </div>
+                                <div className="text-[10px] text-purple-400/80 font-mono pt-2 border-t border-purple-500/10 mt-auto flex items-center justify-between">
+                                  <span>0.0 Scheduled Study Hours</span>
+                                  <span className="text-gray-400">Strictly Non-Study</span>
+                                </div>
+                              </div>
+                            ))}
+                        </Fragment>
+                      );
+                    })}
 
                       {/* Sunday Rest Day Card (Visually Distinct, Zero Mandatory Tasks) */}
                       {isLastPhaseWeekSegment && (

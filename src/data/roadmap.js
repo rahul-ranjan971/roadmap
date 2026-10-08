@@ -1,2923 +1,10607 @@
+export { bufferDays } from './bufferDays.js';
+
 export const roadmap = [
-{
-  id: "day-001",
-  day: 1,
-  week: 1,
-  phase: "phase-01",
-  title: "Day 1: JavaScript Variables & Data Types",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Variables, data types, operators" },
-    aptitude: { time: "4:00-4:30", topic: "topic-aptitude", focus: "Quantitative aptitude basics" },
-    coreCS: { time: "4:30-5:15", topic: "topic-sql", focus: "SQL: SELECT, WHERE, ORDER BY" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ syntax, variables" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python syntax, variables" },
-    aiTrack: { time: "6:00-6:30", topic: "topic-genai", focus: "LLM & AI landscape overview" },
-  },
-  objectives: ["Understand var, let, const differences", "Master JavaScript data types", "Start C++ basics and SQL queries", "Explore LLM fundamentals"],
-  tasks: [
-    { id: "day-001-task-01", title: "Study var, let, const and variable scoping rules", topicId: "topic-javascript", type: "learn" },
-    { id: "day-001-task-02", title: "Learn JS data types: string, number, boolean, null, undefined, symbol", topicId: "topic-javascript", type: "learn" },
-    { id: "day-001-task-03", title: "Practice arithmetic, comparison, and logical operators", topicId: "topic-javascript", type: "practice" },
-    { id: "day-001-task-04", title: "Aptitude: number systems and basic arithmetic", topicId: "topic-aptitude", type: "learn" },
-    { id: "day-028-task-04", title: "SQL: SELECT statements, WHERE clauses, ORDER BY", topicId: "topic-sql", type: "learn" },
-    { id: "day-001-task-05", title: "C++ hello world, variables, and data types", topicId: "topic-cpp", type: "learn" },
-    { id: "day-001-task-06", title: "Python print, variables, and basic types", topicId: "topic-python-fundamentals", type: "learn" },
-    { id: "day-001-task-07", title: "AI: LLM & AI landscape overview (transformers & attention basics)", topicId: "topic-genai", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-002",
-  day: 2,
-  week: 1,
-  phase: "phase-01",
-  title: "Day 2: JavaScript Conditionals",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Conditionals, switch statements" },
-    aptitude: { time: "4:00-4:30", topic: "topic-aptitude", focus: "Percentages and ratios" },
-    coreCS: { time: "4:30-5:15", topic: "topic-sql", focus: "SQL: JOINs (INNER, LEFT, RIGHT)" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ input/output, operators" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python strings, input/output" },
-    aiTrack: { time: "6:00-6:30", topic: "topic-genai", focus: "Prompt engineering principles" },
-  },
-  objectives: ["Master if/else and ternary operators", "Use switch statements effectively", "Understand truthy and falsy values", "Learn prompt engineering basics"],
-  tasks: [
-    { id: "day-002-task-01", title: "Learn if/else, else if, and nested conditionals", topicId: "topic-javascript", type: "learn" },
-    { id: "day-002-task-02", title: "Practice switch statements and ternary operator", topicId: "topic-javascript", type: "practice" },
-    { id: "day-002-task-03", title: "Understand truthy/falsy values and type coercion", topicId: "topic-javascript", type: "learn" },
-    { id: "day-002-task-04", title: "Aptitude: percentages, profit & loss", topicId: "topic-aptitude", type: "learn" },
-    { id: "day-029-task-04", title: "SQL: INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN", topicId: "topic-sql", type: "learn" },
-    { id: "day-002-task-05", title: "C++ cin/cout, arithmetic and relational operators", topicId: "topic-cpp", type: "learn" },
-    { id: "day-002-task-06", title: "Python string operations and f-strings", topicId: "topic-python-fundamentals", type: "learn" },
-    { id: "day-002-task-07", title: "AI: Prompt engineering principles (zero-shot & few-shot)", topicId: "topic-genai", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-003",
-  day: 3,
-  week: 1,
-  phase: "phase-01",
-  title: "Day 3: JavaScript Loops",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Loops: for, while, do-while, for...of" },
-    aptitude: { time: "4:00-4:30", topic: "topic-aptitude", focus: "Time, speed, and distance" },
-    coreCS: { time: "4:30-5:15", topic: "topic-sql", focus: "SQL: GROUP BY, HAVING, aggregates" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ conditionals (if/else, switch)" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python conditionals" },
-    aiTrack: { time: "6:00-6:30", topic: "topic-genai", focus: "Text embeddings" },
-  },
-  objectives: ["Master all JavaScript loop types", "Understand break and continue", "Use for...of and for...in", "Learn text embeddings concepts"],
-  tasks: [
-    { id: "day-003-task-01", title: "Learn for, while, and do-while loops", topicId: "topic-javascript", type: "learn" },
-    { id: "day-003-task-02", title: "Practice for...of, for...in, and loop control (break/continue)", topicId: "topic-javascript", type: "practice" },
-    { id: "day-003-task-03", title: "Solve loop-based coding challenges", topicId: "topic-javascript", type: "practice" },
-    { id: "day-003-task-04", title: "Aptitude: time, speed, and distance problems", topicId: "topic-aptitude", type: "learn" },
-    { id: "day-030-task-04", title: "SQL: GROUP BY, HAVING, COUNT, SUM, AVG, MAX, MIN", topicId: "topic-sql", type: "learn" },
-    { id: "day-003-task-05", title: "C++ if/else, switch-case statements", topicId: "topic-cpp", type: "learn" },
-    { id: "day-003-task-06", title: "Python if/elif/else and boolean logic", topicId: "topic-python-fundamentals", type: "learn" },
-    { id: "day-003-task-07", title: "AI: Text embeddings and vector representations", topicId: "topic-genai", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-004",
-  day: 4,
-  week: 1,
-  phase: "phase-01",
-  title: "Day 4: JavaScript Functions & Scope",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Functions, scope, hoisting" },
-    aptitude: { time: "4:00-4:30", topic: "topic-aptitude", focus: "Averages and mixtures" },
-    coreCS: { time: "4:30-5:15", topic: "topic-sql", focus: "SQL JOINs practice" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ loops (for, while)" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python for loops, range" },
-    aiTrack: { time: "6:00-6:30", topic: "topic-genai", focus: "Vector databases" },
-  },
-  objectives: ["Understand function declarations vs expressions", "Master scope and hoisting", "Practice C++ and Python loops", "Learn vector database basics"],
-  tasks: [
-    { id: "day-004-task-01", title: "Learn function declarations, expressions, and arrow functions", topicId: "topic-javascript", type: "learn" },
-    { id: "day-004-task-02", title: "Understand scope: global, function, block scope and hoisting", topicId: "topic-javascript", type: "learn" },
-    { id: "day-004-task-03", title: "Aptitude: averages and mixture problems", topicId: "topic-aptitude", type: "learn" },
-    { id: "day-031-task-03", title: "Practice SQL JOINs on sample tables", topicId: "topic-sql", type: "practice" },
-    { id: "day-004-task-04", title: "C++ for loops, while loops, loop control", topicId: "topic-cpp", type: "learn" },
-    { id: "day-004-task-05", title: "Python for loops with range(), while loops", topicId: "topic-python-fundamentals", type: "learn" },
-    { id: "day-004-task-06", title: "AI: Vector databases & indexing concepts", topicId: "topic-genai", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-005",
-  day: 5,
-  week: 1,
-  phase: "phase-01",
-  title: "Day 5: JavaScript Arrays",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Arrays, array methods" },
-    aptitude: { time: "4:00-4:30", topic: "topic-aptitude", focus: "Simple and compound interest" },
-    coreCS: { time: "4:30-5:15", topic: "topic-sql", focus: "SQL GROUP BY & aggregations" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ functions, pass by value" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python functions basics" },
-    aiTrack: { time: "6:00-6:30", topic: "topic-genai", focus: "RAG architecture" },
-  },
-  objectives: ["Master array creation and manipulation", "Use map, filter, reduce, forEach", "Write functions in C++ and Python", "Understand RAG fundamentals"],
-  tasks: [
-    { id: "day-005-task-01", title: "Learn array methods: push, pop, shift, unshift, splice, slice", topicId: "topic-javascript", type: "learn" },
-    { id: "day-005-task-02", title: "Practice map, filter, reduce, forEach, find, some, every", topicId: "topic-javascript", type: "practice" },
-    { id: "day-005-task-03", title: "Aptitude: simple and compound interest calculations", topicId: "topic-aptitude", type: "learn" },
-    { id: "day-032-task-03", title: "Write GROUP BY queries with HAVING", topicId: "topic-sql", type: "practice" },
-    { id: "day-005-task-04", title: "C++ functions, parameters, return types", topicId: "topic-cpp", type: "learn" },
-    { id: "day-005-task-05", title: "Python def, parameters, return values", topicId: "topic-python-fundamentals", type: "learn" },
-    { id: "day-005-task-06", title: "AI: Semantic search & RAG architecture fundamentals", topicId: "topic-genai", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-006",
-  day: 6,
-  week: 1,
-  phase: "phase-01",
-  title: "Day 6: JavaScript Objects",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Objects, object methods, this keyword" },
-    coreCS: { time: "4:30-5:15", topic: "topic-sql", focus: "Subqueries, nested SELECT, EXISTS" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ arrays basics" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python lists basics" },
-    aiTrack: { time: "6:00-6:30", topic: "topic-genai", focus: "LangChain overview" },
-  },
-  objectives: ["Master object creation and manipulation", "Understand OOP fundamentals", "Work with arrays in C++ and lists in Python"],
-  tasks: [
-    { id: "day-006-task-01", title: "Learn object literals, dot/bracket notation, nested objects", topicId: "topic-javascript", type: "learn" },
-    { id: "day-006-task-02", title: "Practice Object.keys, values, entries, destructuring", topicId: "topic-javascript", type: "practice" },
-    { id: "day-035-task-03", title: "Write correlated and uncorrelated subqueries", topicId: "topic-sql", type: "practice" },
-    { id: "day-006-task-04", title: "C++ arrays: declaration, initialization, traversal", topicId: "topic-cpp", type: "learn" },
-    { id: "day-006-task-05", title: "Python lists basics", topicId: "topic-python-fundamentals", type: "learn" },
-    { id: "day-006-task-06", title: "AI: LangChain & LLM chains overview", topicId: "topic-genai", type: "learn" },
-  ],
-  revision: { topicId: "topic-javascript", focus: "Review JS variables, conditionals, loops, functions" },
-  project: null,
-},
-{
-  id: "day-007",
-  day: 7,
-  week: 2,
-  phase: "phase-01",
-  title: "Day 7: Destructuring & Spread/Rest",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Destructuring, spread/rest operators" },
-    coreCS: { time: "4:30-5:15", topic: "topic-sql", focus: "Window functions: ROW_NUMBER, RANK" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ strings basics" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python tuples, sets" },
-    aiTrack: { time: "6:00-6:30", topic: "topic-genai", focus: "LangGraph & Agent concepts" },
-  },
-  objectives: ["Master array and object destructuring", "Use spread and rest operators", "Understand OOP inheritance and polymorphism"],
-  tasks: [
-    { id: "day-007-task-01", title: "Learn array destructuring with defaults and skip patterns", topicId: "topic-javascript", type: "learn" },
-    { id: "day-007-task-02", title: "Learn object destructuring with renaming and nested patterns", topicId: "topic-javascript", type: "learn" },
-    { id: "day-007-task-03", title: "Practice spread operator for arrays/objects and rest parameters", topicId: "topic-javascript", type: "practice" },
-    { id: "day-036-task-03", title: "Write queries with ROW_NUMBER and RANK", topicId: "topic-sql", type: "practice" },
-    { id: "day-007-task-05", title: "C++ string class, string operations", topicId: "topic-cpp", type: "learn" },
-    { id: "day-007-task-06", title: "Python tuples and sets: creation, operations", topicId: "topic-python-fundamentals", type: "learn" },
-    { id: "day-007-task-07", title: "AI: LangGraph & Agent concepts", topicId: "topic-genai", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-008",
-  day: 8,
-  week: 2,
-  phase: "phase-01",
-  title: "Day 8: Closures & Higher-Order Functions",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Closures, higher-order functions, callbacks" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP concepts: classes, objects, encapsulation" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ functions: overloading, default args" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python dictionaries" },
-  },
-  objectives: ["Understand closures and lexical scope", "Write higher-order functions", "Use callbacks effectively"],
-  tasks: [
-    { id: "day-008-task-01", title: "Study closures: lexical environment, data privacy patterns", topicId: "topic-javascript", type: "learn" },
-    { id: "day-008-task-02", title: "Write higher-order functions and callback patterns", topicId: "topic-javascript", type: "practice" },
-    { id: "day-008-task-03", title: "Practice IIFE, factory functions using closures", topicId: "topic-javascript", type: "practice" },
-    { id: "day-006-task-03", title: "OOP intro: classes, objects, encapsulation concepts", topicId: "topic-oop", type: "learn" },
-    { id: "day-008-task-05", title: "C++ function overloading and default parameters", topicId: "topic-cpp", type: "learn" },
-    { id: "day-008-task-06", title: "Python dictionaries: creation, access, methods", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-009",
-  day: 9,
-  week: 2,
-  phase: "phase-01",
-  title: "Day 9: Promises & Async/Await",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Promises, async/await, error handling" },
-    aptitude: { time: "4:00-4:30", topic: "topic-aptitude", focus: "Permutations and combinations" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: inheritance and polymorphism" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ pointers introduction" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python list comprehensions" },
-  },
-  objectives: ["Understand Promise lifecycle", "Master async/await syntax", "Begin interactive JS project"],
-  tasks: [
-    { id: "day-009-task-01", title: "Learn Promise creation, then/catch/finally chains", topicId: "topic-javascript", type: "learn" },
-    { id: "day-009-task-02", title: "Master async/await with try/catch error handling", topicId: "topic-javascript", type: "learn" },
-    { id: "day-009-task-03", title: "Interactive JS App: project setup and planning", topicId: "topic-javascript", type: "project" },
-    { id: "day-009-task-04", title: "Aptitude: permutations and combinations basics", topicId: "topic-aptitude", type: "learn" },
-    { id: "day-007-task-04", title: "OOP: inheritance and polymorphism concepts", topicId: "topic-oop", type: "learn" },
-    { id: "day-009-task-05", title: "C++ pointers: declaration, dereferencing, pointer arithmetic", topicId: "topic-cpp", type: "learn" },
-    { id: "day-009-task-06", title: "Python list comprehensions and generator expressions", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: { topicId: "topic-javascript", focus: "Review JS objects, destructuring, closures" },
-  project: { projectId: "project-02", milestone: "Project setup and core logic" },
-},
-{
-  id: "day-010",
-  day: 10,
-  week: 2,
-  phase: "phase-01",
-  title: "Day 10: Fetch API & Error Handling",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Fetch API, HTTP methods, error handling" },
-    aptitude: { time: "4:00-4:30", topic: "topic-aptitude", focus: "Probability basics" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: abstraction, interfaces" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ references, pass by reference" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python modules and imports" },
-  },
-  objectives: ["Master Fetch API for GET and POST requests", "Handle HTTP errors gracefully", "Continue interactive JS app development"],
-  tasks: [
-    { id: "day-010-task-01", title: "Learn Fetch API: GET, POST, headers, JSON parsing", topicId: "topic-javascript", type: "learn" },
-    { id: "day-010-task-02", title: "Practice error handling: try/catch, custom errors, error types", topicId: "topic-javascript", type: "practice" },
-    { id: "day-010-task-03", title: "Interactive JS App: fetch data and display results", topicId: "topic-javascript", type: "project" },
-    { id: "day-010-task-04", title: "Aptitude: probability fundamentals", topicId: "topic-aptitude", type: "learn" },
-    { id: "day-008-task-04", title: "OOP: abstraction and interface concepts", topicId: "topic-oop", type: "learn" },
-    { id: "day-010-task-05", title: "C++ references and pass by reference vs value", topicId: "topic-cpp", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-02", milestone: "API integration and data display" },
-},
-{
-  id: "day-011",
-  day: 11,
-  week: 2,
-  phase: "phase-01",
-  title: "Day 11: DOM Manipulation & Events",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "DOM manipulation, event handling" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP in practice: design principles" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ STL vectors" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python string methods" },
-  },
-  objectives: ["Master DOM selection and manipulation", "Handle events with delegation", "Add interactivity to JS project"],
-  tasks: [
-    { id: "day-011-task-01", title: "Learn DOM: querySelector, createElement, appendChild, remove", topicId: "topic-javascript", type: "learn" },
-    { id: "day-011-task-02", title: "Practice event listeners, event delegation, bubbling/capturing", topicId: "topic-javascript", type: "practice" },
-    { id: "day-011-task-03", title: "Interactive JS App: add event handlers and DOM updates", topicId: "topic-javascript", type: "project" },
-    { id: "day-011-task-04", title: "OOP design principles: SOLID introduction", topicId: "topic-oop", type: "learn" },
-    { id: "day-011-task-05", title: "C++ STL vectors: declaration, methods, iteration", topicId: "topic-cpp", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-02", milestone: "DOM interaction and event handling" },
-},
-{
-  id: "day-012",
-  day: 12,
-  week: 2,
-  phase: "phase-01",
-  title: "Day 12: Modules & ES6+ Features",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Modules, ES6+ features, code organization" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: constructors, prototypes" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ STL maps and sets" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python file I/O basics" },
-  },
-  objectives: ["Understand ES modules import/export", "Use modern ES6+ features", "Complete interactive JS app"],
-  tasks: [
-    { id: "day-012-task-01", title: "Learn ES modules: import, export, default export, named exports", topicId: "topic-javascript", type: "learn" },
-    { id: "day-012-task-02", title: "Practice ES6+ features: template literals, optional chaining, nullish coalescing", topicId: "topic-javascript", type: "practice" },
-    { id: "day-012-task-03", title: "Interactive JS App: refactor with modules, polish, and deploy", topicId: "topic-javascript", type: "project" },
-    { id: "day-012-task-04", title: "OOP: constructors and prototype chain in JS", topicId: "topic-oop", type: "learn" },
-    { id: "day-012-task-05", title: "C++ STL map and set: usage and iteration", topicId: "topic-cpp", type: "learn" },
-  ],
-  revision: { topicId: "topic-javascript", focus: "Review JS basics: variables, types, loops, DOM" },
-  project: { projectId: "project-02", milestone: "Code refactoring and deployment" },
-},
-{
-  id: "day-013",
-  day: 13,
-  week: 3,
-  phase: "phase-02",
-  title: "Day 13: Destructuring & Spread/Rest",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Destructuring, spread/rest operators" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: encapsulation, getters/setters" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ arrays and sorting" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python list methods deep dive" },
-  },
-  objectives: ["Master array and object destructuring", "Use spread and rest operators", "Understand default values in destructuring"],
-  tasks: [
-    { id: "day-013-task-01", title: "Learn array destructuring with defaults and skip patterns", topicId: "topic-javascript", type: "learn" },
-    { id: "day-013-task-02", title: "Learn object destructuring with renaming and nested patterns", topicId: "topic-javascript", type: "learn" },
-    { id: "day-013-task-03", title: "Practice spread operator for arrays/objects and rest parameters", topicId: "topic-javascript", type: "practice" },
-    { id: "day-013-task-04", title: "OOP: encapsulation, private fields, getters and setters", topicId: "topic-oop", type: "learn" },
-    { id: "day-013-task-05", title: "C++ array manipulation and basic sorting algorithms", topicId: "topic-cpp", type: "learn" },
-    { id: "day-013-task-06", title: "Python list slicing, sorting, and advanced methods", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-014",
-  day: 14,
-  week: 3,
-  phase: "phase-02",
-  title: "Day 14: Closures & Higher-Order Functions",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Closures, higher-order functions, callbacks" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: composition vs inheritance" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ string manipulation problems" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python tuples and set operations" },
-  },
-  objectives: ["Understand closures and lexical scope", "Write higher-order functions", "Use callbacks effectively"],
-  tasks: [
-    { id: "day-014-task-01", title: "Study closures: lexical environment, data privacy patterns", topicId: "topic-javascript", type: "learn" },
-    { id: "day-014-task-02", title: "Write higher-order functions and callback patterns", topicId: "topic-javascript", type: "practice" },
-    { id: "day-014-task-03", title: "Practice IIFE, factory functions using closures", topicId: "topic-javascript", type: "practice" },
-    { id: "day-014-task-04", title: "OOP: composition vs inheritance, when to use each", topicId: "topic-oop", type: "learn" },
-    { id: "day-014-task-05", title: "C++ string problems: reverse, palindrome, anagram", topicId: "topic-cpp", type: "practice" },
-    { id: "day-014-task-06", title: "Python tuple unpacking and set operations (union, intersection)", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-015",
-  day: 15,
-  week: 3,
-  phase: "phase-02",
-  title: "Day 15: Promises & Async/Await",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Promises, async/await, error handling" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: design patterns introduction" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ pointers and dynamic memory" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python dictionaries deep dive" },
-  },
-  objectives: ["Understand Promise lifecycle", "Master async/await syntax", "Begin interactive JS project"],
-  tasks: [
-    { id: "day-015-task-01", title: "Learn Promise creation, then/catch/finally chains", topicId: "topic-javascript", type: "learn" },
-    { id: "day-015-task-02", title: "Master async/await with try/catch error handling", topicId: "topic-javascript", type: "learn" },
-    { id: "day-015-task-03", title: "Interactive JS App: project setup and planning", topicId: "topic-javascript", type: "project" },
-    { id: "day-015-task-04", title: "OOP: Singleton, Factory, Observer patterns intro", topicId: "topic-oop", type: "learn" },
-    { id: "day-015-task-05", title: "C++ pointers, new/delete, dynamic arrays", topicId: "topic-cpp", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-02", milestone: "Project setup and core logic" },
-},
-{
-  id: "day-016",
-  day: 16,
-  week: 3,
-  phase: "phase-02",
-  title: "Day 16: Fetch API & Error Handling",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Fetch API, HTTP methods, error handling" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: class-based patterns in JS" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ STL algorithms (sort, find, count)" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python dict comprehensions" },
-  },
-  objectives: ["Master Fetch API for GET and POST requests", "Handle HTTP errors gracefully", "Continue interactive JS app development"],
-  tasks: [
-    { id: "day-016-task-01", title: "Learn Fetch API: GET, POST, headers, JSON parsing", topicId: "topic-javascript", type: "learn" },
-    { id: "day-016-task-02", title: "Practice error handling: try/catch, custom errors, error types", topicId: "topic-javascript", type: "practice" },
-    { id: "day-016-task-03", title: "Interactive JS App: fetch data and display results", topicId: "topic-javascript", type: "project" },
-    { id: "day-016-task-04", title: "OOP: ES6 classes, static methods, private fields in JS", topicId: "topic-oop", type: "learn" },
-    { id: "day-016-task-05", title: "C++ STL algorithms: sort, find, count, accumulate", topicId: "topic-cpp", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-02", milestone: "API integration and data display" },
-},
-{
-  id: "day-017",
-  day: 17,
-  week: 3,
-  phase: "phase-02",
-  title: "Day 17: DOM Manipulation & Events",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "DOM manipulation, event handling" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: inheritance chains and mixins" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ recursion basics" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python lambda and map/filter" },
-  },
-  objectives: ["Master DOM selection and manipulation", "Handle events with delegation", "Add interactivity to JS project"],
-  tasks: [
-    { id: "day-017-task-01", title: "Learn DOM: querySelector, createElement, appendChild, remove", topicId: "topic-javascript", type: "learn" },
-    { id: "day-017-task-02", title: "Practice event listeners, event delegation, bubbling/capturing", topicId: "topic-javascript", type: "practice" },
-    { id: "day-017-task-03", title: "Interactive JS App: add event handlers and DOM updates", topicId: "topic-javascript", type: "project" },
-    { id: "day-017-task-04", title: "OOP: inheritance chains, mixins, multiple inheritance patterns", topicId: "topic-oop", type: "learn" },
-    { id: "day-017-task-05", title: "C++ recursion: factorial, fibonacci, base cases", topicId: "topic-cpp", type: "learn" },
-    { id: "day-017-task-06", title: "Python lambda functions, map(), filter(), reduce()", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-02", milestone: "DOM interaction and event handling" },
-},
-{
-  id: "day-018",
-  day: 18,
-  week: 3,
-  phase: "phase-02",
-  title: "Day 18: Modules & ES6+ Features",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-javascript", focus: "Modules, ES6+ features, code organization" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: review and practice" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ practice problems" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python modules and packages" },
-  },
-  objectives: ["Understand ES modules import/export", "Use modern ES6+ features", "Complete interactive JS app"],
-  tasks: [
-    { id: "day-018-task-01", title: "Learn ES modules: import, export, default export, named exports", topicId: "topic-javascript", type: "learn" },
-    { id: "day-018-task-02", title: "Practice ES6+ features: template literals, optional chaining, nullish coalescing", topicId: "topic-javascript", type: "practice" },
-    { id: "day-018-task-03", title: "Interactive JS App: refactor with modules, polish, and deploy", topicId: "topic-javascript", type: "project" },
-    { id: "day-018-task-04", title: "OOP: comprehensive review and coding exercises", topicId: "topic-oop", type: "revision" },
-    { id: "day-018-task-05", title: "C++ mixed practice: arrays, strings, functions problems", topicId: "topic-cpp", type: "practice" },
-  ],
-  revision: { topicId: "topic-javascript", focus: "Review advanced JS: closures, promises, DOM" },
-  project: { projectId: "project-02", milestone: "Code refactoring and deployment" },
-},
-{
-  id: "day-019",
-  day: 19,
-  week: 4,
-  phase: "phase-02",
-  title: "Day 19: React JSX & Components",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "JSX syntax, component basics, React setup" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP in React: component patterns" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ OOP: classes and objects" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python OOP: classes" },
-  },
-  objectives: ["Set up a React project with Vite", "Understand JSX syntax and rules", "Create functional components"],
-  tasks: [
-    { id: "day-019-task-01", title: "Set up React project with Vite, understand project structure", topicId: "topic-react", type: "learn" },
-    { id: "day-019-task-02", title: "Learn JSX: expressions, attributes, fragments, conditional rendering", topicId: "topic-react", type: "learn" },
-    { id: "day-019-task-03", title: "Create functional components and understand component tree", topicId: "topic-react", type: "practice" },
-    { id: "day-019-task-04", title: "OOP patterns in React: component composition", topicId: "topic-oop", type: "learn" },
-    { id: "day-019-task-05", title: "C++ classes: constructors, member functions, access modifiers", topicId: "topic-cpp", type: "learn" },
-    { id: "day-019-task-06", title: "Python classes: __init__, self, instance methods", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-020",
-  day: 20,
-  week: 4,
-  phase: "phase-02",
-  title: "Day 20: React Props & Composition",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "Props, component composition, children" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: dependency injection concepts" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ OOP: inheritance" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python OOP: inheritance" },
-  },
-  objectives: ["Pass data with props", "Use children prop and composition", "Build reusable component library"],
-  tasks: [
-    { id: "day-020-task-01", title: "Learn props: passing data, prop types, default props", topicId: "topic-react", type: "learn" },
-    { id: "day-020-task-02", title: "Practice component composition and children prop", topicId: "topic-react", type: "practice" },
-    { id: "day-020-task-03", title: "Build reusable UI components: Button, Card, Layout", topicId: "topic-react", type: "practice" },
-    { id: "day-020-task-04", title: "OOP: dependency injection and inversion of control", topicId: "topic-oop", type: "learn" },
-    { id: "day-020-task-05", title: "C++ inheritance, virtual functions, override", topicId: "topic-cpp", type: "learn" },
-    { id: "day-020-task-06", title: "Python inheritance, super(), method overriding", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-021",
-  day: 21,
-  week: 4,
-  phase: "phase-02",
-  title: "Day 21: React State & useState",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "State management, useState hook" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: state patterns and immutability" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ OOP: polymorphism" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python OOP: encapsulation, properties" },
-  },
-  objectives: ["Understand React state concept", "Use useState for different data types", "Build interactive stateful components"],
-  tasks: [
-    { id: "day-021-task-01", title: "Learn useState hook: initialization, updating, functional updates", topicId: "topic-react", type: "learn" },
-    { id: "day-021-task-02", title: "Practice state with arrays and objects (immutable updates)", topicId: "topic-react", type: "practice" },
-    { id: "day-021-task-03", title: "Build a counter, todo list, or form with state", topicId: "topic-react", type: "practice" },
-    { id: "day-021-task-04", title: "OOP: state management patterns and immutability", topicId: "topic-oop", type: "learn" },
-    { id: "day-021-task-05", title: "C++ polymorphism: virtual functions, vtable, abstract classes", topicId: "topic-cpp", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-022",
-  day: 22,
-  week: 4,
-  phase: "phase-02",
-  title: "Day 22: useEffect & Side Effects",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "useEffect hook, side effects, cleanup" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: observer and pub/sub patterns" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ templates basics" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python decorators" },
-  },
-  objectives: ["Master useEffect dependency array", "Handle side effects and cleanup", "Fetch data in React components"],
-  tasks: [
-    { id: "day-022-task-01", title: "Learn useEffect: dependency array, cleanup functions, timing", topicId: "topic-react", type: "learn" },
-    { id: "day-022-task-02", title: "Practice useEffect: fetch data on mount, cleanup subscriptions", topicId: "topic-react", type: "practice" },
-    { id: "day-022-task-03", title: "Build a component that fetches and displays API data", topicId: "topic-react", type: "practice" },
-    { id: "day-022-task-04", title: "OOP: observer pattern and publish/subscribe", topicId: "topic-oop", type: "learn" },
-    { id: "day-022-task-05", title: "C++ function and class templates basics", topicId: "topic-cpp", type: "learn" },
-    { id: "day-022-task-06", title: "Python decorators: syntax, use cases, functools.wraps", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-023",
-  day: 23,
-  week: 4,
-  phase: "phase-02",
-  title: "Day 23: Event Handling & Conditional Rendering",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "Event handling, conditional rendering patterns" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: strategy and command patterns" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ exception handling" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python generators and iterators" },
-  },
-  objectives: ["Handle events in React properly", "Master conditional rendering patterns", "Implement loading and error states"],
-  tasks: [
-    { id: "day-023-task-01", title: "Learn React event handling: onClick, onChange, onSubmit, synthetic events", topicId: "topic-react", type: "learn" },
-    { id: "day-023-task-02", title: "Practice conditional rendering: ternary, &&, switch patterns", topicId: "topic-react", type: "practice" },
-    { id: "day-023-task-03", title: "Implement loading spinners, error boundaries, empty states", topicId: "topic-react", type: "practice" },
-    { id: "day-023-task-04", title: "OOP: strategy and command design patterns", topicId: "topic-oop", type: "learn" },
-    { id: "day-023-task-05", title: "C++ try/catch, custom exceptions, exception safety", topicId: "topic-cpp", type: "learn" },
-    { id: "day-023-task-06", title: "Python generators, yield, iterator protocol", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-024",
-  day: 24,
-  week: 4,
-  phase: "phase-02",
-  title: "Day 24: React Router & Navigation",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "React Router, navigation, route parameters" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: review all patterns" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ file I/O" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python context managers" },
-  },
-  objectives: ["Set up React Router with routes", "Use route parameters and navigation", "Start React project with routing"],
-  tasks: [
-    { id: "day-024-task-01", title: "Install React Router, set up BrowserRouter, Route, Link", topicId: "topic-react", type: "learn" },
-    { id: "day-024-task-02", title: "Practice useParams, useNavigate, nested routes, 404 pages", topicId: "topic-react", type: "practice" },
-    { id: "day-024-task-03", title: "React App project: setup with routing and page structure", topicId: "topic-react", type: "project" },
-    { id: "day-024-task-04", title: "OOP: comprehensive review of all design patterns", topicId: "topic-oop", type: "revision" },
-    { id: "day-024-task-05", title: "C++ file I/O: ifstream, ofstream, file operations", topicId: "topic-cpp", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-03", milestone: "Project setup with routing" },
-},
-{
-  id: "day-025",
-  day: 25,
-  week: 5,
-  phase: "phase-02",
-  title: "Day 25: Lists, Keys & Forms in React",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "Lists, keys, controlled forms" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: coding exercises" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ smart pointers intro" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python error handling patterns" },
-  },
-  objectives: ["Render lists efficiently with keys", "Build controlled form components", "Add list and form features to React project"],
-  tasks: [
-    { id: "day-025-task-01", title: "Learn list rendering with map() and unique key prop", topicId: "topic-react", type: "learn" },
-    { id: "day-025-task-02", title: "Build controlled forms: input, textarea, select, checkbox", topicId: "topic-react", type: "practice" },
-    { id: "day-025-task-03", title: "React App project: add list views and form inputs", topicId: "topic-react", type: "project" },
-    { id: "day-025-task-04", title: "OOP: practical coding exercises with patterns", topicId: "topic-oop", type: "practice" },
-    { id: "day-025-task-05", title: "C++ unique_ptr, shared_ptr introduction", topicId: "topic-cpp", type: "learn" },
-    { id: "day-025-task-06", title: "Python try/except best practices, custom exceptions", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-03", milestone: "List views and form components" },
-},
-{
-  id: "day-026",
-  day: 26,
-  week: 5,
-  phase: "phase-02",
-  title: "Day 26: API Integration in React",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "API integration, useEffect patterns" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: real-world architecture" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ review and practice" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python virtual environments, pip" },
-  },
-  objectives: ["Integrate REST APIs in React", "Handle loading and error states", "Add API data to React project"],
-  tasks: [
-    { id: "day-026-task-01", title: "Fetch and display API data with useEffect and useState", topicId: "topic-react", type: "learn" },
-    { id: "day-026-task-02", title: "Implement loading states, error handling, and data caching", topicId: "topic-react", type: "practice" },
-    { id: "day-026-task-03", title: "React App project: integrate external API and display data", topicId: "topic-react", type: "project" },
-    { id: "day-026-task-04", title: "OOP: real-world architecture with MVC, MVVM patterns", topicId: "topic-oop", type: "learn" },
-    { id: "day-026-task-05", title: "C++ comprehensive review: classes, templates, STL", topicId: "topic-cpp", type: "revision" },
-  ],
-  revision: { topicId: "topic-react", focus: "Review React hooks: useState, useEffect" },
-  project: { projectId: "project-03", milestone: "API integration and data display" },
-},
-{
-  id: "day-027",
-  day: 27,
-  week: 5,
-  phase: "phase-02",
-  title: "Day 27: React Review & Lifting State",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "Lifting state, component communication, review" },
-    coreCS: { time: "4:30-5:15", topic: "topic-oop", focus: "OOP: final assessment" },
-    dsa: { time: "5:15-5:45", topic: "topic-cpp", focus: "C++ coding challenge" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python review: data structures" },
-  },
-  objectives: ["Master lifting state up pattern", "Understand component communication", "Complete React project"],
-  tasks: [
-    { id: "day-027-task-01", title: "Learn lifting state up and inverse data flow", topicId: "topic-react", type: "learn" },
-    { id: "day-027-task-02", title: "Practice sibling component communication via shared state", topicId: "topic-react", type: "practice" },
-    { id: "day-027-task-03", title: "React App project: polish, optimize, and deploy", topicId: "topic-react", type: "project" },
-    { id: "day-027-task-04", title: "OOP: final review and assessment exercises", topicId: "topic-oop", type: "revision" },
-    { id: "day-027-task-05", title: "C++ timed coding challenge: solve 3 problems", topicId: "topic-cpp", type: "practice" },
-  ],
-  revision: { topicId: "topic-react", focus: "Review all React fundamentals" },
-  project: { projectId: "project-03", milestone: "Polish, optimize, and deploy" },
-},
-{
-  id: "day-028",
-  day: 28,
-  week: 5,
-  phase: "phase-03",
-  title: "Day 28: React useRef & useMemo",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "useRef, useMemo hooks" },
-    coreCS: { time: "4:30-5:15", topic: "topic-dbms", focus: "Database fundamentals & schema design" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA: arrays, two-sum problem" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python exceptions and try/except" },
-  },
-  objectives: ["Use useRef for DOM access and mutable values", "Optimize with useMemo", "Start SQL fundamentals"],
-  tasks: [
-    { id: "day-028-task-01", title: "Learn useRef: DOM references, mutable values, previous state", topicId: "topic-react", type: "learn" },
-    { id: "day-028-task-02", title: "Learn useMemo: expensive calculations, dependency management", topicId: "topic-react", type: "learn" },
-    { id: "day-028-task-03", title: "Practice useRef and useMemo with real examples", topicId: "topic-react", type: "practice" },
-    { id: "day-028-task-05", title: "DSA: array traversal, two-sum problem", topicId: "topic-dsa", type: "learn" },
-    { id: "day-028-task-06", title: "Python try/except/finally, raising exceptions", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-029",
-  day: 29,
-  week: 5,
-  phase: "phase-03",
-  title: "Day 29: React useCallback & Performance",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "useCallback, React.memo, performance" },
-    coreCS: { time: "4:30-5:15", topic: "topic-dbms", focus: "Relational modeling & keys" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA: string problems, hashing" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python file handling: read, write" },
-  },
-  objectives: ["Master useCallback for memoized callbacks", "Understand React.memo for component memoization", "Learn SQL JOINs"],
-  tasks: [
-    { id: "day-029-task-01", title: "Learn useCallback: stable references, preventing re-renders", topicId: "topic-react", type: "learn" },
-    { id: "day-029-task-02", title: "Practice React.memo and performance optimization patterns", topicId: "topic-react", type: "practice" },
-    { id: "day-029-task-03", title: "Profile React app with DevTools and fix re-render issues", topicId: "topic-react", type: "practice" },
-    { id: "day-029-task-05", title: "DSA: string reversal, anagram check, hash maps", topicId: "topic-dsa", type: "learn" },
-    { id: "day-029-task-06", title: "Python file read/write: open, read, write, with statement", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-030",
-  day: 30,
-  week: 5,
-  phase: "phase-03",
-  title: "Day 30: Context API & Custom Hooks",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "Context API, custom hooks" },
-    coreCS: { time: "4:30-5:15", topic: "topic-dbms", focus: "Database query optimization" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA: two pointers technique" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python CSV and JSON file handling" },
-  },
-  objectives: ["Share state globally with Context API", "Build reusable custom hooks", "Practice SQL aggregation"],
-  tasks: [
-    { id: "day-030-task-01", title: "Learn Context API: createContext, Provider, useContext", topicId: "topic-react", type: "learn" },
-    { id: "day-030-task-02", title: "Build custom hooks: useLocalStorage, useFetch, useToggle", topicId: "topic-react", type: "practice" },
-    { id: "day-030-task-03", title: "Implement theme/auth context in a React app", topicId: "topic-react", type: "practice" },
-    { id: "day-030-task-05", title: "DSA: two pointers on sorted arrays, pair sum", topicId: "topic-dsa", type: "learn" },
-    { id: "day-030-task-06", title: "Python CSV and JSON file reading and writing", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-031",
-  day: 31,
-  week: 6,
-  phase: "phase-03",
-  title: "Day 31: Context API & State Management",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "Context API, useContext hook, global state patterns" },
-    coreCS: { time: "4:30-5:15", topic: "topic-dbms", focus: "Database normalization practice" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Two pointers technique on sorted arrays" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python exceptions: try/except/finally" },
-  },
-  objectives: ["Implement Context API for global state", "Master SQL JOIN types", "Apply two pointers pattern"],
-  tasks: [
-    { id: "day-031-task-01", title: "Create context providers and consumers", topicId: "topic-react", type: "learn" },
-    { id: "day-031-task-02", title: "Refactor prop drilling to Context API", topicId: "topic-react", type: "practice" },
-    { id: "day-031-task-04", title: "Solve two-sum with two pointers", topicId: "topic-dsa", type: "practice" },
-    { id: "day-031-task-05", title: "Handle exceptions in Python programs", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-032",
-  day: 32,
-  week: 6,
-  phase: "phase-03",
-  title: "Day 32: Custom Hooks & React Performance",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-react", focus: "Custom hooks, React.memo, performance optimization" },
-    coreCS: { time: "4:30-5:15", topic: "topic-dbms", focus: "Database indexing & performance" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Two pointers: container with most water, 3sum" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python file reading and writing" },
-  },
-  objectives: ["Build reusable custom hooks", "Optimize React rendering with memoization", "Use GROUP BY and aggregates in SQL"],
-  tasks: [
-    { id: "day-032-task-01", title: "Build custom hooks: useFetch, useLocalStorage", topicId: "topic-react", type: "practice" },
-    { id: "day-032-task-02", title: "Apply React.memo and profiler", topicId: "topic-react", type: "learn" },
-    { id: "day-032-task-04", title: "Solve 3sum problem with two pointers", topicId: "topic-dsa", type: "practice" },
-    { id: "day-032-task-05", title: "Read/write files in Python", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: { topicId: "topic-react", focus: "Review useRef, useMemo, useCallback patterns" },
-  project: null,
-},
-{
-  id: "day-033",
-  day: 33,
-  week: 6,
-  phase: "phase-03",
-  title: "Day 33: Next.js Introduction & Routing",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-nextjs", focus: "Next.js setup, file-based routing, pages directory" },
-    coreCS: { time: "4:30-5:15", topic: "topic-dbms", focus: "Relational model, keys, ER diagrams" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Hashing fundamentals, hash maps" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python OOP: classes and objects" },
-  },
-  objectives: ["Set up a Next.js project", "Understand file-based routing", "Learn relational database concepts"],
-  tasks: [
-    { id: "day-033-task-01", title: "Create Next.js app, explore project structure", topicId: "topic-nextjs", type: "learn" },
-    { id: "day-033-task-02", title: "Build pages with file-based routing", topicId: "topic-nextjs", type: "practice" },
-    { id: "day-033-task-03", title: "Study ER diagrams and relational model", topicId: "topic-dbms", type: "learn" },
-    { id: "day-033-task-04", title: "Implement hash map for frequency counting", topicId: "topic-dsa", type: "practice" },
-    { id: "day-033-task-05", title: "Define Python classes with __init__", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-034",
-  day: 34,
-  week: 6,
-  phase: "phase-03",
-  title: "Day 34: Next.js Layouts & Nested Routes",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-nextjs", focus: "Layouts, nested routes, route groups, loading/error UI" },
-    coreCS: { time: "4:30-5:15", topic: "topic-dbms", focus: "Normalization: 1NF, 2NF, 3NF, BCNF" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Hash map problems: group anagrams, two sum" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python OOP: inheritance, polymorphism" },
-  },
-  objectives: ["Create shared layouts in Next.js", "Understand database normalization", "Solve hash map problems"],
-  tasks: [
-    { id: "day-034-task-01", title: "Build root and nested layouts", topicId: "topic-nextjs", type: "learn" },
-    { id: "day-034-task-02", title: "Implement loading and error boundaries", topicId: "topic-nextjs", type: "practice" },
-    { id: "day-034-task-03", title: "Normalize a database schema to 3NF", topicId: "topic-dbms", type: "practice" },
-    { id: "day-034-task-04", title: "Solve group anagrams with hash maps", topicId: "topic-dsa", type: "practice" },
-    { id: "day-034-task-05", title: "Implement inheritance in Python classes", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-035",
-  day: 35,
-  week: 6,
-  phase: "phase-03",
-  title: "Day 35: Server & Client Components",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-nextjs", focus: "Server components, client components, 'use client' directive" },
-    coreCS: { time: "4:30-5:15", topic: "topic-dbms", focus: "Database normalization & anomalies" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "String problems: valid anagram, palindrome check" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python OOP: encapsulation, dunder methods" },
-  },
-  objectives: ["Distinguish server vs client components", "Practice database design", "Solve string manipulation problems"],
-  tasks: [
-    { id: "day-035-task-01", title: "Convert components between server and client", topicId: "topic-nextjs", type: "learn" },
-    { id: "day-035-task-02", title: "Build page mixing server/client components", topicId: "topic-nextjs", type: "practice" },
-    { id: "day-035-task-04", title: "Solve valid palindrome and anagram problems", topicId: "topic-dsa", type: "practice" },
-    { id: "day-035-task-05", title: "Use dunder methods in Python classes", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-036",
-  day: 36,
-  week: 6,
-  phase: "phase-03",
-  title: "Day 36: Data Fetching in Next.js",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-nextjs", focus: "SSR, SSG, ISR, data fetching patterns" },
-    coreCS: { time: "4:30-5:15", topic: "topic-dbms", focus: "Database indexing & query planning" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Sliding window: max sum subarray" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python file handling: CSV, JSON parsing" },
-  },
-  objectives: ["Implement SSR and SSG in Next.js", "Practice database concepts", "Start project-04"],
-  tasks: [
-    { id: "day-036-task-01", title: "Fetch data with server components", topicId: "topic-nextjs", type: "learn" },
-    { id: "day-036-task-02", title: "Set up project-04 Next.js portfolio", topicId: "topic-nextjs", type: "project" },
-    { id: "day-036-task-04", title: "Solve maximum sum subarray of size k", topicId: "topic-dsa", type: "practice" },
-    { id: "day-036-task-05", title: "Parse CSV and JSON files in Python", topicId: "topic-python-fundamentals", type: "practice" },
-  ],
-  revision: null,
-  project: { projectId: "project-04", milestone: "Project setup and page structure" },
-},
-{
-  id: "day-037",
-  day: 37,
-  week: 7,
-  phase: "phase-03",
-  title: "Day 37: API Routes & Three.js Introduction",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-nextjs", focus: "API routes, route handlers, Three.js introduction" },
-    coreCS: { time: "4:30-5:15", topic: "topic-dbms", focus: "Transactions, ACID properties, concurrency" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Sliding window: longest substring without repeating" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-threejs", focus: "Three.js scene, camera, renderer basics" },
-  },
-  objectives: ["Build API routes in Next.js", "Understand database transactions", "Set up a Three.js scene"],
-  tasks: [
-    { id: "day-037-task-01", title: "Create GET/POST API route handlers", topicId: "topic-nextjs", type: "learn" },
-    { id: "day-037-task-02", title: "Add API routes to project-04", topicId: "topic-nextjs", type: "project" },
-    { id: "day-037-task-03", title: "Study ACID properties and transactions", topicId: "topic-dbms", type: "learn" },
-    { id: "day-037-task-04", title: "Solve longest substring without repeating chars", topicId: "topic-dsa", type: "practice" },
-    { id: "day-037-task-05", title: "Render a 3D cube with Three.js", topicId: "topic-threejs", type: "introduction" },
-  ],
-  revision: null,
-  project: { projectId: "project-04", milestone: "API integration and dynamic content" },
-},
-{
-  id: "day-038",
-  day: 38,
-  week: 7,
-  phase: "phase-03",
-  title: "Day 38: Next.js Review & Three.js Basics",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-nextjs", focus: "Next.js review, deployment, Three.js geometries and materials" },
-    coreCS: { time: "4:30-5:15", topic: "topic-dbms", focus: "Indexing, B-trees, query optimization" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Two pointers review and mixed problems" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-threejs", focus: "Three.js materials, lighting, animation loop" },
-  },
-  objectives: ["Complete project-04 with polish", "Understand database indexing", "Animate 3D objects with Three.js"],
-  tasks: [
-    { id: "day-038-task-01", title: "Polish and deploy project-04", topicId: "topic-nextjs", type: "project" },
-    { id: "day-038-task-02", title: "Add Three.js 3D element to portfolio", topicId: "topic-threejs", type: "practice" },
-    { id: "day-038-task-03", title: "Study B-tree indexes and query plans", topicId: "topic-dbms", type: "learn" },
-    { id: "day-038-task-04", title: "Solve mixed two-pointer problems", topicId: "topic-dsa", type: "practice" },
-    { id: "day-038-task-05", title: "Review Phase 3 key concepts", topicId: "topic-nextjs", type: "revision" },
-  ],
-  revision: { topicId: "topic-nextjs", focus: "Review Next.js routing, components, data fetching" },
-  project: { projectId: "project-04", milestone: "Final deployment and 3D integration" },
-},
-{
-  id: "day-039",
-  day: 39,
-  week: 7,
-  phase: "phase-04",
-  title: "Day 39: Node.js Runtime & Event Loop",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-nodejs", focus: "Node.js runtime, event loop, non-blocking I/O" },
-    coreCS: { time: "4:30-5:15", topic: "topic-os", focus: "Operating Systems (OS) basics: processes, threads, scheduling" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Binary search on sorted arrays" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python JSON module, serialization" },
-  },
-  objectives: ["Understand Node.js architecture and event loop", "Learn OS process management", "Implement binary search"],
-  tasks: [
-    { id: "day-039-task-01", title: "Explore Node.js REPL and runtime", topicId: "topic-nodejs", type: "learn" },
-    { id: "day-039-task-02", title: "Demonstrate event loop with setTimeout/setInterval", topicId: "topic-nodejs", type: "practice" },
-    { id: "day-039-task-03", title: "Study processes, threads, context switching", topicId: "topic-os", type: "learn" },
-    { id: "day-039-task-04", title: "Implement binary search iteratively and recursively", topicId: "topic-dsa", type: "practice" },
-    { id: "day-039-task-05", title: "Serialize and deserialize JSON in Python", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-040",
-  day: 40,
-  week: 7,
-  phase: "phase-04",
-  title: "Day 40: Node.js Modules & npm",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-nodejs", focus: "CommonJS, ES modules, npm, package.json, scripts" },
-    coreCS: { time: "4:30-5:15", topic: "topic-os", focus: "Memory management, virtual memory, paging" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Binary search variations: first/last occurrence" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python requests library, API calls" },
-  },
-  objectives: ["Use CommonJS and ES modules", "Manage packages with npm", "Solve binary search variations"],
-  tasks: [
-    { id: "day-040-task-01", title: "Create and import custom modules", topicId: "topic-nodejs", type: "learn" },
-    { id: "day-040-task-02", title: "Initialize project with npm, manage dependencies", topicId: "topic-nodejs", type: "practice" },
-    { id: "day-040-task-03", title: "Study virtual memory and page replacement", topicId: "topic-os", type: "learn" },
-    { id: "day-040-task-04", title: "Find first and last position in sorted array", topicId: "topic-dsa", type: "practice" },
-    { id: "day-040-task-05", title: "Make GET/POST requests with Python requests", topicId: "topic-python-fundamentals", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-041",
-  day: 41,
-  week: 7,
-  phase: "phase-04",
-  title: "Day 41: HTTP Module & Creating Servers",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-nodejs", focus: "HTTP module, creating servers, request/response handling" },
-    coreCS: { time: "4:30-5:15", topic: "topic-os", focus: "File systems, I/O management, deadlocks" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Search in rotated sorted array" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python pip, installing packages" },
-  },
-  objectives: ["Build HTTP server from scratch with Node.js", "Understand OS file systems", "Apply binary search to rotated arrays"],
-  tasks: [
-    { id: "day-041-task-01", title: "Create HTTP server with http module", topicId: "topic-nodejs", type: "learn" },
-    { id: "day-041-task-02", title: "Handle different routes and methods manually", topicId: "topic-nodejs", type: "practice" },
-    { id: "day-041-task-03", title: "Study file system types and deadlock conditions", topicId: "topic-os", type: "learn" },
-    { id: "day-041-task-04", title: "Solve search in rotated sorted array", topicId: "topic-dsa", type: "practice" },
-    { id: "day-041-task-05", title: "Install and manage Python packages with pip", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-042",
-  day: 42,
-  week: 7,
-  phase: "phase-04",
-  title: "Day 42: Streams, Buffers & File System",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-nodejs", focus: "Streams, buffers, fs module, reading/writing files" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "Networking basics: OSI model, TCP/IP" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Sorting: bubble sort, selection sort, insertion sort" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python virtual environments: venv" },
-  },
-  objectives: ["Use streams for efficient data processing", "Understand OSI model layers", "Implement basic sorting algorithms"],
-  tasks: [
-    { id: "day-042-task-01", title: "Read/write files with fs and streams", topicId: "topic-nodejs", type: "learn" },
-    { id: "day-042-task-02", title: "Build file copy utility with streams", topicId: "topic-nodejs", type: "practice" },
-    { id: "day-042-task-03", title: "Study OSI layers and TCP/IP stack", topicId: "topic-cn", type: "learn" },
-    { id: "day-042-task-04", title: "Implement bubble, selection, insertion sort", topicId: "topic-dsa", type: "practice" },
-    { id: "day-042-task-05", title: "Create and activate Python virtual environments", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: { topicId: "topic-nodejs", focus: "Review Node.js core: modules, HTTP, event loop" },
-  project: null,
-},
-{
-  id: "day-043",
-  day: 43,
-  week: 8,
-  phase: "phase-04",
-  title: "Day 43: Express.js Setup & Routing",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-expressjs", focus: "Express setup, basic routing, route parameters" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "HTTP protocol, DNS, TCP handshake" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Merge sort: divide and conquer" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python decorators and generators" },
-  },
-  objectives: ["Set up Express.js application", "Define routes with parameters", "Implement merge sort"],
-  tasks: [
-    { id: "day-043-task-01", title: "Initialize Express app with basic routes", topicId: "topic-expressjs", type: "learn" },
-    { id: "day-043-task-02", title: "Handle route params and query strings", topicId: "topic-expressjs", type: "practice" },
-    { id: "day-043-task-03", title: "Study HTTP methods, status codes, DNS resolution", topicId: "topic-cn", type: "learn" },
-    { id: "day-043-task-04", title: "Implement merge sort algorithm", topicId: "topic-dsa", type: "practice" },
-    { id: "day-043-task-05", title: "Write Python decorators and generator functions", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-044",
-  day: 44,
-  week: 8,
-  phase: "phase-04",
-  title: "Day 44: Middleware & Request Handling",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-expressjs", focus: "Middleware, body parsing, request/response cycle" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "Sockets, ports, client-server architecture" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Quick sort: partition and pivot" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python lambda, map, filter, reduce" },
-  },
-  objectives: ["Build custom middleware in Express", "Understand client-server networking", "Implement quick sort"],
-  tasks: [
-    { id: "day-044-task-01", title: "Create logging and auth middleware", topicId: "topic-expressjs", type: "learn" },
-    { id: "day-044-task-02", title: "Parse JSON and URL-encoded bodies", topicId: "topic-expressjs", type: "practice" },
-    { id: "day-044-task-03", title: "Study sockets and client-server communication", topicId: "topic-cn", type: "learn" },
-    { id: "day-044-task-04", title: "Implement quick sort with Lomuto partition", topicId: "topic-dsa", type: "practice" },
-    { id: "day-044-task-05", title: "Use lambda, map, filter in Python", topicId: "topic-python-fundamentals", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-045",
-  day: 45,
-  week: 8,
-  phase: "phase-04",
-  title: "Day 45: REST API Design & CRUD",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-expressjs", focus: "REST API principles, CRUD operations, status codes" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "REST vs WebSocket, API design principles" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Recursion fundamentals: factorial, fibonacci, power" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python modules and packages structure" },
-  },
-  objectives: ["Design RESTful APIs following best practices", "Implement full CRUD endpoints", "Understand recursion fundamentals"],
-  tasks: [
-    { id: "day-045-task-01", title: "Design REST API with proper resource naming", topicId: "topic-expressjs", type: "learn" },
-    { id: "day-045-task-02", title: "Build CRUD API for a resource", topicId: "topic-expressjs", type: "practice" },
-    { id: "day-045-task-03", title: "Compare REST and WebSocket protocols", topicId: "topic-cn", type: "learn" },
-    { id: "day-045-task-04", title: "Solve recursive problems: factorial, fibonacci", topicId: "topic-dsa", type: "practice" },
-    { id: "day-045-task-05", title: "Create Python package with __init__.py", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-046",
-  day: 46,
-  week: 8,
-  phase: "phase-04",
-  title: "Day 46: Validation, Error Handling & Auth Intro",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-expressjs", focus: "Input validation, error handling middleware, auth introduction" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "HTTPS, TLS, encryption basics" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Recursion: subsets, permutations generation" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python typing and type hints" },
-  },
-  objectives: ["Validate API inputs properly", "Handle errors with middleware", "Generate subsets recursively"],
-  tasks: [
-    { id: "day-046-task-01", title: "Add Joi/Zod validation to API routes", topicId: "topic-expressjs", type: "learn" },
-    { id: "day-046-task-02", title: "Build global error handling middleware", topicId: "topic-expressjs", type: "practice" },
-    { id: "day-046-task-03", title: "Study HTTPS, TLS handshake, certificates", topicId: "topic-cn", type: "learn" },
-    { id: "day-046-task-04", title: "Generate all subsets and permutations", topicId: "topic-dsa", type: "practice" },
-    { id: "day-046-task-05", title: "Add type hints to Python functions", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: { topicId: "topic-expressjs", focus: "Review Express routing, middleware, REST patterns" },
-  project: null,
-},
-{
-  id: "day-047",
-  day: 47,
-  week: 8,
-  phase: "phase-04",
-  title: "Day 47: MongoDB Setup & CRUD",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-mongodb", focus: "MongoDB setup, documents, collections, CRUD operations" },
-    coreCS: { time: "4:30-5:15", topic: "topic-os", focus: "Synchronization: mutex, semaphore, monitors" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Backtracking: N-Queens problem" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python unittest basics" },
-  },
-  objectives: ["Set up MongoDB and perform CRUD", "Understand synchronization primitives", "Solve N-Queens with backtracking"],
-  tasks: [
-    { id: "day-047-task-01", title: "Install MongoDB, use mongosh for CRUD", topicId: "topic-mongodb", type: "learn" },
-    { id: "day-047-task-02", title: "Insert, find, update, delete documents", topicId: "topic-mongodb", type: "practice" },
-    { id: "day-047-task-03", title: "Study mutex, semaphore, producer-consumer", topicId: "topic-os", type: "learn" },
-    { id: "day-047-task-04", title: "Solve N-Queens with backtracking", topicId: "topic-dsa", type: "practice" },
-    { id: "day-047-task-05", title: "Write basic unit tests in Python", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-048",
-  day: 48,
-  week: 8,
-  phase: "phase-04",
-  title: "Day 48: Mongoose Schemas & Models",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-mongodb", focus: "Mongoose connection, schemas, models, validation" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "Load balancing, CDN, caching strategies" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Backtracking: sudoku solver" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python context managers" },
-  },
-  objectives: ["Define Mongoose schemas with validation", "Start project-05 MERN app", "Solve sudoku with backtracking"],
-  tasks: [
-    { id: "day-048-task-01", title: "Connect Mongoose, define schemas with validation", topicId: "topic-mongodb", type: "learn" },
-    { id: "day-048-task-02", title: "Set up project-05 backend with Express + Mongoose", topicId: "topic-mongodb", type: "project" },
-    { id: "day-048-task-03", title: "Study CDN, caching, load balancing concepts", topicId: "topic-cn", type: "learn" },
-    { id: "day-048-task-04", title: "Implement sudoku solver with backtracking", topicId: "topic-dsa", type: "practice" },
-    { id: "day-048-task-05", title: "Use context managers and with statements", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-05", milestone: "Backend setup with Express and Mongoose" },
-},
-{
-  id: "day-049",
-  day: 49,
-  week: 9,
-  phase: "phase-04",
-  title: "Day 49: Queries, Population & Aggregation",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-mongodb", focus: "Advanced queries, populate, aggregation pipeline" },
-    coreCS: { time: "4:30-5:15", topic: "topic-os", focus: "Inter-process communication, signals, pipes" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Linked list: singly linked list implementation" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python itertools and collections" },
-  },
-  objectives: ["Use Mongoose populate for references", "Build aggregation pipelines", "Implement singly linked list"],
-  tasks: [
-    { id: "day-049-task-01", title: "Write complex queries with filters and projection", topicId: "topic-mongodb", type: "learn" },
-    { id: "day-049-task-02", title: "Add populate and aggregation to project-05", topicId: "topic-mongodb", type: "project" },
-    { id: "day-049-task-03", title: "Study IPC mechanisms: pipes, shared memory", topicId: "topic-os", type: "learn" },
-    { id: "day-049-task-04", title: "Implement singly linked list with operations", topicId: "topic-dsa", type: "practice" },
-    { id: "day-049-task-05", title: "Use Counter, defaultdict from collections", topicId: "topic-python-fundamentals", type: "practice" },
-  ],
-  revision: null,
-  project: { projectId: "project-05", milestone: "Data models with relationships and aggregation" },
-},
-{
-  id: "day-050",
-  day: 50,
-  week: 9,
-  phase: "phase-04",
-  title: "Day 50: Relationships & Indexing",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-mongodb", focus: "Document relationships, embedding vs referencing, indexes" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "Subnetting, IP addressing, routing basics" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Linked list: reverse, detect cycle" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python regular expressions" },
-  },
-  objectives: ["Design document relationships in MongoDB", "Create and use indexes", "Reverse a linked list"],
-  tasks: [
-    { id: "day-050-task-01", title: "Compare embedding vs referencing patterns", topicId: "topic-mongodb", type: "learn" },
-    { id: "day-050-task-02", title: "Add indexes and optimize queries in project-05", topicId: "topic-mongodb", type: "project" },
-    { id: "day-050-task-03", title: "Study IP addressing and subnetting", topicId: "topic-cn", type: "learn" },
-    { id: "day-050-task-04", title: "Reverse linked list and detect cycles", topicId: "topic-dsa", type: "practice" },
-    { id: "day-050-task-05", title: "Match patterns with Python regex", topicId: "topic-python-fundamentals", type: "practice" },
-  ],
-  revision: null,
-  project: { projectId: "project-05", milestone: "Optimized data models with indexes" },
-},
-{
-  id: "day-051",
-  day: 51,
-  week: 9,
-  phase: "phase-04",
-  title: "Day 51: Authentication with JWT",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-nodejs", focus: "Authentication, JWT, bcrypt, protected routes" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "Firewalls, NAT, proxy servers" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Stack implementation and applications" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python logging module" },
-  },
-  objectives: ["Implement JWT authentication", "Hash passwords with bcrypt", "Implement stack data structure"],
-  tasks: [
-    { id: "day-051-task-01", title: "Implement signup/login with bcrypt hashing", topicId: "topic-nodejs", type: "learn" },
-    { id: "day-051-task-02", title: "Generate and verify JWT tokens", topicId: "topic-nodejs", type: "practice" },
-    { id: "day-051-task-03", title: "Add auth to project-05 with protected routes", topicId: "topic-nodejs", type: "project" },
-    { id: "day-051-task-04", title: "Study firewalls, NAT, reverse proxy", topicId: "topic-cn", type: "learn" },
-    { id: "day-051-task-05", title: "Implement stack and solve valid parentheses", topicId: "topic-dsa", type: "practice" },
-  ],
-  revision: null,
-  project: { projectId: "project-05", milestone: "User authentication with JWT" },
-},
-{
-  id: "day-052",
-  day: 52,
-  week: 9,
-  phase: "phase-04",
-  title: "Day 52: Full-Stack MERN Integration",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-nodejs", focus: "MERN stack integration, frontend-backend connection, deployment" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "Network security, CORS, authentication protocols" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Queue implementation and BFS introduction" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python project structure best practices" },
-  },
-  objectives: ["Connect React frontend to Express backend", "Complete MERN project-05", "Implement queue data structure"],
-  tasks: [
-    { id: "day-052-task-01", title: "Connect React frontend to Express API", topicId: "topic-nodejs", type: "practice" },
-    { id: "day-052-task-02", title: "Complete project-05 with full CRUD and auth", topicId: "topic-nodejs", type: "project" },
-    { id: "day-052-task-03", title: "Study CORS, OAuth, session vs token auth", topicId: "topic-cn", type: "learn" },
-    { id: "day-052-task-04", title: "Implement queue and solve basic BFS", topicId: "topic-dsa", type: "practice" },
-    { id: "day-052-task-05", title: "Organize Python project with proper structure", topicId: "topic-python-fundamentals", type: "practice" },
-  ],
-  revision: { topicId: "topic-nodejs", focus: "Review MERN stack: Node, Express, MongoDB, React" },
-  project: { projectId: "project-05", milestone: "Full-stack MERN app complete with auth and deployment" },
-},
-{
-  id: "day-053",
-  day: 53,
-  week: 9,
-  phase: "phase-05",
-  title: "Day 53: Git Fundamentals & Branching",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-devops", focus: "Git init, add, commit, log, branching, merging" },
-    coreCS: { time: "4:30-5:15", topic: "topic-os", focus: "Shell scripting, environment variables" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Stack: next greater element, min stack" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python argparse for CLI tools" },
-  },
-  objectives: ["Master Git branching and merging", "Understand shell environment", "Solve stack-based problems"],
-  tasks: [
-    { id: "day-053-task-01", title: "Practice git init, add, commit, branch, merge", topicId: "topic-devops", type: "learn" },
-    { id: "day-053-task-02", title: "Resolve merge conflicts", topicId: "topic-devops", type: "practice" },
-    { id: "day-053-task-03", title: "Write basic shell scripts with variables", topicId: "topic-os", type: "practice" },
-    { id: "day-053-task-04", title: "Solve next greater element with stack", topicId: "topic-dsa", type: "practice" },
-    { id: "day-053-task-05", title: "Build CLI tool with argparse", topicId: "topic-python-fundamentals", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-054",
-  day: 54,
-  week: 9,
-  phase: "phase-05",
-  title: "Day 54: GitHub & Collaboration",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-devops", focus: "GitHub repos, pull requests, code review, issues" },
-    coreCS: { time: "4:30-5:15", topic: "topic-os", focus: "Linux file permissions, users, groups" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Queue: circular queue, deque" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python pathlib for file paths" },
-  },
-  objectives: ["Use GitHub for collaboration", "Understand Linux permissions", "Implement circular queue"],
-  tasks: [
-    { id: "day-054-task-01", title: "Create repos, push, create pull requests", topicId: "topic-devops", type: "learn" },
-    { id: "day-054-task-02", title: "Practice code review workflow on GitHub", topicId: "topic-devops", type: "practice" },
-    { id: "day-054-task-03", title: "Manage Linux file permissions: chmod, chown", topicId: "topic-os", type: "practice" },
-    { id: "day-054-task-04", title: "Implement circular queue and deque", topicId: "topic-dsa", type: "practice" },
-    { id: "day-054-task-05", title: "Navigate file system with pathlib", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-055",
-  day: 55,
-  week: 10,
-  phase: "phase-05",
-  title: "Day 55: Linux CLI & Bash Scripting",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-devops", focus: "Linux commands, Bash scripting, cron jobs, automation" },
-    coreCS: { time: "4:30-5:15", topic: "topic-os", focus: "Process management: ps, top, kill, systemd" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Linked list: merge two sorted lists" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python subprocess for system commands" },
-  },
-  objectives: ["Write Bash scripts for automation", "Manage Linux processes", "Merge sorted linked lists"],
-  tasks: [
-    { id: "day-055-task-01", title: "Write Bash scripts with loops and conditionals", topicId: "topic-devops", type: "learn" },
-    { id: "day-055-task-02", title: "Set up cron jobs for automation", topicId: "topic-devops", type: "practice" },
-    { id: "day-055-task-03", title: "Manage processes with ps, top, kill", topicId: "topic-os", type: "practice" },
-    { id: "day-055-task-04", title: "Merge two sorted linked lists", topicId: "topic-dsa", type: "practice" },
-    { id: "day-055-task-05", title: "Run system commands with subprocess", topicId: "topic-python-fundamentals", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-056",
-  day: 56,
-  week: 10,
-  phase: "phase-05",
-  title: "Day 56: Docker Fundamentals",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-devops", focus: "Docker concepts, images, containers, docker run" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "DNS deep dive, domain resolution" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Linked list: remove nth from end, add two numbers" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python setuptools and packaging" },
-  },
-  objectives: ["Understand Docker containerization", "Pull and run Docker images", "Solve linked list pointer problems"],
-  tasks: [
-    { id: "day-056-task-01", title: "Install Docker, understand images vs containers", topicId: "topic-devops", type: "learn" },
-    { id: "day-056-task-02", title: "Run containers: nginx, node, mongo", topicId: "topic-devops", type: "practice" },
-    { id: "day-056-task-03", title: "Study DNS resolution and record types", topicId: "topic-cn", type: "learn" },
-    { id: "day-056-task-04", title: "Remove nth node from end of linked list", topicId: "topic-dsa", type: "practice" },
-    { id: "day-056-task-05", title: "Create distributable Python package", topicId: "topic-python-fundamentals", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-057",
-  day: 57,
-  week: 10,
-  phase: "phase-05",
-  title: "Day 57: Dockerfiles & Building Images",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-devops", focus: "Dockerfiles, building images, layers, best practices" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "WebSockets, HTTP/2, gRPC overview" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Stack and queue combined problems" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python dataclasses" },
-  },
-  objectives: ["Write Dockerfiles for Node.js apps", "Understand image layering and caching", "Use advanced stack/queue patterns"],
-  tasks: [
-    { id: "day-057-task-01", title: "Write Dockerfile for Node.js application", topicId: "topic-devops", type: "learn" },
-    { id: "day-057-task-02", title: "Optimize Dockerfile with multi-stage builds", topicId: "topic-devops", type: "practice" },
-    { id: "day-057-task-03", title: "Compare WebSocket, HTTP/2, gRPC protocols", topicId: "topic-cn", type: "learn" },
-    { id: "day-057-task-04", title: "Implement stack using queues and vice versa", topicId: "topic-dsa", type: "practice" },
-    { id: "day-057-task-05", title: "Define data models with dataclasses", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-058",
-  day: 58,
-  week: 10,
-  phase: "phase-05",
-  title: "Day 58: Docker Compose & Multi-Container",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-devops", focus: "Docker Compose, multi-container apps, volumes, networks" },
-    coreCS: { time: "4:30-5:15", topic: "topic-os", focus: "Virtualization vs containerization" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Monotonic stack: trapping rain water" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python async basics: asyncio" },
-  },
-  objectives: ["Orchestrate multi-container apps with Docker Compose", "Understand virtualization", "Solve monotonic stack problems"],
-  tasks: [
-    { id: "day-058-task-01", title: "Write docker-compose.yml for MERN stack", topicId: "topic-devops", type: "learn" },
-    { id: "day-058-task-02", title: "Configure volumes and networks in Compose", topicId: "topic-devops", type: "practice" },
-    { id: "day-058-task-03", title: "Compare VMs, containers, hypervisors", topicId: "topic-os", type: "learn" },
-    { id: "day-058-task-04", title: "Solve trapping rain water with monotonic stack", topicId: "topic-dsa", type: "practice" },
-    { id: "day-058-task-05", title: "Write async functions with asyncio", topicId: "topic-python-fundamentals", type: "introduction" },
-  ],
-  revision: { topicId: "topic-devops", focus: "Review Docker images, containers, Compose" },
-  project: null,
-},
-{
-  id: "day-059",
-  day: 59,
-  week: 10,
-  phase: "phase-05",
-  title: "Day 59: CI/CD & GitHub Actions",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-devops", focus: "CI/CD concepts, GitHub Actions workflows, automated testing" },
-    coreCS: { time: "4:30-5:15", topic: "topic-os", focus: "System calls, kernel modes, boot process" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Recursion review and practice problems" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python environment variables with dotenv" },
-  },
-  objectives: ["Set up CI/CD pipeline with GitHub Actions", "Automate testing and deployment", "Review recursion patterns"],
-  tasks: [
-    { id: "day-059-task-01", title: "Create GitHub Actions workflow for testing", topicId: "topic-devops", type: "learn" },
-    { id: "day-059-task-02", title: "Add build and deploy steps to workflow", topicId: "topic-devops", type: "practice" },
-    { id: "day-059-task-03", title: "Study system calls and kernel architecture", topicId: "topic-os", type: "learn" },
-    { id: "day-059-task-04", title: "Solve mixed recursion practice problems", topicId: "topic-dsa", type: "revision" },
-    { id: "day-059-task-05", title: "Manage env vars with python-dotenv", topicId: "topic-python-fundamentals", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-060",
-  day: 60,
-  week: 10,
-  phase: "phase-05",
-  title: "Day 60: Nginx, Monitoring & Deployment",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-devops", focus: "Nginx reverse proxy, monitoring, logging, deployment strategies" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "Microservices architecture overview" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Binary tree: traversals (inorder, preorder, postorder)" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python Makefile and task automation" },
-  },
-  objectives: ["Configure Nginx as reverse proxy", "Start DevOps project-06", "Implement binary tree traversals"],
-  tasks: [
-    { id: "day-060-task-01", title: "Set up Nginx reverse proxy for Node app", topicId: "topic-devops", type: "learn" },
-    { id: "day-060-task-02", title: "Start project-06: containerize and deploy app", topicId: "topic-devops", type: "project" },
-    { id: "day-060-task-03", title: "Study microservices patterns and communication", topicId: "topic-cn", type: "learn" },
-    { id: "day-060-task-04", title: "Implement inorder, preorder, postorder traversals", topicId: "topic-dsa", type: "practice" },
-    { id: "day-060-task-05", title: "Create Makefile for project automation", topicId: "topic-python-fundamentals", type: "practice" },
-  ],
-  revision: null,
-  project: { projectId: "project-06", milestone: "Nginx setup and initial deployment pipeline" },
-},
-{
-  id: "day-061",
-  day: 61,
-  week: 11,
-  phase: "phase-05",
-  title: "Day 61: Monitoring, Logging & Deployment Strategies",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-devops", focus: "Monitoring with Prometheus/Grafana, centralized logging, deployment strategies (blue-green, canary)" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "Network protocols: HTTP/2, WebSockets" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Stack implementations and problems" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python packaging with setuptools" },
-  },
-  objectives: ["Set up application monitoring", "Implement centralized logging", "Understand deployment strategies"],
-  tasks: [
-    { id: "day-061-task-01", title: "Set up Prometheus metrics and Grafana dashboards", topicId: "topic-devops", type: "practice" },
-    { id: "day-061-task-02", title: "Configure centralized logging with ELK concepts", topicId: "topic-devops", type: "learn" },
-    { id: "day-061-task-03", title: "Study blue-green and canary deployments", topicId: "topic-devops", type: "learn" },
-    { id: "day-061-task-04", title: "DSA: Implement stack and solve balanced parentheses", topicId: "topic-dsa", type: "practice" },
-    { id: "day-061-task-05", title: "Python: Create a distributable package", topicId: "topic-python-fundamentals", type: "practice" },
-  ],
-  revision: { topicId: "topic-devops", focus: "Review Docker and CI/CD concepts" },
-  project: { projectId: "project-06", milestone: "CI/CD pipeline and monitoring" },
-},
-{
-  id: "day-062",
-  day: 62,
-  week: 11,
-  phase: "phase-05",
-  title: "Day 62: DevOps Review & Infrastructure as Code",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-devops", focus: "Infrastructure as Code concepts, Terraform intro, DevOps review" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cn", focus: "DNS, load balancing, CDN concepts" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Queue implementations and BFS intro" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-fundamentals", focus: "Python virtual environments recap" },
-  },
-  objectives: ["Understand Infrastructure as Code", "Review full DevOps pipeline", "Complete DevOps project"],
-  tasks: [
-    { id: "day-062-task-01", title: "Study Terraform basics and IaC principles", topicId: "topic-devops", type: "learn" },
-    { id: "day-062-task-02", title: "Review and polish DevOps pipeline project", topicId: "topic-devops", type: "project" },
-    { id: "day-062-task-03", title: "DSA: Implement queue and circular queue", topicId: "topic-dsa", type: "practice" },
-    { id: "day-062-task-04", title: "Networking: DNS resolution and load balancer types", topicId: "topic-cn", type: "learn" },
-    { id: "day-062-task-05", title: "Python: Review packaging and environments", topicId: "topic-python-fundamentals", type: "revision" },
-  ],
-  revision: { topicId: "topic-devops", focus: "Full DevOps lifecycle review" },
-  project: { projectId: "project-06", milestone: "Complete deployment pipeline" },
-},
-{
-  id: "day-063",
-  day: 63,
-  week: 11,
-  phase: "phase-06",
-  title: "Day 63: AWS IAM & Account Security",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-cloud", focus: "AWS account setup, IAM users, roles, policies, MFA, security best practices" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cloud", focus: "Cloud computing models: IaaS, PaaS, SaaS" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Binary tree fundamentals, traversals" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "NumPy installation and array creation" },
-  },
-  objectives: ["Set up AWS account securely", "Understand IAM users, roles, and policies", "Learn cloud computing models"],
-  tasks: [
-    { id: "day-063-task-01", title: "Create AWS account and configure MFA", topicId: "topic-cloud", type: "practice" },
-    { id: "day-063-task-02", title: "Create IAM users, groups, and policies", topicId: "topic-cloud", type: "practice" },
-    { id: "day-063-task-03", title: "Study IaaS vs PaaS vs SaaS", topicId: "topic-cloud", type: "learn" },
-    { id: "day-063-task-04", title: "DSA: Binary tree creation and inorder traversal", topicId: "topic-dsa", type: "learn" },
-    { id: "day-063-task-05", title: "NumPy: Create arrays, shapes, dtypes", topicId: "topic-python-data", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-064",
-  day: 64,
-  week: 11,
-  phase: "phase-06",
-  title: "Day 64: EC2 Instances & SSH",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-cloud", focus: "EC2 instance types, launching instances, SSH access, security groups, key pairs" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cloud", focus: "Virtualization, hypervisors, containers vs VMs" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Preorder and postorder traversals" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "NumPy indexing and slicing" },
-  },
-  objectives: ["Launch and connect to EC2 instances", "Configure security groups", "Understand virtualization concepts"],
-  tasks: [
-    { id: "day-064-task-01", title: "Launch EC2 instance and SSH into it", topicId: "topic-cloud", type: "practice" },
-    { id: "day-064-task-02", title: "Configure security groups and key pairs", topicId: "topic-cloud", type: "practice" },
-    { id: "day-064-task-03", title: "Study EC2 instance types and pricing models", topicId: "topic-cloud", type: "learn" },
-    { id: "day-064-task-04", title: "DSA: Implement preorder and postorder traversals", topicId: "topic-dsa", type: "practice" },
-    { id: "day-064-task-05", title: "NumPy: Advanced indexing and slicing", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-065",
-  day: 65,
-  week: 11,
-  phase: "phase-06",
-  title: "Day 65: S3 & Static Hosting",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-cloud", focus: "S3 buckets, storage classes, static website hosting, bucket policies, CORS" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cloud", focus: "Cloud storage types: block, object, file" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Level-order traversal, tree height" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "NumPy operations and broadcasting" },
-  },
-  objectives: ["Create S3 buckets and manage objects", "Host static website on S3", "Understand cloud storage types"],
-  tasks: [
-    { id: "day-065-task-01", title: "Create S3 bucket and upload objects", topicId: "topic-cloud", type: "practice" },
-    { id: "day-065-task-02", title: "Configure S3 static website hosting", topicId: "topic-cloud", type: "practice" },
-    { id: "day-065-task-03", title: "Set bucket policies and CORS configuration", topicId: "topic-cloud", type: "practice" },
-    { id: "day-065-task-04", title: "DSA: Level-order traversal and find tree height", topicId: "topic-dsa", type: "practice" },
-    { id: "day-065-task-05", title: "NumPy: Element-wise operations and broadcasting", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-066",
-  day: 66,
-  week: 11,
-  phase: "phase-06",
-  title: "Day 66: VPC & Networking",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-cloud", focus: "VPC creation, subnets (public/private), route tables, internet gateway, NAT gateway" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cloud", focus: "Cloud networking: VPN, peering, transit gateway" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Binary Search Tree: insert, search, delete" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "NumPy linear algebra basics" },
-  },
-  objectives: ["Design and create a VPC", "Configure public and private subnets", "Understand BST operations"],
-  tasks: [
-    { id: "day-066-task-01", title: "Create VPC with public and private subnets", topicId: "topic-cloud", type: "practice" },
-    { id: "day-066-task-02", title: "Configure route tables, IGW, and NAT gateway", topicId: "topic-cloud", type: "practice" },
-    { id: "day-066-task-03", title: "Study cloud networking concepts", topicId: "topic-cloud", type: "learn" },
-    { id: "day-066-task-04", title: "DSA: Implement BST insert, search, delete", topicId: "topic-dsa", type: "practice" },
-    { id: "day-066-task-05", title: "NumPy: Matrix operations and dot product", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-067",
-  day: 67,
-  week: 12,
-  phase: "phase-06",
-  title: "Day 67: RDS & Database Hosting",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-cloud", focus: "RDS setup, MySQL/PostgreSQL on AWS, backups, read replicas, Multi-AZ" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cloud", focus: "Managed database services, DBaaS" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "BST: validate BST, inorder successor" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "NumPy random module and statistics" },
-  },
-  objectives: ["Launch RDS instances", "Configure database backups and replicas", "Validate BST properties"],
-  tasks: [
-    { id: "day-067-task-01", title: "Launch RDS instance with MySQL/PostgreSQL", topicId: "topic-cloud", type: "practice" },
-    { id: "day-067-task-02", title: "Configure automated backups and read replicas", topicId: "topic-cloud", type: "practice" },
-    { id: "day-067-task-03", title: "Study Multi-AZ deployment for high availability", topicId: "topic-cloud", type: "learn" },
-    { id: "day-067-task-04", title: "DSA: Validate BST and find inorder successor", topicId: "topic-dsa", type: "practice" },
-    { id: "day-067-task-05", title: "NumPy: Random number generation and basic stats", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-068",
-  day: 68,
-  week: 12,
-  phase: "phase-06",
-  title: "Day 68: Lambda & Serverless",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-cloud", focus: "AWS Lambda functions, triggers, API Gateway integration, serverless architecture" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cloud", focus: "Serverless computing, FaaS, event-driven architecture" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Lowest Common Ancestor, tree diameter" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "NumPy: reshape, stack, split" },
-  },
-  objectives: ["Create and deploy Lambda functions", "Integrate Lambda with API Gateway", "Solve tree path problems"],
-  tasks: [
-    { id: "day-068-task-01", title: "Create Lambda function with Node.js/Python runtime", topicId: "topic-cloud", type: "practice" },
-    { id: "day-068-task-02", title: "Set up API Gateway to trigger Lambda", topicId: "topic-cloud", type: "practice" },
-    { id: "day-068-task-03", title: "Study serverless architecture patterns", topicId: "topic-cloud", type: "learn" },
-    { id: "day-068-task-04", title: "DSA: Find LCA and diameter of binary tree", topicId: "topic-dsa", type: "practice" },
-    { id: "day-068-task-05", title: "NumPy: Reshape, concatenate, and split arrays", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-069",
-  day: 69,
-  week: 12,
-  phase: "phase-06",
-  title: "Day 69: CloudFront & CDN",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-cloud", focus: "CloudFront distributions, caching policies, edge locations, SSL/TLS" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cloud", focus: "Content delivery networks, edge computing" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Heap fundamentals, min-heap, max-heap" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "NumPy review and practice problems" },
-  },
-  objectives: ["Set up CloudFront distribution", "Configure caching and SSL", "Implement heap data structure"],
-  tasks: [
-    { id: "day-069-task-01", title: "Create CloudFront distribution for S3 origin", topicId: "topic-cloud", type: "practice" },
-    { id: "day-069-task-02", title: "Configure caching behaviors and SSL certificate", topicId: "topic-cloud", type: "practice" },
-    { id: "day-069-task-03", title: "Study CDN and edge computing concepts", topicId: "topic-cloud", type: "learn" },
-    { id: "day-069-task-04", title: "DSA: Implement min-heap with insert and extract", topicId: "topic-dsa", type: "practice" },
-    { id: "day-069-task-05", title: "NumPy: Comprehensive review exercises", topicId: "topic-python-data", type: "revision" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-070",
-  day: 70,
-  week: 12,
-  phase: "phase-06",
-  title: "Day 70: CloudWatch & Auto-Scaling",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-cloud", focus: "CloudWatch metrics, alarms, dashboards, auto-scaling groups, scaling policies" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cloud", focus: "High availability, fault tolerance, disaster recovery" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Heap sort, priority queue" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Pandas introduction and installation" },
-  },
-  objectives: ["Monitor AWS resources with CloudWatch", "Configure auto-scaling groups", "Start cloud deployment project"],
-  tasks: [
-    { id: "day-070-task-01", title: "Set up CloudWatch alarms and dashboards", topicId: "topic-cloud", type: "practice" },
-    { id: "day-070-task-02", title: "Configure auto-scaling group with scaling policies", topicId: "topic-cloud", type: "practice" },
-    { id: "day-070-task-03", title: "Start project-07: Plan cloud architecture", topicId: "topic-cloud", type: "project" },
-    { id: "day-070-task-04", title: "DSA: Implement heap sort and priority queue", topicId: "topic-dsa", type: "practice" },
-    { id: "day-070-task-05", title: "Pandas: Install and create first DataFrame", topicId: "topic-python-data", type: "introduction" },
-  ],
-  revision: null,
-  project: { projectId: "project-07", milestone: "Cloud architecture planning and setup" },
-},
-{
-  id: "day-071",
-  day: 71,
-  week: 12,
-  phase: "phase-06",
-  title: "Day 71: Azure Fundamentals",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-cloud", focus: "Azure portal, resource groups, Azure App Service, Azure Functions, comparison with AWS" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cloud", focus: "Multi-cloud strategy, cloud migration" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Top K elements, K closest points" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Pandas: reading CSV and Excel files" },
-  },
-  objectives: ["Explore Azure portal and key services", "Compare Azure with AWS services", "Solve top-K heap problems"],
-  tasks: [
-    { id: "day-071-task-01", title: "Explore Azure portal, create resource group", topicId: "topic-cloud", type: "practice" },
-    { id: "day-071-task-02", title: "Study Azure App Service and Functions", topicId: "topic-cloud", type: "learn" },
-    { id: "day-071-task-03", title: "Compare AWS vs Azure service equivalents", topicId: "topic-cloud", type: "learn" },
-    { id: "day-071-task-04", title: "DSA: Top K frequent elements using heap", topicId: "topic-dsa", type: "practice" },
-    { id: "day-071-task-05", title: "Continue project-07: Deploy app to cloud", topicId: "topic-cloud", type: "project" },
-  ],
-  revision: null,
-  project: { projectId: "project-07", milestone: "Deploy application to cloud infrastructure" },
-},
-{
-  id: "day-072",
-  day: 72,
-  week: 12,
-  phase: "phase-06",
-  title: "Day 72: GCP Concepts & Cloud Networking",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-cloud", focus: "GCP overview, Compute Engine, Cloud Storage, Cloud Functions, cloud networking review" },
-    coreCS: { time: "4:30-5:15", topic: "topic-cloud", focus: "Cloud security, compliance, shared responsibility model" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Merge K sorted lists, median from stream" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Pandas: DataFrame inspection and info" },
-  },
-  objectives: ["Understand GCP key services", "Review cloud networking across providers", "Complete cloud deployment project"],
-  tasks: [
-    { id: "day-072-task-01", title: "Study GCP Compute Engine, Storage, Functions", topicId: "topic-cloud", type: "learn" },
-    { id: "day-072-task-02", title: "Compare AWS vs Azure vs GCP networking", topicId: "topic-cloud", type: "learn" },
-    { id: "day-072-task-03", title: "Complete project-07: Full cloud deployment with monitoring", topicId: "topic-cloud", type: "project" },
-    { id: "day-072-task-04", title: "DSA: Merge K sorted lists using heap", topicId: "topic-dsa", type: "practice" },
-    { id: "day-072-task-05", title: "Pandas: Explore DataFrame shape, dtypes, describe", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: { topicId: "topic-cloud", focus: "Review all cloud providers and services" },
-  project: { projectId: "project-07", milestone: "Complete cloud deployment with monitoring" },
-},
-{
-  id: "day-073",
-  day: 73,
-  week: 13,
-  phase: "phase-07",
-  title: "Day 73: Excel & Statistics Basics",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-analytics", focus: "Excel formulas, pivot tables, VLOOKUP, data analysis, basic statistics" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "System design fundamentals, scalability basics" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Graph representation: adjacency list and matrix" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Pandas: selecting columns and rows" },
-  },
-  objectives: ["Master Excel formulas and pivot tables", "Understand basic statistics concepts", "Learn graph representations"],
-  tasks: [
-    { id: "day-073-task-01", title: "Excel: Formulas, VLOOKUP, pivot tables", topicId: "topic-data-analytics", type: "practice" },
-    { id: "day-073-task-02", title: "Study mean, median, mode, standard deviation", topicId: "topic-data-analytics", type: "learn" },
-    { id: "day-073-task-03", title: "System Design: Scalability and load balancing intro", topicId: "topic-system-design", type: "learn" },
-    { id: "day-073-task-04", title: "DSA: Implement adjacency list and adjacency matrix", topicId: "topic-dsa", type: "practice" },
-    { id: "day-073-task-05", title: "Pandas: loc, iloc, boolean indexing", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-074",
-  day: 74,
-  week: 13,
-  phase: "phase-07",
-  title: "Day 74: Descriptive Statistics & Probability",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-analytics", focus: "Descriptive statistics, distributions, probability basics, correlation, hypothesis testing intro" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "Caching strategies, database sharding" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "BFS traversal on graphs" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Pandas: filtering and sorting data" },
-  },
-  objectives: ["Apply descriptive statistics", "Understand probability distributions", "Implement BFS on graphs"],
-  tasks: [
-    { id: "day-074-task-01", title: "Calculate variance, correlation, percentiles", topicId: "topic-data-analytics", type: "practice" },
-    { id: "day-074-task-02", title: "Study normal distribution and probability basics", topicId: "topic-data-analytics", type: "learn" },
-    { id: "day-074-task-03", title: "System Design: Caching (Redis, Memcached) concepts", topicId: "topic-system-design", type: "learn" },
-    { id: "day-074-task-04", title: "DSA: Implement BFS and shortest path in unweighted graph", topicId: "topic-dsa", type: "practice" },
-    { id: "day-074-task-05", title: "Pandas: Sort values and filter with conditions", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-075",
-  day: 75,
-  week: 13,
-  phase: "phase-07",
-  title: "Day 75: SQL CTEs & Subqueries",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-sql", focus: "Common Table Expressions, recursive CTEs, correlated subqueries, derived tables" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "Message queues, pub/sub patterns" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DFS traversal on graphs" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Pandas: groupby and aggregation" },
-  },
-  objectives: ["Write complex CTEs and recursive queries", "Understand correlated subqueries", "Implement DFS on graphs"],
-  tasks: [
-    { id: "day-075-task-01", title: "Write CTEs for multi-step data transformations", topicId: "topic-sql", type: "practice" },
-    { id: "day-075-task-02", title: "Implement recursive CTEs for hierarchical data", topicId: "topic-sql", type: "practice" },
-    { id: "day-075-task-03", title: "Study message queue patterns (RabbitMQ, Kafka concepts)", topicId: "topic-system-design", type: "learn" },
-    { id: "day-075-task-04", title: "DSA: Implement DFS and detect cycles in graph", topicId: "topic-dsa", type: "practice" },
-    { id: "day-075-task-05", title: "Pandas: Group data and compute aggregates", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-076",
-  day: 76,
-  week: 13,
-  phase: "phase-07",
-  title: "Day 76: SQL Window Functions",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-sql", focus: "ROW_NUMBER, RANK, DENSE_RANK, LAG, LEAD, NTILE, running totals, moving averages" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "API design, rate limiting, pagination" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Topological sort, course schedule problem" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Pandas: merge, join, concat" },
-  },
-  objectives: ["Master SQL window functions", "Compute rankings and running totals", "Implement topological sort"],
-  tasks: [
-    { id: "day-076-task-01", title: "Use ROW_NUMBER, RANK, DENSE_RANK for rankings", topicId: "topic-sql", type: "practice" },
-    { id: "day-076-task-02", title: "Calculate running totals with LAG/LEAD", topicId: "topic-sql", type: "practice" },
-    { id: "day-076-task-03", title: "System Design: RESTful API design principles", topicId: "topic-system-design", type: "learn" },
-    { id: "day-076-task-04", title: "DSA: Topological sort using DFS", topicId: "topic-dsa", type: "practice" },
-    { id: "day-076-task-05", title: "Pandas: Merge and join DataFrames", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-077",
-  day: 77,
-  week: 13,
-  phase: "phase-07",
-  title: "Day 77: Views, Indexes & Query Optimization",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-sql", focus: "Views, materialized views, indexes (B-tree, hash), EXPLAIN plans, query optimization" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "Database replication, consistency models" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Dijkstra's shortest path algorithm" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Pandas: handling missing data" },
-  },
-  objectives: ["Create and use views and indexes", "Optimize SQL query performance", "Implement Dijkstra's algorithm"],
-  tasks: [
-    { id: "day-077-task-01", title: "Create views and materialized views", topicId: "topic-sql", type: "practice" },
-    { id: "day-077-task-02", title: "Add indexes and analyze EXPLAIN plans", topicId: "topic-sql", type: "practice" },
-    { id: "day-077-task-03", title: "Study database replication and CAP theorem", topicId: "topic-system-design", type: "learn" },
-    { id: "day-077-task-04", title: "DSA: Implement Dijkstra's shortest path", topicId: "topic-dsa", type: "practice" },
-    { id: "day-077-task-05", title: "Pandas: fillna, dropna, interpolate missing data", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-078",
-  day: 78,
-  week: 13,
-  phase: "phase-07",
-  title: "Day 78: Pandas DataFrames Deep Dive",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-python-data", focus: "Pandas DataFrames, Series, operations, apply, map, data types, string methods" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "Microservices vs monolith architecture" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Connected components, union-find intro" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Pandas: datetime operations" },
-  },
-  objectives: ["Master Pandas DataFrame operations", "Use apply and map for transformations", "Understand microservices architecture"],
-  tasks: [
-    { id: "day-078-task-01", title: "Pandas: Series and DataFrame operations deep dive", topicId: "topic-python-data", type: "learn" },
-    { id: "day-078-task-02", title: "Use apply, map, and applymap for transforms", topicId: "topic-python-data", type: "practice" },
-    { id: "day-078-task-03", title: "Pandas: String methods and data type conversions", topicId: "topic-python-data", type: "practice" },
-    { id: "day-078-task-04", title: "System Design: Microservices patterns and trade-offs", topicId: "topic-system-design", type: "learn" },
-    { id: "day-078-task-05", title: "DSA: Find connected components in undirected graph", topicId: "topic-dsa", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-079",
-  day: 79,
-  week: 14,
-  phase: "phase-07",
-  title: "Day 79: NumPy for Data Analysis",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-python-data", focus: "NumPy arrays for data analysis, vectorized operations, statistical functions, performance" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "Load balancer types, reverse proxy" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Union-Find with path compression" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Pandas: pivot tables and crosstab" },
-  },
-  objectives: ["Use NumPy for efficient data analysis", "Apply vectorized operations", "Implement Union-Find data structure"],
-  tasks: [
-    { id: "day-079-task-01", title: "NumPy: Vectorized operations for data analysis", topicId: "topic-python-data", type: "practice" },
-    { id: "day-079-task-02", title: "NumPy: Statistical functions (mean, std, percentile)", topicId: "topic-python-data", type: "practice" },
-    { id: "day-079-task-03", title: "System Design: Load balancer algorithms and proxy patterns", topicId: "topic-system-design", type: "learn" },
-    { id: "day-079-task-04", title: "DSA: Implement Union-Find with rank and path compression", topicId: "topic-dsa", type: "practice" },
-    { id: "day-079-task-05", title: "Pandas: Create pivot tables and crosstabs", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-080",
-  day: 80,
-  week: 14,
-  phase: "phase-07",
-  title: "Day 80: Data Cleaning & Transformation",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-python-data", focus: "Data cleaning pipeline, handling duplicates, outliers, normalization, feature engineering" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "Consistent hashing, partitioning strategies" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Number of islands, flood fill" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Pandas: data export (CSV, Excel, JSON)" },
-  },
-  objectives: ["Build data cleaning pipelines", "Handle duplicates and outliers", "Start data analytics project"],
-  tasks: [
-    { id: "day-080-task-01", title: "Clean dataset: remove duplicates, handle outliers", topicId: "topic-python-data", type: "practice" },
-    { id: "day-080-task-02", title: "Normalize data and create new features", topicId: "topic-python-data", type: "practice" },
-    { id: "day-080-task-03", title: "Start project-08: Choose dataset and define questions", topicId: "topic-data-analytics", type: "project" },
-    { id: "day-080-task-04", title: "DSA: Number of islands using BFS/DFS", topicId: "topic-dsa", type: "practice" },
-    { id: "day-080-task-05", title: "Pandas: Export cleaned data to CSV and JSON", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: { projectId: "project-08", milestone: "Dataset selection and data cleaning" },
-},
-{
-  id: "day-081",
-  day: 81,
-  week: 14,
-  phase: "phase-07",
-  title: "Day 81: Matplotlib, Seaborn & EDA",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-python-data", focus: "Matplotlib plots, Seaborn statistical charts, EDA workflow, distribution plots, correlation heatmaps" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "Event-driven architecture, CQRS" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Graph: shortest path in grid, 01 BFS" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Plotly interactive charts intro" },
-  },
-  objectives: ["Create publication-quality visualizations", "Perform exploratory data analysis", "Build visualizations for project"],
-  tasks: [
-    { id: "day-081-task-01", title: "Matplotlib: Line, bar, scatter, histogram plots", topicId: "topic-python-data", type: "practice" },
-    { id: "day-081-task-02", title: "Seaborn: Distribution plots, box plots, heatmaps", topicId: "topic-python-data", type: "practice" },
-    { id: "day-081-task-03", title: "Perform EDA on project-08 dataset", topicId: "topic-data-analytics", type: "project" },
-    { id: "day-081-task-04", title: "DSA: Shortest path in binary grid", topicId: "topic-dsa", type: "practice" },
-    { id: "day-081-task-05", title: "System Design: Event sourcing and CQRS patterns", topicId: "topic-system-design", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-08", milestone: "EDA and visualization creation" },
-},
-{
-  id: "day-082",
-  day: 82,
-  week: 14,
-  phase: "phase-07",
-  title: "Day 82: Power BI, Dashboards & Data Storytelling",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-analytics", focus: "Power BI basics, dashboard design, data storytelling, presenting insights" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "System design review and case studies" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Graph review: BFS, DFS, Dijkstra practice" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Data analytics tools review" },
-  },
-  objectives: ["Build interactive dashboards", "Present data insights effectively", "Complete data analytics project"],
-  tasks: [
-    { id: "day-082-task-01", title: "Power BI: Create dashboard with charts and filters", topicId: "topic-data-analytics", type: "practice" },
-    { id: "day-082-task-02", title: "Design data storytelling narrative for project", topicId: "topic-data-analytics", type: "practice" },
-    { id: "day-082-task-03", title: "Complete project-08: Final dashboard and report", topicId: "topic-data-analytics", type: "project" },
-    { id: "day-082-task-04", title: "DSA: Graph problems review and practice", topicId: "topic-dsa", type: "revision" },
-    { id: "day-082-task-05", title: "System Design: Design a URL shortener system", topicId: "topic-system-design", type: "practice" },
-  ],
-  revision: { topicId: "topic-data-analytics", focus: "Review data analytics workflow end-to-end" },
-  project: { projectId: "project-08", milestone: "Complete analytics dashboard and report" },
-},
-{
-  id: "day-083",
-  day: 83,
-  week: 14,
-  phase: "phase-08",
-  title: "Day 83: ETL Concepts & Data Pipelines",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-engineering", focus: "ETL process, extract-transform-load, data pipeline architecture, data quality" },
-    coreCS: { time: "4:30-5:15", topic: "topic-data-engineering", focus: "Data engineering fundamentals, data lifecycle" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Greedy algorithms: activity selection" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Python: reading from multiple file formats" },
-  },
-  objectives: ["Understand ETL process and pipeline architecture", "Learn data quality principles", "Solve greedy algorithm problems"],
-  tasks: [
-    { id: "day-083-task-01", title: "Study ETL process: Extract, Transform, Load stages", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-083-task-02", title: "Design a data pipeline architecture diagram", topicId: "topic-data-engineering", type: "practice" },
-    { id: "day-083-task-03", title: "Study data quality dimensions and validation", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-083-task-04", title: "DSA: Activity selection and interval scheduling", topicId: "topic-dsa", type: "practice" },
-    { id: "day-083-task-05", title: "Python: Read data from CSV, JSON, Parquet", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-084",
-  day: 84,
-  week: 14,
-  phase: "phase-08",
-  title: "Day 84: ELT & Batch Processing",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-engineering", focus: "ELT pattern, batch processing, scheduled jobs, data transformation in warehouse" },
-    coreCS: { time: "4:30-5:15", topic: "topic-data-engineering", focus: "ETL vs ELT trade-offs, modern data stack" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Greedy: jump game, gas station" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Python: data transformation scripts" },
-  },
-  objectives: ["Compare ETL vs ELT approaches", "Design batch processing workflows", "Solve greedy optimization problems"],
-  tasks: [
-    { id: "day-084-task-01", title: "Study ELT pattern and modern data stack", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-084-task-02", title: "Design batch processing workflow with scheduling", topicId: "topic-data-engineering", type: "practice" },
-    { id: "day-084-task-03", title: "Compare ETL vs ELT for different use cases", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-084-task-04", title: "DSA: Jump game and gas station problems", topicId: "topic-dsa", type: "practice" },
-    { id: "day-084-task-05", title: "Python: Write data transformation pipeline script", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-085",
-  day: 85,
-  week: 15,
-  phase: "phase-08",
-  title: "Day 85: Stream Processing & Real-Time Data",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-engineering", focus: "Stream processing, real-time data, event streams, windowing, exactly-once semantics" },
-    coreCS: { time: "4:30-5:15", topic: "topic-data-engineering", focus: "Batch vs stream processing, Lambda architecture" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Greedy: minimum platforms, fractional knapsack" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Python: working with streaming data" },
-  },
-  objectives: ["Understand stream processing concepts", "Compare batch vs stream paradigms", "Learn Lambda and Kappa architectures"],
-  tasks: [
-    { id: "day-085-task-01", title: "Study stream processing and event-driven data", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-085-task-02", title: "Learn windowing strategies: tumbling, sliding, session", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-085-task-03", title: "Compare Lambda vs Kappa architecture", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-085-task-04", title: "DSA: Minimum platforms and fractional knapsack", topicId: "topic-dsa", type: "practice" },
-    { id: "day-085-task-05", title: "Python: Simulate streaming data processing", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-086",
-  day: 86,
-  week: 15,
-  phase: "phase-08",
-  title: "Day 86: Data Warehouses & Star Schema",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-engineering", focus: "Data warehouses, OLAP vs OLTP, star schema, snowflake schema, fact and dimension tables" },
-    coreCS: { time: "4:30-5:15", topic: "topic-data-engineering", focus: "Data warehouse architecture, columnar storage" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Dynamic programming: fibonacci, climbing stairs" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Matplotlib: subplots and figure customization" },
-  },
-  objectives: ["Design star and snowflake schemas", "Understand OLAP vs OLTP", "Start dynamic programming"],
-  tasks: [
-    { id: "day-086-task-01", title: "Study data warehouse concepts and OLAP vs OLTP", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-086-task-02", title: "Design star schema with fact and dimension tables", topicId: "topic-data-engineering", type: "practice" },
-    { id: "day-086-task-03", title: "Study snowflake schema and compare with star schema", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-086-task-04", title: "DSA: DP fibonacci and climbing stairs variations", topicId: "topic-dsa", type: "practice" },
-    { id: "day-086-task-05", title: "Matplotlib: Create multi-panel figures with subplots", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-087",
-  day: 87,
-  week: 15,
-  phase: "phase-08",
-  title: "Day 87: Data Lakes & Lakehouse",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-engineering", focus: "Data lakes, lakehouse architecture, Delta Lake, data formats (Parquet, Avro, ORC)" },
-    coreCS: { time: "4:30-5:15", topic: "topic-data-engineering", focus: "Data governance, metadata management, data catalog" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DP: 0/1 knapsack problem" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Matplotlib: annotations and styling" },
-  },
-  objectives: ["Understand data lake and lakehouse concepts", "Compare data storage formats", "Solve knapsack DP problems"],
-  tasks: [
-    { id: "day-087-task-01", title: "Study data lake architecture and challenges", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-087-task-02", title: "Learn lakehouse architecture and Delta Lake", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-087-task-03", title: "Compare Parquet, Avro, ORC file formats", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-087-task-04", title: "DSA: 0/1 knapsack with DP tabulation", topicId: "topic-dsa", type: "practice" },
-    { id: "day-087-task-05", title: "Matplotlib: Add annotations, legends, custom styles", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-088",
-  day: 88,
-  week: 15,
-  phase: "phase-08",
-  title: "Day 88: Data Modeling & Dimensional Design",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-engineering", focus: "Dimensional modeling, Kimball methodology, slowly changing dimensions, data vault" },
-    coreCS: { time: "4:30-5:15", topic: "topic-data-engineering", focus: "Data lineage, data observability" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DP: coin change problem" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Seaborn: statistical visualizations" },
-  },
-  objectives: ["Apply dimensional modeling techniques", "Handle slowly changing dimensions", "Solve coin change with DP"],
-  tasks: [
-    { id: "day-088-task-01", title: "Study Kimball dimensional modeling methodology", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-088-task-02", title: "Design slowly changing dimension types (SCD 1,2,3)", topicId: "topic-data-engineering", type: "practice" },
-    { id: "day-088-task-03", title: "Study data lineage and observability tools", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-088-task-04", title: "DSA: Coin change min coins and number of ways", topicId: "topic-dsa", type: "practice" },
-    { id: "day-088-task-05", title: "Seaborn: Pair plots, violin plots, joint plots", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-089",
-  day: 89,
-  week: 15,
-  phase: "phase-08",
-  title: "Day 89: Apache Airflow & DAGs",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-engineering", focus: "Apache Airflow, DAGs, operators, scheduling, task dependencies, XComs" },
-    coreCS: { time: "4:30-5:15", topic: "topic-data-engineering", focus: "Workflow orchestration patterns" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DP: longest common subsequence" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Data cleaning best practices review" },
-  },
-  objectives: ["Create Airflow DAGs for data pipelines", "Configure task scheduling and dependencies", "Solve LCS with dynamic programming"],
-  tasks: [
-    { id: "day-089-task-01", title: "Install Airflow and create first DAG", topicId: "topic-data-engineering", type: "practice" },
-    { id: "day-089-task-02", title: "Define operators, task dependencies, and schedules", topicId: "topic-data-engineering", type: "practice" },
-    { id: "day-089-task-03", title: "Study XComs for inter-task communication", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-089-task-04", title: "DSA: Longest common subsequence with DP", topicId: "topic-dsa", type: "practice" },
-    { id: "day-089-task-05", title: "Review data cleaning pipeline patterns", topicId: "topic-python-data", type: "revision" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-090",
-  day: 90,
-  week: 15,
-  phase: "phase-08",
-  title: "Day 90: Apache Spark Basics",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-engineering", focus: "Apache Spark architecture, RDDs, DataFrames, SparkSQL, transformations and actions" },
-    coreCS: { time: "4:30-5:15", topic: "topic-data-engineering", focus: "Distributed computing fundamentals" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DP: longest increasing subsequence" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "PySpark introduction" },
-  },
-  objectives: ["Understand Spark architecture and RDDs", "Write SparkSQL queries", "Start data engineering project"],
-  tasks: [
-    { id: "day-090-task-01", title: "Study Spark architecture: driver, executors, cluster", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-090-task-02", title: "Practice RDD and DataFrame transformations", topicId: "topic-data-engineering", type: "practice" },
-    { id: "day-090-task-03", title: "Write SparkSQL queries on sample data", topicId: "topic-data-engineering", type: "practice" },
-    { id: "day-090-task-04", title: "DSA: Longest increasing subsequence with DP", topicId: "topic-dsa", type: "practice" },
-    { id: "day-090-task-05", title: "Start project-09: Design pipeline architecture", topicId: "topic-data-engineering", type: "project" },
-  ],
-  revision: null,
-  project: { projectId: "project-09", milestone: "Pipeline architecture and Spark setup" },
-},
-{
-  id: "day-091",
-  day: 91,
-  week: 16,
-  phase: "phase-08",
-  title: "Day 91: Kafka & Event Streaming",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-engineering", focus: "Apache Kafka, producers, consumers, topics, partitions" },
-    coreCS: { time: "4:30-5:15", topic: "topic-data-engineering", focus: "Event-driven architecture, message queues vs streams" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Dynamic programming: coin change, knapsack" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Python data cleaning with Pandas" },
-  },
-  objectives: ["Understand Kafka architecture and event streaming", "Implement producers and consumers", "Practice DP knapsack problems"],
-  tasks: [
-    { id: "day-091-task-01", title: "Study Kafka architecture: brokers, topics, partitions", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-091-task-02", title: "Build a Kafka producer and consumer", topicId: "topic-data-engineering", type: "practice" },
-    { id: "day-091-task-03", title: "Integrate Kafka into data pipeline project", topicId: "topic-data-engineering", type: "project" },
-    { id: "day-091-task-04", title: "DSA: solve coin change and knapsack", topicId: "topic-dsa", type: "practice" },
-    { id: "day-091-task-05", title: "Python: clean messy dataset with Pandas", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: null,
-  project: { projectId: "project-09", milestone: "Kafka integration and streaming" },
-},
-{
-  id: "day-092",
-  day: 92,
-  week: 16,
-  phase: "phase-08",
-  title: "Day 92: Cloud Data Services & Data Quality",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-data-engineering", focus: "Cloud data services, orchestration, data quality frameworks" },
-    coreCS: { time: "4:30-5:15", topic: "topic-data-engineering", focus: "Data governance, lineage, cataloging" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Dynamic programming: longest common subsequence" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-python-data", focus: "Python data validation and quality checks" },
-  },
-  objectives: ["Learn cloud data services (BigQuery, Redshift, Snowflake)", "Implement data quality checks", "Complete data pipeline project"],
-  tasks: [
-    { id: "day-092-task-01", title: "Study cloud data services: BigQuery, Redshift, Snowflake", topicId: "topic-data-engineering", type: "learn" },
-    { id: "day-092-task-02", title: "Implement data quality validation in pipeline", topicId: "topic-data-engineering", type: "practice" },
-    { id: "day-092-task-03", title: "Finalize and test complete data pipeline", topicId: "topic-data-engineering", type: "project" },
-    { id: "day-092-task-04", title: "DSA: solve longest common subsequence", topicId: "topic-dsa", type: "practice" },
-    { id: "day-092-task-05", title: "Python: build data validation script", topicId: "topic-python-data", type: "practice" },
-  ],
-  revision: { topicId: "topic-data-engineering", focus: "Review ETL, Airflow, Spark, Kafka concepts" },
-  project: { projectId: "project-09", milestone: "Complete data pipeline with quality checks" },
-},
-{
-  id: "day-093",
-  day: 93,
-  week: 16,
-  phase: "phase-09",
-  title: "Day 93: LLM Fundamentals",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-genai", focus: "LLM fundamentals, transformer architecture overview, attention mechanism" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "AI/ML landscape, supervised vs unsupervised overview" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Dynamic programming: edit distance" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "Graph neural networks: introduction, graph data" },
-  },
-  objectives: ["Understand LLM architecture and how transformers work", "Learn attention mechanism basics", "Introduction to GNNs"],
-  tasks: [
-    { id: "day-093-task-01", title: "Study transformer architecture and self-attention", topicId: "topic-genai", type: "learn" },
-    { id: "day-093-task-02", title: "Explore GPT, BERT, and LLaMA model families", topicId: "topic-genai", type: "learn" },
-    { id: "day-093-task-03", title: "Use OpenAI API for basic completions", topicId: "topic-genai", type: "practice" },
-    { id: "day-093-task-04", title: "DSA: solve edit distance problem", topicId: "topic-dsa", type: "practice" },
-    { id: "day-093-task-05", title: "GNN: study graph representations and adjacency matrices", topicId: "topic-gnn", type: "introduction" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-094",
-  day: 94,
-  week: 16,
-  phase: "phase-09",
-  title: "Day 94: Prompt Engineering",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-genai", focus: "Prompt engineering, zero-shot, few-shot, chain-of-thought" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "NLP basics, tokenization, text processing" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Dynamic programming: matrix chain multiplication" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: node features, edge features" },
-  },
-  objectives: ["Master prompt engineering techniques", "Understand few-shot and chain-of-thought prompting", "Practice advanced DP"],
-  tasks: [
-    { id: "day-094-task-01", title: "Study zero-shot, few-shot, chain-of-thought prompting", topicId: "topic-genai", type: "learn" },
-    { id: "day-094-task-02", title: "Build prompt templates for different tasks", topicId: "topic-genai", type: "practice" },
-    { id: "day-094-task-03", title: "Experiment with system prompts and temperature", topicId: "topic-genai", type: "practice" },
-    { id: "day-094-task-04", title: "DSA: solve matrix chain multiplication", topicId: "topic-dsa", type: "practice" },
-    { id: "day-094-task-05", title: "GNN: explore node and edge feature representations", topicId: "topic-gnn", type: "introduction" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-095",
-  day: 95,
-  week: 16,
-  phase: "phase-09",
-  title: "Day 95: Embeddings & Vector Representations",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-genai", focus: "Text embeddings, Word2Vec, sentence embeddings, similarity" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Dimensionality reduction, PCA, t-SNE" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Dynamic programming: longest increasing subsequence" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: graph convolution concepts" },
-  },
-  objectives: ["Understand text embeddings and vector spaces", "Generate and compare embeddings", "Learn dimensionality reduction"],
-  tasks: [
-    { id: "day-095-task-01", title: "Study Word2Vec, GloVe, and sentence embeddings", topicId: "topic-genai", type: "learn" },
-    { id: "day-095-task-02", title: "Generate embeddings using OpenAI API", topicId: "topic-genai", type: "practice" },
-    { id: "day-095-task-03", title: "Compute cosine similarity between text embeddings", topicId: "topic-genai", type: "practice" },
-    { id: "day-095-task-04", title: "DSA: solve longest increasing subsequence", topicId: "topic-dsa", type: "practice" },
-    { id: "day-095-task-05", title: "GNN: study graph convolution basics", topicId: "topic-gnn", type: "introduction" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-096",
-  day: 96,
-  week: 16,
-  phase: "phase-09",
-  title: "Day 96: Vector Databases",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-genai", focus: "Vector databases: Pinecone, ChromaDB, FAISS, indexing" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Approximate nearest neighbors, HNSW, IVF" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Tries: implementation and word search" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: message passing framework" },
-  },
-  objectives: ["Set up and use vector databases", "Understand indexing strategies for embeddings", "Implement trie data structure"],
-  tasks: [
-    { id: "day-096-task-01", title: "Study vector DB concepts: indexing, ANN search", topicId: "topic-genai", type: "learn" },
-    { id: "day-096-task-02", title: "Set up ChromaDB and store embeddings", topicId: "topic-genai", type: "practice" },
-    { id: "day-096-task-03", title: "Query vector DB with similarity search", topicId: "topic-genai", type: "practice" },
-    { id: "day-096-task-04", title: "DSA: implement trie and solve word search", topicId: "topic-dsa", type: "practice" },
-    { id: "day-096-task-05", title: "GNN: study message passing neural networks", topicId: "topic-gnn", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-097",
-  day: 97,
-  week: 17,
-  phase: "phase-09",
-  title: "Day 97: Semantic Search & RAG Architecture",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-genai", focus: "Semantic search, RAG architecture, retrieval pipeline" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Information retrieval, TF-IDF, BM25 vs embeddings" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Tries: autocomplete and prefix matching" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: GCN and GraphSAGE overview" },
-  },
-  objectives: ["Understand RAG architecture end-to-end", "Build a semantic search pipeline", "Compare sparse vs dense retrieval"],
-  tasks: [
-    { id: "day-097-task-01", title: "Study RAG architecture: retrieve, augment, generate", topicId: "topic-genai", type: "learn" },
-    { id: "day-097-task-02", title: "Build semantic search over document collection", topicId: "topic-genai", type: "practice" },
-    { id: "day-097-task-03", title: "Implement document chunking and embedding pipeline", topicId: "topic-genai", type: "practice" },
-    { id: "day-097-task-04", title: "DSA: implement autocomplete with trie", topicId: "topic-dsa", type: "practice" },
-    { id: "day-097-task-05", title: "GNN: compare GCN and GraphSAGE architectures", topicId: "topic-gnn", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-098",
-  day: 98,
-  week: 17,
-  phase: "phase-09",
-  title: "Day 98: LangChain Basics",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-genai", focus: "LangChain: chains, prompt templates, output parsers, memory" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "LLM APIs, token management, cost optimization" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DP review: tabulation vs memoization patterns" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: node classification task" },
-  },
-  objectives: ["Build applications with LangChain", "Understand chains, prompts, and output parsers", "Review DP approaches"],
-  tasks: [
-    { id: "day-098-task-01", title: "Study LangChain: models, prompts, chains, memory", topicId: "topic-genai", type: "learn" },
-    { id: "day-098-task-02", title: "Build a Q&A chain with LangChain", topicId: "topic-genai", type: "practice" },
-    { id: "day-098-task-03", title: "Implement output parsers and structured responses", topicId: "topic-genai", type: "practice" },
-    { id: "day-098-task-04", title: "DSA: review tabulation vs memoization on classic problems", topicId: "topic-dsa", type: "revision" },
-    { id: "day-098-task-05", title: "GNN: implement node classification example", topicId: "topic-gnn", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-099",
-  day: 99,
-  week: 17,
-  phase: "phase-09",
-  title: "Day 99: LangGraph & Agent Concepts",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-genai", focus: "LangGraph: state machines, agent graphs, conditional edges" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Agent architectures: ReAct, plan-and-execute" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Tries: design search autocomplete system" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: link prediction task" },
-  },
-  objectives: ["Build agent graphs with LangGraph", "Understand ReAct and agent patterns", "Start RAG application project"],
-  tasks: [
-    { id: "day-099-task-01", title: "Study LangGraph: nodes, edges, state management", topicId: "topic-genai", type: "learn" },
-    { id: "day-099-task-02", title: "Build a basic agent graph with conditional routing", topicId: "topic-genai", type: "practice" },
-    { id: "day-099-task-03", title: "Start RAG application: set up vector store and retriever", topicId: "topic-genai", type: "project" },
-    { id: "day-099-task-04", title: "DSA: design search autocomplete system with trie", topicId: "topic-dsa", type: "practice" },
-    { id: "day-099-task-05", title: "GNN: implement link prediction example", topicId: "topic-gnn", type: "practice" },
-  ],
-  revision: null,
-  project: { projectId: "project-10", milestone: "RAG app setup with vector store and retriever" },
-},
-{
-  id: "day-100",
-  day: 100,
-  week: 17,
-  phase: "phase-09",
-  title: "Day 100: Tools, Function Calling & Agent Loops",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-genai", focus: "Function calling, tool use, agent execution loops" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Tool augmented generation, structured outputs" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DP: partition problems and subset sum" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: graph-level classification" },
-  },
-  objectives: ["Implement function calling with LLMs", "Build tool-using agents", "Continue RAG project with query pipeline"],
-  tasks: [
-    { id: "day-100-task-01", title: "Study function calling and tool definitions", topicId: "topic-genai", type: "learn" },
-    { id: "day-100-task-02", title: "Build an agent with custom tool functions", topicId: "topic-genai", type: "practice" },
-    { id: "day-100-task-03", title: "Add query pipeline and response generation to RAG app", topicId: "topic-genai", type: "project" },
-    { id: "day-100-task-04", title: "DSA: solve partition equal subset sum", topicId: "topic-dsa", type: "practice" },
-    { id: "day-100-task-05", title: "GNN: study graph-level pooling and classification", topicId: "topic-gnn", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-10", milestone: "Query pipeline and response generation" },
-},
-{
-  id: "day-101",
-  day: 101,
-  week: 17,
-  phase: "phase-09",
-  title: "Day 101: Multi-Agent Systems",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-genai", focus: "Multi-agent orchestration, supervisor patterns, collaboration" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Agent communication protocols, task decomposition" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DP: word break and decode ways" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: attention-based graph networks (GAT)" },
-  },
-  objectives: ["Design multi-agent systems", "Understand supervisor and swarm patterns", "Start GenAI agent project"],
-  tasks: [
-    { id: "day-101-task-01", title: "Study multi-agent patterns: supervisor, swarm, hierarchy", topicId: "topic-genai", type: "learn" },
-    { id: "day-101-task-02", title: "Build multi-agent workflow with LangGraph", topicId: "topic-genai", type: "practice" },
-    { id: "day-101-task-03", title: "Start GenAI agent project: define agent roles and tools", topicId: "topic-genai", type: "project" },
-    { id: "day-101-task-04", title: "DSA: solve word break and decode ways", topicId: "topic-dsa", type: "practice" },
-    { id: "day-101-task-05", title: "GNN: study graph attention networks", topicId: "topic-gnn", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-11", milestone: "Agent architecture and tool definitions" },
-},
-{
-  id: "day-102",
-  day: 102,
-  week: 17,
-  phase: "phase-09",
-  title: "Day 102: AI Evaluation & Guardrails",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-genai", focus: "Evaluation metrics, hallucination detection, guardrails, safety" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "AI ethics, responsible AI, bias detection" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DP review: all classic patterns summary" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: real-world applications review" },
-  },
-  objectives: ["Evaluate LLM outputs systematically", "Implement guardrails and safety measures", "Complete RAG and GenAI projects"],
-  tasks: [
-    { id: "day-102-task-01", title: "Study evaluation: BLEU, ROUGE, faithfulness, relevance", topicId: "topic-genai", type: "learn" },
-    { id: "day-102-task-02", title: "Implement guardrails and content filtering", topicId: "topic-genai", type: "practice" },
-    { id: "day-102-task-03", title: "Finalize RAG application with evaluation", topicId: "topic-genai", type: "project" },
-    { id: "day-102-task-04", title: "Finalize GenAI agent with safety guardrails", topicId: "topic-genai", type: "project" },
-    { id: "day-102-task-05", title: "DSA: review all DP patterns", topicId: "topic-dsa", type: "revision" },
-    { id: "day-102-task-06", title: "GNN: review applications in recommendation and social networks", topicId: "topic-gnn", type: "revision" },
-  ],
-  revision: { topicId: "topic-genai", focus: "Review LLMs, prompting, embeddings, RAG, agents" },
-  project: { projectId: "project-10", milestone: "Complete RAG application with evaluation" },
-},
-{
-  id: "day-103",
-  day: 103,
-  week: 18,
-  phase: "phase-10",
-  title: "Day 103: ML Fundamentals",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-ai-engineering", focus: "Machine Learning (ML) concepts, supervised vs unsupervised, regression vs classification" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Statistics for ML: distributions, hypothesis testing" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Bit manipulation: AND, OR, XOR, shifts" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: message passing implementation" },
-  },
-  objectives: ["Understand ML paradigms and workflow", "Learn supervised vs unsupervised learning", "Start bit manipulation"],
-  tasks: [
-    { id: "day-103-task-01", title: "Study Machine Learning (ML) types: supervised, unsupervised, reinforcement", topicId: "topic-ai-engineering", type: "learn" },
-    { id: "day-103-task-02", title: "Learn feature engineering and data preprocessing", topicId: "topic-ai-engineering", type: "learn" },
-    { id: "day-103-task-03", title: "Explore scikit-learn datasets and basic pipeline", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-103-task-04", title: "DSA: solve single number and counting bits", topicId: "topic-dsa", type: "practice" },
-    { id: "day-103-task-05", title: "GNN: implement message passing layer from scratch", topicId: "topic-gnn", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-104",
-  day: 104,
-  week: 18,
-  phase: "phase-10",
-  title: "Day 104: Scikit-learn Classification & Regression",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-ai-engineering", focus: "Scikit-learn: linear regression, logistic regression, decision trees" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Gradient descent, loss functions, optimization" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Bit manipulation: power of two, hamming distance" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: PyTorch Geometric intro" },
-  },
-  objectives: ["Train classification and regression models", "Understand gradient descent and loss functions", "Practice bit manipulation"],
-  tasks: [
-    { id: "day-104-task-01", title: "Train linear regression on housing dataset", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-104-task-02", title: "Train logistic regression and decision tree classifiers", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-104-task-03", title: "Study gradient descent and learning rate", topicId: "topic-ai-engineering", type: "learn" },
-    { id: "day-104-task-04", title: "DSA: solve power of two and hamming distance", topicId: "topic-dsa", type: "practice" },
-    { id: "day-104-task-05", title: "GNN: explore PyTorch Geometric data structures", topicId: "topic-gnn", type: "introduction" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-105",
-  day: 105,
-  week: 18,
-  phase: "phase-10",
-  title: "Day 105: Model Evaluation & Metrics",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-ai-engineering", focus: "Cross-validation, accuracy, precision, recall, F1, ROC-AUC" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Overfitting, underfitting, regularization, bias-variance" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Bit manipulation: subsets using bitmask" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: training a GCN with PyTorch Geometric" },
-  },
-  objectives: ["Evaluate models with proper metrics", "Understand overfitting and regularization", "Use cross-validation"],
-  tasks: [
-    { id: "day-105-task-01", title: "Study precision, recall, F1, confusion matrix", topicId: "topic-ai-engineering", type: "learn" },
-    { id: "day-105-task-02", title: "Implement k-fold cross-validation", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-105-task-03", title: "Plot ROC curves and compare models", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-105-task-04", title: "DSA: solve subset generation using bitmask", topicId: "topic-dsa", type: "practice" },
-    { id: "day-105-task-05", title: "GNN: train GCN on Cora dataset", topicId: "topic-gnn", type: "practice" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-106",
-  day: 106,
-  week: 18,
-  phase: "phase-10",
-  title: "Day 106: PyTorch Basics",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-ai-engineering", focus: "PyTorch: tensors, autograd, GPU acceleration" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Neural network theory: perceptrons, activation functions" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "Bit manipulation: XOR tricks, missing number" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: graph pooling methods" },
-  },
-  objectives: ["Master PyTorch tensor operations", "Understand autograd and computational graphs", "Learn neural network theory"],
-  tasks: [
-    { id: "day-106-task-01", title: "Study PyTorch tensors, operations, and GPU usage", topicId: "topic-ai-engineering", type: "learn" },
-    { id: "day-106-task-02", title: "Implement autograd examples and gradient computation", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-106-task-03", title: "Build linear regression from scratch in PyTorch", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-106-task-04", title: "DSA: solve missing number and single number II with XOR", topicId: "topic-dsa", type: "practice" },
-    { id: "day-106-task-05", title: "GNN: study graph pooling for graph classification", topicId: "topic-gnn", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-107",
-  day: 107,
-  week: 18,
-  phase: "phase-10",
-  title: "Day 107: Neural Networks & Training",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-ai-engineering", focus: "Deep Learning & Neural networks: layers, forward/backward pass, training loops" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Backpropagation, optimizers (SGD, Adam), learning schedules" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA review: arrays and strings problems" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: heterogeneous graphs" },
-  },
-  objectives: ["Build neural networks with PyTorch nn.Module", "Implement training loops with backpropagation", "Understand optimizers"],
-  tasks: [
-    { id: "day-107-task-01", title: "Build feedforward neural network with nn.Module", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-107-task-02", title: "Implement training loop: forward, loss, backward, step", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-107-task-03", title: "Train MNIST digit classifier", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-107-task-04", title: "DSA: review array and string classic problems", topicId: "topic-dsa", type: "revision" },
-    { id: "day-107-task-05", title: "GNN: study heterogeneous graph representations", topicId: "topic-gnn", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-108",
-  day: 108,
-  week: 18,
-  phase: "phase-10",
-  title: "Day 108: CNNs & Image Classification",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-ai-engineering", focus: "CNNs: convolutions, pooling, architectures (LeNet, ResNet)" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Computer vision basics, data augmentation, transfer learning" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA review: binary search and sorting" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: temporal graph networks" },
-  },
-  objectives: ["Build CNN for image classification", "Understand convolution layers and pooling", "Apply transfer learning"],
-  tasks: [
-    { id: "day-108-task-01", title: "Study CNN architecture: conv layers, pooling, stride", topicId: "topic-ai-engineering", type: "learn" },
-    { id: "day-108-task-02", title: "Build CNN for CIFAR-10 classification", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-108-task-03", title: "Apply transfer learning with pre-trained ResNet", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-108-task-04", title: "DSA: review binary search patterns", topicId: "topic-dsa", type: "revision" },
-    { id: "day-108-task-05", title: "GNN: explore temporal graph network concepts", topicId: "topic-gnn", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-109",
-  day: 109,
-  week: 19,
-  phase: "phase-10",
-  title: "Day 109: Transformer Architecture Deep Dive",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-ai-engineering", focus: "Transformers: multi-head attention, positional encoding, encoder-decoder" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Sequence models: RNN, LSTM vs Transformers" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA review: trees and graphs" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: graph transformers" },
-  },
-  objectives: ["Understand transformer architecture in depth", "Compare attention mechanisms", "Review tree and graph DSA"],
-  tasks: [
-    { id: "day-109-task-01", title: "Study multi-head attention and positional encoding", topicId: "topic-ai-engineering", type: "learn" },
-    { id: "day-109-task-02", title: "Implement simplified attention mechanism in PyTorch", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-109-task-03", title: "Compare encoder-only, decoder-only, encoder-decoder models", topicId: "topic-ai-engineering", type: "learn" },
-    { id: "day-109-task-04", title: "DSA: review tree traversals and graph algorithms", topicId: "topic-dsa", type: "revision" },
-    { id: "day-109-task-05", title: "GNN: study graph transformer architectures", topicId: "topic-gnn", type: "learn" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-110",
-  day: 110,
-  week: 19,
-  phase: "phase-10",
-  title: "Day 110: Hugging Face & Pre-trained Models",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-ai-engineering", focus: "Hugging Face: transformers library, pipelines, tokenizers, model hub" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "NLP tasks: classification, NER, summarization, translation" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA review: dynamic programming patterns" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: applications in drug discovery" },
-  },
-  objectives: ["Use Hugging Face for NLP tasks", "Explore model hub and pipelines", "Start AI engineering project"],
-  tasks: [
-    { id: "day-110-task-01", title: "Study Hugging Face: pipelines, AutoModel, AutoTokenizer", topicId: "topic-ai-engineering", type: "learn" },
-    { id: "day-110-task-02", title: "Run text classification and NER with pre-trained models", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-110-task-03", title: "Start AI project: define architecture and select models", topicId: "topic-ai-engineering", type: "project" },
-    { id: "day-110-task-04", title: "DSA: review DP patterns and classic problems", topicId: "topic-dsa", type: "revision" },
-    { id: "day-110-task-05", title: "GNN: explore molecular graph applications", topicId: "topic-gnn", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-12", milestone: "Architecture design and model selection" },
-},
-{
-  id: "day-111",
-  day: 111,
-  week: 19,
-  phase: "phase-10",
-  title: "Day 111: Fine-tuning Concepts",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-ai-engineering", focus: "Fine-tuning: LoRA, PEFT, QLoRA, adapter methods" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "Training efficiency: mixed precision, gradient accumulation" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA review: greedy and backtracking" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: knowledge graphs and reasoning" },
-  },
-  objectives: ["Understand fine-tuning techniques for LLMs", "Learn LoRA and PEFT methods", "Continue AI engineering project"],
-  tasks: [
-    { id: "day-111-task-01", title: "Study fine-tuning: full, LoRA, QLoRA, adapters", topicId: "topic-ai-engineering", type: "learn" },
-    { id: "day-111-task-02", title: "Fine-tune a small model with PEFT/LoRA", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-111-task-03", title: "Build model training pipeline for AI project", topicId: "topic-ai-engineering", type: "project" },
-    { id: "day-111-task-04", title: "DSA: review greedy and backtracking patterns", topicId: "topic-dsa", type: "revision" },
-    { id: "day-111-task-05", title: "GNN: study knowledge graph embeddings", topicId: "topic-gnn", type: "learn" },
-  ],
-  revision: null,
-  project: { projectId: "project-12", milestone: "Model training pipeline with fine-tuning" },
-},
-{
-  id: "day-112",
-  day: 112,
-  week: 19,
-  phase: "phase-10",
-  title: "Day 112: Model Serving & MLOps",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-ai-engineering", focus: "Model serving, FastAPI endpoints, ONNX, deployment strategies" },
-    coreCS: { time: "4:30-5:15", topic: "topic-ai-engineering", focus: "MLOps: experiment tracking, model registry, CI/CD for ML" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA review: linked lists, stacks, queues" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-gnn", focus: "GNN: full review and future directions" },
-  },
-  objectives: ["Deploy ML models as APIs", "Understand MLOps lifecycle", "Complete AI engineering project"],
-  tasks: [
-    { id: "day-112-task-01", title: "Study model serving: FastAPI, ONNX, TorchServe", topicId: "topic-ai-engineering", type: "learn" },
-    { id: "day-112-task-02", title: "Deploy model as REST API with FastAPI", topicId: "topic-ai-engineering", type: "practice" },
-    { id: "day-112-task-03", title: "Finalize AI engineering project with deployment", topicId: "topic-ai-engineering", type: "project" },
-    { id: "day-112-task-04", title: "Study MLOps: MLflow, experiment tracking, versioning", topicId: "topic-ai-engineering", type: "learn" },
-    { id: "day-112-task-05", title: "DSA: review linked lists, stacks, queues", topicId: "topic-dsa", type: "revision" },
-    { id: "day-112-task-06", title: "GNN: comprehensive review of all GNN concepts", topicId: "topic-gnn", type: "revision" },
-  ],
-  revision: { topicId: "topic-ai-engineering", focus: "Review ML, DL, transformers, fine-tuning, deployment" },
-  project: { projectId: "project-12", milestone: "Complete AI project with model deployment" },
-},
-{
-  id: "day-113",
-  day: 113,
-  week: 19,
-  phase: "phase-11",
-  title: "Day 113: High-Level System Design",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-system-design", focus: "HLD: scalability, load balancing, caching, CDNs, databases" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "CAP theorem, consistency patterns, distributed systems" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA review: hash maps and two pointers" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-interview-prep", focus: "Full stack revision: frontend concepts" },
-  },
-  objectives: ["Design scalable systems with proper architecture", "Understand load balancing and caching strategies", "Review distributed systems concepts"],
-  tasks: [
-    { id: "day-113-task-01", title: "Study HLD: load balancers, horizontal scaling", topicId: "topic-system-design", type: "learn" },
-    { id: "day-113-task-02", title: "Design URL shortener system", topicId: "topic-system-design", type: "practice" },
-    { id: "day-113-task-03", title: "Study caching strategies: Redis, CDN, browser cache", topicId: "topic-system-design", type: "learn" },
-    { id: "day-113-task-04", title: "Design social media feed system", topicId: "topic-system-design", type: "practice" },
-    { id: "day-113-task-05", title: "DSA: review hash map and two pointer problems", topicId: "topic-dsa", type: "revision" },
-  ],
-  revision: { topicId: "topic-system-design", focus: "Review scalability patterns" },
-  project: null,
-},
-{
-  id: "day-114",
-  day: 114,
-  week: 19,
-  phase: "phase-11",
-  title: "Day 114: Low-Level System Design",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-system-design", focus: "LLD: SOLID principles, design patterns, class diagrams, UML" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "Creational, structural, behavioral patterns" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA review: sliding window and binary search" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-interview-prep", focus: "Full stack revision: backend concepts" },
-  },
-  objectives: ["Apply SOLID principles to system design", "Use design patterns effectively", "Design class-level architecture"],
-  tasks: [
-    { id: "day-114-task-01", title: "Study SOLID principles with examples", topicId: "topic-system-design", type: "learn" },
-    { id: "day-114-task-02", title: "Design parking lot system (LLD)", topicId: "topic-system-design", type: "practice" },
-    { id: "day-114-task-03", title: "Study Factory, Observer, Strategy patterns", topicId: "topic-system-design", type: "learn" },
-    { id: "day-114-task-04", title: "Design elevator system with class diagrams", topicId: "topic-system-design", type: "practice" },
-    { id: "day-114-task-05", title: "DSA: review sliding window and binary search", topicId: "topic-dsa", type: "revision" },
-  ],
-  revision: null,
-  project: null,
-},
-{
-  id: "day-115",
-  day: 115,
-  week: 20,
-  phase: "phase-11",
-  title: "Day 115: Resume & ATS Optimization",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-interview-prep", focus: "Resume building, ATS optimization, keywords, formatting" },
-    coreCS: { time: "4:30-5:15", topic: "topic-interview-prep", focus: "Cover letter writing, job application strategy" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA review: comprehensive problem set" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-interview-prep", focus: "Full stack revision: database concepts" },
-  },
-  objectives: ["Build ATS-optimized resume", "Tailor resume for different roles", "Practice DSA comprehensively"],
-  tasks: [
-    { id: "day-115-task-01", title: "Build resume with quantified achievements", topicId: "topic-interview-prep", type: "practice" },
-    { id: "day-115-task-02", title: "Optimize resume for ATS with keywords", topicId: "topic-interview-prep", type: "practice" },
-    { id: "day-115-task-03", title: "Write tailored cover letter template", topicId: "topic-interview-prep", type: "practice" },
-    { id: "day-115-task-04", title: "DSA: solve mixed difficulty problem set", topicId: "topic-dsa", type: "revision" },
-    { id: "day-115-task-05", title: "Revision: review SQL, MongoDB, database design", topicId: "topic-interview-prep", type: "revision" },
-  ],
-  revision: { topicId: "topic-interview-prep", focus: "Review all database technologies" },
-  project: null,
-},
-{
-  id: "day-116",
-  day: 116,
-  week: 20,
-  phase: "phase-11",
-  title: "Day 116: Portfolio & Online Presence",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-interview-prep", focus: "Portfolio website, GitHub profile README, LinkedIn optimization" },
-    coreCS: { time: "4:30-5:15", topic: "topic-interview-prep", focus: "Personal branding, networking strategy" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA review: system design + DSA combined" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-interview-prep", focus: "Full stack revision: DevOps and cloud" },
-  },
-  objectives: ["Build professional portfolio website", "Optimize GitHub and LinkedIn profiles", "Establish online presence"],
-  tasks: [
-    { id: "day-116-task-01", title: "Build or update portfolio website with projects", topicId: "topic-interview-prep", type: "practice" },
-    { id: "day-116-task-02", title: "Create GitHub profile README with stats", topicId: "topic-interview-prep", type: "practice" },
-    { id: "day-116-task-03", title: "Optimize LinkedIn with keywords and projects", topicId: "topic-interview-prep", type: "practice" },
-    { id: "day-116-task-04", title: "DSA: practice timed problem solving", topicId: "topic-dsa", type: "revision" },
-    { id: "day-116-task-05", title: "Revision: review Docker, CI/CD, AWS concepts", topicId: "topic-interview-prep", type: "revision" },
-  ],
-  revision: { topicId: "topic-interview-prep", focus: "Review DevOps and cloud technologies" },
-  project: null,
-},
-{
-  id: "day-117",
-  day: 117,
-  week: 20,
-  phase: "phase-11",
-  title: "Day 117: Behavioral Interviews",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-interview-prep", focus: "Behavioral interviews, STAR method, common questions, storytelling" },
-    coreCS: { time: "4:30-5:15", topic: "topic-interview-prep", focus: "Company research, cultural fit, question preparation" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA review: mock interview problems" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-interview-prep", focus: "Full stack revision: React and Next.js" },
-  },
-  objectives: ["Master STAR method for behavioral questions", "Prepare stories for common interview scenarios", "Start flagship project"],
-  tasks: [
-    { id: "day-117-task-01", title: "Practice STAR method with 10 common questions", topicId: "topic-interview-prep", type: "practice" },
-    { id: "day-117-task-02", title: "Prepare 5 project stories with technical depth", topicId: "topic-interview-prep", type: "practice" },
-    { id: "day-117-task-03", title: "Start flagship project: architecture and setup", topicId: "topic-interview-prep", type: "project" },
-    { id: "day-117-task-04", title: "DSA: solve 3 mock interview problems (timed)", topicId: "topic-dsa", type: "revision" },
-    { id: "day-117-task-05", title: "Revision: review React hooks and Next.js patterns", topicId: "topic-interview-prep", type: "revision" },
-  ],
-  revision: null,
-  project: { projectId: "project-13", milestone: "Project architecture and initial setup" },
-},
-{
-  id: "day-118",
-  day: 118,
-  week: 20,
-  phase: "phase-11",
-  title: "Day 118: Technical Interviews & Mock Practice",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-interview-prep", focus: "Technical interviews, whiteboard coding, system design interviews" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "Mock system design interview practice" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA: timed mock coding round" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-interview-prep", focus: "Full stack revision: Node.js and Express" },
-  },
-  objectives: ["Practice technical interview format", "Complete mock coding and system design rounds", "Continue flagship project"],
-  tasks: [
-    { id: "day-118-task-01", title: "Practice whiteboard coding with explanation", topicId: "topic-interview-prep", type: "practice" },
-    { id: "day-118-task-02", title: "Mock system design interview: design chat application", topicId: "topic-system-design", type: "practice" },
-    { id: "day-118-task-03", title: "Build core features of flagship project", topicId: "topic-interview-prep", type: "project" },
-    { id: "day-118-task-04", title: "DSA: complete timed mock coding round (3 problems)", topicId: "topic-dsa", type: "revision" },
-    { id: "day-118-task-05", title: "Revision: review Node.js, Express, REST APIs", topicId: "topic-interview-prep", type: "revision" },
-  ],
-  revision: null,
-  project: { projectId: "project-13", milestone: "Core features implementation" },
-},
-{
-  id: "day-119",
-  day: 119,
-  week: 20,
-  phase: "phase-11",
-  title: "Day 119: Final Project Integration",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-interview-prep", focus: "Project integration, testing, deployment, documentation" },
-    coreCS: { time: "4:30-5:15", topic: "topic-system-design", focus: "Architecture review, technical documentation" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA: final comprehensive review" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-interview-prep", focus: "Full stack revision: GenAI and AI concepts" },
-  },
-  objectives: ["Integrate and deploy flagship project", "Write technical documentation", "Final DSA comprehensive review"],
-  tasks: [
-    { id: "day-119-task-01", title: "Integrate all features and test flagship project", topicId: "topic-interview-prep", type: "project" },
-    { id: "day-119-task-02", title: "Deploy project and write README documentation", topicId: "topic-interview-prep", type: "project" },
-    { id: "day-119-task-03", title: "Prepare project presentation and demo", topicId: "topic-interview-prep", type: "practice" },
-    { id: "day-119-task-04", title: "DSA: final review of all major patterns", topicId: "topic-dsa", type: "revision" },
-    { id: "day-119-task-05", title: "Revision: review GenAI, RAG, agents, LLMs", topicId: "topic-interview-prep", type: "revision" },
-  ],
-  revision: { topicId: "topic-interview-prep", focus: "Comprehensive review of all AI topics" },
-  project: { projectId: "project-13", milestone: "Integration, testing, and deployment" },
-},
-{
-  id: "day-120",
-  day: 120,
-  week: 20,
-  phase: "phase-11",
-  title: "Day 120: Communication & Placement Prep",
-  isRestDay: false,
-  schedule: {
-    mainTrack: { time: "11:30-1:00 & 2:30-4:00", topic: "topic-interview-prep", focus: "Communication skills, presentation, placement strategy, roadmap review" },
-    coreCS: { time: "4:30-5:15", topic: "topic-interview-prep", focus: "Salary negotiation, offer evaluation, career planning" },
-    dsa: { time: "5:15-5:45", topic: "topic-dsa", focus: "DSA: final mock interview" },
-    sideTrack: { time: "5:45-6:00", topic: "topic-interview-prep", focus: "Full roadmap retrospective and next steps" },
-  },
-  objectives: ["Finalize flagship project showcase", "Complete placement preparation", "Review entire 120-day journey"],
-  tasks: [
-    { id: "day-120-task-01", title: "Present flagship project with technical walkthrough", topicId: "topic-interview-prep", type: "project" },
-    { id: "day-120-task-02", title: "Practice elevator pitch and self-introduction", topicId: "topic-interview-prep", type: "practice" },
-    { id: "day-120-task-03", title: "Review placement strategy and application pipeline", topicId: "topic-interview-prep", type: "learn" },
-    { id: "day-120-task-04", title: "DSA: final mock interview round", topicId: "topic-dsa", type: "revision" },
-    { id: "day-120-task-05", title: "Retrospective: review all phases and identify growth areas", topicId: "topic-interview-prep", type: "revision" },
-    { id: "day-120-task-06", title: "Plan continued learning path beyond 120 days", topicId: "topic-interview-prep", type: "learn" },
-  ],
-  revision: { topicId: "topic-interview-prep", focus: "Full 120-day roadmap retrospective" },
-  project: { projectId: "project-13", milestone: "Final flagship project showcase complete" },
-},
+  {
+    "id": "day-001",
+    "day": 1,
+    "week": 1,
+    "phase": "phase-01",
+    "title": "Day 1: JavaScript Variables & Data Types",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Variables, data types, operators"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative aptitude basics"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-sql",
+        "focus": "SQL: SELECT, WHERE, ORDER BY"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ syntax, variables"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 1: Quantitative Techniques — Number System basics"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python syntax, variables"
+      },
+      "aiTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-genai",
+        "focus": "LLM & AI landscape overview"
+      }
+    },
+    "objectives": [
+      "Understand var, let, const differences",
+      "Master JavaScript data types",
+      "Start C++ basics and SQL queries",
+      "Explore LLM fundamentals"
+    ],
+    "tasks": [
+      {
+        "id": "day-001-task-01",
+        "title": "Study var, let, const and variable scoping rules",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-001-task-02",
+        "title": "Learn JS data types: string, number, boolean, null, undefined, symbol",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-001-task-03",
+        "title": "Practice arithmetic, comparison, and logical operators",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-001-task-04",
+        "title": "Aptitude: number systems and basic arithmetic",
+        "topicId": "topic-aptitude",
+        "type": "learn"
+      },
+      {
+        "id": "day-028-task-04",
+        "title": "SQL: SELECT statements, WHERE clauses, ORDER BY",
+        "topicId": "topic-sql",
+        "type": "learn"
+      },
+      {
+        "id": "day-001-task-05",
+        "title": "C++ hello world, variables, and data types",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-001-task-06",
+        "title": "Python print, variables, and basic types",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-001-task-07",
+        "title": "AI: LLM & AI landscape overview (transformers & attention basics)",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-001-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 1: Quantitative Techniques — Number System basics",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-002",
+    "day": 2,
+    "week": 1,
+    "phase": "phase-01",
+    "title": "Day 2: JavaScript Conditionals",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Conditionals, switch statements"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Percentages and ratios"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-sql",
+        "focus": "SQL: JOINs (INNER, LEFT, RIGHT)"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ input/output, operators"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 1: Quantitative Techniques — Percentages & Conversions"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python strings, input/output"
+      },
+      "aiTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-genai",
+        "focus": "Prompt engineering principles"
+      }
+    },
+    "objectives": [
+      "Master if/else and ternary operators",
+      "Use switch statements effectively",
+      "Understand truthy and falsy values",
+      "Learn prompt engineering basics"
+    ],
+    "tasks": [
+      {
+        "id": "day-002-task-01",
+        "title": "Learn if/else, else if, and nested conditionals",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-002-task-02",
+        "title": "Practice switch statements and ternary operator",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-002-task-03",
+        "title": "Understand truthy/falsy values and type coercion",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-002-task-04",
+        "title": "Aptitude: percentages, profit & loss",
+        "topicId": "topic-aptitude",
+        "type": "learn"
+      },
+      {
+        "id": "day-029-task-04",
+        "title": "SQL: INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN",
+        "topicId": "topic-sql",
+        "type": "learn"
+      },
+      {
+        "id": "day-002-task-05",
+        "title": "C++ cin/cout, arithmetic and relational operators",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-002-task-06",
+        "title": "Python string operations and f-strings",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-002-task-07",
+        "title": "AI: Prompt engineering principles (zero-shot & few-shot)",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-002-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 1: Quantitative Techniques — Percentages & Conversions",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-003",
+    "day": 3,
+    "week": 1,
+    "phase": "phase-01",
+    "title": "Day 3: JavaScript Loops",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Loops: for, while, do-while, for...of"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Time, speed, and distance"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-sql",
+        "focus": "SQL: GROUP BY, HAVING, aggregates"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ conditionals (if/else, switch)"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 1: Quantitative Techniques — Time, Speed & Distance"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python conditionals"
+      },
+      "aiTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-genai",
+        "focus": "Text embeddings"
+      }
+    },
+    "objectives": [
+      "Master all JavaScript loop types",
+      "Understand break and continue",
+      "Use for...of and for...in",
+      "Learn text embeddings concepts"
+    ],
+    "tasks": [
+      {
+        "id": "day-003-task-01",
+        "title": "Learn for, while, and do-while loops",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-003-task-02",
+        "title": "Practice for...of, for...in, and loop control (break/continue)",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-003-task-03",
+        "title": "Solve loop-based coding challenges",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-003-task-04",
+        "title": "Aptitude: time, speed, and distance problems",
+        "topicId": "topic-aptitude",
+        "type": "learn"
+      },
+      {
+        "id": "day-030-task-04",
+        "title": "SQL: GROUP BY, HAVING, COUNT, SUM, AVG, MAX, MIN",
+        "topicId": "topic-sql",
+        "type": "learn"
+      },
+      {
+        "id": "day-003-task-05",
+        "title": "C++ if/else, switch-case statements",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-003-task-06",
+        "title": "Python if/elif/else and boolean logic",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-003-task-07",
+        "title": "AI: Text embeddings and vector representations",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-003-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 1: Quantitative Techniques — Time, Speed & Distance",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-004",
+    "day": 4,
+    "week": 1,
+    "phase": "phase-01",
+    "title": "Day 4: JavaScript Functions & Scope",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Functions, scope, hoisting"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Averages and mixtures"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-sql",
+        "focus": "SQL JOINs practice"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ loops (for, while)"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 1: Quantitative Techniques — Profit, Loss & Discount"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python for loops, range"
+      },
+      "aiTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-genai",
+        "focus": "Vector databases"
+      }
+    },
+    "objectives": [
+      "Understand function declarations vs expressions",
+      "Master scope and hoisting",
+      "Practice C++ and Python loops",
+      "Learn vector database basics"
+    ],
+    "tasks": [
+      {
+        "id": "day-004-task-01",
+        "title": "Learn function declarations, expressions, and arrow functions",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-004-task-02",
+        "title": "Understand scope: global, function, block scope and hoisting",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-004-task-03",
+        "title": "Aptitude: averages and mixture problems",
+        "topicId": "topic-aptitude",
+        "type": "learn"
+      },
+      {
+        "id": "day-031-task-03",
+        "title": "Practice SQL JOINs on sample tables",
+        "topicId": "topic-sql",
+        "type": "practice"
+      },
+      {
+        "id": "day-004-task-04",
+        "title": "C++ for loops, while loops, loop control",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-004-task-05",
+        "title": "Python for loops with range(), while loops",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-004-task-06",
+        "title": "AI: Vector databases & indexing concepts",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-004-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 1: Quantitative Techniques — Profit, Loss & Discount",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-005",
+    "day": 5,
+    "week": 1,
+    "phase": "phase-01",
+    "title": "Day 5: JavaScript Arrays",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Arrays, array methods"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Simple and compound interest"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-sql",
+        "focus": "SQL GROUP BY & aggregations"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ functions, pass by value"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 1: Quantitative Techniques — Time & Work / Pipes & Cisterns"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python functions basics"
+      },
+      "aiTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-genai",
+        "focus": "RAG architecture"
+      }
+    },
+    "objectives": [
+      "Master array creation and manipulation",
+      "Use map, filter, reduce, forEach",
+      "Write functions in C++ and Python",
+      "Understand RAG fundamentals"
+    ],
+    "tasks": [
+      {
+        "id": "day-005-task-01",
+        "title": "Learn array methods: push, pop, shift, unshift, splice, slice",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-005-task-02",
+        "title": "Practice map, filter, reduce, forEach, find, some, every",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-005-task-03",
+        "title": "Aptitude: simple and compound interest calculations",
+        "topicId": "topic-aptitude",
+        "type": "learn"
+      },
+      {
+        "id": "day-032-task-03",
+        "title": "Write GROUP BY queries with HAVING",
+        "topicId": "topic-sql",
+        "type": "practice"
+      },
+      {
+        "id": "day-005-task-04",
+        "title": "C++ functions, parameters, return types",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-005-task-05",
+        "title": "Python def, parameters, return values",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-005-task-06",
+        "title": "AI: Semantic search & RAG architecture fundamentals",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-005-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 1: Quantitative Techniques — Time & Work / Pipes & Cisterns",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-006",
+    "day": 6,
+    "week": 1,
+    "phase": "phase-01",
+    "title": "Day 6: JavaScript Objects",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Objects, object methods, this keyword"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Percentages & Successive Changes"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-sql",
+        "focus": "Subqueries, nested SELECT, EXISTS"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ arrays basics"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 1: Quantitative Techniques — Permutations & Combinations"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python lists basics"
+      },
+      "aiTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-genai",
+        "focus": "LangChain overview"
+      }
+    },
+    "objectives": [
+      "Master object creation and manipulation",
+      "Understand OOP fundamentals",
+      "Work with arrays in C++ and lists in Python"
+    ],
+    "tasks": [
+      {
+        "id": "day-006-task-01",
+        "title": "Learn object literals, dot/bracket notation, nested objects",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-006-task-02",
+        "title": "Practice Object.keys, values, entries, destructuring",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-035-task-03",
+        "title": "Write correlated and uncorrelated subqueries",
+        "topicId": "topic-sql",
+        "type": "practice"
+      },
+      {
+        "id": "day-006-task-04",
+        "title": "C++ arrays: declaration, initialization, traversal",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-006-task-05",
+        "title": "Python lists basics",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-006-task-06",
+        "title": "AI: LangChain & LLM chains overview",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-006-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 1: Quantitative Techniques — Permutations & Combinations",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-javascript",
+      "focus": "Review JS variables, conditionals, loops, functions"
+    },
+    "project": null
+  },
+  {
+    "id": "day-007",
+    "day": 7,
+    "week": 2,
+    "phase": "phase-01",
+    "title": "Day 7: Destructuring & Spread/Rest",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Destructuring, spread/rest operators"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Percentages & Successive Changes"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-sql",
+        "focus": "Window functions: ROW_NUMBER, RANK"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ strings basics"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 1: Quantitative Techniques — Game Based Aptitude"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python tuples, sets"
+      },
+      "aiTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-genai",
+        "focus": "LangGraph & Agent concepts"
+      }
+    },
+    "objectives": [
+      "Master array and object destructuring",
+      "Use spread and rest operators",
+      "Understand OOP inheritance and polymorphism"
+    ],
+    "tasks": [
+      {
+        "id": "day-007-task-01",
+        "title": "Learn array destructuring with defaults and skip patterns",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-007-task-02",
+        "title": "Learn object destructuring with renaming and nested patterns",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-007-task-03",
+        "title": "Practice spread operator for arrays/objects and rest parameters",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-036-task-03",
+        "title": "Write queries with ROW_NUMBER and RANK",
+        "topicId": "topic-sql",
+        "type": "practice"
+      },
+      {
+        "id": "day-007-task-05",
+        "title": "C++ string class, string operations",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-007-task-06",
+        "title": "Python tuples and sets: creation, operations",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-007-task-07",
+        "title": "AI: LangGraph & Agent concepts",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-007-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 1: Quantitative Techniques — Game Based Aptitude",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-008",
+    "day": 8,
+    "week": 2,
+    "phase": "phase-01",
+    "title": "Day 8: Closures & Higher-Order Functions",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Closures, higher-order functions, callbacks"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Percentages & Successive Changes"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP concepts: classes, objects, encapsulation"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ functions: overloading, default args"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 1: Quantitative Techniques — Vedic Maths for Fast Calculations"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python dictionaries"
+      }
+    },
+    "objectives": [
+      "Understand closures and lexical scope",
+      "Write higher-order functions",
+      "Use callbacks effectively"
+    ],
+    "tasks": [
+      {
+        "id": "day-008-task-01",
+        "title": "Study closures: lexical environment, data privacy patterns",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-008-task-02",
+        "title": "Write higher-order functions and callback patterns",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-008-task-03",
+        "title": "Practice IIFE, factory functions using closures",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-006-task-03",
+        "title": "OOP intro: classes, objects, encapsulation concepts",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-008-task-05",
+        "title": "C++ function overloading and default parameters",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-008-task-06",
+        "title": "Python dictionaries: creation, access, methods",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-008-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 1: Quantitative Techniques — Vedic Maths for Fast Calculations",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-009",
+    "day": 9,
+    "week": 2,
+    "phase": "phase-01",
+    "title": "Day 9: Promises & Async/Await",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Promises, async/await, error handling"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Permutations and combinations"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: inheritance and polymorphism"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ pointers introduction"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 2: Verbal Reasoning — Vocabulary Foundations & Word Roots"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python list comprehensions"
+      }
+    },
+    "objectives": [
+      "Understand Promise lifecycle",
+      "Master async/await syntax",
+      "Begin interactive JS project"
+    ],
+    "tasks": [
+      {
+        "id": "day-009-task-01",
+        "title": "Learn Promise creation, then/catch/finally chains",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-009-task-02",
+        "title": "Master async/await with try/catch error handling",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-009-task-03",
+        "title": "Interactive JS App: project setup and planning",
+        "topicId": "topic-javascript",
+        "type": "project"
+      },
+      {
+        "id": "day-009-task-04",
+        "title": "Aptitude: permutations and combinations basics",
+        "topicId": "topic-aptitude",
+        "type": "learn"
+      },
+      {
+        "id": "day-007-task-04",
+        "title": "OOP: inheritance and polymorphism concepts",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-009-task-05",
+        "title": "C++ pointers: declaration, dereferencing, pointer arithmetic",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-009-task-06",
+        "title": "Python list comprehensions and generator expressions",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-009-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 2: Verbal Reasoning — Vocabulary Foundations & Word Roots",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-javascript",
+      "focus": "Review JS objects, destructuring, closures"
+    },
+    "project": {
+      "projectId": "project-02",
+      "milestone": "Project setup and core logic"
+    }
+  },
+  {
+    "id": "day-010",
+    "day": 10,
+    "week": 2,
+    "phase": "phase-01",
+    "title": "Day 10: Fetch API & Error Handling",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Fetch API, HTTP methods, error handling"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Probability basics"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: abstraction, interfaces"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ references, pass by reference"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 2: Verbal Reasoning — Sentence Construction & Subject-Verb Agreement"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python modules and imports"
+      }
+    },
+    "objectives": [
+      "Master Fetch API for GET and POST requests",
+      "Handle HTTP errors gracefully",
+      "Continue interactive JS app development"
+    ],
+    "tasks": [
+      {
+        "id": "day-010-task-01",
+        "title": "Learn Fetch API: GET, POST, headers, JSON parsing",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-010-task-02",
+        "title": "Practice error handling: try/catch, custom errors, error types",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-010-task-03",
+        "title": "Interactive JS App: fetch data and display results",
+        "topicId": "topic-javascript",
+        "type": "project"
+      },
+      {
+        "id": "day-010-task-04",
+        "title": "Aptitude: probability fundamentals",
+        "topicId": "topic-aptitude",
+        "type": "learn"
+      },
+      {
+        "id": "day-008-task-04",
+        "title": "OOP: abstraction and interface concepts",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-010-task-05",
+        "title": "C++ references and pass by reference vs value",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-010-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 2: Verbal Reasoning — Sentence Construction & Subject-Verb Agreement",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-02",
+      "milestone": "API integration and data display"
+    }
+  },
+  {
+    "id": "day-011",
+    "day": 11,
+    "week": 2,
+    "phase": "phase-01",
+    "title": "Day 11: DOM Manipulation & Events",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "DOM manipulation, event handling"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Profit, Loss, Discount & Market Price"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP in practice: design principles"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ STL vectors"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 2: Verbal Reasoning — Sentence Improvement & Error Spotting"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python string methods"
+      }
+    },
+    "objectives": [
+      "Master DOM selection and manipulation",
+      "Handle events with delegation",
+      "Add interactivity to JS project"
+    ],
+    "tasks": [
+      {
+        "id": "day-011-task-01",
+        "title": "Learn DOM: querySelector, createElement, appendChild, remove",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-011-task-02",
+        "title": "Practice event listeners, event delegation, bubbling/capturing",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-011-task-03",
+        "title": "Interactive JS App: add event handlers and DOM updates",
+        "topicId": "topic-javascript",
+        "type": "project"
+      },
+      {
+        "id": "day-011-task-04",
+        "title": "OOP design principles: SOLID introduction",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-011-task-05",
+        "title": "C++ STL vectors: declaration, methods, iteration",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-011-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 2: Verbal Reasoning — Sentence Improvement & Error Spotting",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-02",
+      "milestone": "DOM interaction and event handling"
+    }
+  },
+  {
+    "id": "day-012",
+    "day": 12,
+    "week": 2,
+    "phase": "phase-01",
+    "title": "Day 12: Modules & ES6+ Features",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Modules, ES6+ features, code organization"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Profit, Loss, Discount & Market Price"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: constructors, prototypes"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ STL maps and sets"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 2: Verbal Reasoning — Sentence Rearrangement & Comprehension"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python file I/O basics"
+      }
+    },
+    "objectives": [
+      "Understand ES modules import/export",
+      "Use modern ES6+ features",
+      "Complete interactive JS app"
+    ],
+    "tasks": [
+      {
+        "id": "day-012-task-01",
+        "title": "Learn ES modules: import, export, default export, named exports",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-012-task-02",
+        "title": "Practice ES6+ features: template literals, optional chaining, nullish coalescing",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-012-task-03",
+        "title": "Interactive JS App: refactor with modules, polish, and deploy",
+        "topicId": "topic-javascript",
+        "type": "project"
+      },
+      {
+        "id": "day-012-task-04",
+        "title": "OOP: constructors and prototype chain in JS",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-012-task-05",
+        "title": "C++ STL map and set: usage and iteration",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-012-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 2: Verbal Reasoning — Sentence Rearrangement & Comprehension",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-javascript",
+      "focus": "Review JS basics: variables, types, loops, DOM"
+    },
+    "project": {
+      "projectId": "project-02",
+      "milestone": "Code refactoring and deployment"
+    }
+  },
+  {
+    "id": "day-013",
+    "day": 13,
+    "week": 3,
+    "phase": "phase-02",
+    "title": "Day 13: Destructuring & Spread/Rest",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Destructuring, spread/rest operators"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Profit, Loss, Discount & Market Price"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: encapsulation, getters/setters"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ arrays and sorting"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 3: Logical Reasoning — Number & Letter Series Patterns"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python list methods deep dive"
+      }
+    },
+    "objectives": [
+      "Master array and object destructuring",
+      "Use spread and rest operators",
+      "Understand default values in destructuring"
+    ],
+    "tasks": [
+      {
+        "id": "day-013-task-01",
+        "title": "Learn array destructuring with defaults and skip patterns",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-013-task-02",
+        "title": "Learn object destructuring with renaming and nested patterns",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-013-task-03",
+        "title": "Practice spread operator for arrays/objects and rest parameters",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-013-task-04",
+        "title": "OOP: encapsulation, private fields, getters and setters",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-013-task-05",
+        "title": "C++ array manipulation and basic sorting algorithms",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-013-task-06",
+        "title": "Python list slicing, sorting, and advanced methods",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-013-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 3: Logical Reasoning — Number & Letter Series Patterns",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-014",
+    "day": 14,
+    "week": 3,
+    "phase": "phase-02",
+    "title": "Day 14: Closures & Higher-Order Functions",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Closures, higher-order functions, callbacks"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Profit, Loss, Discount & Market Price"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: composition vs inheritance"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ string manipulation problems"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 3: Logical Reasoning — Coding-Decoding & Cipher Logic"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python tuples and set operations"
+      }
+    },
+    "objectives": [
+      "Understand closures and lexical scope",
+      "Write higher-order functions",
+      "Use callbacks effectively"
+    ],
+    "tasks": [
+      {
+        "id": "day-014-task-01",
+        "title": "Study closures: lexical environment, data privacy patterns",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-014-task-02",
+        "title": "Write higher-order functions and callback patterns",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-014-task-03",
+        "title": "Practice IIFE, factory functions using closures",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-014-task-04",
+        "title": "OOP: composition vs inheritance, when to use each",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-014-task-05",
+        "title": "C++ string problems: reverse, palindrome, anagram",
+        "topicId": "topic-cpp",
+        "type": "practice"
+      },
+      {
+        "id": "day-014-task-06",
+        "title": "Python tuple unpacking and set operations (union, intersection)",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-014-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 3: Logical Reasoning — Coding-Decoding & Cipher Logic",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-015",
+    "day": 15,
+    "week": 3,
+    "phase": "phase-02",
+    "title": "Day 15: Promises & Async/Await",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Promises, async/await, error handling"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Profit, Loss, Discount & Market Price"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: design patterns introduction"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ pointers and dynamic memory"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 3: Logical Reasoning — Blood Relations & Family Tree Deduction"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python dictionaries deep dive"
+      }
+    },
+    "objectives": [
+      "Understand Promise lifecycle",
+      "Master async/await syntax",
+      "Begin interactive JS project"
+    ],
+    "tasks": [
+      {
+        "id": "day-015-task-01",
+        "title": "Learn Promise creation, then/catch/finally chains",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-015-task-02",
+        "title": "Master async/await with try/catch error handling",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-015-task-03",
+        "title": "Interactive JS App: project setup and planning",
+        "topicId": "topic-javascript",
+        "type": "project"
+      },
+      {
+        "id": "day-015-task-04",
+        "title": "OOP: Singleton, Factory, Observer patterns intro",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-015-task-05",
+        "title": "C++ pointers, new/delete, dynamic arrays",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-015-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 3: Logical Reasoning — Blood Relations & Family Tree Deduction",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-02",
+      "milestone": "Project setup and core logic"
+    }
+  },
+  {
+    "id": "day-016",
+    "day": 16,
+    "week": 3,
+    "phase": "phase-02",
+    "title": "Day 16: Fetch API & Error Handling",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Fetch API, HTTP methods, error handling"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Ratios, Proportions & Mixtures"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: class-based patterns in JS"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ STL algorithms (sort, find, count)"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 3: Logical Reasoning — Direction Sense & Path Tracking"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python dict comprehensions"
+      }
+    },
+    "objectives": [
+      "Master Fetch API for GET and POST requests",
+      "Handle HTTP errors gracefully",
+      "Continue interactive JS app development"
+    ],
+    "tasks": [
+      {
+        "id": "day-016-task-01",
+        "title": "Learn Fetch API: GET, POST, headers, JSON parsing",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-016-task-02",
+        "title": "Practice error handling: try/catch, custom errors, error types",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-016-task-03",
+        "title": "Interactive JS App: fetch data and display results",
+        "topicId": "topic-javascript",
+        "type": "project"
+      },
+      {
+        "id": "day-016-task-04",
+        "title": "OOP: ES6 classes, static methods, private fields in JS",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-016-task-05",
+        "title": "C++ STL algorithms: sort, find, count, accumulate",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-016-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 3: Logical Reasoning — Direction Sense & Path Tracking",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-02",
+      "milestone": "API integration and data display"
+    }
+  },
+  {
+    "id": "day-017",
+    "day": 17,
+    "week": 3,
+    "phase": "phase-02",
+    "title": "Day 17: DOM Manipulation & Events",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "DOM manipulation, event handling"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Ratios, Proportions & Mixtures"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: inheritance chains and mixins"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ recursion basics"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 3: Logical Reasoning — Linear & Circular Seating Arrangements"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python lambda and map/filter"
+      }
+    },
+    "objectives": [
+      "Master DOM selection and manipulation",
+      "Handle events with delegation",
+      "Add interactivity to JS project"
+    ],
+    "tasks": [
+      {
+        "id": "day-017-task-01",
+        "title": "Learn DOM: querySelector, createElement, appendChild, remove",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-017-task-02",
+        "title": "Practice event listeners, event delegation, bubbling/capturing",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-017-task-03",
+        "title": "Interactive JS App: add event handlers and DOM updates",
+        "topicId": "topic-javascript",
+        "type": "project"
+      },
+      {
+        "id": "day-017-task-04",
+        "title": "OOP: inheritance chains, mixins, multiple inheritance patterns",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-017-task-05",
+        "title": "C++ recursion: factorial, fibonacci, base cases",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-017-task-06",
+        "title": "Python lambda functions, map(), filter(), reduce()",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-017-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 3: Logical Reasoning — Linear & Circular Seating Arrangements",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-02",
+      "milestone": "DOM interaction and event handling"
+    }
+  },
+  {
+    "id": "day-018",
+    "day": 18,
+    "week": 3,
+    "phase": "phase-02",
+    "title": "Day 18: Modules & ES6+ Features",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-javascript",
+        "focus": "Modules, ES6+ features, code organization"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Ratios, Proportions & Mixtures"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: review and practice"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ practice problems"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 3: Logical Reasoning — Syllogisms & Deductive Logic"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python modules and packages"
+      }
+    },
+    "objectives": [
+      "Understand ES modules import/export",
+      "Use modern ES6+ features",
+      "Complete interactive JS app"
+    ],
+    "tasks": [
+      {
+        "id": "day-018-task-01",
+        "title": "Learn ES modules: import, export, default export, named exports",
+        "topicId": "topic-javascript",
+        "type": "learn"
+      },
+      {
+        "id": "day-018-task-02",
+        "title": "Practice ES6+ features: template literals, optional chaining, nullish coalescing",
+        "topicId": "topic-javascript",
+        "type": "practice"
+      },
+      {
+        "id": "day-018-task-03",
+        "title": "Interactive JS App: refactor with modules, polish, and deploy",
+        "topicId": "topic-javascript",
+        "type": "project"
+      },
+      {
+        "id": "day-018-task-04",
+        "title": "OOP: comprehensive review and coding exercises",
+        "topicId": "topic-oop",
+        "type": "revision"
+      },
+      {
+        "id": "day-018-task-05",
+        "title": "C++ mixed practice: arrays, strings, functions problems",
+        "topicId": "topic-cpp",
+        "type": "practice"
+      },
+      {
+        "id": "day-018-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 3: Logical Reasoning — Syllogisms & Deductive Logic",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-javascript",
+      "focus": "Review advanced JS: closures, promises, DOM"
+    },
+    "project": {
+      "projectId": "project-02",
+      "milestone": "Code refactoring and deployment"
+    }
+  },
+  {
+    "id": "day-019",
+    "day": 19,
+    "week": 4,
+    "phase": "phase-02",
+    "title": "Day 19: React JSX & Components",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "JSX syntax, component basics, React setup"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Ratios, Proportions & Mixtures"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP in React: component patterns"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ OOP: classes and objects"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 3: Logical Reasoning — Venn Diagrams & Analytical Puzzle Grids"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python OOP: classes"
+      }
+    },
+    "objectives": [
+      "Set up a React project with Vite",
+      "Understand JSX syntax and rules",
+      "Create functional components"
+    ],
+    "tasks": [
+      {
+        "id": "day-019-task-01",
+        "title": "Set up React project with Vite, understand project structure",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-019-task-02",
+        "title": "Learn JSX: expressions, attributes, fragments, conditional rendering",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-019-task-03",
+        "title": "Create functional components and understand component tree",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-019-task-04",
+        "title": "OOP patterns in React: component composition",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-019-task-05",
+        "title": "C++ classes: constructors, member functions, access modifiers",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-019-task-06",
+        "title": "Python classes: __init__, self, instance methods",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-019-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 3: Logical Reasoning — Venn Diagrams & Analytical Puzzle Grids",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-020",
+    "day": 20,
+    "week": 4,
+    "phase": "phase-02",
+    "title": "Day 20: React Props & Composition",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "Props, component composition, children"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Ratios, Proportions & Mixtures"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: dependency injection concepts"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ OOP: inheritance"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 4: Interview Preparation — Group Discussion Dynamics & Roles"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python OOP: inheritance"
+      }
+    },
+    "objectives": [
+      "Pass data with props",
+      "Use children prop and composition",
+      "Build reusable component library"
+    ],
+    "tasks": [
+      {
+        "id": "day-020-task-01",
+        "title": "Learn props: passing data, prop types, default props",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-020-task-02",
+        "title": "Practice component composition and children prop",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-020-task-03",
+        "title": "Build reusable UI components: Button, Card, Layout",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-020-task-04",
+        "title": "OOP: dependency injection and inversion of control",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-020-task-05",
+        "title": "C++ inheritance, virtual functions, override",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-020-task-06",
+        "title": "Python inheritance, super(), method overriding",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-020-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 4: Interview Preparation — Group Discussion Dynamics & Roles",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-021",
+    "day": 21,
+    "week": 4,
+    "phase": "phase-02",
+    "title": "Day 21: React State & useState",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "State management, useState hook"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Time & Work, Pipes & Cisterns"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: state patterns and immutability"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ OOP: polymorphism"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 4: Interview Preparation — HR Interview Etiquette & Self-Pitch"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python OOP: encapsulation, properties"
+      }
+    },
+    "objectives": [
+      "Understand React state concept",
+      "Use useState for different data types",
+      "Build interactive stateful components"
+    ],
+    "tasks": [
+      {
+        "id": "day-021-task-01",
+        "title": "Learn useState hook: initialization, updating, functional updates",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-021-task-02",
+        "title": "Practice state with arrays and objects (immutable updates)",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-021-task-03",
+        "title": "Build a counter, todo list, or form with state",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-021-task-04",
+        "title": "OOP: state management patterns and immutability",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-021-task-05",
+        "title": "C++ polymorphism: virtual functions, vtable, abstract classes",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-021-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 4: Interview Preparation — HR Interview Etiquette & Self-Pitch",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-022",
+    "day": 22,
+    "week": 4,
+    "phase": "phase-02",
+    "title": "Day 22: useEffect & Side Effects",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "useEffect hook, side effects, cleanup"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Time & Work, Pipes & Cisterns"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: observer and pub/sub patterns"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ templates basics"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 4: Interview Preparation — Technical Interview Readiness"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python decorators"
+      }
+    },
+    "objectives": [
+      "Master useEffect dependency array",
+      "Handle side effects and cleanup",
+      "Fetch data in React components"
+    ],
+    "tasks": [
+      {
+        "id": "day-022-task-01",
+        "title": "Learn useEffect: dependency array, cleanup functions, timing",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-022-task-02",
+        "title": "Practice useEffect: fetch data on mount, cleanup subscriptions",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-022-task-03",
+        "title": "Build a component that fetches and displays API data",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-022-task-04",
+        "title": "OOP: observer pattern and publish/subscribe",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-022-task-05",
+        "title": "C++ function and class templates basics",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-022-task-06",
+        "title": "Python decorators: syntax, use cases, functools.wraps",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-022-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 4: Interview Preparation — Technical Interview Readiness",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-023",
+    "day": 23,
+    "week": 4,
+    "phase": "phase-02",
+    "title": "Day 23: Event Handling & Conditional Rendering",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "Event handling, conditional rendering patterns"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Time & Work, Pipes & Cisterns"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: strategy and command patterns"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ exception handling"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 4: Interview Preparation — Body Language & Mock GD Session"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python generators and iterators"
+      }
+    },
+    "objectives": [
+      "Handle events in React properly",
+      "Master conditional rendering patterns",
+      "Implement loading and error states"
+    ],
+    "tasks": [
+      {
+        "id": "day-023-task-01",
+        "title": "Learn React event handling: onClick, onChange, onSubmit, synthetic events",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-023-task-02",
+        "title": "Practice conditional rendering: ternary, &&, switch patterns",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-023-task-03",
+        "title": "Implement loading spinners, error boundaries, empty states",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-023-task-04",
+        "title": "OOP: strategy and command design patterns",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-023-task-05",
+        "title": "C++ try/catch, custom exceptions, exception safety",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-023-task-06",
+        "title": "Python generators, yield, iterator protocol",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-023-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 4: Interview Preparation — Body Language & Mock GD Session",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-024",
+    "day": 24,
+    "week": 4,
+    "phase": "phase-02",
+    "title": "Day 24: React Router & Navigation",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "React Router, navigation, route parameters"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Time & Work, Pipes & Cisterns"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: review all patterns"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ file I/O"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 5: Programming Basics — C/C++ Control Structures & Pointers Review"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python context managers"
+      }
+    },
+    "objectives": [
+      "Set up React Router with routes",
+      "Use route parameters and navigation",
+      "Start React project with routing"
+    ],
+    "tasks": [
+      {
+        "id": "day-024-task-01",
+        "title": "Install React Router, set up BrowserRouter, Route, Link",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-024-task-02",
+        "title": "Practice useParams, useNavigate, nested routes, 404 pages",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-024-task-03",
+        "title": "React App project: setup with routing and page structure",
+        "topicId": "topic-react",
+        "type": "project"
+      },
+      {
+        "id": "day-024-task-04",
+        "title": "OOP: comprehensive review of all design patterns",
+        "topicId": "topic-oop",
+        "type": "revision"
+      },
+      {
+        "id": "day-024-task-05",
+        "title": "C++ file I/O: ifstream, ofstream, file operations",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-024-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 5: Programming Basics — C/C++ Control Structures & Pointers Review",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-03",
+      "milestone": "Project setup with routing"
+    }
+  },
+  {
+    "id": "day-025",
+    "day": 25,
+    "week": 5,
+    "phase": "phase-02",
+    "title": "Day 25: Lists, Keys & Forms in React",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "Lists, keys, controlled forms"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Time & Work, Pipes & Cisterns"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: coding exercises"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ smart pointers intro"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 5: Programming Basics — Java Primitives & Memory Model Review"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python error handling patterns"
+      }
+    },
+    "objectives": [
+      "Render lists efficiently with keys",
+      "Build controlled form components",
+      "Add list and form features to React project"
+    ],
+    "tasks": [
+      {
+        "id": "day-025-task-01",
+        "title": "Learn list rendering with map() and unique key prop",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-025-task-02",
+        "title": "Build controlled forms: input, textarea, select, checkbox",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-025-task-03",
+        "title": "React App project: add list views and form inputs",
+        "topicId": "topic-react",
+        "type": "project"
+      },
+      {
+        "id": "day-025-task-04",
+        "title": "OOP: practical coding exercises with patterns",
+        "topicId": "topic-oop",
+        "type": "practice"
+      },
+      {
+        "id": "day-025-task-05",
+        "title": "C++ unique_ptr, shared_ptr introduction",
+        "topicId": "topic-cpp",
+        "type": "learn"
+      },
+      {
+        "id": "day-025-task-06",
+        "title": "Python try/except best practices, custom exceptions",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-025-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 5: Programming Basics — Java Primitives & Memory Model Review",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-03",
+      "milestone": "List views and form components"
+    }
+  },
+  {
+    "id": "day-026",
+    "day": 26,
+    "week": 5,
+    "phase": "phase-02",
+    "title": "Day 26: API Integration in React",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "API integration, useEffect patterns"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Time, Speed, Distance, Trains & Boats"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: real-world architecture"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ review and practice"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3108",
+        "focus": "DCA3108 Unit 6 Advanced OOP & Unit 7 DBMS/DSA Review — Terminal Mock Exam"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python virtual environments, pip"
+      }
+    },
+    "objectives": [
+      "Integrate REST APIs in React",
+      "Handle loading and error states",
+      "Add API data to React project"
+    ],
+    "tasks": [
+      {
+        "id": "day-026-task-01",
+        "title": "Fetch and display API data with useEffect and useState",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-026-task-02",
+        "title": "Implement loading states, error handling, and data caching",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-026-task-03",
+        "title": "React App project: integrate external API and display data",
+        "topicId": "topic-react",
+        "type": "project"
+      },
+      {
+        "id": "day-026-task-04",
+        "title": "OOP: real-world architecture with MVC, MVVM patterns",
+        "topicId": "topic-oop",
+        "type": "learn"
+      },
+      {
+        "id": "day-026-task-05",
+        "title": "C++ comprehensive review: classes, templates, STL",
+        "topicId": "topic-cpp",
+        "type": "revision"
+      },
+      {
+        "id": "day-026-task-sem5",
+        "title": "Sem 5: DCA3108 Unit 6 Advanced OOP & Unit 7 DBMS/DSA Review — Terminal Mock Exam",
+        "topicId": "topic-sem5-dca3108",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-react",
+      "focus": "Review React hooks: useState, useEffect"
+    },
+    "project": {
+      "projectId": "project-03",
+      "milestone": "API integration and data display"
+    }
+  },
+  {
+    "id": "day-027",
+    "day": 27,
+    "week": 5,
+    "phase": "phase-02",
+    "title": "Day 27: React Review & Lifting State",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "Lifting state, component communication, review"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Time, Speed, Distance, Trains & Boats"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-oop",
+        "focus": "OOP: final assessment"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-cpp",
+        "focus": "C++ coding challenge"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 1: Introduction to Android Ecosystem & SDK Setup"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python review: data structures"
+      }
+    },
+    "objectives": [
+      "Master lifting state up pattern",
+      "Understand component communication",
+      "Complete React project"
+    ],
+    "tasks": [
+      {
+        "id": "day-027-task-01",
+        "title": "Learn lifting state up and inverse data flow",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-027-task-02",
+        "title": "Practice sibling component communication via shared state",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-027-task-03",
+        "title": "React App project: polish, optimize, and deploy",
+        "topicId": "topic-react",
+        "type": "project"
+      },
+      {
+        "id": "day-027-task-04",
+        "title": "OOP: final review and assessment exercises",
+        "topicId": "topic-oop",
+        "type": "revision"
+      },
+      {
+        "id": "day-027-task-05",
+        "title": "C++ timed coding challenge: solve 3 problems",
+        "topicId": "topic-cpp",
+        "type": "practice"
+      },
+      {
+        "id": "day-027-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 1: Introduction to Android Ecosystem & SDK Setup",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-react",
+      "focus": "Review all React fundamentals"
+    },
+    "project": {
+      "projectId": "project-03",
+      "milestone": "Polish, optimize, and deploy"
+    }
+  },
+  {
+    "id": "day-028",
+    "day": 28,
+    "week": 5,
+    "phase": "phase-03",
+    "title": "Day 28: React useRef & useMemo",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "useRef, useMemo hooks"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Time, Speed, Distance, Trains & Boats"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-dbms",
+        "focus": "Database fundamentals & schema design"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA: arrays, two-sum problem"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 2: Android Development Environment — Studio, Gradle & Project Structure"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python exceptions and try/except"
+      }
+    },
+    "objectives": [
+      "Use useRef for DOM access and mutable values",
+      "Optimize with useMemo",
+      "Start SQL fundamentals"
+    ],
+    "tasks": [
+      {
+        "id": "day-028-task-01",
+        "title": "Learn useRef: DOM references, mutable values, previous state",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-028-task-02",
+        "title": "Learn useMemo: expensive calculations, dependency management",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-028-task-03",
+        "title": "Practice useRef and useMemo with real examples",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-028-task-05",
+        "title": "DSA: array traversal, two-sum problem",
+        "topicId": "topic-dsa",
+        "type": "learn"
+      },
+      {
+        "id": "day-028-task-06",
+        "title": "Python try/except/finally, raising exceptions",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-028-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 2: Android Development Environment — Studio, Gradle & Project Structure",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-029",
+    "day": 29,
+    "week": 5,
+    "phase": "phase-03",
+    "title": "Day 29: React useCallback & Performance",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "useCallback, React.memo, performance"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Time, Speed, Distance, Trains & Boats"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-dbms",
+        "focus": "Relational modeling & keys"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA: string problems, hashing"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 2: Android Development Environment — AVD Emulator & Debugging Tools"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python file handling: read, write"
+      }
+    },
+    "objectives": [
+      "Master useCallback for memoized callbacks",
+      "Understand React.memo for component memoization",
+      "Learn SQL JOINs"
+    ],
+    "tasks": [
+      {
+        "id": "day-029-task-01",
+        "title": "Learn useCallback: stable references, preventing re-renders",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-029-task-02",
+        "title": "Practice React.memo and performance optimization patterns",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-029-task-03",
+        "title": "Profile React app with DevTools and fix re-render issues",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-029-task-05",
+        "title": "DSA: string reversal, anagram check, hash maps",
+        "topicId": "topic-dsa",
+        "type": "learn"
+      },
+      {
+        "id": "day-029-task-06",
+        "title": "Python file read/write: open, read, write, with statement",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-029-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 2: Android Development Environment — AVD Emulator & Debugging Tools",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-030",
+    "day": 30,
+    "week": 5,
+    "phase": "phase-03",
+    "title": "Day 30: Context API & Custom Hooks",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "Context API, custom hooks"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Quantitative Aptitude: Time, Speed, Distance, Trains & Boats"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-dbms",
+        "focus": "Database query optimization"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA: two pointers technique"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 3: Overview of Threads — UI Thread, Worker Threads & Handlers"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python CSV and JSON file handling"
+      }
+    },
+    "objectives": [
+      "Share state globally with Context API",
+      "Build reusable custom hooks",
+      "Practice SQL aggregation"
+    ],
+    "tasks": [
+      {
+        "id": "day-030-task-01",
+        "title": "Learn Context API: createContext, Provider, useContext",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-030-task-02",
+        "title": "Build custom hooks: useLocalStorage, useFetch, useToggle",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-030-task-03",
+        "title": "Implement theme/auth context in a React app",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-030-task-05",
+        "title": "DSA: two pointers on sorted arrays, pair sum",
+        "topicId": "topic-dsa",
+        "type": "learn"
+      },
+      {
+        "id": "day-030-task-06",
+        "title": "Python CSV and JSON file reading and writing",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-030-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 3: Overview of Threads — UI Thread, Worker Threads & Handlers",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-031",
+    "day": 31,
+    "week": 6,
+    "phase": "phase-03",
+    "title": "Day 31: Context API & State Management",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "Context API, useContext hook, global state patterns"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Number Series, Letter Series & Analogies"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-dbms",
+        "focus": "Database normalization practice"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Two pointers technique on sorted arrays"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 3: Overview of Threads — Async Tasks & Concurrency Model"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python exceptions: try/except/finally"
+      }
+    },
+    "objectives": [
+      "Implement Context API for global state",
+      "Master SQL JOIN types",
+      "Apply two pointers pattern"
+    ],
+    "tasks": [
+      {
+        "id": "day-031-task-01",
+        "title": "Create context providers and consumers",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-031-task-02",
+        "title": "Refactor prop drilling to Context API",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-031-task-04",
+        "title": "Solve two-sum with two pointers",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-031-task-05",
+        "title": "Handle exceptions in Python programs",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-031-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 3: Overview of Threads — Async Tasks & Concurrency Model",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-032",
+    "day": 32,
+    "week": 6,
+    "phase": "phase-03",
+    "title": "Day 32: Custom Hooks & React Performance",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-react",
+        "focus": "Custom hooks, React.memo, performance optimization"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Number Series, Letter Series & Analogies"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-dbms",
+        "focus": "Database indexing & performance"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Two pointers: container with most water, 3sum"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 4: Multimedia in Android — Audio Playback & MediaPlayer API"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python file reading and writing"
+      }
+    },
+    "objectives": [
+      "Build reusable custom hooks",
+      "Optimize React rendering with memoization",
+      "Use GROUP BY and aggregates in SQL"
+    ],
+    "tasks": [
+      {
+        "id": "day-032-task-01",
+        "title": "Build custom hooks: useFetch, useLocalStorage",
+        "topicId": "topic-react",
+        "type": "practice"
+      },
+      {
+        "id": "day-032-task-02",
+        "title": "Apply React.memo and profiler",
+        "topicId": "topic-react",
+        "type": "learn"
+      },
+      {
+        "id": "day-032-task-04",
+        "title": "Solve 3sum problem with two pointers",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-032-task-05",
+        "title": "Read/write files in Python",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-032-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 4: Multimedia in Android — Audio Playback & MediaPlayer API",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-react",
+      "focus": "Review useRef, useMemo, useCallback patterns"
+    },
+    "project": null
+  },
+  {
+    "id": "day-033",
+    "day": 33,
+    "week": 6,
+    "phase": "phase-03",
+    "title": "Day 33: Next.js Introduction & Routing",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-nextjs",
+        "focus": "Next.js setup, file-based routing, pages directory"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Number Series, Letter Series & Analogies"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-dbms",
+        "focus": "Relational model, keys, ER diagrams"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Hashing fundamentals, hash maps"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 4: Multimedia in Android — VideoView & Camera Intent Basics"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python OOP: classes and objects"
+      }
+    },
+    "objectives": [
+      "Set up a Next.js project",
+      "Understand file-based routing",
+      "Learn relational database concepts"
+    ],
+    "tasks": [
+      {
+        "id": "day-033-task-01",
+        "title": "Create Next.js app, explore project structure",
+        "topicId": "topic-nextjs",
+        "type": "learn"
+      },
+      {
+        "id": "day-033-task-02",
+        "title": "Build pages with file-based routing",
+        "topicId": "topic-nextjs",
+        "type": "practice"
+      },
+      {
+        "id": "day-033-task-03",
+        "title": "Study ER diagrams and relational model",
+        "topicId": "topic-dbms",
+        "type": "learn"
+      },
+      {
+        "id": "day-033-task-04",
+        "title": "Implement hash map for frequency counting",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-033-task-05",
+        "title": "Define Python classes with __init__",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-033-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 4: Multimedia in Android — VideoView & Camera Intent Basics",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-034",
+    "day": 34,
+    "week": 6,
+    "phase": "phase-03",
+    "title": "Day 34: Next.js Layouts & Nested Routes",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-nextjs",
+        "focus": "Layouts, nested routes, route groups, loading/error UI"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Number Series, Letter Series & Analogies"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-dbms",
+        "focus": "Normalization: 1NF, 2NF, 3NF, BCNF"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Hash map problems: group anagrams, two sum"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 5: Android Architecture — Linux Kernel, HAL & Native Libraries"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python OOP: inheritance, polymorphism"
+      }
+    },
+    "objectives": [
+      "Create shared layouts in Next.js",
+      "Understand database normalization",
+      "Solve hash map problems"
+    ],
+    "tasks": [
+      {
+        "id": "day-034-task-01",
+        "title": "Build root and nested layouts",
+        "topicId": "topic-nextjs",
+        "type": "learn"
+      },
+      {
+        "id": "day-034-task-02",
+        "title": "Implement loading and error boundaries",
+        "topicId": "topic-nextjs",
+        "type": "practice"
+      },
+      {
+        "id": "day-034-task-03",
+        "title": "Normalize a database schema to 3NF",
+        "topicId": "topic-dbms",
+        "type": "practice"
+      },
+      {
+        "id": "day-034-task-04",
+        "title": "Solve group anagrams with hash maps",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-034-task-05",
+        "title": "Implement inheritance in Python classes",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-034-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 5: Android Architecture — Linux Kernel, HAL & Native Libraries",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-035",
+    "day": 35,
+    "week": 6,
+    "phase": "phase-03",
+    "title": "Day 35: Server & Client Components",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-nextjs",
+        "focus": "Server components, client components, 'use client' directive"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Number Series, Letter Series & Analogies"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-dbms",
+        "focus": "Database normalization & anomalies"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "String problems: valid anagram, palindrome check"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 5: Android Architecture — Android Runtime (ART vs Dalvik)"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python OOP: encapsulation, dunder methods"
+      }
+    },
+    "objectives": [
+      "Distinguish server vs client components",
+      "Practice database design",
+      "Solve string manipulation problems"
+    ],
+    "tasks": [
+      {
+        "id": "day-035-task-01",
+        "title": "Convert components between server and client",
+        "topicId": "topic-nextjs",
+        "type": "learn"
+      },
+      {
+        "id": "day-035-task-02",
+        "title": "Build page mixing server/client components",
+        "topicId": "topic-nextjs",
+        "type": "practice"
+      },
+      {
+        "id": "day-035-task-04",
+        "title": "Solve valid palindrome and anagram problems",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-035-task-05",
+        "title": "Use dunder methods in Python classes",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-035-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 5: Android Architecture — Android Runtime (ART vs Dalvik)",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-036",
+    "day": 36,
+    "week": 6,
+    "phase": "phase-03",
+    "title": "Day 36: Data Fetching in Next.js",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-nextjs",
+        "focus": "SSR, SSG, ISR, data fetching patterns"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Coding-Decoding & Symbol Operations"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-dbms",
+        "focus": "Database indexing & query planning"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Sliding window: max sum subarray"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 6: Android Software Development Platform — Framework Components"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python file handling: CSV, JSON parsing"
+      }
+    },
+    "objectives": [
+      "Implement SSR and SSG in Next.js",
+      "Practice database concepts",
+      "Start project-04"
+    ],
+    "tasks": [
+      {
+        "id": "day-036-task-01",
+        "title": "Fetch data with server components",
+        "topicId": "topic-nextjs",
+        "type": "learn"
+      },
+      {
+        "id": "day-036-task-02",
+        "title": "Set up project-04 Next.js portfolio",
+        "topicId": "topic-nextjs",
+        "type": "project"
+      },
+      {
+        "id": "day-036-task-04",
+        "title": "Solve maximum sum subarray of size k",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-036-task-05",
+        "title": "Parse CSV and JSON files in Python",
+        "topicId": "topic-python-fundamentals",
+        "type": "practice"
+      },
+      {
+        "id": "day-036-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 6: Android Software Development Platform — Framework Components",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-04",
+      "milestone": "Project setup and page structure"
+    }
+  },
+  {
+    "id": "day-037",
+    "day": 37,
+    "week": 7,
+    "phase": "phase-03",
+    "title": "Day 37: API Routes & Three.js Introduction",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-nextjs",
+        "focus": "API routes, route handlers, Three.js introduction"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Coding-Decoding & Symbol Operations"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-dbms",
+        "focus": "Transactions, ACID properties, concurrency"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Sliding window: longest substring without repeating"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 6: Android Software Development Platform — Manifest, Permissions & Resources"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-threejs",
+        "focus": "Three.js scene, camera, renderer basics"
+      }
+    },
+    "objectives": [
+      "Build API routes in Next.js",
+      "Understand database transactions",
+      "Set up a Three.js scene"
+    ],
+    "tasks": [
+      {
+        "id": "day-037-task-01",
+        "title": "Create GET/POST API route handlers",
+        "topicId": "topic-nextjs",
+        "type": "learn"
+      },
+      {
+        "id": "day-037-task-02",
+        "title": "Add API routes to project-04",
+        "topicId": "topic-nextjs",
+        "type": "project"
+      },
+      {
+        "id": "day-037-task-03",
+        "title": "Study ACID properties and transactions",
+        "topicId": "topic-dbms",
+        "type": "learn"
+      },
+      {
+        "id": "day-037-task-04",
+        "title": "Solve longest substring without repeating chars",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-037-task-05",
+        "title": "Render a 3D cube with Three.js",
+        "topicId": "topic-threejs",
+        "type": "introduction"
+      },
+      {
+        "id": "day-037-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 6: Android Software Development Platform — Manifest, Permissions & Resources",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-04",
+      "milestone": "API integration and dynamic content"
+    }
+  },
+  {
+    "id": "day-038",
+    "day": 38,
+    "week": 7,
+    "phase": "phase-03",
+    "title": "Day 38: Next.js Review & Three.js Basics",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-nextjs",
+        "focus": "Next.js review, deployment, Three.js geometries and materials"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Coding-Decoding & Symbol Operations"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-dbms",
+        "focus": "Indexing, B-trees, query optimization"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Two pointers review and mixed problems"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 7: Android Framework Overview — Activity Lifecycle & State"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-threejs",
+        "focus": "Three.js materials, lighting, animation loop"
+      }
+    },
+    "objectives": [
+      "Complete project-04 with polish",
+      "Understand database indexing",
+      "Animate 3D objects with Three.js"
+    ],
+    "tasks": [
+      {
+        "id": "day-038-task-01",
+        "title": "Polish and deploy project-04",
+        "topicId": "topic-nextjs",
+        "type": "project"
+      },
+      {
+        "id": "day-038-task-02",
+        "title": "Add Three.js 3D element to portfolio",
+        "topicId": "topic-threejs",
+        "type": "practice"
+      },
+      {
+        "id": "day-038-task-03",
+        "title": "Study B-tree indexes and query plans",
+        "topicId": "topic-dbms",
+        "type": "learn"
+      },
+      {
+        "id": "day-038-task-04",
+        "title": "Solve mixed two-pointer problems",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-038-task-05",
+        "title": "Review Phase 3 key concepts",
+        "topicId": "topic-nextjs",
+        "type": "revision"
+      },
+      {
+        "id": "day-038-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 7: Android Framework Overview — Activity Lifecycle & State",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-nextjs",
+      "focus": "Review Next.js routing, components, data fetching"
+    },
+    "project": {
+      "projectId": "project-04",
+      "milestone": "Final deployment and 3D integration"
+    }
+  },
+  {
+    "id": "day-039",
+    "day": 39,
+    "week": 7,
+    "phase": "phase-04",
+    "title": "Day 39: Node.js Runtime & Event Loop",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-nodejs",
+        "focus": "Node.js runtime, event loop, non-blocking I/O"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Coding-Decoding & Symbol Operations"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-os",
+        "focus": "Operating Systems (OS) basics: processes, threads, scheduling"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Binary search on sorted arrays"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 7: Android Framework Overview — Explicit vs Implicit Intents & Filters"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python JSON module, serialization"
+      }
+    },
+    "objectives": [
+      "Understand Node.js architecture and event loop",
+      "Learn OS process management",
+      "Implement binary search"
+    ],
+    "tasks": [
+      {
+        "id": "day-039-task-01",
+        "title": "Explore Node.js REPL and runtime",
+        "topicId": "topic-nodejs",
+        "type": "learn"
+      },
+      {
+        "id": "day-039-task-02",
+        "title": "Demonstrate event loop with setTimeout/setInterval",
+        "topicId": "topic-nodejs",
+        "type": "practice"
+      },
+      {
+        "id": "day-039-task-03",
+        "title": "Study processes, threads, context switching",
+        "topicId": "topic-os",
+        "type": "learn"
+      },
+      {
+        "id": "day-039-task-04",
+        "title": "Implement binary search iteratively and recursively",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-039-task-05",
+        "title": "Serialize and deserialize JSON in Python",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-039-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 7: Android Framework Overview — Explicit vs Implicit Intents & Filters",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-040",
+    "day": 40,
+    "week": 7,
+    "phase": "phase-04",
+    "title": "Day 40: Node.js Modules & npm",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-nodejs",
+        "focus": "CommonJS, ES modules, npm, package.json, scripts"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Coding-Decoding & Symbol Operations"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-os",
+        "focus": "Memory management, virtual memory, paging"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Binary search variations: first/last occurrence"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 7: Android Framework Overview — Started vs Bound Services"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python requests library, API calls"
+      }
+    },
+    "objectives": [
+      "Use CommonJS and ES modules",
+      "Manage packages with npm",
+      "Solve binary search variations"
+    ],
+    "tasks": [
+      {
+        "id": "day-040-task-01",
+        "title": "Create and import custom modules",
+        "topicId": "topic-nodejs",
+        "type": "learn"
+      },
+      {
+        "id": "day-040-task-02",
+        "title": "Initialize project with npm, manage dependencies",
+        "topicId": "topic-nodejs",
+        "type": "practice"
+      },
+      {
+        "id": "day-040-task-03",
+        "title": "Study virtual memory and page replacement",
+        "topicId": "topic-os",
+        "type": "learn"
+      },
+      {
+        "id": "day-040-task-04",
+        "title": "Find first and last position in sorted array",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-040-task-05",
+        "title": "Make GET/POST requests with Python requests",
+        "topicId": "topic-python-fundamentals",
+        "type": "practice"
+      },
+      {
+        "id": "day-040-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 7: Android Framework Overview — Started vs Bound Services",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-041",
+    "day": 41,
+    "week": 7,
+    "phase": "phase-04",
+    "title": "Day 41: HTTP Module & Creating Servers",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-nodejs",
+        "focus": "HTTP module, creating servers, request/response handling"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Blood Relations & Coded Family Trees"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-os",
+        "focus": "File systems, I/O management, deadlocks"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Search in rotated sorted array"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 7: Android Framework Overview — Broadcast Receivers & System Events"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python pip, installing packages"
+      }
+    },
+    "objectives": [
+      "Build HTTP server from scratch with Node.js",
+      "Understand OS file systems",
+      "Apply binary search to rotated arrays"
+    ],
+    "tasks": [
+      {
+        "id": "day-041-task-01",
+        "title": "Create HTTP server with http module",
+        "topicId": "topic-nodejs",
+        "type": "learn"
+      },
+      {
+        "id": "day-041-task-02",
+        "title": "Handle different routes and methods manually",
+        "topicId": "topic-nodejs",
+        "type": "practice"
+      },
+      {
+        "id": "day-041-task-03",
+        "title": "Study file system types and deadlock conditions",
+        "topicId": "topic-os",
+        "type": "learn"
+      },
+      {
+        "id": "day-041-task-04",
+        "title": "Solve search in rotated sorted array",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-041-task-05",
+        "title": "Install and manage Python packages with pip",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-041-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 7: Android Framework Overview — Broadcast Receivers & System Events",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-042",
+    "day": 42,
+    "week": 7,
+    "phase": "phase-04",
+    "title": "Day 42: Streams, Buffers & File System",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-nodejs",
+        "focus": "Streams, buffers, fs module, reading/writing files"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Blood Relations & Coded Family Trees"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "Networking basics: OSI model, TCP/IP"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Sorting: bubble sort, selection sort, insertion sort"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 7: Android Framework Overview — Content Providers & Data Sharing"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python virtual environments: venv"
+      }
+    },
+    "objectives": [
+      "Use streams for efficient data processing",
+      "Understand OSI model layers",
+      "Implement basic sorting algorithms"
+    ],
+    "tasks": [
+      {
+        "id": "day-042-task-01",
+        "title": "Read/write files with fs and streams",
+        "topicId": "topic-nodejs",
+        "type": "learn"
+      },
+      {
+        "id": "day-042-task-02",
+        "title": "Build file copy utility with streams",
+        "topicId": "topic-nodejs",
+        "type": "practice"
+      },
+      {
+        "id": "day-042-task-03",
+        "title": "Study OSI layers and TCP/IP stack",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-042-task-04",
+        "title": "Implement bubble, selection, insertion sort",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-042-task-05",
+        "title": "Create and activate Python virtual environments",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-042-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 7: Android Framework Overview — Content Providers & Data Sharing",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-nodejs",
+      "focus": "Review Node.js core: modules, HTTP, event loop"
+    },
+    "project": null
+  },
+  {
+    "id": "day-043",
+    "day": 43,
+    "week": 8,
+    "phase": "phase-04",
+    "title": "Day 43: Express.js Setup & Routing",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-expressjs",
+        "focus": "Express setup, basic routing, route parameters"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Blood Relations & Coded Family Trees"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "HTTP protocol, DNS, TCP handshake"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Merge sort: divide and conquer"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 7: Android Framework Overview — Notifications & Notification Channels"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python decorators and generators"
+      }
+    },
+    "objectives": [
+      "Set up Express.js application",
+      "Define routes with parameters",
+      "Implement merge sort"
+    ],
+    "tasks": [
+      {
+        "id": "day-043-task-01",
+        "title": "Initialize Express app with basic routes",
+        "topicId": "topic-expressjs",
+        "type": "learn"
+      },
+      {
+        "id": "day-043-task-02",
+        "title": "Handle route params and query strings",
+        "topicId": "topic-expressjs",
+        "type": "practice"
+      },
+      {
+        "id": "day-043-task-03",
+        "title": "Study HTTP methods, status codes, DNS resolution",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-043-task-04",
+        "title": "Implement merge sort algorithm",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-043-task-05",
+        "title": "Write Python decorators and generator functions",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-043-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 7: Android Framework Overview — Notifications & Notification Channels",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-044",
+    "day": 44,
+    "week": 8,
+    "phase": "phase-04",
+    "title": "Day 44: Middleware & Request Handling",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-expressjs",
+        "focus": "Middleware, body parsing, request/response cycle"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Blood Relations & Coded Family Trees"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "Sockets, ports, client-server architecture"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Quick sort: partition and pivot"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 8: Understanding Android Views — View Hierarchy, TextView, Button, EditText"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python lambda, map, filter, reduce"
+      }
+    },
+    "objectives": [
+      "Build custom middleware in Express",
+      "Understand client-server networking",
+      "Implement quick sort"
+    ],
+    "tasks": [
+      {
+        "id": "day-044-task-01",
+        "title": "Create logging and auth middleware",
+        "topicId": "topic-expressjs",
+        "type": "learn"
+      },
+      {
+        "id": "day-044-task-02",
+        "title": "Parse JSON and URL-encoded bodies",
+        "topicId": "topic-expressjs",
+        "type": "practice"
+      },
+      {
+        "id": "day-044-task-03",
+        "title": "Study sockets and client-server communication",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-044-task-04",
+        "title": "Implement quick sort with Lomuto partition",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-044-task-05",
+        "title": "Use lambda, map, filter in Python",
+        "topicId": "topic-python-fundamentals",
+        "type": "practice"
+      },
+      {
+        "id": "day-044-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 8: Understanding Android Views — View Hierarchy, TextView, Button, EditText",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-045",
+    "day": 45,
+    "week": 8,
+    "phase": "phase-04",
+    "title": "Day 45: REST API Design & CRUD",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-expressjs",
+        "focus": "REST API principles, CRUD operations, status codes"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Blood Relations & Coded Family Trees"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "REST vs WebSocket, API design principles"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Recursion fundamentals: factorial, fibonacci, power"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 8: Understanding Android Views — ViewGroup, LinearLayout, RelativeLayout, ConstraintLayout"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python modules and packages structure"
+      }
+    },
+    "objectives": [
+      "Design RESTful APIs following best practices",
+      "Implement full CRUD endpoints",
+      "Understand recursion fundamentals"
+    ],
+    "tasks": [
+      {
+        "id": "day-045-task-01",
+        "title": "Design REST API with proper resource naming",
+        "topicId": "topic-expressjs",
+        "type": "learn"
+      },
+      {
+        "id": "day-045-task-02",
+        "title": "Build CRUD API for a resource",
+        "topicId": "topic-expressjs",
+        "type": "practice"
+      },
+      {
+        "id": "day-045-task-03",
+        "title": "Compare REST and WebSocket protocols",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-045-task-04",
+        "title": "Solve recursive problems: factorial, fibonacci",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-045-task-05",
+        "title": "Create Python package with __init__.py",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-045-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 8: Understanding Android Views — ViewGroup, LinearLayout, RelativeLayout, ConstraintLayout",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-046",
+    "day": 46,
+    "week": 8,
+    "phase": "phase-04",
+    "title": "Day 46: Validation, Error Handling & Auth Intro",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-expressjs",
+        "focus": "Input validation, error handling middleware, auth introduction"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Direction Sense, Angles & Distance Tracking"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "HTTPS, TLS, encryption basics"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Recursion: subsets, permutations generation"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 9: Designing Android UI — Styles, Themes & Material Design Components"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python typing and type hints"
+      }
+    },
+    "objectives": [
+      "Validate API inputs properly",
+      "Handle errors with middleware",
+      "Generate subsets recursively"
+    ],
+    "tasks": [
+      {
+        "id": "day-046-task-01",
+        "title": "Add Joi/Zod validation to API routes",
+        "topicId": "topic-expressjs",
+        "type": "learn"
+      },
+      {
+        "id": "day-046-task-02",
+        "title": "Build global error handling middleware",
+        "topicId": "topic-expressjs",
+        "type": "practice"
+      },
+      {
+        "id": "day-046-task-03",
+        "title": "Study HTTPS, TLS handshake, certificates",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-046-task-04",
+        "title": "Generate all subsets and permutations",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-046-task-05",
+        "title": "Add type hints to Python functions",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-046-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 9: Designing Android UI — Styles, Themes & Material Design Components",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-expressjs",
+      "focus": "Review Express routing, middleware, REST patterns"
+    },
+    "project": null
+  },
+  {
+    "id": "day-047",
+    "day": 47,
+    "week": 8,
+    "phase": "phase-04",
+    "title": "Day 47: MongoDB Setup & CRUD",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-mongodb",
+        "focus": "MongoDB setup, documents, collections, CRUD operations"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Direction Sense, Angles & Distance Tracking"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-os",
+        "focus": "Synchronization: mutex, semaphore, monitors"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Backtracking: N-Queens problem"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 9: Designing Android UI — RecyclerView, LayoutManager, Adapters & ViewHolders"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python unittest basics"
+      }
+    },
+    "objectives": [
+      "Set up MongoDB and perform CRUD",
+      "Understand synchronization primitives",
+      "Solve N-Queens with backtracking"
+    ],
+    "tasks": [
+      {
+        "id": "day-047-task-01",
+        "title": "Install MongoDB, use mongosh for CRUD",
+        "topicId": "topic-mongodb",
+        "type": "learn"
+      },
+      {
+        "id": "day-047-task-02",
+        "title": "Insert, find, update, delete documents",
+        "topicId": "topic-mongodb",
+        "type": "practice"
+      },
+      {
+        "id": "day-047-task-03",
+        "title": "Study mutex, semaphore, producer-consumer",
+        "topicId": "topic-os",
+        "type": "learn"
+      },
+      {
+        "id": "day-047-task-04",
+        "title": "Solve N-Queens with backtracking",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-047-task-05",
+        "title": "Write basic unit tests in Python",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-047-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 9: Designing Android UI — RecyclerView, LayoutManager, Adapters & ViewHolders",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-048",
+    "day": 48,
+    "week": 8,
+    "phase": "phase-04",
+    "title": "Day 48: Mongoose Schemas & Models",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-mongodb",
+        "focus": "Mongoose connection, schemas, models, validation"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Direction Sense, Angles & Distance Tracking"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "Load balancing, CDN, caching strategies"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Backtracking: sudoku solver"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 10: Displaying Pictures in Android — ImageView, Bitmaps & Image Loading"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python context managers"
+      }
+    },
+    "objectives": [
+      "Define Mongoose schemas with validation",
+      "Start project-05 MERN app",
+      "Solve sudoku with backtracking"
+    ],
+    "tasks": [
+      {
+        "id": "day-048-task-01",
+        "title": "Connect Mongoose, define schemas with validation",
+        "topicId": "topic-mongodb",
+        "type": "learn"
+      },
+      {
+        "id": "day-048-task-02",
+        "title": "Set up project-05 backend with Express + Mongoose",
+        "topicId": "topic-mongodb",
+        "type": "project"
+      },
+      {
+        "id": "day-048-task-03",
+        "title": "Study CDN, caching, load balancing concepts",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-048-task-04",
+        "title": "Implement sudoku solver with backtracking",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-048-task-05",
+        "title": "Use context managers and with statements",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-048-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 10: Displaying Pictures in Android — ImageView, Bitmaps & Image Loading",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-05",
+      "milestone": "Backend setup with Express and Mongoose"
+    }
+  },
+  {
+    "id": "day-049",
+    "day": 49,
+    "week": 9,
+    "phase": "phase-04",
+    "title": "Day 49: Queries, Population & Aggregation",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-mongodb",
+        "focus": "Advanced queries, populate, aggregation pipeline"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Direction Sense, Angles & Distance Tracking"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-os",
+        "focus": "Inter-process communication, signals, pipes"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Linked list: singly linked list implementation"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Unit 10: Displaying Pictures in Android — Custom Canvas 2D Drawing & Animations"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python itertools and collections"
+      }
+    },
+    "objectives": [
+      "Use Mongoose populate for references",
+      "Build aggregation pipelines",
+      "Implement singly linked list"
+    ],
+    "tasks": [
+      {
+        "id": "day-049-task-01",
+        "title": "Write complex queries with filters and projection",
+        "topicId": "topic-mongodb",
+        "type": "learn"
+      },
+      {
+        "id": "day-049-task-02",
+        "title": "Add populate and aggregation to project-05",
+        "topicId": "topic-mongodb",
+        "type": "project"
+      },
+      {
+        "id": "day-049-task-03",
+        "title": "Study IPC mechanisms: pipes, shared memory",
+        "topicId": "topic-os",
+        "type": "learn"
+      },
+      {
+        "id": "day-049-task-04",
+        "title": "Implement singly linked list with operations",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-049-task-05",
+        "title": "Use Counter, defaultdict from collections",
+        "topicId": "topic-python-fundamentals",
+        "type": "practice"
+      },
+      {
+        "id": "day-049-task-sem5",
+        "title": "Sem 5: DCA3105 Unit 10: Displaying Pictures in Android — Custom Canvas 2D Drawing & Animations",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-05",
+      "milestone": "Data models with relationships and aggregation"
+    }
+  },
+  {
+    "id": "day-050",
+    "day": 50,
+    "week": 9,
+    "phase": "phase-04",
+    "title": "Day 50: Relationships & Indexing",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-mongodb",
+        "focus": "Document relationships, embedding vs referencing, indexes"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Direction Sense, Angles & Distance Tracking"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "Subnetting, IP addressing, routing basics"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Linked list: reverse, detect cycle"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3105",
+        "focus": "DCA3105 Terminal Assessment & Comprehensive Mobile Development Practical Exam"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python regular expressions"
+      }
+    },
+    "objectives": [
+      "Design document relationships in MongoDB",
+      "Create and use indexes",
+      "Reverse a linked list"
+    ],
+    "tasks": [
+      {
+        "id": "day-050-task-01",
+        "title": "Compare embedding vs referencing patterns",
+        "topicId": "topic-mongodb",
+        "type": "learn"
+      },
+      {
+        "id": "day-050-task-02",
+        "title": "Add indexes and optimize queries in project-05",
+        "topicId": "topic-mongodb",
+        "type": "project"
+      },
+      {
+        "id": "day-050-task-03",
+        "title": "Study IP addressing and subnetting",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-050-task-04",
+        "title": "Reverse linked list and detect cycles",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-050-task-05",
+        "title": "Match patterns with Python regex",
+        "topicId": "topic-python-fundamentals",
+        "type": "practice"
+      },
+      {
+        "id": "day-050-task-sem5",
+        "title": "Sem 5: DCA3105 Terminal Assessment & Comprehensive Mobile Development Practical Exam",
+        "topicId": "topic-sem5-dca3105",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-05",
+      "milestone": "Optimized data models with indexes"
+    }
+  },
+  {
+    "id": "day-051",
+    "day": 51,
+    "week": 9,
+    "phase": "phase-04",
+    "title": "Day 51: Authentication with JWT",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-nodejs",
+        "focus": "Authentication, JWT, bcrypt, protected routes"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Linear & Circular Seating Arrangements"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "Firewalls, NAT, proxy servers"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Stack implementation and applications"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 1: Introduction to Cloud Computing — NIST Cloud Definition & History"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python logging module"
+      }
+    },
+    "objectives": [
+      "Implement JWT authentication",
+      "Hash passwords with bcrypt",
+      "Implement stack data structure"
+    ],
+    "tasks": [
+      {
+        "id": "day-051-task-01",
+        "title": "Implement signup/login with bcrypt hashing",
+        "topicId": "topic-nodejs",
+        "type": "learn"
+      },
+      {
+        "id": "day-051-task-02",
+        "title": "Generate and verify JWT tokens",
+        "topicId": "topic-nodejs",
+        "type": "practice"
+      },
+      {
+        "id": "day-051-task-03",
+        "title": "Add auth to project-05 with protected routes",
+        "topicId": "topic-nodejs",
+        "type": "project"
+      },
+      {
+        "id": "day-051-task-04",
+        "title": "Study firewalls, NAT, reverse proxy",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-051-task-05",
+        "title": "Implement stack and solve valid parentheses",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-051-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 1: Introduction to Cloud Computing — NIST Cloud Definition & History",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-05",
+      "milestone": "User authentication with JWT"
+    }
+  },
+  {
+    "id": "day-052",
+    "day": 52,
+    "week": 9,
+    "phase": "phase-04",
+    "title": "Day 52: Full-Stack MERN Integration",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-nodejs",
+        "focus": "MERN stack integration, frontend-backend connection, deployment"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Linear & Circular Seating Arrangements"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "Network security, CORS, authentication protocols"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Queue implementation and BFS introduction"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 1: Introduction to Cloud Computing — SPI Model: SaaS, PaaS, IaaS"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python project structure best practices"
+      }
+    },
+    "objectives": [
+      "Connect React frontend to Express backend",
+      "Complete MERN project-05",
+      "Implement queue data structure"
+    ],
+    "tasks": [
+      {
+        "id": "day-052-task-01",
+        "title": "Connect React frontend to Express API",
+        "topicId": "topic-nodejs",
+        "type": "practice"
+      },
+      {
+        "id": "day-052-task-02",
+        "title": "Complete project-05 with full CRUD and auth",
+        "topicId": "topic-nodejs",
+        "type": "project"
+      },
+      {
+        "id": "day-052-task-03",
+        "title": "Study CORS, OAuth, session vs token auth",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-052-task-04",
+        "title": "Implement queue and solve basic BFS",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-052-task-05",
+        "title": "Organize Python project with proper structure",
+        "topicId": "topic-python-fundamentals",
+        "type": "practice"
+      },
+      {
+        "id": "day-052-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 1: Introduction to Cloud Computing — SPI Model: SaaS, PaaS, IaaS",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-nodejs",
+      "focus": "Review MERN stack: Node, Express, MongoDB, React"
+    },
+    "project": {
+      "projectId": "project-05",
+      "milestone": "Full-stack MERN app complete with auth and deployment"
+    }
+  },
+  {
+    "id": "day-053",
+    "day": 53,
+    "week": 9,
+    "phase": "phase-05",
+    "title": "Day 53: Git Fundamentals & Branching",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-devops",
+        "focus": "Git init, add, commit, log, branching, merging"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Linear & Circular Seating Arrangements"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-os",
+        "focus": "Shell scripting, environment variables"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Stack: next greater element, min stack"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 2: Cloud Computing Architectures — Cloud Reference Model & Layers"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python argparse for CLI tools"
+      }
+    },
+    "objectives": [
+      "Master Git branching and merging",
+      "Understand shell environment",
+      "Solve stack-based problems"
+    ],
+    "tasks": [
+      {
+        "id": "day-053-task-01",
+        "title": "Practice git init, add, commit, branch, merge",
+        "topicId": "topic-devops",
+        "type": "learn"
+      },
+      {
+        "id": "day-053-task-02",
+        "title": "Resolve merge conflicts",
+        "topicId": "topic-devops",
+        "type": "practice"
+      },
+      {
+        "id": "day-053-task-03",
+        "title": "Write basic shell scripts with variables",
+        "topicId": "topic-os",
+        "type": "practice"
+      },
+      {
+        "id": "day-053-task-04",
+        "title": "Solve next greater element with stack",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-053-task-05",
+        "title": "Build CLI tool with argparse",
+        "topicId": "topic-python-fundamentals",
+        "type": "practice"
+      },
+      {
+        "id": "day-053-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 2: Cloud Computing Architectures — Cloud Reference Model & Layers",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-054",
+    "day": 54,
+    "week": 9,
+    "phase": "phase-05",
+    "title": "Day 54: GitHub & Collaboration",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-devops",
+        "focus": "GitHub repos, pull requests, code review, issues"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Linear & Circular Seating Arrangements"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-os",
+        "focus": "Linux file permissions, users, groups"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Queue: circular queue, deque"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 2: Cloud Computing Architectures — Public, Private, Hybrid & Multi-Cloud"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python pathlib for file paths"
+      }
+    },
+    "objectives": [
+      "Use GitHub for collaboration",
+      "Understand Linux permissions",
+      "Implement circular queue"
+    ],
+    "tasks": [
+      {
+        "id": "day-054-task-01",
+        "title": "Create repos, push, create pull requests",
+        "topicId": "topic-devops",
+        "type": "learn"
+      },
+      {
+        "id": "day-054-task-02",
+        "title": "Practice code review workflow on GitHub",
+        "topicId": "topic-devops",
+        "type": "practice"
+      },
+      {
+        "id": "day-054-task-03",
+        "title": "Manage Linux file permissions: chmod, chown",
+        "topicId": "topic-os",
+        "type": "practice"
+      },
+      {
+        "id": "day-054-task-04",
+        "title": "Implement circular queue and deque",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-054-task-05",
+        "title": "Navigate file system with pathlib",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-054-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 2: Cloud Computing Architectures — Public, Private, Hybrid & Multi-Cloud",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-055",
+    "day": 55,
+    "week": 10,
+    "phase": "phase-05",
+    "title": "Day 55: Linux CLI & Bash Scripting",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-devops",
+        "focus": "Linux commands, Bash scripting, cron jobs, automation"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Linear & Circular Seating Arrangements"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-os",
+        "focus": "Process management: ps, top, kill, systemd"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Linked list: merge two sorted lists"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 3: Cloud Characteristics & Models — On-Demand Self-Service & Broad Access"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python subprocess for system commands"
+      }
+    },
+    "objectives": [
+      "Write Bash scripts for automation",
+      "Manage Linux processes",
+      "Merge sorted linked lists"
+    ],
+    "tasks": [
+      {
+        "id": "day-055-task-01",
+        "title": "Write Bash scripts with loops and conditionals",
+        "topicId": "topic-devops",
+        "type": "learn"
+      },
+      {
+        "id": "day-055-task-02",
+        "title": "Set up cron jobs for automation",
+        "topicId": "topic-devops",
+        "type": "practice"
+      },
+      {
+        "id": "day-055-task-03",
+        "title": "Manage processes with ps, top, kill",
+        "topicId": "topic-os",
+        "type": "practice"
+      },
+      {
+        "id": "day-055-task-04",
+        "title": "Merge two sorted linked lists",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-055-task-05",
+        "title": "Run system commands with subprocess",
+        "topicId": "topic-python-fundamentals",
+        "type": "practice"
+      },
+      {
+        "id": "day-055-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 3: Cloud Characteristics & Models — On-Demand Self-Service & Broad Access",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-056",
+    "day": 56,
+    "week": 10,
+    "phase": "phase-05",
+    "title": "Day 56: Docker Fundamentals",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-devops",
+        "focus": "Docker concepts, images, containers, docker run"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Syllogisms, Venn Diagrams & Deductive Logic"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "DNS deep dive, domain resolution"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Linked list: remove nth from end, add two numbers"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 3: Cloud Characteristics & Models — Resource Pooling, Elasticity & Metering"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python setuptools and packaging"
+      }
+    },
+    "objectives": [
+      "Understand Docker containerization",
+      "Pull and run Docker images",
+      "Solve linked list pointer problems"
+    ],
+    "tasks": [
+      {
+        "id": "day-056-task-01",
+        "title": "Install Docker, understand images vs containers",
+        "topicId": "topic-devops",
+        "type": "learn"
+      },
+      {
+        "id": "day-056-task-02",
+        "title": "Run containers: nginx, node, mongo",
+        "topicId": "topic-devops",
+        "type": "practice"
+      },
+      {
+        "id": "day-056-task-03",
+        "title": "Study DNS resolution and record types",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-056-task-04",
+        "title": "Remove nth node from end of linked list",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-056-task-05",
+        "title": "Create distributable Python package",
+        "topicId": "topic-python-fundamentals",
+        "type": "practice"
+      },
+      {
+        "id": "day-056-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 3: Cloud Characteristics & Models — Resource Pooling, Elasticity & Metering",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-057",
+    "day": 57,
+    "week": 10,
+    "phase": "phase-05",
+    "title": "Day 57: Dockerfiles & Building Images",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-devops",
+        "focus": "Dockerfiles, building images, layers, best practices"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Syllogisms, Venn Diagrams & Deductive Logic"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "WebSockets, HTTP/2, gRPC overview"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Stack and queue combined problems"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 4: Technology in Cloud Computing — SOA, Web Services, SOAP vs REST"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python dataclasses"
+      }
+    },
+    "objectives": [
+      "Write Dockerfiles for Node.js apps",
+      "Understand image layering and caching",
+      "Use advanced stack/queue patterns"
+    ],
+    "tasks": [
+      {
+        "id": "day-057-task-01",
+        "title": "Write Dockerfile for Node.js application",
+        "topicId": "topic-devops",
+        "type": "learn"
+      },
+      {
+        "id": "day-057-task-02",
+        "title": "Optimize Dockerfile with multi-stage builds",
+        "topicId": "topic-devops",
+        "type": "practice"
+      },
+      {
+        "id": "day-057-task-03",
+        "title": "Compare WebSocket, HTTP/2, gRPC protocols",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-057-task-04",
+        "title": "Implement stack using queues and vice versa",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-057-task-05",
+        "title": "Define data models with dataclasses",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-057-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 4: Technology in Cloud Computing — SOA, Web Services, SOAP vs REST",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-058",
+    "day": 58,
+    "week": 10,
+    "phase": "phase-05",
+    "title": "Day 58: Docker Compose & Multi-Container",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-devops",
+        "focus": "Docker Compose, multi-container apps, volumes, networks"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Syllogisms, Venn Diagrams & Deductive Logic"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-os",
+        "focus": "Virtualization vs containerization"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Monotonic stack: trapping rain water"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 4: Technology in Cloud Computing — Grid Computing vs Utility Computing vs Cloud"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python async basics: asyncio"
+      }
+    },
+    "objectives": [
+      "Orchestrate multi-container apps with Docker Compose",
+      "Understand virtualization",
+      "Solve monotonic stack problems"
+    ],
+    "tasks": [
+      {
+        "id": "day-058-task-01",
+        "title": "Write docker-compose.yml for MERN stack",
+        "topicId": "topic-devops",
+        "type": "learn"
+      },
+      {
+        "id": "day-058-task-02",
+        "title": "Configure volumes and networks in Compose",
+        "topicId": "topic-devops",
+        "type": "practice"
+      },
+      {
+        "id": "day-058-task-03",
+        "title": "Compare VMs, containers, hypervisors",
+        "topicId": "topic-os",
+        "type": "learn"
+      },
+      {
+        "id": "day-058-task-04",
+        "title": "Solve trapping rain water with monotonic stack",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-058-task-05",
+        "title": "Write async functions with asyncio",
+        "topicId": "topic-python-fundamentals",
+        "type": "introduction"
+      },
+      {
+        "id": "day-058-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 4: Technology in Cloud Computing — Grid Computing vs Utility Computing vs Cloud",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-devops",
+      "focus": "Review Docker images, containers, Compose"
+    },
+    "project": null
+  },
+  {
+    "id": "day-059",
+    "day": 59,
+    "week": 10,
+    "phase": "phase-05",
+    "title": "Day 59: CI/CD & GitHub Actions",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-devops",
+        "focus": "CI/CD concepts, GitHub Actions workflows, automated testing"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Syllogisms, Venn Diagrams & Deductive Logic"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-os",
+        "focus": "System calls, kernel modes, boot process"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Recursion review and practice problems"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 5: Data Centres & Containerisation — Virtual Data Centre & Pod Architecture"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python environment variables with dotenv"
+      }
+    },
+    "objectives": [
+      "Set up CI/CD pipeline with GitHub Actions",
+      "Automate testing and deployment",
+      "Review recursion patterns"
+    ],
+    "tasks": [
+      {
+        "id": "day-059-task-01",
+        "title": "Create GitHub Actions workflow for testing",
+        "topicId": "topic-devops",
+        "type": "learn"
+      },
+      {
+        "id": "day-059-task-02",
+        "title": "Add build and deploy steps to workflow",
+        "topicId": "topic-devops",
+        "type": "practice"
+      },
+      {
+        "id": "day-059-task-03",
+        "title": "Study system calls and kernel architecture",
+        "topicId": "topic-os",
+        "type": "learn"
+      },
+      {
+        "id": "day-059-task-04",
+        "title": "Solve mixed recursion practice problems",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-059-task-05",
+        "title": "Manage env vars with python-dotenv",
+        "topicId": "topic-python-fundamentals",
+        "type": "learn"
+      },
+      {
+        "id": "day-059-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 5: Data Centres & Containerisation — Virtual Data Centre & Pod Architecture",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-060",
+    "day": 60,
+    "week": 10,
+    "phase": "phase-05",
+    "title": "Day 60: Nginx, Monitoring & Deployment",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-devops",
+        "focus": "Nginx reverse proxy, monitoring, logging, deployment strategies"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Logical Reasoning: Syllogisms, Venn Diagrams & Deductive Logic"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "Microservices architecture overview"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Binary tree: traversals (inorder, preorder, postorder)"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 5: Data Centres & Containerisation — Containers, Docker Engine vs Hypervisors"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python Makefile and task automation"
+      }
+    },
+    "objectives": [
+      "Configure Nginx as reverse proxy",
+      "Start DevOps project-06",
+      "Implement binary tree traversals"
+    ],
+    "tasks": [
+      {
+        "id": "day-060-task-01",
+        "title": "Set up Nginx reverse proxy for Node app",
+        "topicId": "topic-devops",
+        "type": "learn"
+      },
+      {
+        "id": "day-060-task-02",
+        "title": "Start project-06: containerize and deploy app",
+        "topicId": "topic-devops",
+        "type": "project"
+      },
+      {
+        "id": "day-060-task-03",
+        "title": "Study microservices patterns and communication",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-060-task-04",
+        "title": "Implement inorder, preorder, postorder traversals",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-060-task-05",
+        "title": "Create Makefile for project automation",
+        "topicId": "topic-python-fundamentals",
+        "type": "practice"
+      },
+      {
+        "id": "day-060-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 5: Data Centres & Containerisation — Containers, Docker Engine vs Hypervisors",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-06",
+      "milestone": "Nginx setup and initial deployment pipeline"
+    }
+  },
+  {
+    "id": "day-061",
+    "day": 61,
+    "week": 11,
+    "phase": "phase-05",
+    "title": "Day 61: Monitoring, Logging & Deployment Strategies",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-devops",
+        "focus": "Monitoring with Prometheus/Grafana, centralized logging, deployment strategies (blue-green, canary)"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Sentence Correction & Spotting Errors"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "Network protocols: HTTP/2, WebSockets"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Stack implementations and problems"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 6: Compute Virtualisation — Hypervisors: Type-1 Bare-Metal vs Type-2 Hosted"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python packaging with setuptools"
+      }
+    },
+    "objectives": [
+      "Set up application monitoring",
+      "Implement centralized logging",
+      "Understand deployment strategies"
+    ],
+    "tasks": [
+      {
+        "id": "day-061-task-01",
+        "title": "Set up Prometheus metrics and Grafana dashboards",
+        "topicId": "topic-devops",
+        "type": "practice"
+      },
+      {
+        "id": "day-061-task-02",
+        "title": "Configure centralized logging with ELK concepts",
+        "topicId": "topic-devops",
+        "type": "learn"
+      },
+      {
+        "id": "day-061-task-03",
+        "title": "Study blue-green and canary deployments",
+        "topicId": "topic-devops",
+        "type": "learn"
+      },
+      {
+        "id": "day-061-task-04",
+        "title": "DSA: Implement stack and solve balanced parentheses",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-061-task-05",
+        "title": "Python: Create a distributable package",
+        "topicId": "topic-python-fundamentals",
+        "type": "practice"
+      },
+      {
+        "id": "day-061-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 6: Compute Virtualisation — Hypervisors: Type-1 Bare-Metal vs Type-2 Hosted",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-devops",
+      "focus": "Review Docker and CI/CD concepts"
+    },
+    "project": {
+      "projectId": "project-06",
+      "milestone": "CI/CD pipeline and monitoring"
+    }
+  },
+  {
+    "id": "day-062",
+    "day": 62,
+    "week": 11,
+    "phase": "phase-05",
+    "title": "Day 62: DevOps Review & Infrastructure as Code",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-devops",
+        "focus": "Infrastructure as Code concepts, Terraform intro, DevOps review"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Sentence Correction & Spotting Errors"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cn",
+        "focus": "DNS, load balancing, CDN concepts"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Queue implementations and BFS intro"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 6: Compute Virtualisation — CPU/Memory Virtualisation & P2V Migration"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-fundamentals",
+        "focus": "Python virtual environments recap"
+      }
+    },
+    "objectives": [
+      "Understand Infrastructure as Code",
+      "Review full DevOps pipeline",
+      "Complete DevOps project"
+    ],
+    "tasks": [
+      {
+        "id": "day-062-task-01",
+        "title": "Study Terraform basics and IaC principles",
+        "topicId": "topic-devops",
+        "type": "learn"
+      },
+      {
+        "id": "day-062-task-02",
+        "title": "Review and polish DevOps pipeline project",
+        "topicId": "topic-devops",
+        "type": "project"
+      },
+      {
+        "id": "day-062-task-03",
+        "title": "DSA: Implement queue and circular queue",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-062-task-04",
+        "title": "Networking: DNS resolution and load balancer types",
+        "topicId": "topic-cn",
+        "type": "learn"
+      },
+      {
+        "id": "day-062-task-05",
+        "title": "Python: Review packaging and environments",
+        "topicId": "topic-python-fundamentals",
+        "type": "revision"
+      },
+      {
+        "id": "day-062-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 6: Compute Virtualisation — CPU/Memory Virtualisation & P2V Migration",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-devops",
+      "focus": "Full DevOps lifecycle review"
+    },
+    "project": {
+      "projectId": "project-06",
+      "milestone": "Complete deployment pipeline"
+    }
+  },
+  {
+    "id": "day-063",
+    "day": 63,
+    "week": 11,
+    "phase": "phase-06",
+    "title": "Day 63: AWS IAM & Account Security",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-cloud",
+        "focus": "AWS account setup, IAM users, roles, policies, MFA, security best practices"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Sentence Correction & Spotting Errors"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cloud",
+        "focus": "Cloud computing models: IaaS, PaaS, SaaS"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Binary tree fundamentals, traversals"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 7: Desktop & Application Virtualisation — VDI Architecture & Display Protocols"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "NumPy installation and array creation"
+      }
+    },
+    "objectives": [
+      "Set up AWS account securely",
+      "Understand IAM users, roles, and policies",
+      "Learn cloud computing models"
+    ],
+    "tasks": [
+      {
+        "id": "day-063-task-01",
+        "title": "Create AWS account and configure MFA",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-063-task-02",
+        "title": "Create IAM users, groups, and policies",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-063-task-03",
+        "title": "Study IaaS vs PaaS vs SaaS",
+        "topicId": "topic-cloud",
+        "type": "learn"
+      },
+      {
+        "id": "day-063-task-04",
+        "title": "DSA: Binary tree creation and inorder traversal",
+        "topicId": "topic-dsa",
+        "type": "learn"
+      },
+      {
+        "id": "day-063-task-05",
+        "title": "NumPy: Create arrays, shapes, dtypes",
+        "topicId": "topic-python-data",
+        "type": "learn"
+      },
+      {
+        "id": "day-063-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 7: Desktop & Application Virtualisation — VDI Architecture & Display Protocols",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-064",
+    "day": 64,
+    "week": 11,
+    "phase": "phase-06",
+    "title": "Day 64: EC2 Instances & SSH",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-cloud",
+        "focus": "EC2 instance types, launching instances, SSH access, security groups, key pairs"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Sentence Correction & Spotting Errors"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cloud",
+        "focus": "Virtualization, hypervisors, containers vs VMs"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Preorder and postorder traversals"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 7: Desktop & Application Virtualisation — Application Sandboxing & Thin Clients"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "NumPy indexing and slicing"
+      }
+    },
+    "objectives": [
+      "Launch and connect to EC2 instances",
+      "Configure security groups",
+      "Understand virtualization concepts"
+    ],
+    "tasks": [
+      {
+        "id": "day-064-task-01",
+        "title": "Launch EC2 instance and SSH into it",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-064-task-02",
+        "title": "Configure security groups and key pairs",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-064-task-03",
+        "title": "Study EC2 instance types and pricing models",
+        "topicId": "topic-cloud",
+        "type": "learn"
+      },
+      {
+        "id": "day-064-task-04",
+        "title": "DSA: Implement preorder and postorder traversals",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-064-task-05",
+        "title": "NumPy: Advanced indexing and slicing",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-064-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 7: Desktop & Application Virtualisation — Application Sandboxing & Thin Clients",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-065",
+    "day": 65,
+    "week": 11,
+    "phase": "phase-06",
+    "title": "Day 65: S3 & Static Hosting",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-cloud",
+        "focus": "S3 buckets, storage classes, static website hosting, bucket policies, CORS"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Sentence Correction & Spotting Errors"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cloud",
+        "focus": "Cloud storage types: block, object, file"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Level-order traversal, tree height"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 8: Virtualised Data Centre Networking — VLAN, VXLAN & Virtual Switches"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "NumPy operations and broadcasting"
+      }
+    },
+    "objectives": [
+      "Create S3 buckets and manage objects",
+      "Host static website on S3",
+      "Understand cloud storage types"
+    ],
+    "tasks": [
+      {
+        "id": "day-065-task-01",
+        "title": "Create S3 bucket and upload objects",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-065-task-02",
+        "title": "Configure S3 static website hosting",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-065-task-03",
+        "title": "Set bucket policies and CORS configuration",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-065-task-04",
+        "title": "DSA: Level-order traversal and find tree height",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-065-task-05",
+        "title": "NumPy: Element-wise operations and broadcasting",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-065-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 8: Virtualised Data Centre Networking — VLAN, VXLAN & Virtual Switches",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-066",
+    "day": 66,
+    "week": 11,
+    "phase": "phase-06",
+    "title": "Day 66: VPC & Networking",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-cloud",
+        "focus": "VPC creation, subnets (public/private), route tables, internet gateway, NAT gateway"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Para-Jumbles & Sentence Rearrangement"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cloud",
+        "focus": "Cloud networking: VPN, peering, transit gateway"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Binary Search Tree: insert, search, delete"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 8: Virtualised Data Centre Networking — SDN & Cloud Routing Overlays"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "NumPy linear algebra basics"
+      }
+    },
+    "objectives": [
+      "Design and create a VPC",
+      "Configure public and private subnets",
+      "Understand BST operations"
+    ],
+    "tasks": [
+      {
+        "id": "day-066-task-01",
+        "title": "Create VPC with public and private subnets",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-066-task-02",
+        "title": "Configure route tables, IGW, and NAT gateway",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-066-task-03",
+        "title": "Study cloud networking concepts",
+        "topicId": "topic-cloud",
+        "type": "learn"
+      },
+      {
+        "id": "day-066-task-04",
+        "title": "DSA: Implement BST insert, search, delete",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-066-task-05",
+        "title": "NumPy: Matrix operations and dot product",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-066-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 8: Virtualised Data Centre Networking — SDN & Cloud Routing Overlays",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-067",
+    "day": 67,
+    "week": 12,
+    "phase": "phase-06",
+    "title": "Day 67: RDS & Database Hosting",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-cloud",
+        "focus": "RDS setup, MySQL/PostgreSQL on AWS, backups, read replicas, Multi-AZ"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Para-Jumbles & Sentence Rearrangement"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cloud",
+        "focus": "Managed database services, DBaaS"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "BST: validate BST, inorder successor"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 9: Service Management in Cloud — SLA Management, QoS Metrics & Availability"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "NumPy random module and statistics"
+      }
+    },
+    "objectives": [
+      "Launch RDS instances",
+      "Configure database backups and replicas",
+      "Validate BST properties"
+    ],
+    "tasks": [
+      {
+        "id": "day-067-task-01",
+        "title": "Launch RDS instance with MySQL/PostgreSQL",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-067-task-02",
+        "title": "Configure automated backups and read replicas",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-067-task-03",
+        "title": "Study Multi-AZ deployment for high availability",
+        "topicId": "topic-cloud",
+        "type": "learn"
+      },
+      {
+        "id": "day-067-task-04",
+        "title": "DSA: Validate BST and find inorder successor",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-067-task-05",
+        "title": "NumPy: Random number generation and basic stats",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-067-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 9: Service Management in Cloud — SLA Management, QoS Metrics & Availability",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-068",
+    "day": 68,
+    "week": 12,
+    "phase": "phase-06",
+    "title": "Day 68: Lambda & Serverless",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-cloud",
+        "focus": "AWS Lambda functions, triggers, API Gateway integration, serverless architecture"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Para-Jumbles & Sentence Rearrangement"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cloud",
+        "focus": "Serverless computing, FaaS, event-driven architecture"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Lowest Common Ancestor, tree diameter"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 9: Service Management in Cloud — Capacity Planning, Monitoring & Billing Models"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "NumPy: reshape, stack, split"
+      }
+    },
+    "objectives": [
+      "Create and deploy Lambda functions",
+      "Integrate Lambda with API Gateway",
+      "Solve tree path problems"
+    ],
+    "tasks": [
+      {
+        "id": "day-068-task-01",
+        "title": "Create Lambda function with Node.js/Python runtime",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-068-task-02",
+        "title": "Set up API Gateway to trigger Lambda",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-068-task-03",
+        "title": "Study serverless architecture patterns",
+        "topicId": "topic-cloud",
+        "type": "learn"
+      },
+      {
+        "id": "day-068-task-04",
+        "title": "DSA: Find LCA and diameter of binary tree",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-068-task-05",
+        "title": "NumPy: Reshape, concatenate, and split arrays",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-068-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 9: Service Management in Cloud — Capacity Planning, Monitoring & Billing Models",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-069",
+    "day": 69,
+    "week": 12,
+    "phase": "phase-06",
+    "title": "Day 69: CloudFront & CDN",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-cloud",
+        "focus": "CloudFront distributions, caching policies, edge locations, SSL/TLS"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Para-Jumbles & Sentence Rearrangement"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cloud",
+        "focus": "Content delivery networks, edge computing"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Heap fundamentals, min-heap, max-heap"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 10: Data Management in Cloud — Cloud Storage: Block, File & Object Storage"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "NumPy review and practice problems"
+      }
+    },
+    "objectives": [
+      "Set up CloudFront distribution",
+      "Configure caching and SSL",
+      "Implement heap data structure"
+    ],
+    "tasks": [
+      {
+        "id": "day-069-task-01",
+        "title": "Create CloudFront distribution for S3 origin",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-069-task-02",
+        "title": "Configure caching behaviors and SSL certificate",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-069-task-03",
+        "title": "Study CDN and edge computing concepts",
+        "topicId": "topic-cloud",
+        "type": "learn"
+      },
+      {
+        "id": "day-069-task-04",
+        "title": "DSA: Implement min-heap with insert and extract",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-069-task-05",
+        "title": "NumPy: Comprehensive review exercises",
+        "topicId": "topic-python-data",
+        "type": "revision"
+      },
+      {
+        "id": "day-069-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 10: Data Management in Cloud — Cloud Storage: Block, File & Object Storage",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-070",
+    "day": 70,
+    "week": 12,
+    "phase": "phase-06",
+    "title": "Day 70: CloudWatch & Auto-Scaling",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-cloud",
+        "focus": "CloudWatch metrics, alarms, dashboards, auto-scaling groups, scaling policies"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Para-Jumbles & Sentence Rearrangement"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cloud",
+        "focus": "High availability, fault tolerance, disaster recovery"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Heap sort, priority queue"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Unit 10: Data Management in Cloud — Distributed Cloud DBs, Replication & Governance"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Pandas introduction and installation"
+      }
+    },
+    "objectives": [
+      "Monitor AWS resources with CloudWatch",
+      "Configure auto-scaling groups",
+      "Start cloud deployment project"
+    ],
+    "tasks": [
+      {
+        "id": "day-070-task-01",
+        "title": "Set up CloudWatch alarms and dashboards",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-070-task-02",
+        "title": "Configure auto-scaling group with scaling policies",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-070-task-03",
+        "title": "Start project-07: Plan cloud architecture",
+        "topicId": "topic-cloud",
+        "type": "project"
+      },
+      {
+        "id": "day-070-task-04",
+        "title": "DSA: Implement heap sort and priority queue",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-070-task-05",
+        "title": "Pandas: Install and create first DataFrame",
+        "topicId": "topic-python-data",
+        "type": "introduction"
+      },
+      {
+        "id": "day-070-task-sem5",
+        "title": "Sem 5: DCA3107 Unit 10: Data Management in Cloud — Distributed Cloud DBs, Replication & Governance",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-07",
+      "milestone": "Cloud architecture planning and setup"
+    }
+  },
+  {
+    "id": "day-071",
+    "day": 71,
+    "week": 12,
+    "phase": "phase-06",
+    "title": "Day 71: Azure Fundamentals",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-cloud",
+        "focus": "Azure portal, resource groups, Azure App Service, Azure Functions, comparison with AWS"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Vocabulary, Synonyms, Antonyms & Idioms"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cloud",
+        "focus": "Multi-cloud strategy, cloud migration"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Top K elements, K closest points"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3107",
+        "focus": "DCA3107 Terminal Assessment & Cloud Practical Exam"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Pandas: reading CSV and Excel files"
+      }
+    },
+    "objectives": [
+      "Explore Azure portal and key services",
+      "Compare Azure with AWS services",
+      "Solve top-K heap problems"
+    ],
+    "tasks": [
+      {
+        "id": "day-071-task-01",
+        "title": "Explore Azure portal, create resource group",
+        "topicId": "topic-cloud",
+        "type": "practice"
+      },
+      {
+        "id": "day-071-task-02",
+        "title": "Study Azure App Service and Functions",
+        "topicId": "topic-cloud",
+        "type": "learn"
+      },
+      {
+        "id": "day-071-task-03",
+        "title": "Compare AWS vs Azure service equivalents",
+        "topicId": "topic-cloud",
+        "type": "learn"
+      },
+      {
+        "id": "day-071-task-04",
+        "title": "DSA: Top K frequent elements using heap",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-071-task-05",
+        "title": "Continue project-07: Deploy app to cloud",
+        "topicId": "topic-cloud",
+        "type": "project"
+      },
+      {
+        "id": "day-071-task-sem5",
+        "title": "Sem 5: DCA3107 Terminal Assessment & Cloud Practical Exam",
+        "topicId": "topic-sem5-dca3107",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-07",
+      "milestone": "Deploy application to cloud infrastructure"
+    }
+  },
+  {
+    "id": "day-072",
+    "day": 72,
+    "week": 12,
+    "phase": "phase-06",
+    "title": "Day 72: GCP Concepts & Cloud Networking",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-cloud",
+        "focus": "GCP overview, Compute Engine, Cloud Storage, Cloud Functions, cloud networking review"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Vocabulary, Synonyms, Antonyms & Idioms"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-cloud",
+        "focus": "Cloud security, compliance, shared responsibility model"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Merge K sorted lists, median from stream"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 1: Introduction to Distributed Systems — Definition, Goals & Transparency"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Pandas: DataFrame inspection and info"
+      }
+    },
+    "objectives": [
+      "Understand GCP key services",
+      "Review cloud networking across providers",
+      "Complete cloud deployment project"
+    ],
+    "tasks": [
+      {
+        "id": "day-072-task-01",
+        "title": "Study GCP Compute Engine, Storage, Functions",
+        "topicId": "topic-cloud",
+        "type": "learn"
+      },
+      {
+        "id": "day-072-task-02",
+        "title": "Compare AWS vs Azure vs GCP networking",
+        "topicId": "topic-cloud",
+        "type": "learn"
+      },
+      {
+        "id": "day-072-task-03",
+        "title": "Complete project-07: Full cloud deployment with monitoring",
+        "topicId": "topic-cloud",
+        "type": "project"
+      },
+      {
+        "id": "day-072-task-04",
+        "title": "DSA: Merge K sorted lists using heap",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-072-task-05",
+        "title": "Pandas: Explore DataFrame shape, dtypes, describe",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-072-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 1: Introduction to Distributed Systems — Definition, Goals & Transparency",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-cloud",
+      "focus": "Review all cloud providers and services"
+    },
+    "project": {
+      "projectId": "project-07",
+      "milestone": "Complete cloud deployment with monitoring"
+    }
+  },
+  {
+    "id": "day-073",
+    "day": 73,
+    "week": 13,
+    "phase": "phase-07",
+    "title": "Day 73: Excel & Statistics Basics",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-analytics",
+        "focus": "Excel formulas, pivot tables, VLOOKUP, data analysis, basic statistics"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Vocabulary, Synonyms, Antonyms & Idioms"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "System design fundamentals, scalability basics"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Graph representation: adjacency list and matrix"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 1: Introduction to Distributed Systems — Hardware/Software Concepts & Models"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Pandas: selecting columns and rows"
+      }
+    },
+    "objectives": [
+      "Master Excel formulas and pivot tables",
+      "Understand basic statistics concepts",
+      "Learn graph representations"
+    ],
+    "tasks": [
+      {
+        "id": "day-073-task-01",
+        "title": "Excel: Formulas, VLOOKUP, pivot tables",
+        "topicId": "topic-data-analytics",
+        "type": "practice"
+      },
+      {
+        "id": "day-073-task-02",
+        "title": "Study mean, median, mode, standard deviation",
+        "topicId": "topic-data-analytics",
+        "type": "learn"
+      },
+      {
+        "id": "day-073-task-03",
+        "title": "System Design: Scalability and load balancing intro",
+        "topicId": "topic-system-design",
+        "type": "learn"
+      },
+      {
+        "id": "day-073-task-04",
+        "title": "DSA: Implement adjacency list and adjacency matrix",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-073-task-05",
+        "title": "Pandas: loc, iloc, boolean indexing",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-073-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 1: Introduction to Distributed Systems — Hardware/Software Concepts & Models",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-074",
+    "day": 74,
+    "week": 13,
+    "phase": "phase-07",
+    "title": "Day 74: Descriptive Statistics & Probability",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-analytics",
+        "focus": "Descriptive statistics, distributions, probability basics, correlation, hypothesis testing intro"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Vocabulary, Synonyms, Antonyms & Idioms"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "Caching strategies, database sharding"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "BFS traversal on graphs"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 2: Basics of DSM — Distributed Shared Memory Architecture & Advantages"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Pandas: filtering and sorting data"
+      }
+    },
+    "objectives": [
+      "Apply descriptive statistics",
+      "Understand probability distributions",
+      "Implement BFS on graphs"
+    ],
+    "tasks": [
+      {
+        "id": "day-074-task-01",
+        "title": "Calculate variance, correlation, percentiles",
+        "topicId": "topic-data-analytics",
+        "type": "practice"
+      },
+      {
+        "id": "day-074-task-02",
+        "title": "Study normal distribution and probability basics",
+        "topicId": "topic-data-analytics",
+        "type": "learn"
+      },
+      {
+        "id": "day-074-task-03",
+        "title": "System Design: Caching (Redis, Memcached) concepts",
+        "topicId": "topic-system-design",
+        "type": "learn"
+      },
+      {
+        "id": "day-074-task-04",
+        "title": "DSA: Implement BFS and shortest path in unweighted graph",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-074-task-05",
+        "title": "Pandas: Sort values and filter with conditions",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-074-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 2: Basics of DSM — Distributed Shared Memory Architecture & Advantages",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-075",
+    "day": 75,
+    "week": 13,
+    "phase": "phase-07",
+    "title": "Day 75: SQL CTEs & Subqueries",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-sql",
+        "focus": "Common Table Expressions, recursive CTEs, correlated subqueries, derived tables"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Vocabulary, Synonyms, Antonyms & Idioms"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "Message queues, pub/sub patterns"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DFS traversal on graphs"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 2: Basics of DSM — Page-based, Shared-variable & Object-based DSM"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Pandas: groupby and aggregation"
+      }
+    },
+    "objectives": [
+      "Write complex CTEs and recursive queries",
+      "Understand correlated subqueries",
+      "Implement DFS on graphs"
+    ],
+    "tasks": [
+      {
+        "id": "day-075-task-01",
+        "title": "Write CTEs for multi-step data transformations",
+        "topicId": "topic-sql",
+        "type": "practice"
+      },
+      {
+        "id": "day-075-task-02",
+        "title": "Implement recursive CTEs for hierarchical data",
+        "topicId": "topic-sql",
+        "type": "practice"
+      },
+      {
+        "id": "day-075-task-03",
+        "title": "Study message queue patterns (RabbitMQ, Kafka concepts)",
+        "topicId": "topic-system-design",
+        "type": "learn"
+      },
+      {
+        "id": "day-075-task-04",
+        "title": "DSA: Implement DFS and detect cycles in graph",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-075-task-05",
+        "title": "Pandas: Group data and compute aggregates",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-075-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 2: Basics of DSM — Page-based, Shared-variable & Object-based DSM",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-076",
+    "day": 76,
+    "week": 13,
+    "phase": "phase-07",
+    "title": "Day 76: SQL Window Functions",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-sql",
+        "focus": "ROW_NUMBER, RANK, DENSE_RANK, LAG, LEAD, NTILE, running totals, moving averages"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Reading Comprehension & Critical Inferences"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "API design, rate limiting, pagination"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Topological sort, course schedule problem"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 3: Study of DSM — Strict & Sequential Memory Consistency Models"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Pandas: merge, join, concat"
+      }
+    },
+    "objectives": [
+      "Master SQL window functions",
+      "Compute rankings and running totals",
+      "Implement topological sort"
+    ],
+    "tasks": [
+      {
+        "id": "day-076-task-01",
+        "title": "Use ROW_NUMBER, RANK, DENSE_RANK for rankings",
+        "topicId": "topic-sql",
+        "type": "practice"
+      },
+      {
+        "id": "day-076-task-02",
+        "title": "Calculate running totals with LAG/LEAD",
+        "topicId": "topic-sql",
+        "type": "practice"
+      },
+      {
+        "id": "day-076-task-03",
+        "title": "System Design: RESTful API design principles",
+        "topicId": "topic-system-design",
+        "type": "learn"
+      },
+      {
+        "id": "day-076-task-04",
+        "title": "DSA: Topological sort using DFS",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-076-task-05",
+        "title": "Pandas: Merge and join DataFrames",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-076-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 3: Study of DSM — Strict & Sequential Memory Consistency Models",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-077",
+    "day": 77,
+    "week": 13,
+    "phase": "phase-07",
+    "title": "Day 77: Views, Indexes & Query Optimization",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-sql",
+        "focus": "Views, materialized views, indexes (B-tree, hash), EXPLAIN plans, query optimization"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Reading Comprehension & Critical Inferences"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "Database replication, consistency models"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Dijkstra's shortest path algorithm"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 3: Study of DSM — Causal, FIFO, Weak & Release Consistency Models"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Pandas: handling missing data"
+      }
+    },
+    "objectives": [
+      "Create and use views and indexes",
+      "Optimize SQL query performance",
+      "Implement Dijkstra's algorithm"
+    ],
+    "tasks": [
+      {
+        "id": "day-077-task-01",
+        "title": "Create views and materialized views",
+        "topicId": "topic-sql",
+        "type": "practice"
+      },
+      {
+        "id": "day-077-task-02",
+        "title": "Add indexes and analyze EXPLAIN plans",
+        "topicId": "topic-sql",
+        "type": "practice"
+      },
+      {
+        "id": "day-077-task-03",
+        "title": "Study database replication and CAP theorem",
+        "topicId": "topic-system-design",
+        "type": "learn"
+      },
+      {
+        "id": "day-077-task-04",
+        "title": "DSA: Implement Dijkstra's shortest path",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-077-task-05",
+        "title": "Pandas: fillna, dropna, interpolate missing data",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-077-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 3: Study of DSM — Causal, FIFO, Weak & Release Consistency Models",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-078",
+    "day": 78,
+    "week": 13,
+    "phase": "phase-07",
+    "title": "Day 78: Pandas DataFrames Deep Dive",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-python-data",
+        "focus": "Pandas DataFrames, Series, operations, apply, map, data types, string methods"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Reading Comprehension & Critical Inferences"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "Microservices vs monolith architecture"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Connected components, union-find intro"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 3: Study of DSM — Page Replacement Algorithms & Thrashing Mitigation"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Pandas: datetime operations"
+      }
+    },
+    "objectives": [
+      "Master Pandas DataFrame operations",
+      "Use apply and map for transformations",
+      "Understand microservices architecture"
+    ],
+    "tasks": [
+      {
+        "id": "day-078-task-01",
+        "title": "Pandas: Series and DataFrame operations deep dive",
+        "topicId": "topic-python-data",
+        "type": "learn"
+      },
+      {
+        "id": "day-078-task-02",
+        "title": "Use apply, map, and applymap for transforms",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-078-task-03",
+        "title": "Pandas: String methods and data type conversions",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-078-task-04",
+        "title": "System Design: Microservices patterns and trade-offs",
+        "topicId": "topic-system-design",
+        "type": "learn"
+      },
+      {
+        "id": "day-078-task-05",
+        "title": "DSA: Find connected components in undirected graph",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-078-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 3: Study of DSM — Page Replacement Algorithms & Thrashing Mitigation",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-079",
+    "day": 79,
+    "week": 14,
+    "phase": "phase-07",
+    "title": "Day 79: NumPy for Data Analysis",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-python-data",
+        "focus": "NumPy arrays for data analysis, vectorized operations, statistical functions, performance"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Reading Comprehension & Critical Inferences"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "Load balancer types, reverse proxy"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Union-Find with path compression"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 4: IPC Part 1 — Client-Server Protocols & Socket Communication"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Pandas: pivot tables and crosstab"
+      }
+    },
+    "objectives": [
+      "Use NumPy for efficient data analysis",
+      "Apply vectorized operations",
+      "Implement Union-Find data structure"
+    ],
+    "tasks": [
+      {
+        "id": "day-079-task-01",
+        "title": "NumPy: Vectorized operations for data analysis",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-079-task-02",
+        "title": "NumPy: Statistical functions (mean, std, percentile)",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-079-task-03",
+        "title": "System Design: Load balancer algorithms and proxy patterns",
+        "topicId": "topic-system-design",
+        "type": "learn"
+      },
+      {
+        "id": "day-079-task-04",
+        "title": "DSA: Implement Union-Find with rank and path compression",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-079-task-05",
+        "title": "Pandas: Create pivot tables and crosstabs",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-079-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 4: IPC Part 1 — Client-Server Protocols & Socket Communication",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-080",
+    "day": 80,
+    "week": 14,
+    "phase": "phase-07",
+    "title": "Day 80: Data Cleaning & Transformation",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-python-data",
+        "focus": "Data cleaning pipeline, handling duplicates, outliers, normalization, feature engineering"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Verbal Ability: Reading Comprehension & Critical Inferences"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "Consistent hashing, partitioning strategies"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Number of islands, flood fill"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 4: IPC Part 1 — Remote Procedure Calls (RPC Model & Client/Server Stubs)"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Pandas: data export (CSV, Excel, JSON)"
+      }
+    },
+    "objectives": [
+      "Build data cleaning pipelines",
+      "Handle duplicates and outliers",
+      "Start data analytics project"
+    ],
+    "tasks": [
+      {
+        "id": "day-080-task-01",
+        "title": "Clean dataset: remove duplicates, handle outliers",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-080-task-02",
+        "title": "Normalize data and create new features",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-080-task-03",
+        "title": "Start project-08: Choose dataset and define questions",
+        "topicId": "topic-data-analytics",
+        "type": "project"
+      },
+      {
+        "id": "day-080-task-04",
+        "title": "DSA: Number of islands using BFS/DFS",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-080-task-05",
+        "title": "Pandas: Export cleaned data to CSV and JSON",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-080-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 4: IPC Part 1 — Remote Procedure Calls (RPC Model & Client/Server Stubs)",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-08",
+      "milestone": "Dataset selection and data cleaning"
+    }
+  },
+  {
+    "id": "day-081",
+    "day": 81,
+    "week": 14,
+    "phase": "phase-07",
+    "title": "Day 81: Matplotlib, Seaborn & EDA",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-python-data",
+        "focus": "Matplotlib plots, Seaborn statistical charts, EDA workflow, distribution plots, correlation heatmaps"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Data Interpretation: Tables & Bar Graphs Analysis"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "Event-driven architecture, CQRS"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Graph: shortest path in grid, 01 BFS"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 4: IPC Part 1 — RPC Parameter Marshalling, Call Semantics & Binding"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Plotly interactive charts intro"
+      }
+    },
+    "objectives": [
+      "Create publication-quality visualizations",
+      "Perform exploratory data analysis",
+      "Build visualizations for project"
+    ],
+    "tasks": [
+      {
+        "id": "day-081-task-01",
+        "title": "Matplotlib: Line, bar, scatter, histogram plots",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-081-task-02",
+        "title": "Seaborn: Distribution plots, box plots, heatmaps",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-081-task-03",
+        "title": "Perform EDA on project-08 dataset",
+        "topicId": "topic-data-analytics",
+        "type": "project"
+      },
+      {
+        "id": "day-081-task-04",
+        "title": "DSA: Shortest path in binary grid",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-081-task-05",
+        "title": "System Design: Event sourcing and CQRS patterns",
+        "topicId": "topic-system-design",
+        "type": "learn"
+      },
+      {
+        "id": "day-081-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 4: IPC Part 1 — RPC Parameter Marshalling, Call Semantics & Binding",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-08",
+      "milestone": "EDA and visualization creation"
+    }
+  },
+  {
+    "id": "day-082",
+    "day": 82,
+    "week": 14,
+    "phase": "phase-07",
+    "title": "Day 82: Power BI, Dashboards & Data Storytelling",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-analytics",
+        "focus": "Power BI basics, dashboard design, data storytelling, presenting insights"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Data Interpretation: Tables & Bar Graphs Analysis"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "System design review and case studies"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Graph review: BFS, DFS, Dijkstra practice"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 5: IPC Part 2 — Physical Clock Synchronization (Cristian & Berkeley)"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Data analytics tools review"
+      }
+    },
+    "objectives": [
+      "Build interactive dashboards",
+      "Present data insights effectively",
+      "Complete data analytics project"
+    ],
+    "tasks": [
+      {
+        "id": "day-082-task-01",
+        "title": "Power BI: Create dashboard with charts and filters",
+        "topicId": "topic-data-analytics",
+        "type": "practice"
+      },
+      {
+        "id": "day-082-task-02",
+        "title": "Design data storytelling narrative for project",
+        "topicId": "topic-data-analytics",
+        "type": "practice"
+      },
+      {
+        "id": "day-082-task-03",
+        "title": "Complete project-08: Final dashboard and report",
+        "topicId": "topic-data-analytics",
+        "type": "project"
+      },
+      {
+        "id": "day-082-task-04",
+        "title": "DSA: Graph problems review and practice",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-082-task-05",
+        "title": "System Design: Design a URL shortener system",
+        "topicId": "topic-system-design",
+        "type": "practice"
+      },
+      {
+        "id": "day-082-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 5: IPC Part 2 — Physical Clock Synchronization (Cristian & Berkeley)",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-data-analytics",
+      "focus": "Review data analytics workflow end-to-end"
+    },
+    "project": {
+      "projectId": "project-08",
+      "milestone": "Complete analytics dashboard and report"
+    }
+  },
+  {
+    "id": "day-083",
+    "day": 83,
+    "week": 14,
+    "phase": "phase-08",
+    "title": "Day 83: ETL Concepts & Data Pipelines",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-engineering",
+        "focus": "ETL process, extract-transform-load, data pipeline architecture, data quality"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Data Interpretation: Tables & Bar Graphs Analysis"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-data-engineering",
+        "focus": "Data engineering fundamentals, data lifecycle"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Greedy algorithms: activity selection"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 5: IPC Part 2 — Logical Clocks & Lamport Happened-Before Relation"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Python: reading from multiple file formats"
+      }
+    },
+    "objectives": [
+      "Understand ETL process and pipeline architecture",
+      "Learn data quality principles",
+      "Solve greedy algorithm problems"
+    ],
+    "tasks": [
+      {
+        "id": "day-083-task-01",
+        "title": "Study ETL process: Extract, Transform, Load stages",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-083-task-02",
+        "title": "Design a data pipeline architecture diagram",
+        "topicId": "topic-data-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-083-task-03",
+        "title": "Study data quality dimensions and validation",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-083-task-04",
+        "title": "DSA: Activity selection and interval scheduling",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-083-task-05",
+        "title": "Python: Read data from CSV, JSON, Parquet",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-083-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 5: IPC Part 2 — Logical Clocks & Lamport Happened-Before Relation",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-084",
+    "day": 84,
+    "week": 14,
+    "phase": "phase-08",
+    "title": "Day 84: ELT & Batch Processing",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-engineering",
+        "focus": "ELT pattern, batch processing, scheduled jobs, data transformation in warehouse"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Data Interpretation: Tables & Bar Graphs Analysis"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-data-engineering",
+        "focus": "ETL vs ELT trade-offs, modern data stack"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Greedy: jump game, gas station"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 5: IPC Part 2 — Vector Clocks & Causal Ordering of Messages"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Python: data transformation scripts"
+      }
+    },
+    "objectives": [
+      "Compare ETL vs ELT approaches",
+      "Design batch processing workflows",
+      "Solve greedy optimization problems"
+    ],
+    "tasks": [
+      {
+        "id": "day-084-task-01",
+        "title": "Study ELT pattern and modern data stack",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-084-task-02",
+        "title": "Design batch processing workflow with scheduling",
+        "topicId": "topic-data-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-084-task-03",
+        "title": "Compare ETL vs ELT for different use cases",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-084-task-04",
+        "title": "DSA: Jump game and gas station problems",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-084-task-05",
+        "title": "Python: Write data transformation pipeline script",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-084-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 5: IPC Part 2 — Vector Clocks & Causal Ordering of Messages",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-085",
+    "day": 85,
+    "week": 15,
+    "phase": "phase-08",
+    "title": "Day 85: Stream Processing & Real-Time Data",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-engineering",
+        "focus": "Stream processing, real-time data, event streams, windowing, exactly-once semantics"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Data Interpretation: Tables & Bar Graphs Analysis"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-data-engineering",
+        "focus": "Batch vs stream processing, Lambda architecture"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Greedy: minimum platforms, fractional knapsack"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 6: Mutual Exclusion — Centralized & Ricart-Agrawala Distributed Algorithm"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Python: working with streaming data"
+      }
+    },
+    "objectives": [
+      "Understand stream processing concepts",
+      "Compare batch vs stream paradigms",
+      "Learn Lambda and Kappa architectures"
+    ],
+    "tasks": [
+      {
+        "id": "day-085-task-01",
+        "title": "Study stream processing and event-driven data",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-085-task-02",
+        "title": "Learn windowing strategies: tumbling, sliding, session",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-085-task-03",
+        "title": "Compare Lambda vs Kappa architecture",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-085-task-04",
+        "title": "DSA: Minimum platforms and fractional knapsack",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-085-task-05",
+        "title": "Python: Simulate streaming data processing",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-085-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 6: Mutual Exclusion — Centralized & Ricart-Agrawala Distributed Algorithm",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-086",
+    "day": 86,
+    "week": 15,
+    "phase": "phase-08",
+    "title": "Day 86: Data Warehouses & Star Schema",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-engineering",
+        "focus": "Data warehouses, OLAP vs OLTP, star schema, snowflake schema, fact and dimension tables"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Data Interpretation: Pie Charts & Line Graphs Calculations"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-data-engineering",
+        "focus": "Data warehouse architecture, columnar storage"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Dynamic programming: fibonacci, climbing stairs"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 6: Mutual Exclusion — Token Ring & Maekawa Voting Algorithm"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Matplotlib: subplots and figure customization"
+      }
+    },
+    "objectives": [
+      "Design star and snowflake schemas",
+      "Understand OLAP vs OLTP",
+      "Start dynamic programming"
+    ],
+    "tasks": [
+      {
+        "id": "day-086-task-01",
+        "title": "Study data warehouse concepts and OLAP vs OLTP",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-086-task-02",
+        "title": "Design star schema with fact and dimension tables",
+        "topicId": "topic-data-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-086-task-03",
+        "title": "Study snowflake schema and compare with star schema",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-086-task-04",
+        "title": "DSA: DP fibonacci and climbing stairs variations",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-086-task-05",
+        "title": "Matplotlib: Create multi-panel figures with subplots",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-086-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 6: Mutual Exclusion — Token Ring & Maekawa Voting Algorithm",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-087",
+    "day": 87,
+    "week": 15,
+    "phase": "phase-08",
+    "title": "Day 87: Data Lakes & Lakehouse",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-engineering",
+        "focus": "Data lakes, lakehouse architecture, Delta Lake, data formats (Parquet, Avro, ORC)"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Data Interpretation: Pie Charts & Line Graphs Calculations"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-data-engineering",
+        "focus": "Data governance, metadata management, data catalog"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DP: 0/1 knapsack problem"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 7: Distributed Scheduling — Load Balancing: Sender vs Receiver Initiated"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Matplotlib: annotations and styling"
+      }
+    },
+    "objectives": [
+      "Understand data lake and lakehouse concepts",
+      "Compare data storage formats",
+      "Solve knapsack DP problems"
+    ],
+    "tasks": [
+      {
+        "id": "day-087-task-01",
+        "title": "Study data lake architecture and challenges",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-087-task-02",
+        "title": "Learn lakehouse architecture and Delta Lake",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-087-task-03",
+        "title": "Compare Parquet, Avro, ORC file formats",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-087-task-04",
+        "title": "DSA: 0/1 knapsack with DP tabulation",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-087-task-05",
+        "title": "Matplotlib: Add annotations, legends, custom styles",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-087-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 7: Distributed Scheduling — Load Balancing: Sender vs Receiver Initiated",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-088",
+    "day": 88,
+    "week": 15,
+    "phase": "phase-08",
+    "title": "Day 88: Data Modeling & Dimensional Design",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-engineering",
+        "focus": "Dimensional modeling, Kimball methodology, slowly changing dimensions, data vault"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Data Interpretation: Pie Charts & Line Graphs Calculations"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-data-engineering",
+        "focus": "Data lineage, data observability"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DP: coin change problem"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 7: Distributed Scheduling — Process Migration Mechanisms & Performance"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Seaborn: statistical visualizations"
+      }
+    },
+    "objectives": [
+      "Apply dimensional modeling techniques",
+      "Handle slowly changing dimensions",
+      "Solve coin change with DP"
+    ],
+    "tasks": [
+      {
+        "id": "day-088-task-01",
+        "title": "Study Kimball dimensional modeling methodology",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-088-task-02",
+        "title": "Design slowly changing dimension types (SCD 1,2,3)",
+        "topicId": "topic-data-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-088-task-03",
+        "title": "Study data lineage and observability tools",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-088-task-04",
+        "title": "DSA: Coin change min coins and number of ways",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-088-task-05",
+        "title": "Seaborn: Pair plots, violin plots, joint plots",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-088-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 7: Distributed Scheduling — Process Migration Mechanisms & Performance",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-089",
+    "day": 89,
+    "week": 15,
+    "phase": "phase-08",
+    "title": "Day 89: Apache Airflow & DAGs",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-engineering",
+        "focus": "Apache Airflow, DAGs, operators, scheduling, task dependencies, XComs"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Data Interpretation: Pie Charts & Line Graphs Calculations"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-data-engineering",
+        "focus": "Workflow orchestration patterns"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DP: longest common subsequence"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 8: Deadlocks Part 1 — Deadlock Handling Strategies & Wait-For Graphs"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Data cleaning best practices review"
+      }
+    },
+    "objectives": [
+      "Create Airflow DAGs for data pipelines",
+      "Configure task scheduling and dependencies",
+      "Solve LCS with dynamic programming"
+    ],
+    "tasks": [
+      {
+        "id": "day-089-task-01",
+        "title": "Install Airflow and create first DAG",
+        "topicId": "topic-data-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-089-task-02",
+        "title": "Define operators, task dependencies, and schedules",
+        "topicId": "topic-data-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-089-task-03",
+        "title": "Study XComs for inter-task communication",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-089-task-04",
+        "title": "DSA: Longest common subsequence with DP",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-089-task-05",
+        "title": "Review data cleaning pipeline patterns",
+        "topicId": "topic-python-data",
+        "type": "revision"
+      },
+      {
+        "id": "day-089-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 8: Deadlocks Part 1 — Deadlock Handling Strategies & Wait-For Graphs",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-090",
+    "day": 90,
+    "week": 15,
+    "phase": "phase-08",
+    "title": "Day 90: Apache Spark Basics",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-engineering",
+        "focus": "Apache Spark architecture, RDDs, DataFrames, SparkSQL, transformations and actions"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Data Interpretation: Pie Charts & Line Graphs Calculations"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-data-engineering",
+        "focus": "Distributed computing fundamentals"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DP: longest increasing subsequence"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 8: Deadlocks Part 1 — Centralized Deadlock Detection (Ho-Ramamoorthy)"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "PySpark introduction"
+      }
+    },
+    "objectives": [
+      "Understand Spark architecture and RDDs",
+      "Write SparkSQL queries",
+      "Start data engineering project"
+    ],
+    "tasks": [
+      {
+        "id": "day-090-task-01",
+        "title": "Study Spark architecture: driver, executors, cluster",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-090-task-02",
+        "title": "Practice RDD and DataFrame transformations",
+        "topicId": "topic-data-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-090-task-03",
+        "title": "Write SparkSQL queries on sample data",
+        "topicId": "topic-data-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-090-task-04",
+        "title": "DSA: Longest increasing subsequence with DP",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-090-task-05",
+        "title": "Start project-09: Design pipeline architecture",
+        "topicId": "topic-data-engineering",
+        "type": "project"
+      },
+      {
+        "id": "day-090-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 8: Deadlocks Part 1 — Centralized Deadlock Detection (Ho-Ramamoorthy)",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-09",
+      "milestone": "Pipeline architecture and Spark setup"
+    }
+  },
+  {
+    "id": "day-091",
+    "day": 91,
+    "week": 16,
+    "phase": "phase-08",
+    "title": "Day 91: Kafka & Event Streaming",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-engineering",
+        "focus": "Apache Kafka, producers, consumers, topics, partitions"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Analytical Puzzles: Multi-Attribute Scheduling Grids"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-data-engineering",
+        "focus": "Event-driven architecture, message queues vs streams"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Dynamic programming: coin change, knapsack"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 9: Deadlocks Part 2 — Distributed Edge-Chasing (Chandy-Misra-Haas)"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Python data cleaning with Pandas"
+      }
+    },
+    "objectives": [
+      "Understand Kafka architecture and event streaming",
+      "Implement producers and consumers",
+      "Practice DP knapsack problems"
+    ],
+    "tasks": [
+      {
+        "id": "day-091-task-01",
+        "title": "Study Kafka architecture: brokers, topics, partitions",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-091-task-02",
+        "title": "Build a Kafka producer and consumer",
+        "topicId": "topic-data-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-091-task-03",
+        "title": "Integrate Kafka into data pipeline project",
+        "topicId": "topic-data-engineering",
+        "type": "project"
+      },
+      {
+        "id": "day-091-task-04",
+        "title": "DSA: solve coin change and knapsack",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-091-task-05",
+        "title": "Python: clean messy dataset with Pandas",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-091-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 9: Deadlocks Part 2 — Distributed Edge-Chasing (Chandy-Misra-Haas)",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-09",
+      "milestone": "Kafka integration and streaming"
+    }
+  },
+  {
+    "id": "day-092",
+    "day": 92,
+    "week": 16,
+    "phase": "phase-08",
+    "title": "Day 92: Cloud Data Services & Data Quality",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-data-engineering",
+        "focus": "Cloud data services, orchestration, data quality frameworks"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Analytical Puzzles: Multi-Attribute Scheduling Grids"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-data-engineering",
+        "focus": "Data governance, lineage, cataloging"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Dynamic programming: longest common subsequence"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 9: Deadlocks Part 2 — Hierarchical Deadlock Detection & Resolution"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-python-data",
+        "focus": "Python data validation and quality checks"
+      }
+    },
+    "objectives": [
+      "Learn cloud data services (BigQuery, Redshift, Snowflake)",
+      "Implement data quality checks",
+      "Complete data pipeline project"
+    ],
+    "tasks": [
+      {
+        "id": "day-092-task-01",
+        "title": "Study cloud data services: BigQuery, Redshift, Snowflake",
+        "topicId": "topic-data-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-092-task-02",
+        "title": "Implement data quality validation in pipeline",
+        "topicId": "topic-data-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-092-task-03",
+        "title": "Finalize and test complete data pipeline",
+        "topicId": "topic-data-engineering",
+        "type": "project"
+      },
+      {
+        "id": "day-092-task-04",
+        "title": "DSA: solve longest common subsequence",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-092-task-05",
+        "title": "Python: build data validation script",
+        "topicId": "topic-python-data",
+        "type": "practice"
+      },
+      {
+        "id": "day-092-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 9: Deadlocks Part 2 — Hierarchical Deadlock Detection & Resolution",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-data-engineering",
+      "focus": "Review ETL, Airflow, Spark, Kafka concepts"
+    },
+    "project": {
+      "projectId": "project-09",
+      "milestone": "Complete data pipeline with quality checks"
+    }
+  },
+  {
+    "id": "day-093",
+    "day": 93,
+    "week": 16,
+    "phase": "phase-09",
+    "title": "Day 93: LLM Fundamentals",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-genai",
+        "focus": "LLM fundamentals, transformer architecture overview, attention mechanism"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Analytical Puzzles: Multi-Attribute Scheduling Grids"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "AI/ML landscape, supervised vs unsupervised overview"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Dynamic programming: edit distance"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 10: Distributed File Systems — NFS Architecture, VFS & Mount Protocol"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "Graph neural networks: introduction, graph data"
+      }
+    },
+    "objectives": [
+      "Understand LLM architecture and how transformers work",
+      "Learn attention mechanism basics",
+      "Introduction to GNNs"
+    ],
+    "tasks": [
+      {
+        "id": "day-093-task-01",
+        "title": "Study transformer architecture and self-attention",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-093-task-02",
+        "title": "Explore GPT, BERT, and LLaMA model families",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-093-task-03",
+        "title": "Use OpenAI API for basic completions",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-093-task-04",
+        "title": "DSA: solve edit distance problem",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-093-task-05",
+        "title": "GNN: study graph representations and adjacency matrices",
+        "topicId": "topic-gnn",
+        "type": "introduction"
+      },
+      {
+        "id": "day-093-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 10: Distributed File Systems — NFS Architecture, VFS & Mount Protocol",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-094",
+    "day": 94,
+    "week": 16,
+    "phase": "phase-09",
+    "title": "Day 94: Prompt Engineering",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-genai",
+        "focus": "Prompt engineering, zero-shot, few-shot, chain-of-thought"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Analytical Puzzles: Multi-Attribute Scheduling Grids"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "NLP basics, tokenization, text processing"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Dynamic programming: matrix chain multiplication"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 10: Distributed File Systems — NFS Caching & Cache Consistency Semantics"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: node features, edge features"
+      }
+    },
+    "objectives": [
+      "Master prompt engineering techniques",
+      "Understand few-shot and chain-of-thought prompting",
+      "Practice advanced DP"
+    ],
+    "tasks": [
+      {
+        "id": "day-094-task-01",
+        "title": "Study zero-shot, few-shot, chain-of-thought prompting",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-094-task-02",
+        "title": "Build prompt templates for different tasks",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-094-task-03",
+        "title": "Experiment with system prompts and temperature",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-094-task-04",
+        "title": "DSA: solve matrix chain multiplication",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-094-task-05",
+        "title": "GNN: explore node and edge feature representations",
+        "topicId": "topic-gnn",
+        "type": "introduction"
+      },
+      {
+        "id": "day-094-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 10: Distributed File Systems — NFS Caching & Cache Consistency Semantics",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-095",
+    "day": 95,
+    "week": 16,
+    "phase": "phase-09",
+    "title": "Day 95: Embeddings & Vector Representations",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-genai",
+        "focus": "Text embeddings, Word2Vec, sentence embeddings, similarity"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Analytical Puzzles: Multi-Attribute Scheduling Grids"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Dimensionality reduction, PCA, t-SNE"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Dynamic programming: longest increasing subsequence"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Unit 10: Distributed File Systems — Fault Tolerance, Replication & AFS Architecture"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: graph convolution concepts"
+      }
+    },
+    "objectives": [
+      "Understand text embeddings and vector spaces",
+      "Generate and compare embeddings",
+      "Learn dimensionality reduction"
+    ],
+    "tasks": [
+      {
+        "id": "day-095-task-01",
+        "title": "Study Word2Vec, GloVe, and sentence embeddings",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-095-task-02",
+        "title": "Generate embeddings using OpenAI API",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-095-task-03",
+        "title": "Compute cosine similarity between text embeddings",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-095-task-04",
+        "title": "DSA: solve longest increasing subsequence",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-095-task-05",
+        "title": "GNN: study graph convolution basics",
+        "topicId": "topic-gnn",
+        "type": "introduction"
+      },
+      {
+        "id": "day-095-task-sem5",
+        "title": "Sem 5: DCA31E1 Unit 10: Distributed File Systems — Fault Tolerance, Replication & AFS Architecture",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-096",
+    "day": 96,
+    "week": 16,
+    "phase": "phase-09",
+    "title": "Day 96: Vector Databases",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-genai",
+        "focus": "Vector databases: Pinecone, ChromaDB, FAISS, indexing"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Analytical Puzzles: Floor & Box Arrangement Puzzles"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Approximate nearest neighbors, HNSW, IVF"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Tries: implementation and word search"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca31e1",
+        "focus": "DCA31E1 Terminal Assessment & Distributed Systems Mock Exam"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: message passing framework"
+      }
+    },
+    "objectives": [
+      "Set up and use vector databases",
+      "Understand indexing strategies for embeddings",
+      "Implement trie data structure"
+    ],
+    "tasks": [
+      {
+        "id": "day-096-task-01",
+        "title": "Study vector DB concepts: indexing, ANN search",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-096-task-02",
+        "title": "Set up ChromaDB and store embeddings",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-096-task-03",
+        "title": "Query vector DB with similarity search",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-096-task-04",
+        "title": "DSA: implement trie and solve word search",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-096-task-05",
+        "title": "GNN: study message passing neural networks",
+        "topicId": "topic-gnn",
+        "type": "learn"
+      },
+      {
+        "id": "day-096-task-sem5",
+        "title": "Sem 5: DCA31E1 Terminal Assessment & Distributed Systems Mock Exam",
+        "topicId": "topic-sem5-dca31e1",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-097",
+    "day": 97,
+    "week": 17,
+    "phase": "phase-09",
+    "title": "Day 97: Semantic Search & RAG Architecture",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-genai",
+        "focus": "Semantic search, RAG architecture, retrieval pipeline"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Analytical Puzzles: Floor & Box Arrangement Puzzles"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Information retrieval, TF-IDF, BM25 vs embeddings"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Tries: autocomplete and prefix matching"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 1: Introduction to Machine Learning — Definition, ML vs Programming"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: GCN and GraphSAGE overview"
+      }
+    },
+    "objectives": [
+      "Understand RAG architecture end-to-end",
+      "Build a semantic search pipeline",
+      "Compare sparse vs dense retrieval"
+    ],
+    "tasks": [
+      {
+        "id": "day-097-task-01",
+        "title": "Study RAG architecture: retrieve, augment, generate",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-097-task-02",
+        "title": "Build semantic search over document collection",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-097-task-03",
+        "title": "Implement document chunking and embedding pipeline",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-097-task-04",
+        "title": "DSA: implement autocomplete with trie",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-097-task-05",
+        "title": "GNN: compare GCN and GraphSAGE architectures",
+        "topicId": "topic-gnn",
+        "type": "learn"
+      },
+      {
+        "id": "day-097-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 1: Introduction to Machine Learning — Definition, ML vs Programming",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-098",
+    "day": 98,
+    "week": 17,
+    "phase": "phase-09",
+    "title": "Day 98: LangChain Basics",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-genai",
+        "focus": "LangChain: chains, prompt templates, output parsers, memory"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Analytical Puzzles: Floor & Box Arrangement Puzzles"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "LLM APIs, token management, cost optimization"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DP review: tabulation vs memoization patterns"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 1: Introduction to Machine Learning — Types of ML & Inductive Bias"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: node classification task"
+      }
+    },
+    "objectives": [
+      "Build applications with LangChain",
+      "Understand chains, prompts, and output parsers",
+      "Review DP approaches"
+    ],
+    "tasks": [
+      {
+        "id": "day-098-task-01",
+        "title": "Study LangChain: models, prompts, chains, memory",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-098-task-02",
+        "title": "Build a Q&A chain with LangChain",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-098-task-03",
+        "title": "Implement output parsers and structured responses",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-098-task-04",
+        "title": "DSA: review tabulation vs memoization on classic problems",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-098-task-05",
+        "title": "GNN: implement node classification example",
+        "topicId": "topic-gnn",
+        "type": "practice"
+      },
+      {
+        "id": "day-098-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 1: Introduction to Machine Learning — Types of ML & Inductive Bias",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-099",
+    "day": 99,
+    "week": 17,
+    "phase": "phase-09",
+    "title": "Day 99: LangGraph & Agent Concepts",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-genai",
+        "focus": "LangGraph: state machines, agent graphs, conditional edges"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Analytical Puzzles: Floor & Box Arrangement Puzzles"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Agent architectures: ReAct, plan-and-execute"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Tries: design search autocomplete system"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 2: Supervised Learning — Framework, Training/Validation/Testing"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: link prediction task"
+      }
+    },
+    "objectives": [
+      "Build agent graphs with LangGraph",
+      "Understand ReAct and agent patterns",
+      "Start RAG application project"
+    ],
+    "tasks": [
+      {
+        "id": "day-099-task-01",
+        "title": "Study LangGraph: nodes, edges, state management",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-099-task-02",
+        "title": "Build a basic agent graph with conditional routing",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-099-task-03",
+        "title": "Start RAG application: set up vector store and retriever",
+        "topicId": "topic-genai",
+        "type": "project"
+      },
+      {
+        "id": "day-099-task-04",
+        "title": "DSA: design search autocomplete system with trie",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-099-task-05",
+        "title": "GNN: implement link prediction example",
+        "topicId": "topic-gnn",
+        "type": "practice"
+      },
+      {
+        "id": "day-099-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 2: Supervised Learning — Framework, Training/Validation/Testing",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-10",
+      "milestone": "RAG app setup with vector store and retriever"
+    }
+  },
+  {
+    "id": "day-100",
+    "day": 100,
+    "week": 17,
+    "phase": "phase-09",
+    "title": "Day 100: Tools, Function Calling & Agent Loops",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-genai",
+        "focus": "Function calling, tool use, agent execution loops"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Analytical Puzzles: Floor & Box Arrangement Puzzles"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Tool augmented generation, structured outputs"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DP: partition problems and subset sum"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 2: Supervised Learning — Linear Regression & Gradient Descent"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: graph-level classification"
+      }
+    },
+    "objectives": [
+      "Implement function calling with LLMs",
+      "Build tool-using agents",
+      "Continue RAG project with query pipeline"
+    ],
+    "tasks": [
+      {
+        "id": "day-100-task-01",
+        "title": "Study function calling and tool definitions",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-100-task-02",
+        "title": "Build an agent with custom tool functions",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-100-task-03",
+        "title": "Add query pipeline and response generation to RAG app",
+        "topicId": "topic-genai",
+        "type": "project"
+      },
+      {
+        "id": "day-100-task-04",
+        "title": "DSA: solve partition equal subset sum",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-100-task-05",
+        "title": "GNN: study graph-level pooling and classification",
+        "topicId": "topic-gnn",
+        "type": "learn"
+      },
+      {
+        "id": "day-100-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 2: Supervised Learning — Linear Regression & Gradient Descent",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-10",
+      "milestone": "Query pipeline and response generation"
+    }
+  },
+  {
+    "id": "day-101",
+    "day": 101,
+    "week": 17,
+    "phase": "phase-09",
+    "title": "Day 101: Multi-Agent Systems",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-genai",
+        "focus": "Multi-agent orchestration, supervisor patterns, collaboration"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: TCS NQT Placement Aptitude Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Agent communication protocols, task decomposition"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DP: word break and decode ways"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 3: K-Nearest Neighbors — Algorithm & Distance Metrics"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: attention-based graph networks (GAT)"
+      }
+    },
+    "objectives": [
+      "Design multi-agent systems",
+      "Understand supervisor and swarm patterns",
+      "Start GenAI agent project"
+    ],
+    "tasks": [
+      {
+        "id": "day-101-task-01",
+        "title": "Study multi-agent patterns: supervisor, swarm, hierarchy",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-101-task-02",
+        "title": "Build multi-agent workflow with LangGraph",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-101-task-03",
+        "title": "Start GenAI agent project: define agent roles and tools",
+        "topicId": "topic-genai",
+        "type": "project"
+      },
+      {
+        "id": "day-101-task-04",
+        "title": "DSA: solve word break and decode ways",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-101-task-05",
+        "title": "GNN: study graph attention networks",
+        "topicId": "topic-gnn",
+        "type": "learn"
+      },
+      {
+        "id": "day-101-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 3: K-Nearest Neighbors — Algorithm & Distance Metrics",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-11",
+      "milestone": "Agent architecture and tool definitions"
+    }
+  },
+  {
+    "id": "day-102",
+    "day": 102,
+    "week": 17,
+    "phase": "phase-09",
+    "title": "Day 102: AI Evaluation & Guardrails",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-genai",
+        "focus": "Evaluation metrics, hallucination detection, guardrails, safety"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: TCS NQT Placement Aptitude Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "AI ethics, responsible AI, bias detection"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DP review: all classic patterns summary"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 3: K-Nearest Neighbors — Tuning K, Curse of Dimensionality & KD-Trees"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: real-world applications review"
+      }
+    },
+    "objectives": [
+      "Evaluate LLM outputs systematically",
+      "Implement guardrails and safety measures",
+      "Complete RAG and GenAI projects"
+    ],
+    "tasks": [
+      {
+        "id": "day-102-task-01",
+        "title": "Study evaluation: BLEU, ROUGE, faithfulness, relevance",
+        "topicId": "topic-genai",
+        "type": "learn"
+      },
+      {
+        "id": "day-102-task-02",
+        "title": "Implement guardrails and content filtering",
+        "topicId": "topic-genai",
+        "type": "practice"
+      },
+      {
+        "id": "day-102-task-03",
+        "title": "Finalize RAG application with evaluation",
+        "topicId": "topic-genai",
+        "type": "project"
+      },
+      {
+        "id": "day-102-task-04",
+        "title": "Finalize GenAI agent with safety guardrails",
+        "topicId": "topic-genai",
+        "type": "project"
+      },
+      {
+        "id": "day-102-task-05",
+        "title": "DSA: review all DP patterns",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-102-task-06",
+        "title": "GNN: review applications in recommendation and social networks",
+        "topicId": "topic-gnn",
+        "type": "revision"
+      },
+      {
+        "id": "day-102-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 3: K-Nearest Neighbors — Tuning K, Curse of Dimensionality & KD-Trees",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-genai",
+      "focus": "Review LLMs, prompting, embeddings, RAG, agents"
+    },
+    "project": {
+      "projectId": "project-10",
+      "milestone": "Complete RAG application with evaluation"
+    }
+  },
+  {
+    "id": "day-103",
+    "day": 103,
+    "week": 18,
+    "phase": "phase-10",
+    "title": "Day 103: ML Fundamentals",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-ai-engineering",
+        "focus": "Machine Learning (ML) concepts, supervised vs unsupervised, regression vs classification"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: TCS NQT Placement Aptitude Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Statistics for ML: distributions, hypothesis testing"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Bit manipulation: AND, OR, XOR, shifts"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 4: Naïve Bayes — Bayes Theorem & Conditional Independence"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: message passing implementation"
+      }
+    },
+    "objectives": [
+      "Understand ML paradigms and workflow",
+      "Learn supervised vs unsupervised learning",
+      "Start bit manipulation"
+    ],
+    "tasks": [
+      {
+        "id": "day-103-task-01",
+        "title": "Study Machine Learning (ML) types: supervised, unsupervised, reinforcement",
+        "topicId": "topic-ai-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-103-task-02",
+        "title": "Learn feature engineering and data preprocessing",
+        "topicId": "topic-ai-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-103-task-03",
+        "title": "Explore scikit-learn datasets and basic pipeline",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-103-task-04",
+        "title": "DSA: solve single number and counting bits",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-103-task-05",
+        "title": "GNN: implement message passing layer from scratch",
+        "topicId": "topic-gnn",
+        "type": "practice"
+      },
+      {
+        "id": "day-103-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 4: Naïve Bayes — Bayes Theorem & Conditional Independence",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-104",
+    "day": 104,
+    "week": 18,
+    "phase": "phase-10",
+    "title": "Day 104: Scikit-learn Classification & Regression",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-ai-engineering",
+        "focus": "Scikit-learn: linear regression, logistic regression, decision trees"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: TCS NQT Placement Aptitude Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Gradient descent, loss functions, optimization"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Bit manipulation: power of two, hamming distance"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 4: Naïve Bayes — Gaussian, Multinomial & Bernoulli Classifiers"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: PyTorch Geometric intro"
+      }
+    },
+    "objectives": [
+      "Train classification and regression models",
+      "Understand gradient descent and loss functions",
+      "Practice bit manipulation"
+    ],
+    "tasks": [
+      {
+        "id": "day-104-task-01",
+        "title": "Train linear regression on housing dataset",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-104-task-02",
+        "title": "Train logistic regression and decision tree classifiers",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-104-task-03",
+        "title": "Study gradient descent and learning rate",
+        "topicId": "topic-ai-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-104-task-04",
+        "title": "DSA: solve power of two and hamming distance",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-104-task-05",
+        "title": "GNN: explore PyTorch Geometric data structures",
+        "topicId": "topic-gnn",
+        "type": "introduction"
+      },
+      {
+        "id": "day-104-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 4: Naïve Bayes — Gaussian, Multinomial & Bernoulli Classifiers",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-105",
+    "day": 105,
+    "week": 18,
+    "phase": "phase-10",
+    "title": "Day 105: Model Evaluation & Metrics",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-ai-engineering",
+        "focus": "Cross-validation, accuracy, precision, recall, F1, ROC-AUC"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: TCS NQT Placement Aptitude Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Overfitting, underfitting, regularization, bias-variance"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Bit manipulation: subsets using bitmask"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 5: Decision Trees — Tree Structure, Entropy, Information Gain & ID3"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: training a GCN with PyTorch Geometric"
+      }
+    },
+    "objectives": [
+      "Evaluate models with proper metrics",
+      "Understand overfitting and regularization",
+      "Use cross-validation"
+    ],
+    "tasks": [
+      {
+        "id": "day-105-task-01",
+        "title": "Study precision, recall, F1, confusion matrix",
+        "topicId": "topic-ai-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-105-task-02",
+        "title": "Implement k-fold cross-validation",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-105-task-03",
+        "title": "Plot ROC curves and compare models",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-105-task-04",
+        "title": "DSA: solve subset generation using bitmask",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-105-task-05",
+        "title": "GNN: train GCN on Cora dataset",
+        "topicId": "topic-gnn",
+        "type": "practice"
+      },
+      {
+        "id": "day-105-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 5: Decision Trees — Tree Structure, Entropy, Information Gain & ID3",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-106",
+    "day": 106,
+    "week": 18,
+    "phase": "phase-10",
+    "title": "Day 106: PyTorch Basics",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-ai-engineering",
+        "focus": "PyTorch: tensors, autograd, GPU acceleration"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: Infosys & Wipro Placement Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Neural network theory: perceptrons, activation functions"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "Bit manipulation: XOR tricks, missing number"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 5: Decision Trees — Gini Impurity, CART Algorithm & Tree Pruning"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: graph pooling methods"
+      }
+    },
+    "objectives": [
+      "Master PyTorch tensor operations",
+      "Understand autograd and computational graphs",
+      "Learn neural network theory"
+    ],
+    "tasks": [
+      {
+        "id": "day-106-task-01",
+        "title": "Study PyTorch tensors, operations, and GPU usage",
+        "topicId": "topic-ai-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-106-task-02",
+        "title": "Implement autograd examples and gradient computation",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-106-task-03",
+        "title": "Build linear regression from scratch in PyTorch",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-106-task-04",
+        "title": "DSA: solve missing number and single number II with XOR",
+        "topicId": "topic-dsa",
+        "type": "practice"
+      },
+      {
+        "id": "day-106-task-05",
+        "title": "GNN: study graph pooling for graph classification",
+        "topicId": "topic-gnn",
+        "type": "learn"
+      },
+      {
+        "id": "day-106-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 5: Decision Trees — Gini Impurity, CART Algorithm & Tree Pruning",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-107",
+    "day": 107,
+    "week": 18,
+    "phase": "phase-10",
+    "title": "Day 107: Neural Networks & Training",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-ai-engineering",
+        "focus": "Deep Learning & Neural networks: layers, forward/backward pass, training loops"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: Infosys & Wipro Placement Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Backpropagation, optimizers (SGD, Adam), learning schedules"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA review: arrays and strings problems"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 5: Decision Trees — Overfitting Prevention & Continuous Splits"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: heterogeneous graphs"
+      }
+    },
+    "objectives": [
+      "Build neural networks with PyTorch nn.Module",
+      "Implement training loops with backpropagation",
+      "Understand optimizers"
+    ],
+    "tasks": [
+      {
+        "id": "day-107-task-01",
+        "title": "Build feedforward neural network with nn.Module",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-107-task-02",
+        "title": "Implement training loop: forward, loss, backward, step",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-107-task-03",
+        "title": "Train MNIST digit classifier",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-107-task-04",
+        "title": "DSA: review array and string classic problems",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-107-task-05",
+        "title": "GNN: study heterogeneous graph representations",
+        "topicId": "topic-gnn",
+        "type": "learn"
+      },
+      {
+        "id": "day-107-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 5: Decision Trees — Overfitting Prevention & Continuous Splits",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-108",
+    "day": 108,
+    "week": 18,
+    "phase": "phase-10",
+    "title": "Day 108: CNNs & Image Classification",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-ai-engineering",
+        "focus": "CNNs: convolutions, pooling, architectures (LeNet, ResNet)"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: Infosys & Wipro Placement Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Computer vision basics, data augmentation, transfer learning"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA review: binary search and sorting"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 6: Support Vector Machines — Hyperplanes, Margin & Support Vectors"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: temporal graph networks"
+      }
+    },
+    "objectives": [
+      "Build CNN for image classification",
+      "Understand convolution layers and pooling",
+      "Apply transfer learning"
+    ],
+    "tasks": [
+      {
+        "id": "day-108-task-01",
+        "title": "Study CNN architecture: conv layers, pooling, stride",
+        "topicId": "topic-ai-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-108-task-02",
+        "title": "Build CNN for CIFAR-10 classification",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-108-task-03",
+        "title": "Apply transfer learning with pre-trained ResNet",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-108-task-04",
+        "title": "DSA: review binary search patterns",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-108-task-05",
+        "title": "GNN: explore temporal graph network concepts",
+        "topicId": "topic-gnn",
+        "type": "learn"
+      },
+      {
+        "id": "day-108-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 6: Support Vector Machines — Hyperplanes, Margin & Support Vectors",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-109",
+    "day": 109,
+    "week": 19,
+    "phase": "phase-10",
+    "title": "Day 109: Transformer Architecture Deep Dive",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-ai-engineering",
+        "focus": "Transformers: multi-head attention, positional encoding, encoder-decoder"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: Infosys & Wipro Placement Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Sequence models: RNN, LSTM vs Transformers"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA review: trees and graphs"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 6: Support Vector Machines — Hard vs Soft Margin & Slack Variables"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: graph transformers"
+      }
+    },
+    "objectives": [
+      "Understand transformer architecture in depth",
+      "Compare attention mechanisms",
+      "Review tree and graph DSA"
+    ],
+    "tasks": [
+      {
+        "id": "day-109-task-01",
+        "title": "Study multi-head attention and positional encoding",
+        "topicId": "topic-ai-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-109-task-02",
+        "title": "Implement simplified attention mechanism in PyTorch",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-109-task-03",
+        "title": "Compare encoder-only, decoder-only, encoder-decoder models",
+        "topicId": "topic-ai-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-109-task-04",
+        "title": "DSA: review tree traversals and graph algorithms",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-109-task-05",
+        "title": "GNN: study graph transformer architectures",
+        "topicId": "topic-gnn",
+        "type": "learn"
+      },
+      {
+        "id": "day-109-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 6: Support Vector Machines — Hard vs Soft Margin & Slack Variables",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-110",
+    "day": 110,
+    "week": 19,
+    "phase": "phase-10",
+    "title": "Day 110: Hugging Face & Pre-trained Models",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-ai-engineering",
+        "focus": "Hugging Face: transformers library, pipelines, tokenizers, model hub"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: Infosys & Wipro Placement Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "NLP tasks: classification, NER, summarization, translation"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA review: dynamic programming patterns"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 6: Support Vector Machines — Kernel Trick (Polynomial, RBF, Sigmoid)"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: applications in drug discovery"
+      }
+    },
+    "objectives": [
+      "Use Hugging Face for NLP tasks",
+      "Explore model hub and pipelines",
+      "Start AI engineering project"
+    ],
+    "tasks": [
+      {
+        "id": "day-110-task-01",
+        "title": "Study Hugging Face: pipelines, AutoModel, AutoTokenizer",
+        "topicId": "topic-ai-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-110-task-02",
+        "title": "Run text classification and NER with pre-trained models",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-110-task-03",
+        "title": "Start AI project: define architecture and select models",
+        "topicId": "topic-ai-engineering",
+        "type": "project"
+      },
+      {
+        "id": "day-110-task-04",
+        "title": "DSA: review DP patterns and classic problems",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-110-task-05",
+        "title": "GNN: explore molecular graph applications",
+        "topicId": "topic-gnn",
+        "type": "learn"
+      },
+      {
+        "id": "day-110-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 6: Support Vector Machines — Kernel Trick (Polynomial, RBF, Sigmoid)",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-12",
+      "milestone": "Architecture design and model selection"
+    }
+  },
+  {
+    "id": "day-111",
+    "day": 111,
+    "week": 19,
+    "phase": "phase-10",
+    "title": "Day 111: Fine-tuning Concepts",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-ai-engineering",
+        "focus": "Fine-tuning: LoRA, PEFT, QLoRA, adapter methods"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: Accenture & Cognizant Placement Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "Training efficiency: mixed precision, gradient accumulation"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA review: greedy and backtracking"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 6: Support Vector Machines — Multi-Class SVM (OvR vs OvO)"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: knowledge graphs and reasoning"
+      }
+    },
+    "objectives": [
+      "Understand fine-tuning techniques for LLMs",
+      "Learn LoRA and PEFT methods",
+      "Continue AI engineering project"
+    ],
+    "tasks": [
+      {
+        "id": "day-111-task-01",
+        "title": "Study fine-tuning: full, LoRA, QLoRA, adapters",
+        "topicId": "topic-ai-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-111-task-02",
+        "title": "Fine-tune a small model with PEFT/LoRA",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-111-task-03",
+        "title": "Build model training pipeline for AI project",
+        "topicId": "topic-ai-engineering",
+        "type": "project"
+      },
+      {
+        "id": "day-111-task-04",
+        "title": "DSA: review greedy and backtracking patterns",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-111-task-05",
+        "title": "GNN: study knowledge graph embeddings",
+        "topicId": "topic-gnn",
+        "type": "learn"
+      },
+      {
+        "id": "day-111-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 6: Support Vector Machines — Multi-Class SVM (OvR vs OvO)",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-12",
+      "milestone": "Model training pipeline with fine-tuning"
+    }
+  },
+  {
+    "id": "day-112",
+    "day": 112,
+    "week": 19,
+    "phase": "phase-10",
+    "title": "Day 112: Model Serving & MLOps",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-ai-engineering",
+        "focus": "Model serving, FastAPI endpoints, ONNX, deployment strategies"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: Accenture & Cognizant Placement Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-ai-engineering",
+        "focus": "MLOps: experiment tracking, model registry, CI/CD for ML"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA review: linked lists, stacks, queues"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 7: Unsupervised Machine Learning — Paradigms & Applications"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-gnn",
+        "focus": "GNN: full review and future directions"
+      }
+    },
+    "objectives": [
+      "Deploy ML models as APIs",
+      "Understand MLOps lifecycle",
+      "Complete AI engineering project"
+    ],
+    "tasks": [
+      {
+        "id": "day-112-task-01",
+        "title": "Study model serving: FastAPI, ONNX, TorchServe",
+        "topicId": "topic-ai-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-112-task-02",
+        "title": "Deploy model as REST API with FastAPI",
+        "topicId": "topic-ai-engineering",
+        "type": "practice"
+      },
+      {
+        "id": "day-112-task-03",
+        "title": "Finalize AI engineering project with deployment",
+        "topicId": "topic-ai-engineering",
+        "type": "project"
+      },
+      {
+        "id": "day-112-task-04",
+        "title": "Study MLOps: MLflow, experiment tracking, versioning",
+        "topicId": "topic-ai-engineering",
+        "type": "learn"
+      },
+      {
+        "id": "day-112-task-05",
+        "title": "DSA: review linked lists, stacks, queues",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-112-task-06",
+        "title": "GNN: comprehensive review of all GNN concepts",
+        "topicId": "topic-gnn",
+        "type": "revision"
+      },
+      {
+        "id": "day-112-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 7: Unsupervised Machine Learning — Paradigms & Applications",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-ai-engineering",
+      "focus": "Review ML, DL, transformers, fine-tuning, deployment"
+    },
+    "project": {
+      "projectId": "project-12",
+      "milestone": "Complete AI project with model deployment"
+    }
+  },
+  {
+    "id": "day-113",
+    "day": 113,
+    "week": 19,
+    "phase": "phase-11",
+    "title": "Day 113: High-Level System Design",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-system-design",
+        "focus": "HLD: scalability, load balancing, caching, CDNs, databases"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: Accenture & Cognizant Placement Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "CAP theorem, consistency patterns, distributed systems"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA review: hash maps and two pointers"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 7: Unsupervised Machine Learning — Dimensionality Reduction & PCA Intuition"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-interview-prep",
+        "focus": "Full stack revision: frontend concepts"
+      }
+    },
+    "objectives": [
+      "Design scalable systems with proper architecture",
+      "Understand load balancing and caching strategies",
+      "Review distributed systems concepts"
+    ],
+    "tasks": [
+      {
+        "id": "day-113-task-01",
+        "title": "Study HLD: load balancers, horizontal scaling",
+        "topicId": "topic-system-design",
+        "type": "learn"
+      },
+      {
+        "id": "day-113-task-02",
+        "title": "Design URL shortener system",
+        "topicId": "topic-system-design",
+        "type": "practice"
+      },
+      {
+        "id": "day-113-task-03",
+        "title": "Study caching strategies: Redis, CDN, browser cache",
+        "topicId": "topic-system-design",
+        "type": "learn"
+      },
+      {
+        "id": "day-113-task-04",
+        "title": "Design social media feed system",
+        "topicId": "topic-system-design",
+        "type": "practice"
+      },
+      {
+        "id": "day-113-task-05",
+        "title": "DSA: review hash map and two pointer problems",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-113-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 7: Unsupervised Machine Learning — Dimensionality Reduction & PCA Intuition",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-system-design",
+      "focus": "Review scalability patterns"
+    },
+    "project": null
+  },
+  {
+    "id": "day-114",
+    "day": 114,
+    "week": 19,
+    "phase": "phase-11",
+    "title": "Day 114: Low-Level System Design",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-system-design",
+        "focus": "LLD: SOLID principles, design patterns, class diagrams, UML"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: Accenture & Cognizant Placement Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "Creational, structural, behavioral patterns"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA review: sliding window and binary search"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 7: Unsupervised Machine Learning — PCA Mathematical Formulation & Variance"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-interview-prep",
+        "focus": "Full stack revision: backend concepts"
+      }
+    },
+    "objectives": [
+      "Apply SOLID principles to system design",
+      "Use design patterns effectively",
+      "Design class-level architecture"
+    ],
+    "tasks": [
+      {
+        "id": "day-114-task-01",
+        "title": "Study SOLID principles with examples",
+        "topicId": "topic-system-design",
+        "type": "learn"
+      },
+      {
+        "id": "day-114-task-02",
+        "title": "Design parking lot system (LLD)",
+        "topicId": "topic-system-design",
+        "type": "practice"
+      },
+      {
+        "id": "day-114-task-03",
+        "title": "Study Factory, Observer, Strategy patterns",
+        "topicId": "topic-system-design",
+        "type": "learn"
+      },
+      {
+        "id": "day-114-task-04",
+        "title": "Design elevator system with class diagrams",
+        "topicId": "topic-system-design",
+        "type": "practice"
+      },
+      {
+        "id": "day-114-task-05",
+        "title": "DSA: review sliding window and binary search",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-114-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 7: Unsupervised Machine Learning — PCA Mathematical Formulation & Variance",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": null
+  },
+  {
+    "id": "day-115",
+    "day": 115,
+    "week": 20,
+    "phase": "phase-11",
+    "title": "Day 115: Resume & ATS Optimization",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-interview-prep",
+        "focus": "Resume building, ATS optimization, keywords, formatting"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Corporate Speed Drills: Accenture & Cognizant Placement Pattern"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-interview-prep",
+        "focus": "Cover letter writing, job application strategy"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA review: comprehensive problem set"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 8: Cluster Analysis — Clustering Fundamentals & Evaluation Metrics"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-interview-prep",
+        "focus": "Full stack revision: database concepts"
+      }
+    },
+    "objectives": [
+      "Build ATS-optimized resume",
+      "Tailor resume for different roles",
+      "Practice DSA comprehensively"
+    ],
+    "tasks": [
+      {
+        "id": "day-115-task-01",
+        "title": "Build resume with quantified achievements",
+        "topicId": "topic-interview-prep",
+        "type": "practice"
+      },
+      {
+        "id": "day-115-task-02",
+        "title": "Optimize resume for ATS with keywords",
+        "topicId": "topic-interview-prep",
+        "type": "practice"
+      },
+      {
+        "id": "day-115-task-03",
+        "title": "Write tailored cover letter template",
+        "topicId": "topic-interview-prep",
+        "type": "practice"
+      },
+      {
+        "id": "day-115-task-04",
+        "title": "DSA: solve mixed difficulty problem set",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-115-task-05",
+        "title": "Revision: review SQL, MongoDB, database design",
+        "topicId": "topic-interview-prep",
+        "type": "revision"
+      },
+      {
+        "id": "day-115-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 8: Cluster Analysis — Clustering Fundamentals & Evaluation Metrics",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-interview-prep",
+      "focus": "Review all database technologies"
+    },
+    "project": null
+  },
+  {
+    "id": "day-116",
+    "day": 116,
+    "week": 20,
+    "phase": "phase-11",
+    "title": "Day 116: Portfolio & Online Presence",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-interview-prep",
+        "focus": "Portfolio website, GitHub profile README, LinkedIn optimization"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Placement Speed Drills: Product Firm Comprehensive Timed Mocks"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-interview-prep",
+        "focus": "Personal branding, networking strategy"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA review: system design + DSA combined"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 8: Cluster Analysis — Hierarchical Clustering (Agglomerative vs Divisive)"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-interview-prep",
+        "focus": "Full stack revision: DevOps and cloud"
+      }
+    },
+    "objectives": [
+      "Build professional portfolio website",
+      "Optimize GitHub and LinkedIn profiles",
+      "Establish online presence"
+    ],
+    "tasks": [
+      {
+        "id": "day-116-task-01",
+        "title": "Build or update portfolio website with projects",
+        "topicId": "topic-interview-prep",
+        "type": "practice"
+      },
+      {
+        "id": "day-116-task-02",
+        "title": "Create GitHub profile README with stats",
+        "topicId": "topic-interview-prep",
+        "type": "practice"
+      },
+      {
+        "id": "day-116-task-03",
+        "title": "Optimize LinkedIn with keywords and projects",
+        "topicId": "topic-interview-prep",
+        "type": "practice"
+      },
+      {
+        "id": "day-116-task-04",
+        "title": "DSA: practice timed problem solving",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-116-task-05",
+        "title": "Revision: review Docker, CI/CD, AWS concepts",
+        "topicId": "topic-interview-prep",
+        "type": "revision"
+      },
+      {
+        "id": "day-116-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 8: Cluster Analysis — Hierarchical Clustering (Agglomerative vs Divisive)",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-interview-prep",
+      "focus": "Review DevOps and cloud technologies"
+    },
+    "project": null
+  },
+  {
+    "id": "day-117",
+    "day": 117,
+    "week": 20,
+    "phase": "phase-11",
+    "title": "Day 117: Behavioral Interviews",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-interview-prep",
+        "focus": "Behavioral interviews, STAR method, common questions, storytelling"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Placement Speed Drills: Product Firm Comprehensive Timed Mocks"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-interview-prep",
+        "focus": "Company research, cultural fit, question preparation"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA review: mock interview problems"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 9: Partition-Based Clustering — K-Means Algorithm & Convergence"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-interview-prep",
+        "focus": "Full stack revision: React and Next.js"
+      }
+    },
+    "objectives": [
+      "Master STAR method for behavioral questions",
+      "Prepare stories for common interview scenarios",
+      "Start flagship project"
+    ],
+    "tasks": [
+      {
+        "id": "day-117-task-01",
+        "title": "Practice STAR method with 10 common questions",
+        "topicId": "topic-interview-prep",
+        "type": "practice"
+      },
+      {
+        "id": "day-117-task-02",
+        "title": "Prepare 5 project stories with technical depth",
+        "topicId": "topic-interview-prep",
+        "type": "practice"
+      },
+      {
+        "id": "day-117-task-03",
+        "title": "Start flagship project: architecture and setup",
+        "topicId": "topic-interview-prep",
+        "type": "project"
+      },
+      {
+        "id": "day-117-task-04",
+        "title": "DSA: solve 3 mock interview problems (timed)",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-117-task-05",
+        "title": "Revision: review React hooks and Next.js patterns",
+        "topicId": "topic-interview-prep",
+        "type": "revision"
+      },
+      {
+        "id": "day-117-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 9: Partition-Based Clustering — K-Means Algorithm & Convergence",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-13",
+      "milestone": "Project architecture and initial setup"
+    }
+  },
+  {
+    "id": "day-118",
+    "day": 118,
+    "week": 20,
+    "phase": "phase-11",
+    "title": "Day 118: Technical Interviews & Mock Practice",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-interview-prep",
+        "focus": "Technical interviews, whiteboard coding, system design interviews"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Placement Speed Drills: Product Firm Comprehensive Timed Mocks"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "Mock system design interview practice"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA: timed mock coding round"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Unit 9: Partition-Based Clustering — K-Means++ & Elbow Method"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-interview-prep",
+        "focus": "Full stack revision: Node.js and Express"
+      }
+    },
+    "objectives": [
+      "Practice technical interview format",
+      "Complete mock coding and system design rounds",
+      "Continue flagship project"
+    ],
+    "tasks": [
+      {
+        "id": "day-118-task-01",
+        "title": "Practice whiteboard coding with explanation",
+        "topicId": "topic-interview-prep",
+        "type": "practice"
+      },
+      {
+        "id": "day-118-task-02",
+        "title": "Mock system design interview: design chat application",
+        "topicId": "topic-system-design",
+        "type": "practice"
+      },
+      {
+        "id": "day-118-task-03",
+        "title": "Build core features of flagship project",
+        "topicId": "topic-interview-prep",
+        "type": "project"
+      },
+      {
+        "id": "day-118-task-04",
+        "title": "DSA: complete timed mock coding round (3 problems)",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-118-task-05",
+        "title": "Revision: review Node.js, Express, REST APIs",
+        "topicId": "topic-interview-prep",
+        "type": "revision"
+      },
+      {
+        "id": "day-118-task-sem5",
+        "title": "Sem 5: DCA3106 Unit 9: Partition-Based Clustering — K-Means++ & Elbow Method",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": null,
+    "project": {
+      "projectId": "project-13",
+      "milestone": "Core features implementation"
+    }
+  },
+  {
+    "id": "day-119",
+    "day": 119,
+    "week": 20,
+    "phase": "phase-11",
+    "title": "Day 119: Final Project Integration",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-interview-prep",
+        "focus": "Project integration, testing, deployment, documentation"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Placement Speed Drills: Product Firm Comprehensive Timed Mocks"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-system-design",
+        "focus": "Architecture review, technical documentation"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA: final comprehensive review"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "DCA3106 Terminal Assessment & Scikit-Learn Model Practical Exam"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-interview-prep",
+        "focus": "Full stack revision: GenAI and AI concepts"
+      }
+    },
+    "objectives": [
+      "Integrate and deploy flagship project",
+      "Write technical documentation",
+      "Final DSA comprehensive review"
+    ],
+    "tasks": [
+      {
+        "id": "day-119-task-01",
+        "title": "Integrate all features and test flagship project",
+        "topicId": "topic-interview-prep",
+        "type": "project"
+      },
+      {
+        "id": "day-119-task-02",
+        "title": "Deploy project and write README documentation",
+        "topicId": "topic-interview-prep",
+        "type": "project"
+      },
+      {
+        "id": "day-119-task-03",
+        "title": "Prepare project presentation and demo",
+        "topicId": "topic-interview-prep",
+        "type": "practice"
+      },
+      {
+        "id": "day-119-task-04",
+        "title": "DSA: final review of all major patterns",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-119-task-05",
+        "title": "Revision: review GenAI, RAG, agents, LLMs",
+        "topicId": "topic-interview-prep",
+        "type": "revision"
+      },
+      {
+        "id": "day-119-task-sem5",
+        "title": "Sem 5: DCA3106 Terminal Assessment & Scikit-Learn Model Practical Exam",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-interview-prep",
+      "focus": "Comprehensive review of all AI topics"
+    },
+    "project": {
+      "projectId": "project-13",
+      "milestone": "Integration, testing, and deployment"
+    }
+  },
+  {
+    "id": "day-120",
+    "day": 120,
+    "week": 20,
+    "phase": "phase-11",
+    "title": "Day 120: Communication & Placement Prep",
+    "isRestDay": false,
+    "schedule": {
+      "mainTrack": {
+        "time": "11:30-1:00 & 2:30-4:00",
+        "topic": "topic-interview-prep",
+        "focus": "Communication skills, presentation, placement strategy, roadmap review"
+      },
+      "aptitude": {
+        "time": "1:00-1:30",
+        "topic": "topic-aptitude",
+        "focus": "Placement Speed Drills: Product Firm Comprehensive Timed Mocks"
+      },
+      "coreCS": {
+        "time": "4:15-5:15",
+        "topic": "topic-interview-prep",
+        "focus": "Salary negotiation, offer evaluation, career planning"
+      },
+      "dsa": {
+        "time": "5:15-6:00",
+        "topic": "topic-dsa",
+        "focus": "DSA: final mock interview"
+      },
+      "sem5": {
+        "time": "6:30-9:00",
+        "topic": "topic-sem5-dca3106",
+        "focus": "Master Synthesis, Semester 5 Comprehensive Review & Capstone Integration"
+      },
+      "sideTrack": {
+        "time": "Inside Main Track",
+        "topic": "topic-interview-prep",
+        "focus": "Full roadmap retrospective and next steps"
+      }
+    },
+    "objectives": [
+      "Finalize flagship project showcase",
+      "Complete placement preparation",
+      "Review entire 120-day journey"
+    ],
+    "tasks": [
+      {
+        "id": "day-120-task-01",
+        "title": "Present flagship project with technical walkthrough",
+        "topicId": "topic-interview-prep",
+        "type": "project"
+      },
+      {
+        "id": "day-120-task-02",
+        "title": "Practice elevator pitch and self-introduction",
+        "topicId": "topic-interview-prep",
+        "type": "practice"
+      },
+      {
+        "id": "day-120-task-03",
+        "title": "Review placement strategy and application pipeline",
+        "topicId": "topic-interview-prep",
+        "type": "learn"
+      },
+      {
+        "id": "day-120-task-04",
+        "title": "DSA: final mock interview round",
+        "topicId": "topic-dsa",
+        "type": "revision"
+      },
+      {
+        "id": "day-120-task-05",
+        "title": "Retrospective: review all phases and identify growth areas",
+        "topicId": "topic-interview-prep",
+        "type": "revision"
+      },
+      {
+        "id": "day-120-task-06",
+        "title": "Plan continued learning path beyond 120 days",
+        "topicId": "topic-interview-prep",
+        "type": "learn"
+      },
+      {
+        "id": "day-120-task-sem5",
+        "title": "Sem 5: Master Synthesis, Semester 5 Comprehensive Review & Capstone Integration",
+        "topicId": "topic-sem5-dca3106",
+        "type": "learn"
+      }
+    ],
+    "revision": {
+      "topicId": "topic-interview-prep",
+      "focus": "Full 120-day roadmap retrospective"
+    },
+    "project": {
+      "projectId": "project-13",
+      "milestone": "Final flagship project showcase complete"
+    }
+  }
 ];
