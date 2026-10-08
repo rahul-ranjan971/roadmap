@@ -18,6 +18,7 @@ import {
   ExternalLink,
   Brain,
   Briefcase,
+  GraduationCap,
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
@@ -59,6 +60,7 @@ export function Dashboard() {
     project: <FolderGit2 className="w-4 h-4 text-purple-400" />,
     revision: <Repeat className="w-4 h-4 text-violet-400" />,
     practice: <Gamepad2 className="w-4 h-4 text-pink-400" />,
+    sem5: <GraduationCap className="w-4 h-4 text-purple-400" />,
   };
 
   // Navigation targets per track
@@ -73,6 +75,7 @@ export function Dashboard() {
     project: 'projects',
     revision: 'revision',
     practice: 'practice',
+    sem5: 'today',
   };
 
   return (

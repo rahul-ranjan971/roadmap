@@ -40,6 +40,17 @@ export const isAiPythonTask = (t) => {
   return isAiPythonTopicId(t.topicId);
 };
 
+const isSem5TopicId = (topicId = '') => {
+  if (!topicId) return false;
+  return topicId.startsWith('topic-sem5-') || topicId.includes('sem5');
+};
+
+const isSem5Task = (t, topicsList = topics) => {
+  if (!t) return false;
+  const top = topicsList?.find(tp => tp.id === t.topicId);
+  return top?.track === 'sem5' || isSem5TopicId(t.topicId);
+};
+
 export const filterObjectivesForAiGate = (objectives = [], isAiUnlocked = false) => {
   if (isAiUnlocked) return objectives;
   return (objectives || [])
@@ -646,7 +657,7 @@ export function AppProvider({ children }) {
 
     // 1. Main Track (Sheryians KODEX): HTML/CSS excluded for known learners; exclude locked AI/Python tasks
     const mainTasks = day.tasks.filter(t => {
-      if (isAiPythonTask(t)) return false;
+      if (isAiPythonTask(t) || isSem5Task(t)) return false;
       const top = topics.find(tp => tp.id === t.topicId);
       return (!top || top.track === 'main') && !['topic-html', 'topic-css'].includes(t.topicId);
     });
@@ -663,6 +674,7 @@ export function AppProvider({ children }) {
 
     // 2. DSA with C++ (Page Source)
     const dsaTasks = day.tasks.filter(t => {
+      if (isSem5Task(t)) return false;
       const top = topics.find(tp => tp.id === t.topicId);
       return top?.track === 'cpp-dsa' || t.topicId.includes('dsa') || t.topicId.includes('cpp');
     });
@@ -679,6 +691,7 @@ export function AppProvider({ children }) {
 
     // 3. Aptitude (Sheryians KODEX) - strictly independent track from Core CS
     const aptitudeTasks = day.tasks.filter(t => {
+      if (isSem5Task(t)) return false;
       const top = topics.find(tp => tp.id === t.topicId);
       return top?.track === 'aptitude' || t.topicId === 'topic-aptitude' || t.topicId.startsWith('topic-aptitude');
     });
@@ -708,7 +721,7 @@ export function AppProvider({ children }) {
 
     const coreTasks = day.tasks
       .filter(t => {
-        if (isAiPythonTask(t)) return false;
+        if (isAiPythonTask(t) || isSem5Task(t)) return false;
         const top = topics.find(tp => tp.id === t.topicId);
         return top?.track === 'core-cs' || isCoreCsTopic(t.topicId);
       })
@@ -729,6 +742,19 @@ export function AppProvider({ children }) {
           ? day.schedule.coreCS.focus
           : (coreTasks[0]?.title || 'Core CS: SQL → OOP → DBMS → OS → CN → System Design (Begins Day 6)'),
         tasks: coreTasks,
+      });
+    }
+
+    // 5. Semester 5 University Track (6:30–9:00 PM) - dedicated BCA curriculum
+    const sem5Tasks = day.tasks.filter(t => isSem5Task(t));
+    if (sem5Tasks.length > 0 || day.schedule?.sem5) {
+      sections.push({
+        id: 'sem5',
+        label: 'Semester 5 University Track',
+        badge: 'University Track',
+        color: 'border-purple-500/30 text-purple-400 bg-purple-500/10',
+        focus: day.schedule?.sem5?.focus || sem5Tasks[0]?.title || 'Semester 5 University Studies',
+        tasks: sem5Tasks,
       });
     }
 
@@ -983,6 +1009,8 @@ export function AppProvider({ children }) {
     todayMission,
     isAiPythonTask,
     isAiPythonTopicId,
+    isSem5Task,
+    isSem5TopicId,
     filterObjectivesForAiGate,
 
     // Learning Level (HTML/CSS skip)
